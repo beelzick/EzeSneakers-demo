@@ -1,0 +1,7 @@
+.foot {
+    flex-shrink: 0;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
