@@ -19,6 +19,7 @@ db.once('open', () => {
 })
 
 const seedDB = async () => {
+    await Product.deleteMany({})
     for (let i = 0; i < 50; i++) {
         const randomProduct = await createRandomProduct(fakeNikeNames, 'Nike')
         const product = await new Product(randomProduct)

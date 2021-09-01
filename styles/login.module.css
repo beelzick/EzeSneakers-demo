@@ -1,0 +1,11 @@
+.pageContainer {
+    height: 80vh;
+
+}
+.grow {
+    flex-grow: 1;
+}
+
+.h100 {
+ height: 100%
+}

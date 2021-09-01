@@ -1,0 +1,16 @@
+.pageContainer {
+    min-height: 80vh;
+    padding-top: 32px;
+}
+.image {
+    width: 100%
+}
+.chipsContainer {
+    margin-right: 5px
+}
+.grow {
+    flex-grow: 1;
+}
+.button {
+    width: 100%;
+}

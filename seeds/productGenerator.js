@@ -1,32 +1,38 @@
 //product object generator
+
 module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
     const randArrEl = array => array[Math.floor(Math.random() * array.length)]
     const fiftyChance = () => Math.floor(Math.random() * 2)
     const randomModelNum = Math.floor(1 + Math.random() * 10) * 100
     const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    const product = {}
     const randomNumFromInterval = (min, max) => {
         min = Math.ceil(min)
         max = Math.floor(max)
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
+    class SneakerSize {
+        constructor(size) {
+            this.size = size
+            this.qty = (Math.random() < 0.85) ? randomNumFromInterval(10, 350) : 0
+        }
+    }
+    const product = {}
     let generatedName
-    product.qty = Math.floor(Math.random() * 150) + 8
     if (sneakerBrand === 'Nike') {
         generatedName = `${sneakerBrand} ${fiftyChance() ? 'Air Max' : ''} ${randArrEl(fakeNamesArray)} ${fiftyChance() ? randomModelNum : ''}`
     } else {
         generatedName = `${sneakerBrand} ${randArrEl(fakeNamesArray)} ${fiftyChance() ? randomModelNum : ''}`
     }
     product.name = generatedName.replace(/\s+/g, ' ').trim()
-    product.price = (Math.floor(1 + Math.random() * 10) * 10 + 39) + (fiftyChance() ? 0.5 : null)
+    product.price = (Math.floor(1 + Math.random() * 10) * 10 + 39) + (fiftyChance() ? 0.59 : 0.99)
     product.imgUrl = 'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_450/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
     product.sex = `${fiftyChance() ? 'man' : 'woman'}`
-    
+
     if (Math.random() <= 0.1) {
-        fiftyChance() ? product.tag = 'summer' : null
+        fiftyChance() ? product.tag = 'summer' : product.tag = null
         product.rating = Math.random() * (5 - 4.5) + 4.5
     } else {
-        fiftyChance() ? product.tag = 'summer' : null
+        fiftyChance() ? product.tag = 'summer' : product.tag = null
         product.rating = Math.random() * (5 - 3) + 3
     }
 
@@ -52,6 +58,11 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
 
         )
     }
+    const sizesList = []
+    for (i = 0; i < 24; i++) {
+        sizesList.push(new SneakerSize(36 + 0.5 * i))
+    }
+    product.sizes = sizesList
     return product
 }
 
@@ -143,15 +154,5 @@ module.exports.fakeReebokNames = [
     'Craze',
     'Ridgerider'
 ];
-
-
-
-
-
-
-
-
-
-
 
 

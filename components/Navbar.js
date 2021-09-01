@@ -1,11 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './navbar.module.css'
-import { IconButton, Hidden, Button, Typography, AppBar, Toolbar, InputBase, Box } from '@material-ui/core';
+import { IconButton, Hidden, Button, Typography, AppBar, Toolbar, InputBase, Box, Breadcrumbs, Link } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
-import Link from 'next/link'
+import NextLink from 'next/link'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -53,9 +55,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navabr() {
+
     const classes = useStyles();
     return <>
         <div className={styles.grow}>
+            <div className={styles.smBar}>
+                <div>
+                    <IconButton size='small' color='secondary'>
+                        <GitHubIcon fontSize='small' />
+                    </IconButton>
+                    <IconButton size='small' color='secondary'>
+                        <LinkedInIcon />
+                    </IconButton>
+                </div>
+                <div className={styles.grow}></div>
+                <div>
+                    <Breadcrumbs color='secondary' className={styles.links}>
+                        <NextLink color="inherit" href='/help' passHref>
+                            <Link color='secondary'>
+                                help
+                            </Link>
+                        </NextLink>
+                        <NextLink color="inherit" href='/login' passHref>
+                            <Link color='secondary'>
+                                login
+                            </Link>
+                        </NextLink>
+                        <NextLink color="inherit" href='/register' passHref>
+                            <Link color='secondary'>
+                                register
+                            </Link>
+                        </NextLink>
+                    </Breadcrumbs>
+                </div>
+            </div>
             <AppBar position="static">
                 <Toolbar>
                     <Hidden smUp>
@@ -67,21 +100,21 @@ export default function Navabr() {
                         EzeSneakers
                     </Typography>
                     <Box className={styles.linksBox}>
-                        <Link href='/men' passHref>
+                        <NextLink href='/sneakers/men' passHref>
                             <Button size='large' color='inherit' className={classes.control}>men</Button>
-                        </Link>
-                        <Link href='/women' passHref>
+                        </NextLink>
+                        <NextLink href='/sneakers/women' passHref>
                             <Button size='large' color='inherit' className={classes.control}>women</Button>
-                        </Link>
-                        <Link href='/new' passHref>
+                        </NextLink>
+                        <NextLink href='/sneakers/new' passHref>
                             <Button size='large' color='inherit' className={classes.control}>new</Button>
-                        </Link>
-                        <Link href='/summer' passHref>
+                        </NextLink>
+                        <NextLink href='/sneakers/summer' passHref>
                             <Button size='large' color='inherit' className={classes.control}>summer</Button>
-                        </Link>
-                        <Link href='/all' passHref>
+                        </NextLink>
+                        <NextLink href='/sneakers' passHref>
                             <Button size='large' color='inherit' className={classes.control}>All</Button>
-                        </Link>
+                        </NextLink>
                     </Box>
                     <div className={styles.grow}></div>
                     <div className={classes.search}>
@@ -97,12 +130,16 @@ export default function Navabr() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
-                    <IconButton color='inherit' aria-label='favorites'>
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton color='inherit' aria-label='shopping cart'>
-                        <ShoppingCartIcon />
-                    </IconButton>
+                    <NextLink href='/favorites' passHref>
+                        <IconButton color='inherit' aria-label='favorites'>
+                            <FavoriteIcon />
+                        </IconButton>
+                    </NextLink>
+                    <NextLink href='/cart' passHref>
+                        <IconButton color='inherit' aria-label='shopping cart'>
+                            <ShoppingCartIcon />
+                        </IconButton>
+                    </NextLink>
                 </Toolbar>
             </AppBar>
         </div>

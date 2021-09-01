@@ -2,8 +2,9 @@ import Head from 'next/head'
 import { Typography, Grid, Box } from '@material-ui/core'
 import { connectToDatabase } from '../lib/mongodb'
 import ProductCard from '../components/ProductCard'
-
-export default function Home({ newProducts, summerProducts, highestRated }) {
+import Carousel from 'react-material-ui-carousel'
+import styles from '../styles/index.module.css'
+export default function Home({ newSneakers, summerSneakers, highestRated }) {
   return (
     <>
       <Head>
@@ -16,9 +17,17 @@ export default function Home({ newProducts, summerProducts, highestRated }) {
           </Typography>
         </Box>
       </Grid>
-      <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-        {newProducts.map(product => <ProductCard key={product._id} imgUrl={product.imgUrl} />)}
-      </Grid>
+      <Carousel className={styles.carousel}>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {newSneakers.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {newSneakers.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {newSneakers.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+      </Carousel>
       <Grid item xs={12}>
         <Box my={4}>
           <Typography variant='h4' component='h2'>
@@ -26,9 +35,17 @@ export default function Home({ newProducts, summerProducts, highestRated }) {
           </Typography>
         </Box>
       </Grid>
-      <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-        {summerProducts.map(product => <ProductCard key={product._id} imgUrl={product.imgUrl} />)}
-      </Grid>
+      <Carousel className={styles.carousel}>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {summerSneakers.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {summerSneakers.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {summerSneakers.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
+        </Grid>
+      </Carousel>
       <Grid item xs={12}>
         <Box my={4}>
           <Typography variant='h4' component='h2'>
@@ -36,9 +53,18 @@ export default function Home({ newProducts, summerProducts, highestRated }) {
           </Typography>
         </Box>
       </Grid>
-      <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-        {highestRated.map(product => <ProductCard key={product._id} imgUrl={product.imgUrl} />)}
-      </Grid>
+      <Carousel className={styles.carousel}>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {highestRated.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {highestRated.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
+        </Grid>
+        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+          {highestRated.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
+        </Grid>
+      </Carousel>
+
     </>
   )
 }
@@ -46,30 +72,30 @@ export default function Home({ newProducts, summerProducts, highestRated }) {
 export async function getStaticProps() {
   const { db } = await connectToDatabase()
 
-  const newProductsData = await db.collection('products').aggregate([
+  const newSneakersData = await db.collection('products').aggregate([
     { $sort: { addDate: -1 } },
-    { $limit: 4 }
+    { $limit: 12 }
   ]).toArray()
 
-  const summerProductsData = await db.collection('products').aggregate([
+  const summerSneakersData = await db.collection('products').aggregate([
     { $match: { tag: 'summer' } },
     { $sort: { addDate: -1 } },
-    { $limit: 4 }
+    { $limit: 12 }
   ]).toArray()
 
   const highestRatedData = await db.collection('products').aggregate([
     { $sort: { rating: 1 } },
-    { $limit: 4 }
+    { $limit: 12 }
   ]).toArray()
 
-  const newProducts = JSON.parse(JSON.stringify(newProductsData))
-  const summerProducts = JSON.parse(JSON.stringify(summerProductsData))
+  const newSneakers = JSON.parse(JSON.stringify(newSneakersData))
+  const summerSneakers = JSON.parse(JSON.stringify(summerSneakersData))
   const highestRated = JSON.parse(JSON.stringify(highestRatedData))
 
   return {
     props: {
-      newProducts,
-      summerProducts,
+      newSneakers,
+      summerSneakers,
       highestRated,
     }
   }
