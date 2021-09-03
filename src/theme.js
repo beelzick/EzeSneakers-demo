@@ -11,7 +11,9 @@ const theme = createTheme({
         secondary: {
             main: '#fff',
         },
-
+        heart: {
+            main: 'rgb(239, 71, 111)'
+        },
         error: {
             main: red.A400,
         },

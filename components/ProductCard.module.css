@@ -1,0 +1,23 @@
+.root {
+    width: 450;
+    position: 'relative'
+}
+.cardImg {
+    margin-left: 'auto';
+    margin-right: 'auto';
+}
+.cardActions {
+    justify-content: 'flex-end'
+}
+.grow {
+    flex-grow: 1
+}
+.imgContainer {
+    height: 450;
+    width: 450;
+}
+.imgIconContainer {
+    position: 'absolute';
+    top: 0;
+    right: 0
+}

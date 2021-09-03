@@ -4,24 +4,26 @@ import ProductCard from '../components/ProductCard'
 
 export default function Men({ sneakers }) {
     return <>
-        <Grid item xs={12}>
-            <Box my={4}>
-                <Typography variant='h4' component='h1'>
-                    All Sneakers
-                </Typography>
-            </Box>
-        </Grid>
-        <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {sneakers.map(sneaker => (
-                <Box key={sneaker._id} mb={4}>
-                    <ProductCard
-                        name={sneaker.name}
-                        id={sneaker._id}
-                        imgUrl={sneaker.imgUrl}
-                        price={sneaker.price}
-                    />
+        <Grid container className='page-container'>
+            <Grid item xs={12}>
+                <Box my={4}>
+                    <Typography variant='h4' component='h1'>
+                        All Sneakers
+                    </Typography>
                 </Box>
-            ))}
+            </Grid>
+            <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+                {sneakers.map(sneaker => (
+                    <Box key={sneaker._id} mb={4}>
+                        <ProductCard
+                            name={sneaker.name}
+                            id={sneaker._id}
+                            imgUrl={sneaker.imgUrl}
+                            price={sneaker.price}
+                        />
+                    </Box>
+                ))}
+            </Grid>
         </Grid>
     </>
 }

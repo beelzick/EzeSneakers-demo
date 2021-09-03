@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './navbar.module.css'
-import { IconButton, Hidden, Button, Typography, AppBar, Toolbar, InputBase, Box, Breadcrumbs, Link } from '@material-ui/core';
+import { IconButton, Hidden, Button, Typography, AppBar, Toolbar, InputBase, Box, Breadcrumbs, Link, Badge } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -8,7 +8,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import NextLink from 'next/link'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-
+import useSWR from 'swr';
+import axios from 'axios';
+import NavBreadcrumbs from './NavBreadcrumbs';
 const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
@@ -52,10 +54,17 @@ const useStyles = makeStyles((theme) => ({
             width: '20ch',
         },
     },
+    customBadge: {
+        backgroundColor: 'rgb(239, 71, 111)',
+        color: 'white'
+    }
 }));
 
-export default function Navabr() {
+const fetcher = url => axios.get(url).then(r => r.data)
 
+
+export default function Navbar() {
+    const { data } = useSWR('/api/users/is-auth', fetcher)
     const classes = useStyles();
     return <>
         <div className={styles.grow}>
@@ -70,23 +79,7 @@ export default function Navabr() {
                 </div>
                 <div className={styles.grow}></div>
                 <div>
-                    <Breadcrumbs color='secondary' className={styles.links}>
-                        <NextLink color="inherit" href='/help' passHref>
-                            <Link color='secondary'>
-                                help
-                            </Link>
-                        </NextLink>
-                        <NextLink color="inherit" href='/login' passHref>
-                            <Link color='secondary'>
-                                login
-                            </Link>
-                        </NextLink>
-                        <NextLink color="inherit" href='/register' passHref>
-                            <Link color='secondary'>
-                                register
-                            </Link>
-                        </NextLink>
-                    </Breadcrumbs>
+                    {data && <NavBreadcrumbs data={data} />}
                 </div>
             </div>
             <AppBar position="static">
@@ -132,12 +125,16 @@ export default function Navabr() {
                     </div>
                     <NextLink href='/favorites' passHref>
                         <IconButton color='inherit' aria-label='favorites'>
-                            <FavoriteIcon />
+                            <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                                <FavoriteIcon />
+                            </Badge>
                         </IconButton>
                     </NextLink>
                     <NextLink href='/cart' passHref>
                         <IconButton color='inherit' aria-label='shopping cart'>
-                            <ShoppingCartIcon />
+                            <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                                <ShoppingCartIcon />
+                            </Badge>
                         </IconButton>
                     </NextLink>
                 </Toolbar>

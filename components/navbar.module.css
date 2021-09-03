@@ -13,3 +13,6 @@
 .links {
     font-size: 12px;
 }
+.logout {
+    cursor: pointer;
+}

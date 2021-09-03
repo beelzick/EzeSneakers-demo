@@ -8,9 +8,9 @@ export default function Layout({ children }) {
         <div className={styles.container}>
             <Navbar />
             <main className={styles.main}>
-                <Grid container className={styles.pageContainer}>
+                {/* <Grid container className={styles.pageContainer}> */}
                     {children}
-                </Grid>
+                {/* </Grid> */}
             </main>
             <Footer />
         </div>

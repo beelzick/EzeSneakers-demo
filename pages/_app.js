@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../src/theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Layout from '../components/Layout'
-// import 'react-perfect-scrollbar/dist/css/styles.css';
+import '../styles/global.css'
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
