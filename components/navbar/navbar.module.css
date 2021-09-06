@@ -1,9 +1,9 @@
 .grow {
     flex-grow: 1
 }
-.linksBox {
+/* .linksBox {
     margin-left: 10%;
-}
+} */
 .smBar {
     padding: 0 24px;
     display: flex;

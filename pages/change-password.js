@@ -1,19 +1,15 @@
-import { useState } from 'react';
 import styles from '../styles/login.module.css'
-import { Grid, Typography } from '@material-ui/core'
-import axios from 'axios'
-import { useRouter } from 'next/router'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import ColoredLinearProgress from '../components/ColoredLinearProgress';
-import LogInForm from '../components/forms/LoginForm';
-export default function Login() {
-    const router = useRouter()
-    const [status, setStatus] = useState('idle')
+import ChangePasswordForm from '../components/forms/changePasswordForm';
+export default function ChangePassword() {
 
 
     return (
         <>
             <div className={styles.loadingBar}>
-                {(status === 'loading' || status === 'suceeded') && <ColoredLinearProgress />}
+                {/* {(status === 'loading' || status === 'suceeded') && <ColoredLinearProgress />} */}
             </div>
             <Grid container className={styles.loginPage}>
                 <Grid item xs={4} />
@@ -23,9 +19,9 @@ export default function Login() {
                             EzeSneakers
                         </Typography>
                         <Typography variant='h4' component='h1' gutterBottom align='center'>
-                            Log In
+                            Set New Password
                         </Typography>
-                        <LogInForm />
+                        <ChangePasswordForm />
                     </Grid>
                 </Grid>
                 <Grid item xs={4} />

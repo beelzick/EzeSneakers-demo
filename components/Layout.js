@@ -1,4 +1,4 @@
-import Navbar from './Navbar'
+import Navbar from './navbar/Navbar'
 import Footer from './Footer'
 import styles from './layout.module.css'
 import Grid from '@material-ui/core/Grid'
