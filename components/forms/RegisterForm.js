@@ -1,15 +1,23 @@
-import { Box, Button } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
 import { useForm } from 'react-hook-form';
 import FormInputText from './FormInputText';
 import FormInputDate from './FormInputDate';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from '../../src/formSchemas'
+import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
 export default function Register() {
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(registerSchema)
     });
-    const onSubmit = (data) => alert(JSON.stringify(data))
+    const onSubmit = async (data) => {
+        delete data.cPassword
+        delete data.cEmail
+        const response = await axios.post('/api/auth/register', data)
+        console.log(response.data)
+    }
 
     return (
         <form className='w100'>
@@ -25,7 +33,6 @@ export default function Register() {
                 <Button
                     onClick={handleSubmit(onSubmit)}
                     fullWidth
-                    // disabled={(status === 'loading' || status === 'suceeded') ? true : false}
                     type='button'
                     variant='contained'
                     size='large'

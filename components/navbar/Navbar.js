@@ -26,14 +26,14 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from 'react';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Hidden from '@material-ui/core/Hidden'
-import { FaBeer } from '@react-icons/all-files/fa/FaBeer';
 import { FaFemale } from '@react-icons/all-files/fa/FaFemale'
 import { FaMale } from '@react-icons/all-files/fa/FaMale'
 import { MdFiberNew } from '@react-icons/all-files/Md/MdFiberNew'
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { GiConverseShoe } from '@react-icons/all-files/gi/GiConverseShoe'
+import { useSession } from 'next-auth/react'
+
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
@@ -107,6 +107,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Navbar() {
+    const { data: session, status } = useSession()
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -193,7 +194,6 @@ export default function Navbar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
             <NextLink href='/change-password' passHref>
                 <MenuItem onClick={handleMenuClose}>Change password</MenuItem>
             </NextLink>
@@ -231,17 +231,19 @@ export default function Navbar() {
                     <p>Cart</p>
                 </MenuItem>
             </NextLink>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Account</p>
-            </MenuItem>
+            {status === 'authenticated' && (
+                <MenuItem onClick={handleProfileMenuOpen}>
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                    <p>Account</p>
+                </MenuItem>
+            )}
         </Menu>
     );
     return <>
@@ -328,16 +330,19 @@ export default function Navbar() {
                                     </Badge>
                                 </IconButton>
                             </NextLink>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
+                            {status === 'authenticated' && (
+                                <IconButton
+                                    edge="end"
+                                    aria-label="account of current user"
+                                    aria-controls={menuId}
+                                    aria-haspopup="true"
+                                    onClick={handleProfileMenuOpen}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            )}
+
                         </div>
                         <div className={classes.sectionMobile}>
                             <IconButton
@@ -358,65 +363,6 @@ export default function Navbar() {
                     {list()}
                 </Drawer>
             </div>
-
-
-            {/* <AppBar position="static">
-                <Toolbar>
-                    <Hidden smUp>
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                            <MenuIcon />
-                        </IconButton>
-                    </Hidden>
-                    <Typography variant="h6" className={styles.grow}>
-                        EzeSneakers
-                    </Typography>
-                    <Box className={styles.linksBox}>
-                        <NextLink href='/sneakers/men' passHref>
-                            <Button size='large' color='inherit' className={classes.control}>men</Button>
-                        </NextLink>
-                        <NextLink href='/sneakers/women' passHref>
-                            <Button size='large' color='inherit' className={classes.control}>women</Button>
-                        </NextLink>
-                        <NextLink href='/sneakers/new' passHref>
-                            <Button size='large' color='inherit' className={classes.control}>new</Button>
-                        </NextLink>
-                        <NextLink href='/sneakers/summer' passHref>
-                            <Button size='large' color='inherit' className={classes.control}>summer</Button>
-                        </NextLink>
-                        <NextLink href='/sneakers' passHref>
-                            <Button size='large' color='inherit' className={classes.control}>All</Button>
-                        </NextLink>
-                    </Box>
-                    <div className={styles.grow}></div>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                    <NextLink href='/favorites' passHref>
-                        <IconButton color='inherit' aria-label='favorites'>
-                            <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
-                                <FavoriteIcon />
-                            </Badge>
-                        </IconButton>
-                    </NextLink>
-                    <NextLink href='/cart' passHref>
-                        <IconButton color='inherit' aria-label='shopping cart'>
-                            <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
-                                <ShoppingCartIcon />
-                            </Badge>
-                        </IconButton>
-                    </NextLink>
-                </Toolbar>
-            </AppBar> */}
         </div>
     </>
 }

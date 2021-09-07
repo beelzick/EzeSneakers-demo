@@ -24,7 +24,12 @@ export const registerSchema = yup.object().shape({
         .string('This field must contain only letters')
         .required('This field is required')
         .email('Invalid email')
-        .oneOf([yup.ref('email'), null], 'Emails don\'t match')
+        .oneOf([yup.ref('email'), null], 'Emails don\'t match'),
+    birthDate: yup
+        .date('Invalid date')
+        .default(() => new Date(2000, 0, 1))
+        .required('This field is required')
+
 })
 
 export const loginSchema = yup.object().shape({

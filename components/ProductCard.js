@@ -1,11 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { CardActionArea, CardActions, Button, CardMedia, Card, FormControlLabel, Checkbox, Typography, Box } from '@material-ui/core'
+import { CardActionArea, CardActions, FormControlLabel, Checkbox, Typography, Box } from '@material-ui/core'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NextLink from 'next/link'
-import { useState } from 'react';
-import useSWR from 'swr';
-import axios from 'axios';
 const useStyles = makeStyles({
     root: {
         width: 450,
@@ -34,17 +31,7 @@ const useStyles = makeStyles({
 
 
 export default function ProductCard({ imgUrl, id, name, price }) {
-    const [loggedIn, setLoggedIn] = useState(null)
-    const [checked, setChecked] = useState(false)
     const classes = useStyles();
-    const handleChange = async (event) => {
-        const response = await axios({
-            url: '/api/users/auth',
-            method: 'GET'
-        })
-        console.log(response.data)
-        setChecked(event.target.checked)
-    }
     return (
         <Box className={classes.root}>
             <NextLink href={`/sneakers/${id}`} passHref>
@@ -70,7 +57,6 @@ export default function ProductCard({ imgUrl, id, name, price }) {
             </CardActions>
             <div className={classes.imgIconContainer}>
                 <FormControlLabel
-                    onChange={handleChange}
                     control={<Checkbox icon={<FavoriteBorderIcon />}
                         checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
                         name="heart"

@@ -6,69 +6,30 @@ import { changePasswordSchema } from '../../src/formSchemas'
 import { yupResolver } from '@hookform/resolvers/yup';
 
 
-export default function changePasswordForm() {
+export default function ChangePasswordForm() {
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(changePasswordSchema)
     });
     const onSubmit = (data) => alert(JSON.stringify(data));
 
     return (
-        <>
-            <form className='w100 h100'>
-                <FormInputText name='password' control={control} label='New Password' errors={errors} type='password' />
-                <FormInputText name='cPassword' control={control} label='Confirm New Password' errors={errors} type='password' />
-            </form>
-            <Box my={4}>
+        <form className='w100 h100'>
+            <FormInputText name='password' control={control} label='New Password' errors={errors} type='password' />
+            <FormInputText name='cPassword' control={control} label='Confirm New Password' errors={errors} type='password' />
+
+            <Box my={4} >
                 <Button
-                    // disabled={(status === 'loading' || status === 'suceeded') ? true : false}
                     onClick={handleSubmit(onSubmit)}
                     variant='contained'
                     size='large'
                     type='button'
                     fullWidth
                     color='primary'
+                    fullWidth
                 >
-                    Log in
+                    Confirm
                 </Button>
             </Box>
-
-        </>
+        </form>
     )
 }
-
-{/* <form className='w100 h100'>
-<TextField
-    id='password'
-    type='password'
-    label='New Password'
-    variant='outlined'
-    name='password'
-    className={styles.TextField}
-    gutterBottom
-    margin='normal'
-    fullWidth
-/>
-<TextField
-    type='password'
-    id='cPassword'
-    label='Confirm New Password'
-    variant='outlined'
-    name='cPassword'
-    className={styles.TextField}
-    gutterBottom
-    margin='normal'
-    fullWidth
-/>
-</form>
-<Box my={4} className='w100'>
-<Button
-    // disabled={(status === 'loading' || status === 'suceeded') ? true : false}
-    type='button'
-    variant='contained'
-    size='large'
-    color='primary'
-    fullWidth
->
-    confirm
-</Button>
-</Box> */}
