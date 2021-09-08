@@ -1,4 +1,3 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
 import styles from './navbar.module.css'
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -18,97 +17,21 @@ import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import NavBreadcrumbs from './NavBreadcrumbs';
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from 'react';
 import Hidden from '@material-ui/core/Hidden'
-import { FaFemale } from '@react-icons/all-files/fa/FaFemale'
-import { FaMale } from '@react-icons/all-files/fa/FaMale'
-import { MdFiberNew } from '@react-icons/all-files/Md/MdFiberNew'
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import { GiConverseShoe } from '@react-icons/all-files/gi/GiConverseShoe'
 import { useSession } from 'next-auth/react'
-
-const useStyles = makeStyles((theme) => ({
-    grow: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
-    customBadge: {
-        backgroundColor: 'rgb(239, 71, 111)',
-        color: 'white'
-    },
-    list: {
-        width: 250,
-    },
-}));
-
+import ColoredLinearProgress from './ColoredLinearProgress';
+import { selectIsLoading } from '../../redux/features/loadingSlice';
+import { useSelector } from 'react-redux';
+import useStyles from '../../src/navbarMUIstyles';
+import DrawerList from './DrawerList';
+import NavLinks from './NavLinks'
 
 export default function Navbar() {
-    const { data: session, status } = useSession()
     const classes = useStyles();
+    const { data: session, status } = useSession()
+    const isLoading = useSelector(selectIsLoading)
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [drawerState, setDrawerState] = useState(false);
@@ -122,7 +45,6 @@ export default function Navbar() {
         }
         setDrawerState(open);
     };
-
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -148,38 +70,7 @@ export default function Navbar() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <List>
-                <NextLink href='/sneakers/men' passHref>
-                    <ListItem button >
-                        <ListItemIcon><FaMale fontSize='24' /></ListItemIcon>
-                        <ListItemText primary='men' />
-                    </ListItem>
-                </NextLink>
-                <NextLink href='/sneakers/women' passHref>
-                    <ListItem button >
-                        <ListItemIcon><FaFemale fontSize='24' /></ListItemIcon>
-                        <ListItemText primary='women' />
-                    </ListItem>
-                </NextLink>
-                <NextLink href='/sneakers/new' passHref>
-                    <ListItem button >
-                        <ListItemIcon><MdFiberNew fontSize='24' /></ListItemIcon>
-                        <ListItemText primary='new' />
-                    </ListItem>
-                </NextLink>
-                <NextLink href='/sneakers/summer' passHref>
-                    <ListItem button >
-                        <ListItemIcon><WbSunnyIcon /></ListItemIcon>
-                        <ListItemText primary='summer' />
-                    </ListItem>
-                </NextLink>
-                <NextLink href='/sneakers' passHref>
-                    <ListItem button >
-                        <ListItemIcon><GiConverseShoe fontSize='24' /></ListItemIcon>
-                        <ListItemText primary='all sneakers' />
-                    </ListItem>
-                </NextLink>
-            </List>
+            <DrawerList />
         </div>
     );
 
@@ -247,7 +138,7 @@ export default function Navbar() {
         </Menu>
     );
     return <>
-        <div className={styles.grow}>
+        <div className='grow'>
             <div className={styles.smBar}>
                 <div>
                     <IconButton size='small' color='secondary'>
@@ -257,13 +148,13 @@ export default function Navbar() {
                         <LinkedInIcon />
                     </IconButton>
                 </div>
-                <div className={styles.grow}></div>
+                <div className='grow'></div>
                 <div>
                     <NavBreadcrumbs />
                 </div>
             </div>
 
-            <div className={classes.grow}>
+            <div className='grow'>
                 <AppBar position="static">
                     <Toolbar>
                         <Hidden mdUp>
@@ -280,28 +171,12 @@ export default function Navbar() {
                         <Typography className={classes.title} variant="h6" noWrap>
                             EzeSneakers
                         </Typography>
-                        <div className={classes.grow} />
-                        <div className={classes.grow} />
+                        <div className='grow' />
+                        <div className='grow' />
                         <Hidden smDown>
-                            <Box className={styles.linksBox}>
-                                <NextLink href='/sneakers/men' passHref>
-                                    <Button size='large' color='inherit' className={classes.control}>men</Button>
-                                </NextLink>
-                                <NextLink href='/sneakers/women' passHref>
-                                    <Button size='large' color='inherit' className={classes.control}>women</Button>
-                                </NextLink>
-                                <NextLink href='/sneakers/new' passHref>
-                                    <Button size='large' color='inherit' className={classes.control}>new</Button>
-                                </NextLink>
-                                <NextLink href='/sneakers/summer' passHref>
-                                    <Button size='large' color='inherit' className={classes.control}>summer</Button>
-                                </NextLink>
-                                <NextLink href='/sneakers' passHref>
-                                    <Button size='large' color='inherit' className={classes.control}>All</Button>
-                                </NextLink>
-                            </Box>
+                            <NavLinks />
                         </Hidden>
-                        <div className={classes.grow} />
+                        <div className='grow' />
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />
@@ -363,6 +238,10 @@ export default function Navbar() {
                     {list()}
                 </Drawer>
             </div>
+            <div className={styles.progress}>
+                {isLoading && <ColoredLinearProgress />}
+            </div>
+
         </div>
     </>
 }

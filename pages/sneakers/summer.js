@@ -6,7 +6,7 @@ export default function Summer({ sneakers }) {
     return <>
         <Grid container className='page-container'>
             <Grid item xs={12}>
-                <Box my={4}>
+                <Box mb={4}>
                     <Typography variant='h4' component='h1'>
                         Summer Collection
                     </Typography>

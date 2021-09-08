@@ -8,3 +8,6 @@
 .w100 {
     width: 100%
 }
+.grow {
+    flex-grow: 1;
+}

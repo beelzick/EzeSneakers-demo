@@ -1,9 +1,7 @@
 .grow {
     flex-grow: 1
 }
-/* .linksBox {
-    margin-left: 10%;
-} */
+
 .smBar {
     padding: 0 24px;
     display: flex;
@@ -13,6 +11,12 @@
 .links {
     font-size: 12px;
 }
-.logout {
+.pointer{
     cursor: pointer;
+}
+.progress {
+    height: 32px;
+}
+.dialog {
+    width: 30%
 }

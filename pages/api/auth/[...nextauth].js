@@ -3,9 +3,14 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { connectToDatabase } from '../../../lib/mongodb'
 import bcrypt from 'bcrypt'
 
+const JWT_SIGNING_PRIVATE_KEY = process.env.JWT_SIGNING_PRIVATE_KEY
+
 export default NextAuth({
     session: {
         jwt: true
+    },
+    jwt: {
+        signingKey: JWT_SIGNING_PRIVATE_KEY
     },
     providers: [
         CredentialsProvider({
@@ -14,6 +19,7 @@ export default NextAuth({
                 const user = await db.collection('users').findOne({
                     email: credentials.email
                 })
+                
                 if (!user) {
                     throw new Error('Invalid password or email')
                 }
@@ -22,11 +28,10 @@ export default NextAuth({
 
                 if (!checkPassword) {
                     throw new Error('Invalid password or email')
-
                 }
+                
                 return { email: user.email }
-
             }
         })
-    ]
+    ],
 })

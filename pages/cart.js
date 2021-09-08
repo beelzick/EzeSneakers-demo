@@ -3,17 +3,15 @@ import styles from '../styles/cart.module.css'
 import axios from 'axios'
 import useSWR from 'swr'
 import CartProduct from '../components/CartProduct'
+
 const fetcher = url => axios.get(url).then(res => res.data.data)
 
 export default function Cart() {
     const { data, error } = useSWR('/api/test-cart', fetcher)
-    console.log(data)
     return (
         <>
             <Grid container className={styles.pageContainer}>
-                <Grid item xs={3}>
-
-                </Grid>
+                <Grid item xs={3} />
                 <Grid item xs={6}>
                     <Typography variant='h3' component='h1' gutterBottom>
                         Cart
@@ -82,9 +80,7 @@ export default function Cart() {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={3}>
-
-                </Grid>
+                <Grid item xs={3} />
             </Grid>
         </>
     )

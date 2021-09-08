@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import { getSession } from "next-auth/react"
 
 
-const handler = async (req, res) => {
+export default async function handler(req, res) {
     const session = await getSession({ req })
     if (session) {
         res.status(403)
@@ -38,5 +38,3 @@ const handler = async (req, res) => {
     }
 
 }
-
-export default handler

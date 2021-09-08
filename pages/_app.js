@@ -7,9 +7,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Layout from '../components/Layout'
 import '../styles/global.css'
 import { SessionProvider } from 'next-auth/react'
-
+import { Provider } from 'react-redux'
+import { store } from '../redux/store'
 export default function MyApp(props) {
-  const { Component, pageProps: {session, ...pageProps} } = props;
+  const { Component, pageProps: { session, ...pageProps } } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -25,15 +26,17 @@ export default function MyApp(props) {
         <title>My page</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <SessionProvider session={session}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </SessionProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <SessionProvider session={session}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SessionProvider>
+        </ThemeProvider>
+      </Provider>
     </React.Fragment>
   );
 }

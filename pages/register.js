@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import RegisterForm from '../components/forms/RegisterForm';
 import styles from '../styles/login.module.css'
 import { Grid, Box, Typography } from '@material-ui/core'
 import { useSession, getSession } from "next-auth/react"
 import AcessDenied from '../components/AcessDenied';
+import { useRouter } from 'next/router';
+import LoadingPage from '../components/LoadingPage';
 export default function Register() {
+    const router = useRouter()
     const { data: session } = useSession()
+    useEffect(() => {
+        if (session) {
+            router.push('/')
+        }
+    }, [])
     if (!session) {
         return (
             <>
@@ -29,7 +37,7 @@ export default function Register() {
             </>
         )
     } else {
-        return <AcessDenied/>
+        return <LoadingPage />
     }
 
 }
