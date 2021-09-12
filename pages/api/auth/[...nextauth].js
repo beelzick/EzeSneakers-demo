@@ -19,19 +19,19 @@ export default NextAuth({
                 const user = await db.collection('users').findOne({
                     email: credentials.email
                 })
-                
                 if (!user) {
-                    throw new Error('Invalid password or email')
+                    throw new Error('Invalid email or password')
                 }
 
                 const checkPassword = await bcrypt.compareSync(credentials.password, user.password)
 
                 if (!checkPassword) {
-                    throw new Error('Invalid password or email')
+                    throw new Error('Invalid email or password')
                 }
-                
+
                 return { email: user.email }
             }
         })
     ],
+    debug: true
 })

@@ -1,16 +1,65 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import Head from 'next/head'
 import { ObjectId } from 'mongodb'
-import { Grid, Box, Button, Typography, Paper, Chip, FormControlLabel } from '@material-ui/core'
-import styles from '../../styles/sneakerPage.module.css'
+import { Grid, Box, Button, Typography, Chip } from '@material-ui/core'
+import styles from '../../styles/showPage.module.css'
 import Rating from '@material-ui/lab/Rating';
-import SizesSelect from '../../components/SizesSelect'
+import SizesSelect from '../../components/show-page/SizesSelect'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/FavoriteBorder';
 import SmallCard from '../../components/SmallCard'
 import Carousel from 'react-material-ui-carousel'
+import ShouldBuyText from '../../components/show-page/ShouldBuyText'
+import { itemAdded, selectCartItemsIds, itemUpdated, selectCartItemById } from '../../redux/slices/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectSize, setSize } from '../../redux/slices/selectedSizeSlice'
+import { useEffect } from 'react'
+import { selectSizeError, setSizeError } from '../../redux/slices/sizeErrorSlice'
+import { sizeExists, UpdateData } from '../../src/showPageHelpers'
 
-export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso }) {
+export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
+    const dispatch = useDispatch()
+    const selectedSize = useSelector(selectSize)
+    const sizeError = useSelector(selectSizeError)
+    const cartItem = useSelector(state => selectCartItemById(state, _id))
+
+    useEffect(() => {
+        dispatch(setSize(null))
+    }, [])
+
+    const item = {
+        _id,
+        name,
+        price,
+        tag,
+        sex,
+        imgUrl,
+        sizes,
+        selectedSizes: [
+            {
+                size: selectedSize,
+                qty: 1
+            }
+        ]
+    }
+
+    const handleAddCart = () => {
+
+        if (!selectedSize) {
+            return dispatch(setSizeError(true))
+        }
+
+        if (cartItem && sizeExists(selectedSize, cartItem.selectedSizes)) {
+            dispatch(itemUpdated(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeExists()))
+
+        } else if (cartItem && !sizeExists(selectedSize, cartItem.selectedSizes)) {
+            dispatch(itemUpdated(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeNotExists()))
+
+        } else {
+            dispatch(itemAdded(item))
+        }
+    }
+
     return (
         <>
             <Head>
@@ -25,19 +74,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                 <Box>
                                     <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg' className={styles.image}></img>
                                 </Box>
-                                <Box p={2}>
-                                    <Typography variant='h5' component='h2' gutterBottom>
-                                        Why should I buy this product?
-                                    </Typography>
-                                    <Typography variant='body1' gutterBottom>
-                                        Our website is known for its fast and hassle-free delivery.
-                                        By ordering a product <strong>by 4pm</strong> (including weekends), you can be sure it will arrive in your hands <strong>the next day</strong>.
-                                    </Typography>
-                                    <Typography variant='body1' gutterBottom>
-                                        In addition, we offer product <strong>returns of up to 70 days</strong>, which is significantly more than our competitors.
-                                        What&apos;s more, all products on offer come with a <strong>two-year guarantee</strong>.
-                                    </Typography>
-                                </Box>
+                                <ShouldBuyText />
                             </Grid>
                             <Grid item xs={5}>
                                 <Box px={2}>
@@ -68,15 +105,27 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                             </Box>
                                         </Grid>
                                     </Grid>
-                                    <Typography>
+                                    <Typography color={sizeError ? 'error' : 'primary'}>
                                         Choose size
                                     </Typography>
                                     <SizesSelect sizes={sizes} />
+                                    <Box my={1}>
+                                        {sizeError && (
+                                            <Typography color='error'>
+                                                Choose size
+                                            </Typography>
+                                        )}
+                                    </Box>
                                     <Grid container direction='column'>
-                                        <Box my={2}>
-                                            <Button type='button' variant='contained'
-                                                size='large' color='primary' className={styles.button}
+                                        <Box mb={2}>
+                                            <Button
+                                                type='button'
+                                                variant='contained'
+                                                size='large'
+                                                color='primary'
+                                                className={styles.button}
                                                 endIcon={<ShoppingCartIcon />}
+                                                onClick={handleAddCart}
                                             >
                                                 Add to Cart
                                             </Button>
@@ -154,7 +203,7 @@ export async function getStaticProps({ params }) {
         { $sample: { size: 3 } }
     ]).toArray()
     const checkAlso = JSON.parse(JSON.stringify(checkAlsoData))
-    const { name, price, imgUrl, sex, tag, rating, description, sizes } = JSON.parse(JSON.stringify(sneakerData))
+    const { name, price, imgUrl, sex, tag, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
     return {
         props: {
             name,
@@ -165,7 +214,8 @@ export async function getStaticProps({ params }) {
             rating,
             description,
             sizes,
-            checkAlso
+            checkAlso,
+            _id
         }
     }
 }

@@ -1,20 +1,34 @@
-import { Paper, Box, Typography, Breadcrumbs, FormControl, InputLabel, MenuItem, Select, } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import IconButton from '@material-ui/core/IconButton'
 import Img from 'next/image'
 import { useState } from 'react'
 import styles from './cartProduct.module.css'
-
+import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
+import { useDispatch, useSelector } from 'react-redux'
+import { itemRemoved } from '../redux/slices/cartSlice'
 const quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export default function CartProduct({ imgUrl, name, price, sex, tag, sizes }) {
+export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, id }) {
+    const dispatch = useDispatch()
     const [sneakerSize, setSneakerSize] = useState('')
     const [qty, setQty] = useState('')
+
     const handleSizeChange = (event) => {
         setSneakerSize(event.target.value)
     }
+
     const handleQtyChange = (event) => {
         setQty(event.target.value)
     }
-
+    const handleItemRemove = () => {
+        dispatch(itemRemoved(id))
+    }
     const MenuProps = {
         PaperProps: {
             style: {
@@ -23,6 +37,7 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes }) {
             },
         },
     };
+
     return (
         <>
             <Box className={styles.paper}>
@@ -71,6 +86,11 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes }) {
                         </Select>
                     </FormControl>
                 </Box>
+                <div className={styles.deleteIconContainer}>
+                    <IconButton onClick={handleItemRemove}>
+                        <RemoveShoppingCartIcon />
+                    </IconButton>
+                </div>
             </Box>
         </>
     )

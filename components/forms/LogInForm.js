@@ -8,12 +8,13 @@ import { loginSchema } from '../../src/formSchemas'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import { loadingStart, loadingStop } from '../../redux/features/loadingSlice'
-import styles from './loginForm.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 import { useState } from 'react'
+import { selectIsLoading } from '../../redux/slices/loadingSlice';
 
 export default function LogInForm() {
+    const isLoading = useSelector(selectIsLoading)
     const router = useRouter()
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
@@ -24,12 +25,12 @@ export default function LogInForm() {
     const onSubmit = async (data) => {
         const { email, password } = data
         dispatch(loadingStart())
+
         const status = await signIn('credentials', {
             redirect: false,
             email,
             password
         })
-
         if (!status.error) {
             dispatch(loadingStop())
             router.push('/')
@@ -46,7 +47,7 @@ export default function LogInForm() {
                 <Typography variant='h6' component='p'>
                     EzeSneakers
                 </Typography>
-                <Grid container direction='column' alignContent='start' alignItems='start' className={styles.titleErrorContainer}>
+                <Grid container direction='column' alignContent='start' className='title-error-container'>
                     <Typography variant='h4' component='h1' align='center'>
                         Log In
                     </Typography>
@@ -66,6 +67,7 @@ export default function LogInForm() {
                             type='button'
                             fullWidth
                             color='primary'
+                            disabled={isLoading && true}
                         >
                             Log in
                         </Button>

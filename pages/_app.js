@@ -9,7 +9,13 @@ import '../styles/global.css'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+import LoadingReduxPersist from '../components/loadings/LoadingReduxPersist'
+
+
 export default function MyApp(props) {
+  const persistor = persistStore(store)
   const { Component, pageProps: { session, ...pageProps } } = props;
 
   React.useEffect(() => {
@@ -27,15 +33,16 @@ export default function MyApp(props) {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <SessionProvider session={session}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </SessionProvider>
-        </ThemeProvider>
+        <PersistGate loading={<LoadingReduxPersist />} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <SessionProvider session={session}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </SessionProvider>
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </React.Fragment>
   );

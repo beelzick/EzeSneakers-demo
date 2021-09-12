@@ -6,21 +6,39 @@ import FormInputDate from './FormInputDate';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from '../../src/formSchemas'
 import axios from 'axios';
-import { getSession } from 'next-auth/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { pushErrorMessage, cleanErrorMessage } from '../../redux/slices/registerErrorSlice';
+import { useRouter } from 'next/router';
+import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
+import { selectIsLoading } from '../../redux/slices/loadingSlice';
 
 export default function Register() {
+    const isLoading = useSelector(selectIsLoading)
+    const router = useRouter()
+    const dispatch = useDispatch()
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(registerSchema)
     });
+
     const onSubmit = async (data) => {
+        dispatch(cleanErrorMessage())
         delete data.cPassword
         delete data.cEmail
-        const response = await axios.post('/api/auth/register', data)
-        console.log(response.data)
+        try {
+            dispatch(loadingStart())
+            const response = await axios.post('/api/auth/register', data)
+            if (response.data.acknowledged) {
+                router.push('/')
+                dispatch(loadingStop())
+            }
+        } catch (error) {
+            dispatch(pushErrorMessage(error.response.data.message))
+        }
     }
 
     return (
         <form className='w100'>
+
             <FormInputText name='fName' control={control} label='First Name' errors={errors} />
             <FormInputText name='lName' control={control} label='Last Name ' errors={errors} />
             <FormInputText name='email' control={control} label='Email' errors={errors} />
@@ -37,6 +55,7 @@ export default function Register() {
                     variant='contained'
                     size='large'
                     color='primary'
+                    disabled={isLoading && true}
                 >
                     register
                 </Button>

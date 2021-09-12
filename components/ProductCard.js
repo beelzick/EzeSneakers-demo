@@ -1,37 +1,50 @@
-import { makeStyles } from '@material-ui/core/styles';
 import { CardActionArea, CardActions, FormControlLabel, Checkbox, Typography, Box } from '@material-ui/core'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NextLink from 'next/link'
-const useStyles = makeStyles({
-    root: {
-        width: 450,
-        position: 'relative'
-    },
-    cardImg: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-    },
-    cardActions: {
-        justifyContent: 'flex-end'
-    },
-    grow: {
-        flexGrow: 1
-    },
-    imgContainer: {
-        height: 450,
-        width: 450,
-    },
-    imgIconContainer: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-    },
-});
-
+import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
+import useStyles from '../src/productCardMUIstyles'
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFavoritesIds } from '../redux/slices/favoritesSlice';
+import { fetchFavorites } from '../redux/slices/favoritesSlice';
 
 export default function ProductCard({ imgUrl, id, name, price }) {
-    const classes = useStyles();
+    const dispatch = useDispatch()
+    const favoritesIds = useSelector(selectFavoritesIds)
+    const [checked, setChecked] = useState(false)
+    const { data: session } = useSession()
+    const classes = useStyles()
+
+    useEffect(() => {
+        favoritesIds.map(favId => {
+            if (favId === id) {
+                setChecked(true)
+            }
+        })
+    }, [])
+
+    const handleChange = async (event) => {
+        const reqData = {
+            productId: id
+        }
+        const { checked } = event.target
+        if (checked) {
+            const response = await axios.post('/api/user/favorites', reqData)
+            response.data.sucess && await dispatch(fetchFavorites())
+
+
+        } else {
+            const response = await axios.delete('/api/user/favorites', { data: reqData })
+            response.data.sucess && await dispatch(fetchFavorites())
+        }
+    }
+    
+    const handleClick = async () => {
+        setChecked(prevValue => !prevValue)
+    }
+
     return (
         <Box className={classes.root}>
             <NextLink href={`/sneakers/${id}`} passHref>
@@ -55,14 +68,14 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                     {price} $
                 </Typography>
             </CardActions>
-            <div className={classes.imgIconContainer}>
+            {session && <div className={classes.imgIconContainer}>
                 <FormControlLabel
-                    control={<Checkbox icon={<FavoriteBorderIcon />}
+                    control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} icon={<FavoriteBorderIcon />}
                         checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
                         name="heart"
                     />}
                 />
-            </div>
+            </div>}
         </Box>
     );
 }

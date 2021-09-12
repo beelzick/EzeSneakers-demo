@@ -1,10 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
-import loadingReducer from './features/loadingSlice'
-import loginDialogReducer from './features/loginDialogSlice'
+import storage from 'redux-persist/lib/storage'
+import reducers from './reducers'
+import { persistReducer } from 'redux-persist'
+import thunk from 'redux-thunk'
+
+
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['cart']
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
-    reducer: {
-        loading: loadingReducer,
-        loginDialog: loginDialogReducer
-    }
+    reducer: persistedReducer,
+    middleware: [thunk]
 })

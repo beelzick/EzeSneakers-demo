@@ -6,9 +6,9 @@ import { Link, Breadcrumbs } from '@material-ui/core'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import LogInForm from '../forms/LoginForm';
-import { selectOpen, dialogOpen, dialogClose } from '../../redux/features/loginDialogSlice'
+import { selectOpen, dialogOpen, dialogClose } from '../../redux/slices/loginDialogSlice'
 import { useSelector, useDispatch } from 'react-redux';
-import { loadingStart, loadingStop } from '../../redux/features/loadingSlice'
+import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 
 export default function NavBreadcrumbs() {
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ export default function NavBreadcrumbs() {
     if (status === 'loading') {
         return null
     }
-    
+
     const handleLogout = async () => {
         dispatch(loadingStart())
         await signOut()
@@ -39,19 +39,19 @@ export default function NavBreadcrumbs() {
                 </Link>
             </NextLink>
 
-            {status === 'unauthenticated' && (
+            {!session && (
                 <Link color='secondary' className={styles.pointer} onClick={() => dispatch(dialogOpen())}>
                     Log In
                 </Link>)}
 
-            {status === 'unauthenticated' && (
+            {!session && (
                 <NextLink color="inherit" href='/register' passHref>
                     <Link color='secondary' >
                         Register
                     </Link>
                 </NextLink>)}
 
-            {status === 'authenticated' && (
+            {session && (
                 <Link onClick={handleLogout} color='secondary' className={styles.pointer}>
                     Log out
                 </Link>

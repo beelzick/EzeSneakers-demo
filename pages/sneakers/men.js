@@ -2,7 +2,10 @@ import { Grid, Typography, Box } from '@material-ui/core'
 import { connectToDatabase } from '../../lib/mongodb'
 import ProductCard from '../../components/ProductCard'
 
+
+
 export default function Men({ sneakers }) {
+
     return <>
         <Grid container className='page-container'>
             <Grid item xs={12}>

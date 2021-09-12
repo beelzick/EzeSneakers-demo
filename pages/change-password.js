@@ -10,11 +10,13 @@ import Box from '@material-ui/core/Box'
 export default function ChangePassword() {
     const router = useRouter()
     const { data: session } = useSession()
+    
     useEffect(() => {
         if (!session) {
             router.push('/')
         }
     },[])
+
     if (session) {
         return (
             <>

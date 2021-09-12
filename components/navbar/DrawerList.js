@@ -7,6 +7,7 @@ import { FaMale } from '@react-icons/all-files/fa/FaMale'
 import { MdFiberNew } from '@react-icons/all-files/Md/MdFiberNew'
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { GiConverseShoe } from '@react-icons/all-files/gi/GiConverseShoe'
+import NextLink from 'next/link'
 
 export default function DrawerList() {
     return (

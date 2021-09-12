@@ -18,23 +18,35 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import NavBreadcrumbs from './NavBreadcrumbs';
 import Drawer from '@material-ui/core/Drawer'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Hidden from '@material-ui/core/Hidden'
 import { useSession } from 'next-auth/react'
-import ColoredLinearProgress from './ColoredLinearProgress';
-import { selectIsLoading } from '../../redux/features/loadingSlice';
-import { useSelector } from 'react-redux';
+import ColoredLinearProgress from '../loadings/ColoredLinearProgress';
+import { selectIsLoading } from '../../redux/slices/loadingSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import useStyles from '../../src/navbarMUIstyles';
 import DrawerList from './DrawerList';
 import NavLinks from './NavLinks'
+import { fetchFavorites, selectFavoritesIds } from '../../redux/slices/favoritesSlice';
+import DisabledHeart from './DisabledHeart';
+import { selectCartItemsIds } from '../../redux/slices/cartSlice';
 
 export default function Navbar() {
+    const dispatch = useDispatch()
     const classes = useStyles();
     const { data: session, status } = useSession()
+    const favoritesIds = useSelector(selectFavoritesIds)
+    const cartItemsIds = useSelector(selectCartItemsIds)
     const isLoading = useSelector(selectIsLoading)
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [drawerState, setDrawerState] = useState(false);
+
+    useEffect(async () => {
+        if (session) {
+            await dispatch(fetchFavorites())
+        }
+    }, [session])
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -105,24 +117,25 @@ export default function Navbar() {
             <NextLink href='/favorites' passHref>
                 <MenuItem>
                     <IconButton color='inherit' aria-label='favorites'>
-                        <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                        <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                             <FavoriteIcon />
                         </Badge>
                     </IconButton>
                     <p>Favorites</p>
                 </MenuItem>
             </NextLink>
+
             <NextLink href='/cart' passHref>
                 <MenuItem>
                     <IconButton color='inherit' aria-label='shopping cart'>
-                        <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                        <Badge classes={{ badge: classes.customBadge }} badgeContent={cartItemsIds.length} color='error'>
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
                     <p>Cart</p>
                 </MenuItem>
             </NextLink>
-            {status === 'authenticated' && (
+            {session && (
                 <MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
                         aria-label="account of current user"
@@ -191,16 +204,17 @@ export default function Navbar() {
                             />
                         </div>
                         <div className={classes.sectionDesktop}>
-                            <NextLink href='/favorites' passHref>
+                            {session ? (<NextLink href='/favorites' passHref>
                                 <IconButton color='inherit' aria-label='favorites'>
-                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                                         <FavoriteIcon />
                                     </Badge>
                                 </IconButton>
-                            </NextLink>
+                            </NextLink>) : <DisabledHeart />}
+
                             <NextLink href='/cart' passHref>
                                 <IconButton color='inherit' aria-label='shopping cart'>
-                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={1} color='error'>
+                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={cartItemsIds.length} color='error'>
                                         <ShoppingCartIcon />
                                     </Badge>
                                 </IconButton>

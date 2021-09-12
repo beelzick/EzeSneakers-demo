@@ -15,6 +15,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@material-ui/pickers": "^3.3.10",
+    "@next-auth/mongodb-adapter": "0.0.2-pr.193-6071c497.276",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.1",
@@ -31,6 +32,9 @@
     "react-loader-spinner": "^4.0.0",
     "react-material-ui-carousel": "^2.3.1",
     "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
     "swr": "^1.0.0",
     "yup": "^0.32.9"
   },
