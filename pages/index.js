@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Typography, Grid, Box } from '@material-ui/core'
 import { connectToDatabase } from '../lib/mongodb'
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/product-card/ProductCard'
 import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/index.module.css'
 export default function Home({ newSneakers, summerSneakers, highestRated }) {

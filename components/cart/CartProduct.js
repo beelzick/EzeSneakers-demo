@@ -10,8 +10,8 @@ import { useState } from 'react'
 import styles from './cartProduct.module.css'
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCartItemById, itemUpdate } from '../redux/slices/cartSlice'
-import { MenuProps, quantities, UpdateData } from '../src/cartProductHelpers'
+import { selectCartItemById, itemUpdate } from '../../redux/slices/cartSlice'
+import { MenuProps, quantities, UpdateData } from '../../src/cartProductHelpers'
 import Image from 'next/image'
 
 export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, productId, sizeQty, selectedSize, sizeId }) {

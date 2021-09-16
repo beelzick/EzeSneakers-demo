@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFavoritesIds } from '../redux/slices/favoritesSlice';
-import { fetchFavorites } from '../redux/slices/favoritesSlice';
+import { selectFavoritesIds } from '../../redux/slices/favoritesSlice';
+import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './productCard.module.css'
 

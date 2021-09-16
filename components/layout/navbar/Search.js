@@ -1,4 +1,4 @@
-import useStyles from '../../src/navbarMUIstyles';
+import useStyles from '../../../src/navbarMUIstyles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { useState } from 'react';

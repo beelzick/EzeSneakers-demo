@@ -1,12 +1,12 @@
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import ProductCard from './ProductCard'
+import ProductCard from '../product-card/ProductCard'
 import Box from '@material-ui/core/Box'
 import styles from './sneakersPage.module.css'
 import { useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
-import infLoader from './loadings/InfiniteScrollLoading'
+import infLoader from '../loadings/InfiniteScrollLoading'
 
 export default function SneakerPage({ sneakers, title, apiName }) {
     const [items, setItems] = useState(sneakers)

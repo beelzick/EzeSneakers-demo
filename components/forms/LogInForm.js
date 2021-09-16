@@ -33,7 +33,6 @@ export default function LogInForm() {
         })
         if (!status.error) {
             dispatch(loadingStop())
-            router.push('/')
             return
         } else {
             setErrorMessage(status.error)

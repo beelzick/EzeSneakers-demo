@@ -11,7 +11,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import BoxSvg from './BoxSvg'
+import BoxSvg from '../../svg/BoxSvg'
+
 export default function NoResults() {
 
     return <Grid container direction='row'>

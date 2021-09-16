@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../src/theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Layout from '../components/Layout'
+import Layout from '../components/layout/Layout'
 import '../styles/global.css'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'

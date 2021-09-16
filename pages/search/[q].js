@@ -1,4 +1,4 @@
-import SneakersSearchPage from '../../components/SneakersSearchPage'
+import SneakersSearchPage from '../../components/sneakers-page/SneakersSearchPage'
 import { connectToDatabase } from '../../lib/mongodb'
 
 export default function QueryPage({ sneakers, q }) {
@@ -15,6 +15,7 @@ export const getStaticPaths = () => {
 export async function getStaticProps(context) {
     const { db } = await connectToDatabase()
     const { q } = context.params
+
     const sneakersData = await db.collection('products').aggregate([
         {
             '$search': {
@@ -35,7 +36,6 @@ export async function getStaticProps(context) {
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
 
-    console.log(sneakers)
     return {
         props: {
             sneakers,

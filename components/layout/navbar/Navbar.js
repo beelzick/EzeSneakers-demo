@@ -19,16 +19,16 @@ import Drawer from '@material-ui/core/Drawer'
 import { useEffect, useState } from 'react';
 import Hidden from '@material-ui/core/Hidden'
 import { useSession } from 'next-auth/react'
-import ColoredLinearProgress from '../loadings/ColoredLinearProgress';
-import { selectIsLoading } from '../../redux/slices/loadingSlice';
+import ColoredLinearProgress from '../../loadings/ColoredLinearProgress';
+import { selectIsLoading } from '../../../redux/slices/loadingSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import useStyles from '../../src/navbarMUIstyles';
+import useStyles from '../../../src/navbarMUIstyles';
 import DrawerList from './DrawerList';
 import NavLinks from './NavLinks'
-import { fetchFavorites, selectFavoritesIds } from '../../redux/slices/favoritesSlice';
+import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favoritesSlice';
 import DisabledHeart from './DisabledHeart';
-import { selectCartItems } from '../../redux/slices/cartSlice';
-import { totalQty } from '../../src/navbarHelpers';
+import { selectCartItems } from '../../../redux/slices/cartSlice';
+import { totalQty } from '../../../src/navbarHelpers';
 import Search from './Search'
 
 
@@ -43,9 +43,9 @@ export default function Navbar() {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [drawerState, setDrawerState] = useState(false);
 
-    useEffect(async () => {
+    useEffect(() => {
         if (session) {
-            await dispatch(fetchFavorites())
+            dispatch(fetchFavorites())
         }
     }, [session])
 

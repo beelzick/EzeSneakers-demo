@@ -1,7 +1,7 @@
 
 import { connectToDatabase } from '../../lib/mongodb'
 
-import SneakerPage from '../../components/SneakersPage'
+import SneakerPage from '../../components/sneakers-page/SneakersPage'
 
 export default function Women({ sneakers }) {
     return <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' />

@@ -1,5 +1,5 @@
 import { connectToDatabase } from '../lib/mongodb'
-import SneakerPage from '../components/SneakersPage'
+import SneakerPage from '../components/sneakers-page/SneakersPage'
 
 export default function Men({ sneakers }) {
     return <SneakerPage sneakers={sneakers} title='All Sneakers' />

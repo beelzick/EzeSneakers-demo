@@ -5,10 +5,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import { Link, Breadcrumbs } from '@material-ui/core'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
-import LogInForm from '../forms/LoginForm';
-import { selectOpen, dialogOpen, dialogClose } from '../../redux/slices/loginDialogSlice'
+import LogInForm from '../../forms/LoginForm';
+import { selectOpen, dialogOpen, dialogClose } from '../../../redux/slices/loginDialogSlice'
 import { useSelector, useDispatch } from 'react-redux';
-import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
+import { loadingStart, loadingStop } from '../../../redux/slices/loadingSlice'
 
 export default function NavBreadcrumbs() {
     const dispatch = useDispatch()

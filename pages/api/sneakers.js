@@ -7,7 +7,6 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
         const { apiName, lastId } = req.query
         const { db } = await connectToDatabase()
-        console.log('here')
         if (apiName === 'man' || apiName === 'woman') {
             const sneakersData = await db.collection('products').aggregate([
                 {

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { selectFavorites } from '../redux/slices/favoritesSlice'
 import { useSelector } from 'react-redux'
-import SneakerNewPage from '../components/SneakersNewPage'
+import SneakerNewPage from '../components/sneakers-page/SneakersNewPage'
 
 export default function Favorites() {
     const favorites = useSelector(selectFavorites)
