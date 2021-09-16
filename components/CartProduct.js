@@ -6,43 +6,45 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import IconButton from '@material-ui/core/IconButton'
-import Img from 'next/image'
 import { useState } from 'react'
 import styles from './cartProduct.module.css'
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux'
-import { itemRemoved } from '../redux/slices/cartSlice'
-const quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import { selectCartItemById, itemUpdate } from '../redux/slices/cartSlice'
+import { MenuProps, quantities, UpdateData } from '../src/cartProductHelpers'
+import Image from 'next/image'
 
-export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, id }) {
+export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, productId, sizeQty, selectedSize, sizeId }) {
     const dispatch = useDispatch()
-    const [sneakerSize, setSneakerSize] = useState('')
-    const [qty, setQty] = useState('')
+    const [sneakerSize, setSneakerSize] = useState(selectedSize)
+    const [qty, setQty] = useState(sizeQty)
+    const cartItem = useSelector(state => selectCartItemById(state, productId))
+
 
     const handleSizeChange = (event) => {
-        setSneakerSize(event.target.value)
+        const { value } = event.target
+        setSneakerSize(value)
+        const updateData = new UpdateData(productId, cartItem.selectedSizes, sizeId).sizeChange(value)
+        dispatch(itemUpdate(updateData))
     }
 
     const handleQtyChange = (event) => {
-        setQty(event.target.value)
+        const { value } = event.target
+        setQty(value)
+        const updateData = new UpdateData(productId, cartItem.selectedSizes, sizeId).qtyChange(value)
+        dispatch(itemUpdate(updateData))
     }
+
     const handleItemRemove = () => {
-        dispatch(itemRemoved(id))
+        const updateData = new UpdateData(productId, cartItem.selectedSizes, sizeId).itemRemove()
+        dispatch(itemUpdate(updateData))
     }
-    const MenuProps = {
-        PaperProps: {
-            style: {
-                maxHeight: 200,
-                width: 80,
-            },
-        },
-    };
 
     return (
         <>
             <Box className={styles.paper}>
-                <Box p={1} className={styles.imgContainer}>
-                    <Img
+                <Box className={styles.imgContainer}>
+                    <Image
                         src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_200/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'}
                         width='200'
                         height='200'
@@ -60,10 +62,10 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, id }
                         {price} $
                     </Typography>
                     <FormControl className={styles.formControl}>
-                        <InputLabel id='size-selec-labelt'>Size</InputLabel>
+                        <InputLabel productId='size-selec-labelt'>Size</InputLabel>
                         <Select
                             labelId='size-select-label'
-                            id='size-select'
+                            productId='size-select'
                             value={sneakerSize}
                             onChange={handleSizeChange}
                             autoWidth
@@ -73,10 +75,10 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, id }
                         </Select>
                     </FormControl>
                     <FormControl className={styles.formControlQty}>
-                        <InputLabel id='size-selec-labelt'>Quantity</InputLabel>
+                        <InputLabel productId='size-selec-labelt'>Quantity</InputLabel>
                         <Select
                             labelId='size-select-label'
-                            id='size-select'
+                            productId='size-select'
                             value={qty}
                             onChange={handleQtyChange}
                             autoWidth

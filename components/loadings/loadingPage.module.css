@@ -4,3 +4,6 @@
 .reduxPageContainer {
     height: 100vh
 }
+.infLoading {
+    height: 40px;
+}

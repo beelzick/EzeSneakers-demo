@@ -1,7 +1,11 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import Head from 'next/head'
 import { ObjectId } from 'mongodb'
-import { Grid, Box, Button, Typography, Chip } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
 import styles from '../../styles/showPage.module.css'
 import Rating from '@material-ui/lab/Rating';
 import SizesSelect from '../../components/show-page/SizesSelect'
@@ -10,12 +14,13 @@ import FavoriteIcon from '@material-ui/icons/FavoriteBorder';
 import SmallCard from '../../components/SmallCard'
 import Carousel from 'react-material-ui-carousel'
 import ShouldBuyText from '../../components/show-page/ShouldBuyText'
-import { itemAdded, selectCartItemsIds, itemUpdated, selectCartItemById } from '../../redux/slices/cartSlice'
+import { itemAdd, itemUpdate, selectCartItemById } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectSize, setSize } from '../../redux/slices/selectedSizeSlice'
 import { useEffect } from 'react'
 import { selectSizeError, setSizeError } from '../../redux/slices/sizeErrorSlice'
 import { sizeExists, UpdateData } from '../../src/showPageHelpers'
+import ObjectID from 'bson-objectid'
 
 export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
     const dispatch = useDispatch()
@@ -37,8 +42,9 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
         sizes,
         selectedSizes: [
             {
+                id: ObjectID().toHexString(),
                 size: selectedSize,
-                qty: 1
+                qty: 1,
             }
         ]
     }
@@ -50,13 +56,13 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
         }
 
         if (cartItem && sizeExists(selectedSize, cartItem.selectedSizes)) {
-            dispatch(itemUpdated(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeExists()))
+            dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeExists()))
 
         } else if (cartItem && !sizeExists(selectedSize, cartItem.selectedSizes)) {
-            dispatch(itemUpdated(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeNotExists()))
+            dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeNotExists()))
 
         } else {
-            dispatch(itemAdded(item))
+            dispatch(itemAdd(item))
         }
     }
 

@@ -1,23 +1,17 @@
 .root {
-    width: 450;
-    position: 'relative'
+    position: relative;
 }
-.cardImg {
-    margin-left: 'auto';
-    margin-right: 'auto';
-}
-.cardActions {
-    justify-content: 'flex-end'
-}
-.grow {
-    flex-grow: 1
-}
+
 .imgContainer {
-    height: 450;
-    width: 450;
+    max-height: 600px;
+    max-width: 600px;
+    height: 100%;
+    width: 100%;
+
 }
+
 .imgIconContainer {
-    position: 'absolute';
+    position: absolute;
     top: 0;
     right: 0
 }

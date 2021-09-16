@@ -1,6 +1,5 @@
 .page-container {
     padding: 0 24px;
-    min-height: 76vh;
 }
 .grow {
     flex-grow: 1;
@@ -17,4 +16,9 @@
 
 .title-error-container {
     height: 68px
+}
+.MuiCardActionArea-root {
+    width: 100%;
+    display: flex !important;
+    text-align: inherit;
 }

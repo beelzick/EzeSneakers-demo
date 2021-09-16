@@ -9,7 +9,8 @@ import thunk from 'redux-thunk'
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['cart']
+    whitelist: ['cart'],
+    timeout: 500
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

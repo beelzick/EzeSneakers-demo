@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: 8px 8px 8px 0;
 }
 .totalSpan {
     display: inline-block

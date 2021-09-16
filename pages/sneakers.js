@@ -1,32 +1,10 @@
-import { Grid, Typography, Box } from '@material-ui/core'
 import { connectToDatabase } from '../lib/mongodb'
-import ProductCard from '../components/ProductCard'
+import SneakerPage from '../components/SneakersPage'
 
 export default function Men({ sneakers }) {
-    return <>
-        <Grid container className='page-container'>
-            <Grid item xs={12}>
-                <Box mb={4}>
-                    <Typography variant='h4' component='h1'>
-                        All Sneakers
-                    </Typography>
-                </Box>
-            </Grid>
-            <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                {sneakers.map(sneaker => (
-                    <Box key={sneaker._id} mb={4}>
-                        <ProductCard
-                            name={sneaker.name}
-                            id={sneaker._id}
-                            imgUrl={sneaker.imgUrl}
-                            price={sneaker.price}
-                        />
-                    </Box>
-                ))}
-            </Grid>
-        </Grid>
-    </>
+    return <SneakerPage sneakers={sneakers} title='All Sneakers' />
 }
+
 export async function getStaticProps() {
     const { db } = await connectToDatabase()
 

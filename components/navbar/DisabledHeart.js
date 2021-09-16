@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 export default function DisabledHeart() {
     const classes = useStyles()
     return (
-        <Tooltip disableFocusListener title='Log in to use favorites'>
+        <Tooltip disableFocusListener title='Log in to save favorites'>
             <span>
                 <IconButton disabled className={classes.button}>
                     <FavoriteIcon />

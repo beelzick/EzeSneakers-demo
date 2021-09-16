@@ -13,9 +13,9 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        itemAdded: cartAdapter.addOne,
-        itemRemoved: cartAdapter.removeOne,
-        itemUpdated: cartAdapter.updateOne,
+        itemAdd: cartAdapter.addOne,
+        itemRemove: cartAdapter.removeOne,
+        itemUpdate: cartAdapter.updateOne,
     },
 })
 
@@ -27,6 +27,6 @@ export const {
 } = cartAdapter.getSelectors(state => state.cart)
 
 
-export const { itemAdded, itemRemoved, itemUpdated } = cartSlice.actions
+export const { itemAdd, itemRemove, itemUpdate } = cartSlice.actions
 
 export default cartSlice.reducer

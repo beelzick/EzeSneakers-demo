@@ -4,18 +4,18 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import useStyles from '../src/productCardMUIstyles'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFavoritesIds } from '../redux/slices/favoritesSlice';
 import { fetchFavorites } from '../redux/slices/favoritesSlice';
+import Image from 'next/image'
+import styles from './productCard.module.css'
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const dispatch = useDispatch()
     const favoritesIds = useSelector(selectFavoritesIds)
     const [checked, setChecked] = useState(false)
     const { data: session } = useSession()
-    const classes = useStyles()
 
     useEffect(() => {
         favoritesIds.map(favId => {
@@ -40,35 +40,34 @@ export default function ProductCard({ imgUrl, id, name, price }) {
             response.data.sucess && await dispatch(fetchFavorites())
         }
     }
-    
+
     const handleClick = async () => {
         setChecked(prevValue => !prevValue)
     }
 
     return (
-        <Box className={classes.root}>
+        <Box className={styles.root}>
             <NextLink href={`/sneakers/${id}`} passHref>
                 <CardActionArea>
-                    <div className={classes.imgContainer}>
-                        <img
-                            src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_450/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
-                            alt={name}
-                            title={name}
-                            className={classes.cardImg}
-                        />
-                    </div>
+                    <Image
+                        src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
+                        alt={name}
+                        title={name}
+                        width='600'
+                        height='600'
+                    />
                 </CardActionArea>
             </NextLink>
-            <CardActions className={classes.cardActions}>
+            <CardActions className={styles.cardActions}>
                 <Typography variant='subtitle1' component='span'>
                     {name}
                 </Typography>
-                <div className={classes.grow}></div>
+                <div className='grow'></div>
                 <Typography variant='subtitle1' component='span'>
                     {price} $
                 </Typography>
             </CardActions>
-            {session && <div className={classes.imgIconContainer}>
+            {session && <div className={styles.imgIconContainer}>
                 <FormControlLabel
                     control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} icon={<FavoriteBorderIcon />}
                         checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}

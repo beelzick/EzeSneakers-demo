@@ -2,7 +2,6 @@ import styles from './navbar.module.css'
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import SearchIcon from '@material-ui/icons/Search';
 import NextLink from 'next/link'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -10,7 +9,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -29,14 +27,17 @@ import DrawerList from './DrawerList';
 import NavLinks from './NavLinks'
 import { fetchFavorites, selectFavoritesIds } from '../../redux/slices/favoritesSlice';
 import DisabledHeart from './DisabledHeart';
-import { selectCartItemsIds } from '../../redux/slices/cartSlice';
+import { selectCartItems } from '../../redux/slices/cartSlice';
+import { totalQty } from '../../src/navbarHelpers';
+import Search from './Search'
+
 
 export default function Navbar() {
     const dispatch = useDispatch()
     const classes = useStyles();
     const { data: session, status } = useSession()
     const favoritesIds = useSelector(selectFavoritesIds)
-    const cartItemsIds = useSelector(selectCartItemsIds)
+    const cartItems = useSelector(selectCartItems)
     const isLoading = useSelector(selectIsLoading)
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -128,7 +129,7 @@ export default function Navbar() {
             <NextLink href='/cart' passHref>
                 <MenuItem>
                     <IconButton color='inherit' aria-label='shopping cart'>
-                        <Badge classes={{ badge: classes.customBadge }} badgeContent={cartItemsIds.length} color='error'>
+                        <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
@@ -190,19 +191,7 @@ export default function Navbar() {
                             <NavLinks />
                         </Hidden>
                         <div className='grow' />
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </div>
+                        <Search />
                         <div className={classes.sectionDesktop}>
                             {session ? (<NextLink href='/favorites' passHref>
                                 <IconButton color='inherit' aria-label='favorites'>
@@ -214,7 +203,7 @@ export default function Navbar() {
 
                             <NextLink href='/cart' passHref>
                                 <IconButton color='inherit' aria-label='shopping cart'>
-                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={cartItemsIds.length} color='error'>
+                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
                                         <ShoppingCartIcon />
                                     </Badge>
                                 </IconButton>
