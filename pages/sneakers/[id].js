@@ -6,13 +6,10 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
-import styles from '../../styles/showPage.module.css'
-import Rating from '@mui/material/Rating';
+import styles from '../../components/show-page/showPage.module.css'
 import SizesSelect from '../../components/show-page/SizesSelect'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
-import SmallCard from '../../components/product-card/SmallCard'
-// import Carousel from 'react-material-ui-carousel'
 import ShouldBuyText from '../../components/show-page/ShouldBuyText'
 import { itemAdd, itemUpdate, selectCartItemById } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,6 +18,8 @@ import { useEffect } from 'react'
 import { selectSizeError, setSizeError } from '../../redux/slices/sizeErrorSlice'
 import { sizeExists, UpdateData } from '../../src/showPageHelpers'
 import ObjectID from 'bson-objectid'
+import StyledRating from '../../components/show-page/StyledRating'
+
 
 export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
     const dispatch = useDispatch()
@@ -72,95 +71,101 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                 <title>{name}</title>
             </Head>
             <Grid container className='page-container'>
-                <Grid container className={styles.pageContainer}>
-                    <Grid item xs={2} />
-                    <Grid item xs={8}>
-                        <Grid container>
-                            <Grid item xs={7}>
-                                <Box>
-                                    <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg' className={styles.image}></img>
-                                </Box>
+                <Grid item xl={2} />
+                <Grid item xl={8}>
+                    <Grid container>
+                        <Grid item xs={12} md={7} >
+                            <Box>
+                                <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg' className={styles.image}></img>
+                            </Box>
+                            <Box component='div' mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>
                                 <ShouldBuyText />
-                            </Grid>
-                            <Grid item xs={5}>
-                                <Box px={2}>
-                                    <Typography variant='h4' component='h1' >
-                                        {name}
-                                    </Typography>
-                                    <Grid container>
-                                        <Grid item xs={6}>
-                                            <Box mb={1}>
-                                                <Rating precision={0.5} name="size-medium" defaultValue={rating} readOnly />
-                                            </Box>
-                                            <Box mb={1}>
-                                                <Grid container>
-                                                    <Box mr={1}>
-                                                        <Chip color='primary' size="small" label={sex} />
-                                                    </Box>
-                                                    <Box mr={1}>
-                                                        {tag && <Chip color='primary' size='small' label={tag} />}
-                                                    </Box>
-                                                </Grid>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Box mt={1}>
-                                                <Typography variant='h4' component='h2' align='right'>
-                                                    {price} $
-                                                </Typography>
-                                            </Box>
-                                        </Grid>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={5}>
+                            <Box pl={2}>
+                                <Typography variant='h4' component='h1' >
+                                    {name}
+                                </Typography>
+                                <Grid container>
+                                    <Grid item xs={6}>
+                                        <Box mb={1}>
+                                            <StyledRating precision={0.05} defaultValue={rating} readOnly />
+                                        </Box>
+                                        <Box mb={1}>
+                                            <Grid container>
+                                                <Box mr={1}>
+                                                    <Chip color='primary' size="small" label={sex} />
+                                                </Box>
+                                                <Box mr={1}>
+                                                    {tag && <Chip color='primary' size='small' label={tag} />}
+                                                </Box>
+                                            </Grid>
+                                        </Box>
                                     </Grid>
-                                    <Typography color={sizeError ? 'error' : 'primary'}>
-                                        Choose size
-                                    </Typography>
-                                    <SizesSelect sizes={sizes} />
-                                    <Box my={1}>
-                                        {sizeError && (
-                                            <Typography color='error'>
-                                                Choose size
+                                    <Grid item xs={6}>
+                                        <Box mt={1}>
+                                            <Typography variant='h4' component='h2' align='right'>
+                                                {price} $
                                             </Typography>
-                                        )}
-                                    </Box>
-                                    <Grid container direction='column'>
-                                        <Box mb={2}>
-                                            <Button
-                                                type='button'
-                                                variant='contained'
-                                                size='large'
-                                                color='primary'
-                                                className={styles.button}
-                                                endIcon={<ShoppingCartIcon />}
-                                                onClick={handleAddCart}
-                                            >
-                                                Add to Cart
-                                            </Button>
-                                        </Box>
-                                        <Box mb={2}>
-                                            <Button type='button' variant='outlined'
-                                                size='large' color='primary' className={styles.button}
-                                                endIcon={<FavoriteIcon />}
-                                            >
-                                                Add to favorites
-                                            </Button>
                                         </Box>
                                     </Grid>
-                                    <Typography variant='h5' component='h2' gutterBottom>
-                                        Description
-                                    </Typography>
+                                </Grid>
+                                <Typography color={sizeError ? 'error' : 'primary'}>
+                                    Choose size
+                                </Typography>
+                                <SizesSelect sizes={sizes} />
+                                <Box my={1}>
+                                    {sizeError && (
+                                        <Typography color='error'>
+                                            Choose size
+                                        </Typography>
+                                    )}
+                                </Box>
+                                <Grid container direction='column'>
+                                    <Box mb={2}>
+                                        <Button
+                                            type='button'
+                                            variant='contained'
+                                            size='large'
+                                            color='primary'
+                                            className={styles.button}
+                                            endIcon={<ShoppingCartIcon />}
+                                            onClick={handleAddCart}
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                    </Box>
+                                    <Box mb={2}>
+                                        <Button type='button' variant='outlined'
+                                            size='large' color='primary' className={styles.button}
+                                            endIcon={<FavoriteIcon />}
+                                        >
+                                            Add to favorites
+                                        </Button>
+                                    </Box>
+                                </Grid>
+                                <Typography variant='h5' component='h2' gutterBottom>
+                                    Description
+                                </Typography>
+                                <Box mb={1}>
                                     <Typography variant='body1'>
                                         {description}.
                                     </Typography>
                                 </Box>
-                            </Grid>
+                                <Box component='div' mb={1} sx={{ display: { xs: 'block', md: 'none' } }}>
+                                    <ShouldBuyText />
+                                </Box>
+                            </Box>
                         </Grid>
-                        <Box px={2} className={styles.checkAlsoStyles}>
-                            <Grid container direction='column'>
-                                <Typography variant='h5' component='h3' gutterBottom>
-                                    You can check also
-                                </Typography>
-                                <Box mt={1}>
-                                    {/* <Carousel>
+                    </Grid>
+                    <Box className={styles.checkAlso}>
+                        <Grid container direction='column'>
+                            <Typography variant='h5' component='h3' gutterBottom>
+                                You can check also
+                            </Typography>
+                            <Box mt={1}>
+                                {/* <Carousel>
                                         <Grid container direction='row' justifyContent='space-between'>
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
@@ -171,13 +176,11 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
                                     </Carousel> */}
-                                </Box>
-                            </Grid>
-                        </Box>
-                    </Grid>
-
-                    <Grid item xs={2} />
+                            </Box>
+                        </Grid>
+                    </Box>
                 </Grid>
+                <Grid item xl={2} />
             </Grid>
         </>
     )

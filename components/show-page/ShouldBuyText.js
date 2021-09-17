@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
 export default function ShouldBuyText() {
-    return <Box p={2}>
+    return <Box>
         <Typography variant='h5' component='h2' gutterBottom>
             Why should I buy this product?
         </Typography>

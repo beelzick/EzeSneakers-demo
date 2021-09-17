@@ -1,8 +1,6 @@
 .radioToolbar {
   margin-top: 10px;
-  display: flex;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .radioToolbar input[type="radio"] {
@@ -21,7 +19,7 @@
     border: 1px solid #d1d1d1;
     border-radius: 4px;
     margin: 1px;
-    width: 118px;
+    width: 100%;
     flex-direction: row;
 }
 
@@ -32,4 +30,12 @@
 .radioToolbar input[type="radio"]:disabled + label {
     background-color: #f7f7f7;
     color: #dddddd
+}
+.sizeContainer {
+  width: 33%;
+  display: inline-block;
+  margin-right: 0.5%;
+}
+.sizeContainer:nth-child(3n+3) {
+  margin-right: 0;
 }

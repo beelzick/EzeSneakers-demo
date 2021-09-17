@@ -18,10 +18,10 @@ export default async function handler(req, res) {
                     }
                 },
                 {
-                    $limit: 48
+                    $limit: 24
                 }
             ]).toArray()
-            const hasMore = sneakersData.length < 48 ? false : true
+            const hasMore = sneakersData.length < 24 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
         } else if (apiName === 'summer') {
             const sneakersData = await db.collection('products').aggregate([
@@ -34,13 +34,22 @@ export default async function handler(req, res) {
                     }
                 },
                 {
-                    $limit: 48
+                    $limit: 24
                 }
             ]).toArray()
-            const hasMore = sneakersData.length < 48 ? false : true
+            const hasMore = sneakersData.length < 24 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
-        } else if (apiName === 'new') {
-
+        } else if (apiName === 'all') {
+            const sneakersData = await db.collection('products').aggregate([
+                {
+                    $match: { _id: { $gt: ObjectId(lastId) } }
+                },
+                {
+                    $limit: 24
+                }
+            ]).toArray()
+            const hasMore = sneakersData.length < 24 ? false : true
+            res.status(200).json({ data: sneakersData, hasMore })
         }
 
     } else {

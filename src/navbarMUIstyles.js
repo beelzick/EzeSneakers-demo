@@ -3,7 +3,7 @@ import makeStyles from '@mui/styles/makeStyles';
 const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
-        [theme.breakpoints.up('mdlg')]: {
+        [theme.breakpoints.up('mdlg2')]: {
             display: 'none',
         },
     },

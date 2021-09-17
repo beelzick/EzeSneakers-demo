@@ -11,6 +11,7 @@ import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 import { useState } from 'react'
 import { selectIsLoading } from '../../redux/slices/loadingSlice';
 import LoadingButton from '@mui/lab/LoadingButton';
+
 export default function LogInForm() {
     const isLoading = useSelector(selectIsLoading)
     const dispatch = useDispatch()
@@ -43,10 +44,10 @@ export default function LogInForm() {
                 <Typography variant='h6' component='p'>
                     EzeSneakers
                 </Typography>
+                <Typography variant='h4' component='h1'>
+                    Log In
+                </Typography>
                 <Grid container direction='column' alignContent='start' className='title-error-container'>
-                    <Typography variant='h4' component='h1' align='center'>
-                        Log In
-                    </Typography>
                     <Typography variant='caption' color='error'>
                         {errorMessage || ''}
                     </Typography>
