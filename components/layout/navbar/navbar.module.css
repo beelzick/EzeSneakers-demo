@@ -1,12 +1,9 @@
-.grow {
-    flex-grow: 1
-}
-
 .smBar {
     padding: 0 24px;
     display: flex;
     align-items: center;
     background-color: black;
+    max-height: 26px;
 }
 .links {
     font-size: 12px;
@@ -14,9 +11,21 @@
 .pointer{
     cursor: pointer;
 }
-.progress {
+.topMargin {
     height: 32px;
 }
 .dialog {
     width: 30%
+}
+.menuButton{
+    display:initial
+}
+.navAll {
+    flex-grow: 1;
+    margin-bottom: 32px;
+}
+@media(max-width: 990px) {
+    .navLinks {
+        display: none;
+    }
 }

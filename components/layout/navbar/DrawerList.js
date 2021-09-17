@@ -1,11 +1,11 @@
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import { FaFemale } from '@react-icons/all-files/fa/FaFemale'
 import { FaMale } from '@react-icons/all-files/fa/FaMale'
 import { MdFiberNew } from '@react-icons/all-files/Md/MdFiberNew'
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { GiConverseShoe } from '@react-icons/all-files/gi/GiConverseShoe'
 import NextLink from 'next/link'
 

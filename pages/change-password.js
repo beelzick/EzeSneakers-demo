@@ -1,12 +1,12 @@
 import styles from '../styles/login.module.css'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import ChangePasswordForm from '../components/forms/ChangePasswordForm';
 import { useSession, getSession } from "next-auth/react"
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import LoadingPage from '../components/LoadingPage';
-import Box from '@material-ui/core/Box'
+import LoadingPage from '../components/loadings/LoadingPage';
+import Box from '@mui/material/Box'
 export default function ChangePassword() {
     const router = useRouter()
     const { data: session } = useSession()

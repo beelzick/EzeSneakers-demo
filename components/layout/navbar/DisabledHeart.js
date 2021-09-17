@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton'
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import makeStyles from '@mui/styles/makeStyles';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const useStyles = makeStyles({
     button: {
@@ -16,10 +16,10 @@ export default function DisabledHeart() {
     return (
         <Tooltip disableFocusListener title='Log in to save favorites'>
             <span>
-                <IconButton disabled className={classes.button}>
+                <IconButton disabled className={classes.button} size="large">
                     <FavoriteIcon />
                 </IconButton>
             </span>
         </Tooltip>
-    )
+    );
 }

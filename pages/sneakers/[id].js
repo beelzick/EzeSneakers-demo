@@ -1,18 +1,18 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import Head from 'next/head'
 import { ObjectId } from 'mongodb'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import Chip from '@material-ui/core/Chip'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import Chip from '@mui/material/Chip'
 import styles from '../../styles/showPage.module.css'
-import Rating from '@material-ui/lab/Rating';
+import Rating from '@mui/material/Rating';
 import SizesSelect from '../../components/show-page/SizesSelect'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import FavoriteIcon from '@material-ui/icons/FavoriteBorder';
-import SmallCard from '../../components/SmallCard'
-import Carousel from 'react-material-ui-carousel'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
+import SmallCard from '../../components/product-card/SmallCard'
+// import Carousel from 'react-material-ui-carousel'
 import ShouldBuyText from '../../components/show-page/ShouldBuyText'
 import { itemAdd, itemUpdate, selectCartItemById } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -160,7 +160,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                     You can check also
                                 </Typography>
                                 <Box mt={1}>
-                                    <Carousel>
+                                    {/* <Carousel>
                                         <Grid container direction='row' justifyContent='space-between'>
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
@@ -170,7 +170,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                         <Grid container direction='row' justifyContent='space-between'>
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
-                                    </Carousel>
+                                    </Carousel> */}
                                 </Box>
                             </Grid>
                         </Box>

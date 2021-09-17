@@ -1,5 +1,5 @@
-import Button from '@material-ui/core/Button'
-import Box from '@material-ui/core/Box'
+import LoadingButton from '@mui/lab/LoadingButton';
+import Box from '@mui/material/Box'
 import { useForm } from 'react-hook-form';
 import FormInputText from './FormInputText';
 import FormInputDate from './FormInputDate';
@@ -27,12 +27,14 @@ export default function Register() {
         try {
             dispatch(loadingStart())
             const response = await axios.post('/api/auth/register', data)
+            console.log(data)
             if (response.data.acknowledged) {
                 router.push('/')
                 dispatch(loadingStop())
             }
         } catch (error) {
             dispatch(pushErrorMessage(error.response.data.message))
+            dispatch(loadingStop())
         }
     }
 
@@ -48,7 +50,7 @@ export default function Register() {
             <FormInputDate name='birthDate' control={control} label='Birth Date' errors={errors} />
 
             <Box my={4}>
-                <Button
+                <LoadingButton
                     onClick={handleSubmit(onSubmit)}
                     fullWidth
                     type='button'
@@ -58,7 +60,7 @@ export default function Register() {
                     disabled={isLoading && true}
                 >
                     register
-                </Button>
+                </LoadingButton>
             </Box>
         </form>
     )

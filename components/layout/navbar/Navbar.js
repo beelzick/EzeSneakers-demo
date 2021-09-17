@@ -1,26 +1,22 @@
 import styles from './navbar.module.css'
-import MenuIcon from '@material-ui/icons/Menu';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import NextLink from 'next/link'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import NavBreadcrumbs from './NavBreadcrumbs';
-import Drawer from '@material-ui/core/Drawer'
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Badge from '@mui/material/Badge';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MoreIcon from '@mui/icons-material/MoreVert';
+import SmallNav from './SmallNav'
+import Drawer from '@mui/material/Drawer'
 import { useEffect, useState } from 'react';
-import Hidden from '@material-ui/core/Hidden'
+import Hidden from '@mui/material/Hidden'
 import { useSession } from 'next-auth/react'
-import ColoredLinearProgress from '../../loadings/ColoredLinearProgress';
-import { selectIsLoading } from '../../../redux/slices/loadingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from '../../../src/navbarMUIstyles';
 import DrawerList from './DrawerList';
@@ -29,7 +25,7 @@ import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favori
 import DisabledHeart from './DisabledHeart';
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../src/navbarHelpers';
-import Search from './Search'
+import SearchField from './SearchField'
 
 
 export default function Navbar() {
@@ -38,7 +34,6 @@ export default function Navbar() {
     const { data: session, status } = useSession()
     const favoritesIds = useSelector(selectFavoritesIds)
     const cartItems = useSelector(selectCartItems)
-    const isLoading = useSelector(selectIsLoading)
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [drawerState, setDrawerState] = useState(false);
@@ -117,7 +112,7 @@ export default function Navbar() {
         >
             <NextLink href='/favorites' passHref>
                 <MenuItem>
-                    <IconButton color='inherit' aria-label='favorites'>
+                    <IconButton color='inherit' aria-label='favorites' size="large">
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                             <FavoriteIcon />
                         </Badge>
@@ -128,7 +123,7 @@ export default function Navbar() {
 
             <NextLink href='/cart' passHref>
                 <MenuItem>
-                    <IconButton color='inherit' aria-label='shopping cart'>
+                    <IconButton color='inherit' aria-label='shopping cart' size="large">
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
                             <ShoppingCartIcon />
                         </Badge>
@@ -143,7 +138,7 @@ export default function Navbar() {
                         aria-controls="primary-search-account-menu"
                         aria-haspopup="true"
                         color="inherit"
-                    >
+                        size="large">
                         <AccountCircle />
                     </IconButton>
                     <p>Account</p>
@@ -152,49 +147,31 @@ export default function Navbar() {
         </Menu>
     );
     return <>
-        <div className='grow'>
-            <div className={styles.smBar}>
-                <div>
-                    <IconButton size='small' color='secondary'>
-                        <GitHubIcon fontSize='small' />
-                    </IconButton>
-                    <IconButton size='small' color='secondary'>
-                        <LinkedInIcon />
-                    </IconButton>
-                </div>
-                <div className='grow'></div>
-                <div>
-                    <NavBreadcrumbs />
-                </div>
-            </div>
-
+        <div className={styles.navAll}>
+            <SmallNav />
             <div className='grow'>
                 <AppBar position="static">
                     <Toolbar>
-                        <Hidden mdUp>
                             <IconButton
                                 edge="start"
                                 className={classes.menuButton}
                                 color="inherit"
                                 aria-label="open drawer"
                                 onClick={toggleDrawer(true)}
-                            >
+                                size="large">
                                 <MenuIcon />
                             </IconButton>
-                        </Hidden>
                         <Typography className={classes.title} variant="h6" noWrap>
                             EzeSneakers
                         </Typography>
                         <div className='grow' />
                         <div className='grow' />
-                        <Hidden smDown>
-                            <NavLinks />
-                        </Hidden>
+                        <NavLinks />
                         <div className='grow' />
-                        <Search />
+                        <SearchField />
                         <div className={classes.sectionDesktop}>
                             {session ? (<NextLink href='/favorites' passHref>
-                                <IconButton color='inherit' aria-label='favorites'>
+                                <IconButton color='inherit' aria-label='favorites' size="large">
                                     <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                                         <FavoriteIcon />
                                     </Badge>
@@ -202,7 +179,7 @@ export default function Navbar() {
                             </NextLink>) : <DisabledHeart />}
 
                             <NextLink href='/cart' passHref>
-                                <IconButton color='inherit' aria-label='shopping cart'>
+                                <IconButton color='inherit' aria-label='shopping cart' size="large">
                                     <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
                                         <ShoppingCartIcon />
                                     </Badge>
@@ -216,7 +193,7 @@ export default function Navbar() {
                                     aria-haspopup="true"
                                     onClick={handleProfileMenuOpen}
                                     color="inherit"
-                                >
+                                    size="large">
                                     <AccountCircle />
                                 </IconButton>
                             )}
@@ -229,7 +206,7 @@ export default function Navbar() {
                                 aria-haspopup="true"
                                 onClick={handleMobileMenuOpen}
                                 color="inherit"
-                            >
+                                size="large">
                                 <MoreIcon />
                             </IconButton>
                         </div>
@@ -241,10 +218,6 @@ export default function Navbar() {
                     {list()}
                 </Drawer>
             </div>
-            <div className={styles.progress}>
-                {isLoading && <ColoredLinearProgress />}
-            </div>
-
         </div>
-    </>
+    </>;
 }

@@ -1,21 +1,18 @@
-import Box from '@material-ui/core/Box'
+import Box from '@mui/material/Box'
 import { useForm } from 'react-hook-form';
 import FormInputText from './FormInputText';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { loginSchema } from '../../src/formSchemas'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 import { useState } from 'react'
 import { selectIsLoading } from '../../redux/slices/loadingSlice';
-
+import LoadingButton from '@mui/lab/LoadingButton';
 export default function LogInForm() {
     const isLoading = useSelector(selectIsLoading)
-    const router = useRouter()
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
     const { handleSubmit, control, formState: { errors } } = useForm({
@@ -59,17 +56,17 @@ export default function LogInForm() {
                     <FormInputText name='password' control={control} label='Password' errors={errors} type='password' />
 
                     <Box my={1}>
-                        <Button
+                        <LoadingButton
                             onClick={handleSubmit(onSubmit)}
                             variant='contained'
                             size='large'
                             type='button'
                             fullWidth
                             color='primary'
-                            disabled={isLoading && true}
+                            loading={isLoading && true}
                         >
                             Log in
-                        </Button>
+                        </LoadingButton>
                     </Box>
                 </form>
             </Grid>

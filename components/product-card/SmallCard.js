@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { CardActionArea, CardActions, Button, CardMedia, Card, IconButton, FormControlLabel, Checkbox } from '@material-ui/core'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import makeStyles from '@mui/styles/makeStyles';
+import { CardActionArea, CardActions, Button, CardMedia, Card, IconButton, FormControlLabel, Checkbox } from '@mui/material'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import NextLink from 'next/link'
 
 

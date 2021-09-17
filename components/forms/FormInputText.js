@@ -1,7 +1,7 @@
-import TextField from '@material-ui/core/TextField'
+import TextField from '@mui/material/TextField'
 import { Controller } from 'react-hook-form'
 import React from 'react'
-import Box from '@material-ui/core/Box'
+import Box from '@mui/material/Box'
 
 export default function FormInputText({ name, label, control, type, errors }) {
     return <Controller
@@ -15,7 +15,6 @@ export default function FormInputText({ name, label, control, type, errors }) {
                     onChange={onChange}
                     value={value}
                     label={label}
-                    variant="outlined"
                     type={type ? type : 'text'}
                     fullWidth
                 />

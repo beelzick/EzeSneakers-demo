@@ -1,8 +1,8 @@
 import styles from './navbar.module.css'
 import NextLink from 'next/link'
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import { Link, Breadcrumbs } from '@material-ui/core'
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import { Link, Breadcrumbs } from '@mui/material'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import LogInForm from '../../forms/LoginForm';
@@ -34,25 +34,25 @@ export default function NavBreadcrumbs() {
     return <>
         <Breadcrumbs color='secondary' className={styles.links}>
             <NextLink color="inherit" href='/' passHref>
-                <Link color='secondary'>
+                <Link color='secondary' underline='hover'>
                     Home
                 </Link>
             </NextLink>
 
             {!session && (
-                <Link color='secondary' className={styles.pointer} onClick={() => dispatch(dialogOpen())}>
+                <Link underline='hover' color='secondary' className={styles.pointer} onClick={() => dispatch(dialogOpen())}>
                     Log In
                 </Link>)}
 
             {!session && (
                 <NextLink color="inherit" href='/register' passHref>
-                    <Link color='secondary' >
+                    <Link color='secondary' underline='hover' >
                         Register
                     </Link>
                 </NextLink>)}
 
             {session && (
-                <Link onClick={handleLogout} color='secondary' className={styles.pointer}>
+                <Link underline='hover' onClick={handleLogout} color='secondary' className={styles.pointer}>
                     Log out
                 </Link>
             )}

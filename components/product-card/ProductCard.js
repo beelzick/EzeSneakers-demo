@@ -1,6 +1,11 @@
-import { CardActionArea, CardActions, FormControlLabel, Checkbox, Typography, Box } from '@material-ui/core'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import Box from '@mui/material/Box'
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
@@ -32,18 +37,19 @@ export default function ProductCard({ imgUrl, id, name, price }) {
         const { checked } = event.target
         if (checked) {
             const response = await axios.post('/api/user/favorites', reqData)
-            response.data.sucess && await dispatch(fetchFavorites())
+            response.data.sucess && (await dispatch(fetchFavorites()))
 
 
         } else {
             const response = await axios.delete('/api/user/favorites', { data: reqData })
-            response.data.sucess && await dispatch(fetchFavorites())
+            response.data.sucess && (await dispatch(fetchFavorites()))
         }
     }
 
     const handleClick = async () => {
         setChecked(prevValue => !prevValue)
     }
+    const label = { inputProps: { 'aria-label': 'Checkbox Heart' } };
 
     return (
         <Box className={styles.root}>
@@ -68,11 +74,13 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                 </Typography>
             </CardActions>
             {session && <div className={styles.imgIconContainer}>
-                <FormControlLabel
-                    control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} icon={<FavoriteBorderIcon />}
-                        checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
-                        name="heart"
-                    />}
+                <Checkbox
+                    {...label}
+                    icon={<FavoriteBorderIcon />}
+                    onChange={handleChange}
+                    checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
+                    onClick={handleClick}
+                    checked={checked}
                 />
             </div>}
         </Box>

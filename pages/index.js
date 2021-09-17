@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import { Typography, Grid, Box } from '@material-ui/core'
+import { Typography, Grid, Box } from '@mui/material'
 import { connectToDatabase } from '../lib/mongodb'
 import ProductCard from '../components/product-card/ProductCard'
-import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/index.module.css'
+
+
 export default function Home({ newSneakers, summerSneakers, highestRated }) {
   return (
     <>
@@ -11,7 +12,7 @@ export default function Home({ newSneakers, summerSneakers, highestRated }) {
         <title>Home Page</title>
       </Head>
       <Grid container className='page-container'>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Box mb={4}>
             <Typography variant='h4' component='h2'>
               New
@@ -64,7 +65,7 @@ export default function Home({ newSneakers, summerSneakers, highestRated }) {
           <Grid container direction='row' justifyContent='space-between' alignItems='center'>
             {highestRated.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
           </Grid>
-        </Carousel>
+        </Carousel> */}
       </Grid>
     </>
   )

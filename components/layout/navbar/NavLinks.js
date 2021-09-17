@@ -1,10 +1,11 @@
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button';
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button';
 import NextLink from 'next/link'
+import styles from './navbar.module.css'
 
 export default function NavLink() {
     return (
-        <Box>
+        <Box className={styles.navLinks}>
             <NextLink href='/sneakers/men' passHref>
                 <Button size='large' color='inherit'>men</Button>
             </NextLink>

@@ -1,4 +1,4 @@
-import { Grid, Typography, Box, Button } from '@material-ui/core'
+import { Grid, Typography, Box, Button } from '@mui/material'
 import styles from '../styles/cart.module.css'
 import CartProduct from '../components/cart/CartProduct'
 import { selectCartItems, itemRemove } from '../redux/slices/cartSlice'

@@ -18,16 +18,16 @@ export async function getStaticProps(context) {
 
     const sneakersData = await db.collection('products').aggregate([
         {
-            '$search': {
-                'index': 'products',
-                "compound": {
-                    "should": [
-                        { 'autocomplete': { 'query': q, 'path': 'name' } },
-                        { 'autocomplete': { 'query': q, 'path': 'price' } },
-                        { 'autocomplete': { 'query': q, 'path': 'description' } },
-                        { 'autocomplete': { 'query': q, 'path': 'rating' } },
-                        { 'autocomplete': { 'query': q, 'path': 'sex' } },
-                        { 'autocomplete': { 'query': q, 'path': 'tag' } },
+            $search: {
+                index: 'products',
+                compound: {
+                    should: [
+                        { autocomplete: { query: q, path: 'name' } },
+                        { autocomplete: { query: q, path: 'price' } },
+                        { autocomplete: { query: q, path: 'description' } },
+                        { autocomplete: { query: q, path: 'rating' } },
+                        { autocomplete: { query: q, path: 'sex' } },
+                        { autocomplete: { query: q, path: 'tag' } },
                     ]
                 }
             }
