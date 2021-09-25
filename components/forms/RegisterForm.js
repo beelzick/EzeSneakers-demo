@@ -46,7 +46,6 @@ export default function Register() {
             <FormInputText name='email' control={control} label='Email' errors={errors} />
             <FormInputText name='cEmail' control={control} label='Confirm Email' errors={errors} />
             <FormInputText name='password' control={control} label='Password' errors={errors} type='password' />
-            <FormInputText name='cPassword' control={control} label='Confirm Password' errors={errors} type='password' />
             <FormInputDate name='birthDate' control={control} label='Birth Date' errors={errors} />
 
             <Box my={4}>

@@ -9,7 +9,6 @@ import Chip from '@mui/material/Chip'
 import styles from '../../components/show-page/showPage.module.css'
 import SizesSelect from '../../components/show-page/SizesSelect'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import ShouldBuyText from '../../components/show-page/ShouldBuyText'
 import { itemAdd, itemUpdate, selectCartItemById } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +18,7 @@ import { selectSizeError, setSizeError } from '../../redux/slices/sizeErrorSlice
 import { sizeExists, UpdateData } from '../../src/showPageHelpers'
 import ObjectID from 'bson-objectid'
 import StyledRating from '../../components/show-page/StyledRating'
-
+import AddFavorites from '../../components/show-page/AddFavorites'
 
 export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
     const dispatch = useDispatch()
@@ -48,8 +47,9 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
         ]
     }
 
-    const handleAddCart = () => {
 
+
+    const handleAddCart = () => {
         if (!selectedSize) {
             return dispatch(setSizeError(true))
         }
@@ -90,7 +90,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                 <Grid container>
                                     <Grid item xs={6}>
                                         <Box mb={1}>
-                                            <StyledRating precision={0.05} defaultValue={rating} readOnly />
+                                            <StyledRating precision={0.1} defaultValue={rating} readOnly />
                                         </Box>
                                         <Box mb={1}>
                                             <Grid container>
@@ -123,27 +123,20 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                     )}
                                 </Box>
                                 <Grid container direction='column'>
-                                    <Box mb={2}>
+                                    <Box my={2}>
                                         <Button
                                             type='button'
                                             variant='contained'
                                             size='large'
                                             color='primary'
-                                            className={styles.button}
+                                            className='w100'
                                             endIcon={<ShoppingCartIcon />}
                                             onClick={handleAddCart}
                                         >
                                             Add to Cart
                                         </Button>
                                     </Box>
-                                    <Box mb={2}>
-                                        <Button type='button' variant='outlined'
-                                            size='large' color='primary' className={styles.button}
-                                            endIcon={<FavoriteIcon />}
-                                        >
-                                            Add to favorites
-                                        </Button>
-                                    </Box>
+                                    <AddFavorites id={_id} />
                                 </Grid>
                                 <Typography variant='h5' component='h2' gutterBottom>
                                     Description
@@ -159,13 +152,13 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                             </Box>
                         </Grid>
                     </Grid>
-                    <Box className={styles.checkAlso}>
+                    {/* <Box className={styles.checkAlso}>
                         <Grid container direction='column'>
                             <Typography variant='h5' component='h3' gutterBottom>
                                 You can check also
                             </Typography>
                             <Box mt={1}>
-                                {/* <Carousel>
+                                <Carousel>
                                         <Grid container direction='row' justifyContent='space-between'>
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
@@ -175,10 +168,10 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                         <Grid container direction='row' justifyContent='space-between'>
                                             {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
                                         </Grid>
-                                    </Carousel> */}
+                                    </Carousel>
                             </Box>
                         </Grid>
-                    </Box>
+                    </Box> */}
                 </Grid>
                 <Grid item xl={2} />
             </Grid>

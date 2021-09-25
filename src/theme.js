@@ -58,6 +58,12 @@ const theme = createTheme({
                         backgroundColor: "#2b2b2b",
                     },
                 },
+                h1: {
+                    fontFamily: 'Montserrat, sans-serif !important'
+                },
+                h2: {
+                    fontFamily: 'Montserrat, sans-serif !important'
+                },
             },
         },
     },

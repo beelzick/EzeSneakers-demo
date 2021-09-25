@@ -1,7 +1,4 @@
-.pageContainer {
-    min-height: 80vh;
 
-}
 .total {
     border-top: 0.5px solid ;
     border-color: -internal-light-dark(black, white);

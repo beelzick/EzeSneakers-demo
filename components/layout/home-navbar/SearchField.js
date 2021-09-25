@@ -12,7 +12,6 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -75,45 +74,3 @@ export default function SearchField() {
         />
     </Search>
 }
-
-// import useStyles from '../../../src/navbarMUIstyles';
-// import SearchIcon from '@mui/icons-material/Search';
-// import InputBase from '@mui/material/InputBase';
-// import { useState } from 'react';
-// import { useRouter } from 'next/router'
-
-// export default function Search() {
-//     const [query, setQuery] = useState('')
-//     const classes = useStyles();
-//     const router = useRouter()
-
-//     const handleChange = (event) => {
-//         setQuery(event.target.value)
-//     }
-
-//     const handlePress = (event) => {
-//         if (event.key === 'Enter') {
-//             router.push(`/search/${query}`)
-//             setQuery('')
-//         }
-
-//     }
-
-//     return <div className={classes.search}>
-//         <div className={classes.searchIcon}>
-//             <SearchIcon />
-//         </div>
-//         <InputBase
-//             placeholder="Search…"
-//             classes={{
-//                 root: classes.inputRoot,
-//                 input: classes.inputInput,
-//             }}
-//             inputProps={{ 'aria-label': 'search' }}
-//             value={query}
-//             onChange={handleChange}
-//             onKeyDown={handlePress}
-//         />
-//     </div>
-// }
-

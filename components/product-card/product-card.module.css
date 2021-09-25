@@ -2,16 +2,11 @@
     position: relative;
 }
 
-.imgContainer {
-    max-height: 600px;
-    max-width: 600px;
-    height: 100%;
-    width: 100%;
-
-}
-
 .imgIconContainer {
     position: absolute;
     top: 0;
     right: 0
+}
+.image {
+    border-radius: 10px;
 }

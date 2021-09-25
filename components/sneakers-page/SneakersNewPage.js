@@ -6,24 +6,26 @@ import styles from './sneakersPage.module.css'
 
 export default function SneakersNewPage({ sneakers, title }) {
     return (
-        <Grid container className='page-container'>
-            <Box mb={4} className='w100'>
-                <Typography variant='h4' component='h1'>
-                    {title}
-                </Typography>
-            </Box>
-            <Grid className='w100'>
-                {sneakers.map(sneaker => (
-                    <Box key={sneaker._id} mb={4} className={styles.box}>
-                        <ProductCard
-                            name={sneaker.name}
-                            id={sneaker._id}
-                            imgUrl={sneaker.imgUrl}
-                            price={sneaker.price}
-                        />
-                    </Box>
-                ))}
+        <main>
+            <Grid container className='page-container'>
+                <Box mb={4} className='w100'>
+                    <Typography variant='h4' component='h1'>
+                        {title}
+                    </Typography>
+                </Box>
+                <Grid className='w100'>
+                    {sneakers.map(sneaker => (
+                        <Box key={sneaker._id} mb={4} className={styles.box}>
+                            <ProductCard
+                                name={sneaker.name}
+                                id={sneaker._id}
+                                imgUrl={sneaker.imgUrl}
+                                price={sneaker.price}
+                            />
+                        </Box>
+                    ))}
+                </Grid>
             </Grid>
-        </Grid>
+        </main>
     )
 }

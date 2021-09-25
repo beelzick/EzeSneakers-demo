@@ -25,7 +25,7 @@ import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favori
 import DisabledHeart from './DisabledHeart';
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../src/navbarHelpers';
-import SearchField from './SearchField'
+import SearchField from '../home-navbar/SearchField'
 
 
 export default function Navbar() {
@@ -152,20 +152,20 @@ export default function Navbar() {
             <div className='grow'>
                 <AppBar position="static">
                     <Toolbar>
-                            <IconButton
-                                edge="start"
-                                className={classes.menuButton}
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={toggleDrawer(true)}
-                                size="large">
-                                <MenuIcon />
-                            </IconButton>
+                        <IconButton
+                            edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={toggleDrawer(true)}
+                            size="large">
+                            <MenuIcon />
+                        </IconButton>
                         <Typography className={classes.title} variant="h6" noWrap>
                             EzeSneakers
                         </Typography>
                         <div className='grow' />
-                        <div className='grow' />
+                        <div style={{flexGrow: 0.83}}/>
                         <NavLinks />
                         <div className='grow' />
                         <SearchField />

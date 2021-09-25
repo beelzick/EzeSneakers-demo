@@ -30,3 +30,6 @@
 .deleteIconContainer {
     margin-left: auto;
 }
+.image {
+    border-radius: 5px;
+}

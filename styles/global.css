@@ -4,6 +4,9 @@
 .grow {
     flex-grow: 1;
 }
+.grow-half {
+    flex-grow: 0.5;
+}
 
 .h100 {
     height: 100%
@@ -21,4 +24,7 @@
     width: 100%;
     display: flex !important;
     text-align: inherit;
+}
+.main {
+    min-height:  77vh;
 }

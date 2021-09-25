@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         display: 'none',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
     },

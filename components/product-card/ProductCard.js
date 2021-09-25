@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -14,7 +13,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectFavoritesIds } from '../../redux/slices/favoritesSlice';
 import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
-import styles from './productCard.module.css'
+import styles from './product-card.module.css'
+
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const dispatch = useDispatch()
@@ -28,7 +28,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                 setChecked(true)
             }
         })
-    }, [])
+    }, [favoritesIds])
 
     const handleChange = async (event) => {
         const reqData = {
@@ -37,37 +37,41 @@ export default function ProductCard({ imgUrl, id, name, price }) {
         const { checked } = event.target
         if (checked) {
             const response = await axios.post('/api/user/favorites', reqData)
-            response.data.sucess && (await dispatch(fetchFavorites()))
+            response.data.sucess && (dispatch(fetchFavorites()))
 
 
         } else {
             const response = await axios.delete('/api/user/favorites', { data: reqData })
-            response.data.sucess && (await dispatch(fetchFavorites()))
+            response.data.sucess && (dispatch(fetchFavorites()))
         }
     }
 
     const handleClick = async () => {
         setChecked(prevValue => !prevValue)
     }
+
     const label = { inputProps: { 'aria-label': 'Checkbox Heart' } };
 
     return (
         <Box className={styles.root}>
             <NextLink href={`/sneakers/${id}`} passHref>
-                <CardActionArea>
+                <CardActionArea sx={{ borderRadius: '10px' }}>
                     <Image
                         src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
                         alt={name}
                         title={name}
                         width='600'
                         height='600'
+                        className={styles.image}
                     />
                 </CardActionArea>
             </NextLink>
-            <CardActions className={styles.cardActions}>
-                <Typography variant='subtitle1' component='span'>
-                    {name}
-                </Typography>
+            <CardActions>
+                <NextLink href={`/sneakers/${id}`} passHref>
+                    <Typography variant='subtitle1' component='span' sx={{ cursor: 'pointer' }}>
+                        {name}
+                    </Typography>
+                </NextLink>
                 <div className='grow'></div>
                 <Typography variant='subtitle1' component='span'>
                     {price} $

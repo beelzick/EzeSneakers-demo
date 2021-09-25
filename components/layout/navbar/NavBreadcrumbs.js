@@ -32,7 +32,7 @@ export default function NavBreadcrumbs() {
     }
 
     return <>
-        <Breadcrumbs color='secondary' className={styles.links}>
+        <Breadcrumbs color='secondary' className={styles.links} sx={{ fontSize: '12px' }}>
             <NextLink color="inherit" href='/' passHref>
                 <Link color='secondary' underline='hover'>
                     Home
@@ -40,19 +40,24 @@ export default function NavBreadcrumbs() {
             </NextLink>
 
             {!session && (
-                <Link underline='hover' color='secondary' className={styles.pointer} onClick={() => dispatch(dialogOpen())}>
+                <Link
+                    underline='hover'
+                    color='secondary'
+                    sx={{ cursor: 'pointer' }}
+                    onClick={() => dispatch(dialogOpen())}
+                >
                     Log In
                 </Link>)}
 
             {!session && (
                 <NextLink color="inherit" href='/register' passHref>
-                    <Link color='secondary' underline='hover' >
+                    <Link color='secondary' underline='hover' sx={{ marginRight: '13px' }}>
                         Register
                     </Link>
                 </NextLink>)}
 
             {session && (
-                <Link underline='hover' onClick={handleLogout} color='secondary' className={styles.pointer}>
+                <Link underline='hover' onClick={handleLogout} color='secondary' sx={{ cursor: 'pointer' }}>
                     Log out
                 </Link>
             )}

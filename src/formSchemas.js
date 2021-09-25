@@ -12,10 +12,6 @@ export const registerSchema = yup.object().shape({
         .required('This field is required')
         .min(6, 'Password must be at least 6 characters')
         .max(40, 'Password must not exceed 40 characters'),
-    cPassword: yup
-        .string()
-        .required('This field is required')
-        .oneOf([yup.ref('password'), null], 'Passwords don\'t match'),
     email: yup
         .string('This field must contain only letters')
         .required('This field is required')

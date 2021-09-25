@@ -8,7 +8,7 @@ export default function SmallNav() {
     return <div className={styles.smBar}>
         <div>
             <IconButton size='small' color='secondary'>
-                <GitHub fontSize='small' />
+                <GitHub fontSize='small' sx={{fontSize: '20px'}} />
             </IconButton>
             <IconButton size='small' color='secondary'>
                 <LinkedIn />

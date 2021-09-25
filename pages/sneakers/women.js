@@ -11,7 +11,7 @@ export async function getStaticProps() {
 
     const sneakersData = await db.collection('products').aggregate([
         { $match: { sex: 'woman' } },
-        { $limit: 24 }
+        { $limit: 20 }
     ]).toArray()
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))

@@ -32,7 +32,7 @@ export default function NoResults() {
                 <List>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar sx={{ backgroundColor: 'rgba(0, 0, 0, 0.849)' }}>
                                 <SearchIcon />
                             </Avatar>
                         </ListItemAvatar>
@@ -42,7 +42,7 @@ export default function NoResults() {
                     </ListItem>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar sx={{ backgroundColor: 'rgba(0, 0, 0, 0.849)' }}>
                                 <VpnKeyIcon />
                             </Avatar>
                         </ListItemAvatar>
@@ -52,7 +52,7 @@ export default function NoResults() {
                     </ListItem>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar sx={{ backgroundColor: 'rgba(0, 0, 0, 0.849)' }}>
                                 <ErrorOutlineIcon />
                             </Avatar>
                         </ListItemAvatar>
@@ -62,7 +62,7 @@ export default function NoResults() {
                     </ListItem>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar sx={{ backgroundColor: 'rgba(0, 0, 0, 0.849)' }}>
                                 <MailOutlineIcon />
                             </Avatar>
                         </ListItemAvatar>

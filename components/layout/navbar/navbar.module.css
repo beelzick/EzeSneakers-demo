@@ -2,28 +2,27 @@
     padding: 0 24px;
     display: flex;
     align-items: center;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.849);
     max-height: 26px;
 }
-.links {
-    font-size: 12px;
-}
-.pointer{
-    cursor: pointer;
-}
+
 .topMargin {
     height: 32px;
 }
+
 .dialog {
     width: 30%
 }
+
 .menuButton{
     display:initial
 }
+
 .navAll {
     flex-grow: 1;
     margin-bottom: 32px;
 }
+
 @media(max-width: 990px) {
     .navLinks {
         display: none;

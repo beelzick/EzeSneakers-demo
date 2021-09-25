@@ -2,17 +2,13 @@
     min-height: 80vh;
 }
 .image {
-    width: 100%
+    width: 100%;
+    border-radius: 10px;
 }
 .chipsContainer {
     margin-right: 5px
 }
-.grow {
-    flex-grow: 1;
-}
-.button {
-    width: 100%;
-}
+
 @media(max-width: 900px) {
     .checkAlso {
         padding-left: 16px;

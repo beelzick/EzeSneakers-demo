@@ -1,104 +1,54 @@
 import Head from 'next/head'
-import { Typography, Grid, Box } from '@mui/material'
-import { connectToDatabase } from '../lib/mongodb'
-import ProductCard from '../components/product-card/ProductCard'
-import styles from '../styles/index.module.css'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import NextLink from 'next/link'
 
 
-export default function Home({ newSneakers, summerSneakers, highestRated }) {
+import Navbar from '../components/layout/home-navbar/Navbar'
+
+export default function Home() {
   return (
     <>
       <Head>
         <title>Home Page</title>
       </Head>
-      <Grid container className='page-container'>
-        {/* <Grid item xs={12}>
-          <Box mb={4}>
-            <Typography variant='h4' component='h2'>
-              New
-            </Typography>
-          </Box>
+      <Navbar />
+      <main>
+        <Grid container sx={{ height: '93.15vh' }}>
+          <Grid item xs={6} sx={{ height: '100%' }}>
+            <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1632230088/ecom-portfolio/home-4.jpg'
+              style={{ objectFit: 'cover', height: '100%', width: '100%', filter: 'grayscale(100%)' }}
+            />
+          </Grid>
+          <Grid item xs={6} sx={{ height: '100%' }} p={6}>
+            <Grid container alignItems='center' >
+              <Typography variant='h2' component='h1' mb={6} align='center'>
+                EzeSneakers offers professionally restored shoes at the lowest prices
+              </Typography>
+              <Typography variant='h4' component='h2' mb={6} align='center'>
+                Our mission is to reduce the number of shoes thrown away
+              </Typography>
+              <Typography variant='h4' component='h2' align='center'>
+                We want to give sneakers a second life, without compromising on their quality
+              </Typography>
+            </Grid>
+            <Grid container alignItems='center' justifyContent='center' p={8}>
+              <NextLink passHref href='/sneakers'>
+                <Button variant='contained' size='large' sx={{ width: '173.08px' }}>
+                  show products
+                </Button>
+              </NextLink>
+              <div style={{ flexGrow: 0.15 }} />
+              <NextLink passHref href='/register'>
+                <Button variant='outlined' size='large' sx={{ width: '173.08px' }}>
+                  join us!
+                </Button>
+              </NextLink>
+            </Grid>
+          </Grid>
         </Grid>
-        <Carousel className={styles.carousel}>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {newSneakers.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {newSneakers.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {newSneakers.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-        </Carousel>
-        <Grid item xs={12}>
-          <Box my={4}>
-            <Typography variant='h4' component='h2'>
-              Summer
-            </Typography>
-          </Box>
-        </Grid>
-        <Carousel className={styles.carousel}>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {summerSneakers.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {summerSneakers.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {summerSneakers.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} name={sneaker.name} />)}
-          </Grid>
-        </Carousel>
-        <Grid item xs={12}>
-          <Box my={4}>
-            <Typography variant='h4' component='h2'>
-              Bestsellers
-            </Typography>
-          </Box>
-        </Grid>
-        <Carousel className={styles.carousel}>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {highestRated.slice(0, 4).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {highestRated.slice(4, 8).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
-          </Grid>
-          <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            {highestRated.slice(8, 12).map(sneaker => <ProductCard price={sneaker.price} name={sneaker.name} id={sneaker._id} key={sneaker._id} imgUrl={sneaker.imgUrl} />)}
-          </Grid>
-        </Carousel> */}
-      </Grid>
+      </main>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const { db } = await connectToDatabase()
-
-  const newSneakersData = await db.collection('products').aggregate([
-    { $sort: { addDate: -1 } },
-    { $limit: 12 }
-  ]).toArray()
-
-  const summerSneakersData = await db.collection('products').aggregate([
-    { $match: { tag: 'summer' } },
-    { $sort: { addDate: -1 } },
-    { $limit: 12 }
-  ]).toArray()
-
-  const highestRatedData = await db.collection('products').aggregate([
-    { $sort: { rating: 1 } },
-    { $limit: 12 }
-  ]).toArray()
-
-  const newSneakers = JSON.parse(JSON.stringify(newSneakersData))
-  const summerSneakers = JSON.parse(JSON.stringify(summerSneakersData))
-  const highestRated = JSON.parse(JSON.stringify(highestRatedData))
-
-  return {
-    props: {
-      newSneakers,
-      summerSneakers,
-      highestRated,
-    }
-  }
 }

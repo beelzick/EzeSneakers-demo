@@ -35,13 +35,15 @@ export default function MyApp(props) {
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <SessionProvider session={session}>
-                <Layout>
-                  <NextNprogress
-                    color='grey'
-                    options={{ showSpinner: false }}
-                  />
-                  <Component {...pageProps} />
-                </Layout>
+                <NextNprogress
+                  color='grey'
+                  options={{ showSpinner: false }}
+                />
+                {Component.name !== 'Home' ? (
+                  <Layout>
+                    <Component {...pageProps} />
+                  </Layout>
+                ) : <Component {...pageProps} />}
               </SessionProvider>
             </ThemeProvider>
           </StyledEngineProvider>

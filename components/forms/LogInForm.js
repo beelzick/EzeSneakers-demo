@@ -41,9 +41,6 @@ export default function LogInForm() {
     return (
         <>
             <Grid container direction='column' justifyContent='center' alignItems='center' className='w100'>
-                <Typography variant='h6' component='p'>
-                    EzeSneakers
-                </Typography>
                 <Typography variant='h4' component='h1'>
                     Log In
                 </Typography>

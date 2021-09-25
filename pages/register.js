@@ -16,9 +16,9 @@ export default function Register() {
 
     useEffect(() => {
         if (session) {
-            router.push('/')
+            router.back()
         }
-    }, [])
+    }, [session])
 
     if (!session) {
         return (
@@ -28,14 +28,11 @@ export default function Register() {
                     <Grid item xs={4}>
                         <Box className='h100'>
                             <Grid container direction='column' justifyContent='center' alignItems='center' className='h100' >
-                                <Typography variant='h6' component='p' align='center'>
-                                    EzeSneakers
-                                </Typography>
-                                <Grid container direction='column' alignContent='start' className='title-error-container'>
-                                    <Typography variant='h4' component='h1' align='center'>
+                                <Grid container direction='column' alignContent='start' >
+                                    <Typography variant='h4' component='h1' align='center' sx={{ width: '100%' }}>
                                         Become our member
                                     </Typography>
-                                    <Typography variant='caption' color='error'>
+                                    <Typography variant='caption' color='error' className='title-error-container'>
                                         {errorMessage}
                                     </Typography>
                                 </Grid>
