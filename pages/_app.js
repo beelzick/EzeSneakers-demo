@@ -39,11 +39,9 @@ export default function MyApp(props) {
                   color='grey'
                   options={{ showSpinner: false }}
                 />
-                {Component.name !== 'Home' ? (
-                  <Layout>
-                    <Component {...pageProps} />
-                  </Layout>
-                ) : <Component {...pageProps} />}
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
               </SessionProvider>
             </ThemeProvider>
           </StyledEngineProvider>
