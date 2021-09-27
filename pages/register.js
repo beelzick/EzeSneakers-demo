@@ -24,8 +24,8 @@ export default function Register() {
         return (
             <>
                 <Grid container className={styles.pageContainer}>
-                    <Grid item xs={4} />
-                    <Grid item xs={4}>
+                    <Grid item xs={2} md={3} lg={4} />
+                    <Grid item xs={8} md={6} lg={4}>
                         <Box className='h100'>
                             <Grid container direction='column' justifyContent='center' alignItems='center' className='h100' >
                                 <Grid container direction='column' alignContent='start' >
@@ -40,7 +40,7 @@ export default function Register() {
                             </Grid>
                         </Box>
                     </Grid>
-                    <Grid item xs={4} />
+                    <Grid item xs={2} md={3} lg={4} />
                 </Grid>
             </>
         )
@@ -48,12 +48,4 @@ export default function Register() {
         return <LoadingPage />
     }
 
-}
-
-export async function getServerSideProps(context) {
-    return {
-        props: {
-            session: await getSession(context)
-        },
-    }
 }

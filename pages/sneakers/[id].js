@@ -1,6 +1,6 @@
 import { connectToDatabase } from '../../lib/mongodb'
-import Head from 'next/head'
 import { ObjectId } from 'mongodb'
+import Head from 'next/head'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -46,8 +46,6 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
             }
         ]
     }
-
-
 
     const handleAddCart = () => {
         if (!selectedSize) {
@@ -105,7 +103,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                     </Grid>
                                     <Grid item xs={6}>
                                         <Box mt={1}>
-                                            <Typography variant='h4' component='h2' align='right'>
+                                            <Typography variant='h4' component='h3' align='right'>
                                                 {price} $
                                             </Typography>
                                         </Box>

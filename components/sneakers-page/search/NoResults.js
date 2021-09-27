@@ -16,7 +16,7 @@ import BoxSvg from '../../svg/BoxSvg'
 export default function NoResults() {
 
     return <Grid container direction='row'>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
             <Box mt={2}>
                 <Typography variant='h4' component='h2' gutterBottom>
                     Try another search?
@@ -73,7 +73,7 @@ export default function NoResults() {
                 </List>
             </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
             <Grid container alignItems='center' justifyContent='center'>
                 <BoxSvg />
             </Grid>

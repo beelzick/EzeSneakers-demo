@@ -7,7 +7,6 @@ import cartSlice from './slices/cartSlice'
 import selectedSizeSlice from './slices/selectedSizeSlice'
 import sizeErrorSlice from './slices/sizeErrorSlice'
 
-
 const reducers = combineReducers({
     loading: loadingReducer,
     loginDialog: loginDialogReducer,
@@ -15,7 +14,7 @@ const reducers = combineReducers({
     favorites: favoritesSlice,
     selectedSize: selectedSizeSlice,
     cart: cartSlice,
-    sizeError: sizeErrorSlice
+    sizeError: sizeErrorSlice,
 })
 
 export default reducers

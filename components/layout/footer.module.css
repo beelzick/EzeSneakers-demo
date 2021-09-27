@@ -1,7 +1,8 @@
 .foot {
     flex-shrink: 0;
-    height: 10vh;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
 }

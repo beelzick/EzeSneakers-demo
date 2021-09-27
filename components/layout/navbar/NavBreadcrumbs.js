@@ -1,19 +1,15 @@
 import styles from './navbar.module.css'
 import NextLink from 'next/link'
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
 import { Link, Breadcrumbs } from '@mui/material'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
-import LogInForm from '../../forms/LoginForm';
-import { selectOpen, dialogOpen, dialogClose } from '../../../redux/slices/loginDialogSlice'
-import { useSelector, useDispatch } from 'react-redux';
+import { dialogOpen, dialogClose } from '../../../redux/slices/loginDialogSlice'
+import { useDispatch } from 'react-redux';
 import { loadingStart, loadingStop } from '../../../redux/slices/loadingSlice'
 
 export default function NavBreadcrumbs() {
     const dispatch = useDispatch()
     const { data: session, status } = useSession()
-    const open = useSelector(selectOpen)
 
     useEffect(() => {
         if (status === 'authenticated') {
@@ -62,18 +58,6 @@ export default function NavBreadcrumbs() {
                 </Link>
             )}
         </Breadcrumbs>
-        <div className={styles.dialog}>
-            <Dialog
-                open={open}
-                onClose={() => dispatch(dialogClose())}
-                aria-labelledby="form-dialog-title"
-                maxWidth='sm'
-                fullWidth={true}
-            >
-                <DialogContent >
-                    <LogInForm />
-                </DialogContent>
-            </Dialog>
-        </div>
+
     </>
 }

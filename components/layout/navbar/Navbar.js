@@ -15,7 +15,6 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import SmallNav from './SmallNav'
 import Drawer from '@mui/material/Drawer'
 import { useEffect, useState } from 'react';
-import Hidden from '@mui/material/Hidden'
 import { useSession } from 'next-auth/react'
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from '../../../src/navbarMUIstyles';
@@ -26,16 +25,21 @@ import DisabledHeart from './DisabledHeart';
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../src/navbarHelpers';
 import SearchField from '../home-navbar/SearchField'
-
+import Box from '@mui/material/Box'
+import ShoppingCartBtn from './ShoppingCartBtn';
+import FavoritesBtn from './FavoritesBtn';
+import LoginDialog from './LoginDialog';
 
 export default function Navbar() {
     const dispatch = useDispatch()
     const classes = useStyles();
-    const { data: session, status } = useSession()
+    const { data: session } = useSession()
     const favoritesIds = useSelector(selectFavoritesIds)
     const cartItems = useSelector(selectCartItems)
+
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
     const [drawerState, setDrawerState] = useState(false);
 
     useEffect(() => {
@@ -82,7 +86,7 @@ export default function Navbar() {
         </div>
     );
 
-    const menuId = 'primary-search-account-menu';
+    const menuId = 'account-menu';
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -99,12 +103,11 @@ export default function Navbar() {
         </Menu>
     );
 
-    const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
         <Menu
             anchorEl={mobileMoreAnchorEl}
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            id={mobileMenuId}
+            id='menu-mobile'
             keepMounted
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMobileMenuOpen}
@@ -131,6 +134,7 @@ export default function Navbar() {
                     <p>Cart</p>
                 </MenuItem>
             </NextLink>
+
             {session && (
                 <MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
@@ -146,7 +150,8 @@ export default function Navbar() {
             )}
         </Menu>
     );
-    return <>
+
+    return (
         <div className={styles.navAll}>
             <SmallNav />
             <div className='grow'>
@@ -164,28 +169,14 @@ export default function Navbar() {
                         <Typography className={classes.title} variant="h6" noWrap>
                             EzeSneakers
                         </Typography>
-                        <div className='grow' />
-                        <div style={{flexGrow: 0.83}}/>
+                        <div style={{ flexGrow: 1.83 }} />
                         <NavLinks />
                         <div className='grow' />
                         <SearchField />
                         <div className={classes.sectionDesktop}>
-                            {session ? (<NextLink href='/favorites' passHref>
-                                <IconButton color='inherit' aria-label='favorites' size="large">
-                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
-                                        <FavoriteIcon />
-                                    </Badge>
-                                </IconButton>
-                            </NextLink>) : <DisabledHeart />}
-
-                            <NextLink href='/cart' passHref>
-                                <IconButton color='inherit' aria-label='shopping cart' size="large">
-                                    <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
-                                        <ShoppingCartIcon />
-                                    </Badge>
-                                </IconButton>
-                            </NextLink>
-                            {status === 'authenticated' && (
+                            {session ? (<FavoritesBtn favQty={favoritesIds.length} />) : <DisabledHeart />}
+                            <ShoppingCartBtn totalQty={totalQty(cartItems)} />
+                            {session && (
                                 <IconButton
                                     edge="end"
                                     aria-label="account of current user"
@@ -197,19 +188,23 @@ export default function Navbar() {
                                     <AccountCircle />
                                 </IconButton>
                             )}
+                        </div>
+                        {session ? (
+                            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                                <IconButton
+                                    aria-label="show more"
+                                    aria-controls='menu-mobile'
+                                    aria-haspopup="true"
+                                    onClick={handleMobileMenuOpen}
+                                    color="inherit"
+                                    size="large">
+                                    <MoreIcon />
+                                </IconButton>
+                            </Box>
+                        ) : (
+                            <Box sx={{ display: { md: 'none' } }}><ShoppingCartBtn totalQty={totalQty(cartItems)} /></Box>
+                        )}
 
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                                size="large">
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
                     </Toolbar>
                 </AppBar>
                 {renderMobileMenu}
@@ -217,7 +212,8 @@ export default function Navbar() {
                 <Drawer anchor={'left'} open={drawerState} onClose={toggleDrawer(false)}>
                     {list()}
                 </Drawer>
+                <LoginDialog />
             </div>
         </div>
-    </>;
+    )
 }

@@ -11,7 +11,7 @@ export default function FormInputDate({ name, control, label, errors }) {
             control={control}
             render={({ field: { onChange, value } }) => (
                 <DatePicker
-                    openTo="year"
+                    openTo='year'
                     disableFuture
                     views={['year', 'month', 'day']}
                     minDate={new Date('1900-01-01')}
