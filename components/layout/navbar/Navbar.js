@@ -169,7 +169,7 @@ export default function Navbar() {
                         <Typography className={classes.title} variant="h6" noWrap>
                             EzeSneakers
                         </Typography>
-                        <div style={{ flexGrow: 1.83 }} />
+                        <div style={{ flexGrow: 1.655 }} />
                         <NavLinks />
                         <div className='grow' />
                         <SearchField />

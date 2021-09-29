@@ -7,7 +7,8 @@ import styles from './sneakersPage.module.css'
 export default function SneakersNewPage({ sneakers, title }) {
     return (
         <main>
-            <Grid container className='page-container'>
+            <Grid container className='page-container'
+            >
                 <Box mb={4} className='w100'>
                     <Typography variant='h4' component='h1'>
                         {title}

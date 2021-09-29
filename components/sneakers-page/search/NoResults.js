@@ -11,10 +11,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import BoxSvg from '../../svg/BoxSvg'
+import SearchSvg from '../../svg/SearchSvg'
 
 export default function NoResults() {
-
     return <Grid container direction='row'>
         <Grid item xs={12} md={6}>
             <Box mt={2}>
@@ -75,7 +74,7 @@ export default function NoResults() {
         </Grid>
         <Grid item xs={12} md={6}>
             <Grid container alignItems='center' justifyContent='center'>
-                <BoxSvg />
+                <SearchSvg />
             </Grid>
         </Grid>
     </Grid>

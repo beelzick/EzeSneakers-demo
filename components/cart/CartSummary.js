@@ -11,7 +11,7 @@ import makeStyles from '@mui/styles/makeStyles';
 const useStyles = makeStyles((theme) => ({
     summaryContainer: {
         [theme.breakpoints.up('sm')]: {
-            paddingLeft: theme.spacing(2)
+            paddingLeft: theme.spacing(2),
         }
     }
 }))

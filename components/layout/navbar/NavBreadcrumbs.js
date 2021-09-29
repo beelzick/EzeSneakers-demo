@@ -29,7 +29,12 @@ export default function NavBreadcrumbs() {
 
     return <>
         <Breadcrumbs color='secondary' className={styles.links} sx={{ fontSize: '12px' }}>
-            <NextLink color="inherit" href='/' passHref>
+            <NextLink href='/about' passHref>
+                <Link color='secondary' underline='hover'>
+                    About
+                </Link>
+            </NextLink>
+            <NextLink href='/' passHref>
                 <Link color='secondary' underline='hover'>
                     Home
                 </Link>
@@ -46,7 +51,7 @@ export default function NavBreadcrumbs() {
                 </Link>)}
 
             {!session && (
-                <NextLink color="inherit" href='/register' passHref>
+                <NextLink href='/register' passHref>
                     <Link color='secondary' underline='hover' sx={{ marginRight: '13px' }}>
                         Register
                     </Link>

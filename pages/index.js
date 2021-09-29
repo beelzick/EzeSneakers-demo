@@ -1,23 +1,55 @@
 import Head from 'next/head'
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import NextLink from 'next/link'
-import CustomImage from '../components/custom-image/CustomImage'
-import Navbar from '../components/layout/navbar/Navbar'
-import styles from '../styles/index.module.css'
-import Image from 'next/image'
-import Grow from '@mui/material/Grow';
+import SwiperBanner from '../components/home/SwiperBanner'
+import { connectToDatabase } from '../lib/mongodb'
+import Section1 from '../components/home/sections/Section1'
+import Section2 from '../components/home/sections/Section2'
+import Section3 from '../components/home/sections/Section3'
+import Section4 from '../components/home/sections/Section4'
 
-export default function Home() {
+export default function Home({ featuredSneakers, summerSneakers }) {
   return (
     <>
       <Head>
         <title>Home Page</title>
       </Head>
+      <SwiperBanner />
+      <Grid container className='page-container'>
+        <Grid item xs={1} />
+        <Grid item xs={10}>
+          <Section1 />
+          <Section2 featuredSneakers={featuredSneakers} />
+          <Section3 />
+          <Section4 summerSneakers={summerSneakers} />
+        </Grid>
+        <Grid item xs={1} />
+      </Grid>
 
-      
     </>
   )
+}
+
+export async function getStaticProps() {
+  const { db } = await connectToDatabase()
+
+  const featuredSneakersData = await db.collection('products').aggregate([
+    { $match: { addDate: { $gte: new Date(2019, 1) } } },
+    { $sort: { addDate: -1 } },
+    { $limit: 15 }
+  ]).toArray()
+
+  const summerSneakersData = await db.collection('products').aggregate([
+    { $match: { tag: 'summer' } },
+    { $limit: 20 }
+  ]).toArray()
+
+  const summerSneakers = JSON.parse(JSON.stringify(summerSneakersData))
+
+  const featuredSneakers = JSON.parse(JSON.stringify(featuredSneakersData))
+  return {
+    props: {
+      featuredSneakers,
+      summerSneakers
+    }
+  }
 }

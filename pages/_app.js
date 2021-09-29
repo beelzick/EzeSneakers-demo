@@ -15,7 +15,11 @@ import LoadingReduxPersist from '../components/loadings/LoadingReduxPersist'
 import NextNprogress from 'nextjs-progressbar';
 import createEmotionCache from '../src/createEmotionCache';
 import { CacheProvider } from '@emotion/react';
-
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay'
 
 const clientSideEmotionCache = createEmotionCache();
 

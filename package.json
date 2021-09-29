@@ -24,6 +24,7 @@
     "bson-objectid": "^2.0.1",
     "date-fns": "^2.24.0",
     "dotenv": "^10.0.0",
+    "framer-motion": "^4.1.17",
     "mongodb": "^4.1.2",
     "next": "11.1.2",
     "next-auth": "^4.0.0-next.26",
@@ -35,11 +36,11 @@
     "react-loader-spinner": "^4.0.0",
     "react-material-ui-carousel": "^2.3.5",
     "react-redux": "^7.2.5",
-    "react-transition-group": "^4.4.2",
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reduxjs-toolkit-persist": "^7.0.7",
+    "swiper": "^7.0.6",
     "yup": "^0.32.9"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ import { selectCartItems, itemRemove } from '../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { totalPrice } from '../src/navbarHelpers'
 import CartSummary from '../components/cart/CartSummary'
-
+import EmptyCart from '../components/cart/EmptyCart'
 
 
 export default function Cart() {
@@ -45,7 +45,7 @@ export default function Cart() {
                                     />)
                                 })
                             })}
-                            {!cartItems[0] && <div>Your cart is empty</div>}
+                            {!cartItems[0] && <EmptyCart />}
                         </Grid>
                         <Grid item xs={12} sm={5} md={4} lg={3}>
                             <CartSummary subtotal={subtotal} />

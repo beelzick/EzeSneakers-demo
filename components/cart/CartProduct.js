@@ -18,7 +18,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import NextLink from 'next/link'
 import Image from 'next/image'
 import makeStyles from '@mui/styles/makeStyles';
-
+import { motion, AnimatePresence } from 'framer-motion'
 const useStyles = makeStyles((theme) => ({
     productContent: {
         [theme.breakpoints.up('md')]: {
@@ -64,7 +64,7 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
             <Grid container>
                 <Grid item xs={12} md={7} lg={6}>
                     <NextLink href={`/sneakers/${productId}`} passHref>
-                        <CardActionArea sx={{ borderRadius: '5px', width: 'fit-content' }}>
+                        <CardActionArea sx={{ borderRadius: '10px', width: 'fit-content' }}>
                             <Image
                                 src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_540/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'}
                                 width='540'
@@ -125,10 +125,6 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                     </Box>
                 </Grid>
             </Grid>
-
-            <Box >
-
-            </Box>
         </Grid>
     </>;
 }
