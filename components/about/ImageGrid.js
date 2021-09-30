@@ -27,6 +27,7 @@ export default function ImageGrid({ imgUrl }) {
             ref={ref}
         >
             <img src={imgUrl}
+                loading='lazy'
                 style={{ objectFit: 'cover', height: '100%', width: '100%', borderRadius: '10px', filter: 'grayscale(90%)' }}
             />
         </Grid>

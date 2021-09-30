@@ -10,12 +10,12 @@ import Box from '@mui/material/Box'
 export default function ChangePassword() {
     const router = useRouter()
     const { data: session } = useSession()
-    
+
     useEffect(() => {
         if (!session) {
             router.push('/')
         }
-    },[])
+    }, [])
 
     if (session) {
         return (
@@ -23,7 +23,7 @@ export default function ChangePassword() {
                 <Grid container className={styles.changePassword}>
                     <Grid item xs={4} />
                     <Grid item xs={4}>
-                        <Grid container direction='column' justifyContent='center' alignItems='center' className={styles.h100} >
+                        <Grid container direction='column' justifyContent='center' alignItems='center' className={styles.h - 100} >
                             <Typography variant='h6' component='p'>
                                 EzeSneakers
                             </Typography>

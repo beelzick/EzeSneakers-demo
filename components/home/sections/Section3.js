@@ -30,7 +30,7 @@ export default function Section3() {
                         animate={visible && { opacity: 1 }}
                         transition={{ duration: 0.5 }}
                         ref={ref}
-                        src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1138/v1632926840/ecom-portfolio/home-11.jpg'
+                        src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1138/v1632926840/ecom-portfolio/home-11.webp'
                         style={{ objectFit: 'contain', height: '90vh', width: '100%', borderRadius: '10px' }}
                     />
                 </Box>

@@ -58,7 +58,7 @@ export default function AddFavorites({ id }) {
                     endIcon={
                         heartDislike ? <IoMdHeartDislike /> : <IoMdHeart style={{ color: 'ef476f' }} />
                     }
-                    className='w100'
+                    className='w-100'
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onClick={handleRemoveClick}
@@ -73,7 +73,7 @@ export default function AddFavorites({ id }) {
                     color='primary'
                     endIcon={<IoMdHeartEmpty />}
                     onClick={handleAddClick}
-                    className='w100'
+                    className='w-100'
 
                 >
                     Add to favorites

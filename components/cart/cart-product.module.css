@@ -14,9 +14,6 @@
     min-width: 70px !important;
     margin-left: 10px !important;
 }
-.deleteIconContainer {
-    margin-left: auto;
-}
 
 .image {
     border-radius: 10px;
@@ -24,4 +21,9 @@
 
 .input > div {
     padding: 14px 30px 14px 12px !important;
+}
+
+.total {
+    border-top: 0.5px solid ;
+    border-color: -internal-light-dark(black, white);
 }

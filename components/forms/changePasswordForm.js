@@ -31,7 +31,7 @@ export default function ChangePasswordForm() {
     }
 
     return (
-        <form className='w100 h100'>
+        <form className='w-100 h-100'>
             <FormInputText name='newPassword' control={control} label='New Password' errors={errors} type='password' />
             <FormInputText name='cNewPassword' control={control} label='Confirm New Password' errors={errors} type='password' />
 

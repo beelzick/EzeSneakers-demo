@@ -39,7 +39,7 @@ export default function Register() {
     }
 
     return (
-        <form className='w100'>
+        <form className='w-100'>
 
             <FormInputText name='fName' control={control} label='First Name' errors={errors} />
             <FormInputText name='lName' control={control} label='Last Name ' errors={errors} />

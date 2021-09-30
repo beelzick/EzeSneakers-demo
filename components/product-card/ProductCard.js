@@ -57,7 +57,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
             <NextLink href={`/sneakers/${id}`} passHref>
                 <CardActionArea sx={{ borderRadius: '10px' }}>
                     <Image
-                        src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_839/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
+                        src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_839/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
                         alt={name}
                         title={name}
                         width='600'

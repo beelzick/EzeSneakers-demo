@@ -26,8 +26,8 @@ export default function Register() {
                 <Grid container className='page-container' >
                     <Grid item xs={2} md={3} lg={4} />
                     <Grid item xs={8} md={6} lg={4}>
-                        <Box className='h100'>
-                            <Grid container direction='column' justifyContent='center' alignItems='center' className='h100' >
+                        <Box className='h-100'>
+                            <Grid container direction='column' justifyContent='center' alignItems='center' className='h-100' >
                                 <Grid container direction='column' alignContent='start' >
                                     <Typography variant='h4' component='h1' align='center' sx={{ width: '100%' }}>
                                         Become our member

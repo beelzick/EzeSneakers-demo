@@ -18,7 +18,7 @@ export default function TypographyFade({ contentText, componentName, text, ...re
     return <Typography component={motion[componentName]}
         initial={{ opacity: 0 }}
         animate={visible && { opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
         ref={ref}
         {...rest}
     >

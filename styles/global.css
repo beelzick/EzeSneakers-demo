@@ -24,12 +24,12 @@
     flex-grow: 0.5;
 }
 
-.h100 {
+.h-100 {
     height: 100%
 
 }
 
-.w100 {
+.w-100 {
     width: 100%
 }
 
@@ -46,6 +46,7 @@
 .main {
     min-height:  81vh;
 }
+
 :root {
     --swiper-theme-color: white !important
 }

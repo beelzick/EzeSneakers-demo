@@ -23,7 +23,6 @@ export default function SwiperBanner() {
         container
         justifyContent='center'
         alignItems='center'
-        mb={3}
         sx={{ maxWidth: '100%', height: '44px', color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.075)', borderRadius: '8px' }}
         component={motion.div}
         ref={ref}
@@ -57,7 +56,7 @@ export default function SwiperBanner() {
                 <TextSlide text='The best restoring shoes company in Europe' />
             </SwiperSlide>
             <SwiperSlide>
-                <TextSlide text='70 days' />
+                <TextSlide text='70 days return' />
             </SwiperSlide>
         </Swiper>
     </Grid>

@@ -1,14 +1,10 @@
 import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import SwiperSneakers from '../SwiperSneakers'
 import NextLink from 'next/link'
-import { motion } from 'framer-motion'
-import useOnScreen from '../../useOnScreen';
-import { useEffect, useRef, useState } from 'react';
 import TypographyFade from '../../animated-components/TypographyFade'
 import ButtonFade from '../../animated-components/ButtonFade'
+
 export default function Section2({ featuredSneakers }) {
 
     return <section>

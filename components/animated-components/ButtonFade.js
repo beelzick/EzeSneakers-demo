@@ -19,7 +19,7 @@ export default function ButtonFade({ buttonText, ...rest }) {
     return <Button component={motion.button} {...rest} ref={ref}
         initial={{ opacity: 0 }}
         animate={visible && { opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.7 }}
     >
         {buttonText}
     </Button>

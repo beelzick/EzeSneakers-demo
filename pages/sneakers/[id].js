@@ -74,7 +74,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                     <Grid container>
                         <Grid item xs={12} md={7} >
                             <Box>
-                                <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg' className={styles.image}></img>
+                                <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp' className={styles.image}></img>
                             </Box>
                             <Box component='div' mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>
                                 <ShouldBuyText />
@@ -127,7 +127,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                             variant='contained'
                                             size='large'
                                             color='primary'
-                                            className='w100'
+                                            className='w-100'
                                             endIcon={<ShoppingCartIcon />}
                                             onClick={handleAddCart}
                                         >

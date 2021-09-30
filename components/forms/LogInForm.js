@@ -40,7 +40,7 @@ export default function LogInForm() {
 
     return (
         <>
-            <Grid container direction='column' justifyContent='center' alignItems='center' className='w100'>
+            <Grid container direction='column' justifyContent='center' alignItems='center' className='w-100'>
                 <Typography variant='h4' component='h1'>
                     Log In
                 </Typography>
@@ -49,7 +49,7 @@ export default function LogInForm() {
                         {errorMessage || ''}
                     </Typography>
                 </Grid>
-                <form className='w100 h100'>
+                <form className='w-100 h-100'>
                     <FormInputText name='email' control={control} label='Email' errors={errors} />
                     <FormInputText name='password' control={control} label='Password' errors={errors} type='password' />
 

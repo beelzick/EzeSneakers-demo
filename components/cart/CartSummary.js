@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { ImHome } from '@react-icons/all-files/im/ImHome'
 import { BiPackage } from '@react-icons/all-files/bi/BiPackage'
-import styles from '../../styles/cart.module.css'
+import styles from './cart-product.module.css'
 import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 import makeStyles from '@mui/styles/makeStyles';
 

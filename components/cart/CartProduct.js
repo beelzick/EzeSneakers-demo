@@ -19,6 +19,8 @@ import NextLink from 'next/link'
 import Image from 'next/image'
 import makeStyles from '@mui/styles/makeStyles';
 import { motion, AnimatePresence } from 'framer-motion'
+import Chip from '@mui/material/Chip'
+
 const useStyles = makeStyles((theme) => ({
     productContent: {
         [theme.breakpoints.up('md')]: {
@@ -66,7 +68,7 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                     <NextLink href={`/sneakers/${productId}`} passHref>
                         <CardActionArea sx={{ borderRadius: '10px', width: 'fit-content' }}>
                             <Image
-                                src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_540/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'}
+                                src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_540/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'}
                                 width='540'
                                 height='540'
                                 className={styles.image}
@@ -80,10 +82,10 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                             {name}
                         </Typography>
                     </NextLink>
-                    <Breadcrumbs aria-label='breadcrumb'>
-                        <Typography color='textPrimary' className={styles.breadcrumbs}>{sex}</Typography>
-                        {tag && <Typography color='textPrimary' className={styles.breadcrumbs}>{tag}</Typography>}
-                    </Breadcrumbs>
+                    <Box>
+                        <Chip color='primary' label={sex} size='small' sx={{ marginRight: '5px' }} />
+                        {tag && <Chip color='primary' label={tag} size='small' />}
+                    </Box>
                     <Typography variant='h6' component='h3' gutterBottom sx={{ fontWeight: 400 }}>
                         {price} $
                     </Typography>
