@@ -3,7 +3,9 @@ import { motion } from 'framer-motion'
 import useOnScreen from '../useOnScreen';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image'
-export default function ImageGrid({ imgUrl }) {
+import styles from './about.module.css'
+
+export default function ImageGrid({ imgUrl, width, height }) {
     const ref = useRef()
     const isVisible = useOnScreen(ref)
 
@@ -21,16 +23,21 @@ export default function ImageGrid({ imgUrl }) {
             item
             xs={12}
             md={6}
-            sx={{ height: '70vh' }}
+            sx={{ height: { md: '80vh', sx: '70vh' } }}
             initial={{ opacity: 0 }}
             animate={visible && { opacity: 1 }}
             transition={{ duration: 0.6 }}
             ref={ref}
         >
-            <img src={imgUrl}
-                loading='lazy'
-                style={{ objectFit: 'cover', height: '100%', width: '100%', borderRadius: '10px', }}
-            />
+            <div className={styles['image-container']}>
+                <Image
+                    src={imgUrl}
+                    width={width}
+                    height={height}
+                    objectFit='cover'
+                    layout='responsive'
+                />
+            </div>
         </Grid>
     )
 }

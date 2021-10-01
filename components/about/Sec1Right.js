@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import TypographyFade from '../animated-components/TypographyFade'
 export default function Sec1Right() {
 
-    return <Grid item xs={12} md={6} p={2} sx={{ height: { md: '84vh', } }} order={{ md: 2 }}
+    return <Grid item xs={12} md={6} p={2} sx={{ height: { md: '80vh', } }} order={{ md: 2 }}
     >
         <Grid container direction='column' alignItems='center' justifyContent='center' sx={{ height: '100%' }} >
             <div style={{ flexGrow: 0.5 }} />
