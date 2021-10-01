@@ -10,18 +10,27 @@ export default function SwiperImage() {
         autoplay={{ delay: 6000 }}
         navigation
         pagination={{ clickable: true }}
+        style={{ borderRadius: '10px' }}
     >
         <SwiperSlide>
-            <ImageContainer src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632234634/ecom-portfolio/home-5.webp' />
+            <ImageContainer
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000,q_100/v1633035797/ecom-portfolio/home-14.webp'
+            />
         </SwiperSlide>
         <SwiperSlide>
-            <ImageContainer src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1631996412/ecom-portfolio/home-1.webp' />
+            <ImageContainer
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1631996412/ecom-portfolio/home-1.webp'
+            />
         </SwiperSlide>
         <SwiperSlide>
-            <ImageContainer src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632911125/ecom-portfolio/home-9.webp' />
+            <ImageContainer
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632911125/ecom-portfolio/home-9.webp'
+            />
         </SwiperSlide>
         <SwiperSlide>
-            <ImageContainer src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632911351/ecom-portfolio/home-10.webp' />
+            <ImageContainer
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632911351/ecom-portfolio/home-10.webp'
+            />
         </SwiperSlide>
     </Swiper>
 }

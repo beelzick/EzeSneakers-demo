@@ -1,6 +1,6 @@
 .imageContainer {
     width: 100%;
-    max-height: 100%
+    max-height: 80vh
 }
 
 .imageContainer > div {
@@ -8,9 +8,6 @@
 }
 
 .image {
-    object-fit: cover !important;
-    width: 100% !important;
-    position: relative !important;
     height: unset !important;
-    max-height: 100vh !important;
+    max-height: 80vh !important;
 }

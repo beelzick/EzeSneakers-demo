@@ -1,0 +1,7 @@
+.sec-3-image-container > div {
+    max-height: 75vh
+}
+
+.sec-3-image {
+    border-radius: 10px;
+}

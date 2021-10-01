@@ -1,0 +1,24 @@
+.image-container {
+    max-height: 75vh
+}
+
+.image-container > div {
+    position: unset !important;
+}
+
+.image {
+    max-height: 75vh !important;
+}
+
+
+.image-mobile-container {
+    max-height: 90vh
+}
+
+.image-mobile-container > div {
+    position: unset !important;
+}
+
+.image-mobile {
+    max-height: 90vh !important;
+}

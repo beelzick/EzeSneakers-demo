@@ -23,7 +23,7 @@ export default function SwiperBanner() {
         container
         justifyContent='center'
         alignItems='center'
-        sx={{ maxWidth: '100%', height: '44px', color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.075)', borderRadius: '8px' }}
+        sx={{ maxWidth: '100%', height: '44px', color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.075)'}}
         component={motion.div}
         ref={ref}
         initial={{ opacity: 0 }}

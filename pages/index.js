@@ -15,14 +15,14 @@ export default function Home({ featuredSneakers, summerSneakers }) {
       </Head>
       <SwiperBanner />
       <Grid container className='page-container'>
-        <Grid item xs={0} md={1} />
-        <Grid item xs={12} md={10}>
+        <Grid item xs={0} lg={1} />
+        <Grid item xs={12} lg={10}>
           <Section1 />
           <Section2 featuredSneakers={featuredSneakers} />
           <Section3 />
           <Section4 summerSneakers={summerSneakers} />
         </Grid>
-        <Grid item xs={0} md={1} />
+        <Grid item xs={0} lg={1} />
       </Grid>
 
     </>
