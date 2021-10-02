@@ -6,8 +6,10 @@ import { useEffect } from 'react'
 import { dialogOpen, dialogClose } from '../../../redux/slices/loginDialogSlice'
 import { useDispatch } from 'react-redux';
 import { loadingStart, loadingStop } from '../../../redux/slices/loadingSlice'
+import { useSnackbar } from 'notistack'
 
 export default function NavBreadcrumbs() {
+    const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const { data: session, status } = useSession()
 
@@ -25,6 +27,9 @@ export default function NavBreadcrumbs() {
         dispatch(loadingStart())
         await signOut()
         dispatch(loadingStop())
+        enqueueSnackbar('Successfully logged out', {
+            variant: 'success'
+        })
     }
 
     return <>

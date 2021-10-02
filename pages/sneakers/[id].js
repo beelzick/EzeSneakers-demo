@@ -75,7 +75,9 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
     return (
         <>
             <Head>
-                <title>{name}</title>
+                <title>{`${name} | EzeSneakers`}</title>
+                <meta description={`${name} - this product is one of EzeSneakers restored shoes collection. 
+                Buy ${name} and enjoy saving our Planet by using restored shoes.`} />
             </Head>
             <Grid container className='page-container'>
                 <Grid item xl={2} />

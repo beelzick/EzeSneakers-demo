@@ -1,8 +1,14 @@
 import SneakersSearchPage from '../../components/sneakers-page/SneakersSearchPage'
 import { connectToDatabase } from '../../lib/mongodb'
+import Head from 'next/head'
 
 export default function QueryPage({ sneakers, q }) {
-    return <SneakersSearchPage sneakers={sneakers} q={q} title={`Results for "${q}"`} />
+    return <>
+        <Head>
+            <title>Search results for {q}</title>
+        </Head>
+        <SneakersSearchPage sneakers={sneakers} q={q} title={`Results for "${q}"`} />
+    </>
 }
 
 export const getStaticPaths = () => {

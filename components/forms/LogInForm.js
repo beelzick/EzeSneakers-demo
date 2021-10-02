@@ -11,8 +11,10 @@ import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 import { useState } from 'react'
 import { selectIsLoading } from '../../redux/slices/loadingSlice';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useSnackbar } from 'notistack'
 
 export default function LogInForm() {
+    const { enqueueSnackbar } = useSnackbar()
     const isLoading = useSelector(selectIsLoading)
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
@@ -31,7 +33,9 @@ export default function LogInForm() {
         })
         if (!status.error) {
             dispatch(loadingStop())
-            return
+            enqueueSnackbar('Successfully logged in', {
+                variant: 'success'
+            })
         } else {
             setErrorMessage(status.error)
             dispatch(loadingStop())

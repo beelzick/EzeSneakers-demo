@@ -11,7 +11,7 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>Home Page</title>
+                <title>About | EzeSneakers</title>
             </Head>
 
             <Grid container className='page-container'>

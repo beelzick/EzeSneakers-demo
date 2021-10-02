@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import LoadingPage from '../components/loadings/LoadingPage';
 import Box from '@mui/material/Box'
+import Head from 'next/head'
+
 export default function ChangePassword() {
     const router = useRouter()
     const { data: session } = useSession()
@@ -19,6 +21,9 @@ export default function ChangePassword() {
     if (session) {
         return (
             <>
+                <Head>
+                    <title>Change Password | EzeSneakers</title>
+                </Head>
                 <Grid container justifyContent='center' alignItems='center' sx={{ minHeight: '70vh' }}>
                     <Grid item xs={10} sm={7} md={6} lg={4} xl={4}>
                         <Grid container direction='column' justifyContent='center' alignItems='center' className='h-100' >

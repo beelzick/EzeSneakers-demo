@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import LoadingPage from '../components/loadings/LoadingPage';
 import { useSelector } from 'react-redux';
 import { selectErrorMessage } from '../redux/slices/registerErrorSlice';
-
+import Head from 'next/head'
 export default function Register() {
 
     const errorMessage = useSelector(selectErrorMessage)
@@ -22,6 +22,11 @@ export default function Register() {
     if (!session) {
         return (
             <>
+                <Head>
+                    <title>Register | EzeSneakers</title>
+                    <meta description='EzeSneakers offers professionally restored shoes at the lowest prices. 
+                    Become a member to benefit from all the possibilities of the website' />
+                </Head>
                 <Grid
                     container
                     className='page-container'

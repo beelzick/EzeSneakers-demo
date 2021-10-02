@@ -1,8 +1,15 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import SneakerPage from '../../components/sneakers-page/SneakersPage'
+import Head from 'next/head'
 
 export default function Summer({ sneakers }) {
-    return <SneakerPage sneakers={sneakers} title='Summer Collection' apiName='summer' />
+    return <>
+        <Head>
+            <title>Summer Collection | EzeSneakers</title>
+            <meta description='Professionally restored sneakers ideal for summer. Save our planet by buying restored shoes.' />
+        </Head>
+        <SneakerPage sneakers={sneakers} title='Summer Collection' apiName='summer' />
+    </>
 
 }
 

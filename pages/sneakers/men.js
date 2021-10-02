@@ -1,9 +1,15 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import SneakerPage from '../../components/sneakers-page/SneakersPage'
-
+import Head from 'next/head'
 
 export default function Men({ sneakers }) {
-    return <SneakerPage sneakers={sneakers} title='For Men' apiName='man' />
+    return <>
+        <Head>
+            <title>Men | EzeSneakers</title>
+            <meta description='Professionally restored sneakers for men. Save our planet by buying restored shoes.' />
+        </Head>
+        <SneakerPage sneakers={sneakers} title='For Men' apiName='man' />
+    </>
 }
 
 export async function getStaticProps() {

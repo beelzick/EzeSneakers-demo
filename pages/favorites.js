@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { selectFavorites } from '../redux/slices/favoritesSlice'
 import { useSelector } from 'react-redux'
 import SneakerNewPage from '../components/sneakers-page/SneakersNewPage'
+import Head from 'next/head'
 
 export default function Favorites() {
     const favorites = useSelector(selectFavorites)
@@ -17,11 +18,12 @@ export default function Favorites() {
         }
     }, [session, router])
 
-    if (session) {
-        return <SneakerNewPage sneakers={favorites} title='Favorites' />
-    } else {
-        return <LoadingPage />
-    }
+    return <>
+        <Head>
+            <title>Favorites | EzeSneakers</title>
+        </Head>
+        {session ? <SneakerNewPage sneakers={favorites} title='Favorites' /> : <LoadingPage />}
+    </>
 
 }
 

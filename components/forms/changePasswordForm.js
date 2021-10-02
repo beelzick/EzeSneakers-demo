@@ -13,6 +13,7 @@ export default function ChangePasswordForm() {
     const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const isLoading = useSelector(selectIsLoading)
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(changePasswordSchema)
     });

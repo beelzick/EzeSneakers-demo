@@ -11,7 +11,7 @@ export default function Home({ featuredSneakers, summerSneakers }) {
   return (
     <>
       <Head>
-        <title>Home Page</title>
+        <title>Home Page | EzeSneakers</title>
       </Head>
       <SwiperBanner />
       <Grid container className='page-container'>

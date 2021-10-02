@@ -1,10 +1,15 @@
-
 import { connectToDatabase } from '../../lib/mongodb'
-
 import SneakerPage from '../../components/sneakers-page/SneakersPage'
+import Head from 'next/head'
 
 export default function Women({ sneakers }) {
-    return <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' />
+    return <>
+        <Head>
+            <title>Women | EzeSneakers</title>
+            <meta description='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
+        </Head>
+        <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' />
+    </>
 }
 export async function getStaticProps() {
     const { db } = await connectToDatabase()

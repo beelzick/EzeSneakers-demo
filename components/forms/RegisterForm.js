@@ -17,8 +17,10 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
+import { useSnackbar } from 'notistack'
 
 export default function Register() {
+    const { enqueueSnackbar } = useSnackbar()
     const isLoading = useSelector(selectIsLoading)
     const router = useRouter()
     const dispatch = useDispatch()
@@ -44,6 +46,12 @@ export default function Register() {
             if (response.data.acknowledged) {
                 router.push('/')
                 dispatch(loadingStop())
+                enqueueSnackbar('Successfully registered', {
+                    variant: 'success'
+                })
+                enqueueSnackbar('Log in to use features for members', {
+                    variant: 'success'
+                })
             }
         } catch (error) {
             dispatch(pushErrorMessage(error.response.data.message))

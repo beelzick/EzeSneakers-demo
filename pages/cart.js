@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { totalPrice } from '../src/navbarHelpers'
 import CartSummary from '../components/cart/CartSummary'
 import EmptyCart from '../components/cart/EmptyCart'
-
+import Head from 'next/head'
 
 export default function Cart() {
     const dispatch = useDispatch()
@@ -20,6 +20,9 @@ export default function Cart() {
     })
 
     return <>
+        <Head>
+            <title>Your Cart | EzeSneakers</title>
+        </Head>
         <Grid container className='page-container'>
             <Grid container>
                 <Grid item xs={0} lg={1} xl={2}></Grid>

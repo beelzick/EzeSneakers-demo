@@ -1,8 +1,15 @@
 import { connectToDatabase } from '../../lib/mongodb'
 import SneakersNewPage from '../../components/sneakers-page/SneakersNewPage'
+import Head from 'next/head'
 
 export default function New({ sneakers }) {
-    return <SneakersNewPage sneakers={sneakers} title='New Sneakers' />
+    return <>
+        <Head>
+            <title>New Products| EzeSneakers</title>
+            <meta description='Professionally restored sneakers, new products. Save our planet by buying restored shoes.' />
+        </Head>
+        <SneakersNewPage sneakers={sneakers} title='New Sneakers' />
+    </>
 }
 
 export async function getStaticProps() {
