@@ -10,7 +10,6 @@ export default function Summer({ sneakers }) {
         </Head>
         <SneakerPage sneakers={sneakers} title='Summer Collection' apiName='summer' />
     </>
-
 }
 
 export async function getStaticProps() {

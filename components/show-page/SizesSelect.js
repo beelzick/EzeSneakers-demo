@@ -1,4 +1,4 @@
-import styles from './sizeRadio.module.css'
+import styles from './size-radio.module.css'
 import { useState } from 'react'
 import SizeRadio from './SizeRadio'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,7 +23,7 @@ export default function SizesSelect({ sizes }) {
     }
 
     return (
-        <div className={styles.radioToolbar} onChange={handleSizeChange} value={value} style={sizeError ? style : null}>
+        <div className={styles['radio-toolbar']} onChange={handleSizeChange} value={value} style={sizeError ? style : null}>
             {sizes.map(size => <SizeRadio key={size._id} size={size.size} qty={size.qty} />)}
         </div>
     )
