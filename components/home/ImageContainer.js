@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './home.module.css'
 
-export default function ImageContainer({ src }) {
+export default function ImageContainer({ src, alt }) {
     return <div className={styles['image-container']}>
         <Image
             src={src}
@@ -11,6 +11,8 @@ export default function ImageContainer({ src }) {
             objectFit='cover'
             quality={100}
             className={styles.image}
+            alt={alt}
+            title={alt}
         />
     </div>
 

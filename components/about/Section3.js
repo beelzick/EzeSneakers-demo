@@ -10,6 +10,7 @@ export default function Section3() {
                 imgUrl='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1405/v1632774416/ecom-portfolio/home-8.webp'
                 height={1405}
                 width={2104}
+                alt='A box of discarded shoes'
             />
         </Grid>
     </section>

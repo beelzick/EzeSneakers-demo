@@ -1,6 +1,7 @@
 .radioToolbar {
   margin-top: 10px;
   width: 100%;
+  padding-right: 2px;
 }
 
 .radioToolbar input[type="radio"] {

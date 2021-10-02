@@ -19,7 +19,7 @@ export default function Cart() {
         }
     })
 
-    return (
+    return <>
         <Grid container className='page-container'>
             <Grid container>
                 <Grid item xs={0} lg={1} xl={2}></Grid>
@@ -55,5 +55,5 @@ export default function Cart() {
                 <Grid item xs={0} lg={1} xl={2} />
             </Grid>
         </Grid>
-    )
+    </>
 }

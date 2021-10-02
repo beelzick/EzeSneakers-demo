@@ -15,6 +15,7 @@ import LoadingReduxPersist from '../components/loadings/LoadingReduxPersist'
 import NextNprogress from 'nextjs-progressbar';
 import createEmotionCache from '../src/createEmotionCache';
 import { CacheProvider } from '@emotion/react';
+import { SnackbarProvider } from 'notistack'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -37,16 +38,18 @@ export default function MyApp(props) {
         <PersistGate loading={<LoadingReduxPersist />} persistor={persistor}>
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <SessionProvider session={session}>
-                <NextNprogress
-                  color='grey'
-                  options={{ showSpinner: false }}
-                />
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </SessionProvider>
+              <SnackbarProvider maxSnack={3}>
+                <CssBaseline />
+                <SessionProvider session={session}>
+                  <NextNprogress
+                    color='grey'
+                    options={{ showSpinner: false }}
+                  />
+                  <Layout>
+                    <Component {...pageProps} />
+                  </Layout>
+                </SessionProvider>
+              </SnackbarProvider>
             </ThemeProvider>
           </StyledEngineProvider>
         </PersistGate>
@@ -54,6 +57,7 @@ export default function MyApp(props) {
     </CacheProvider>
   );
 }
+
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,

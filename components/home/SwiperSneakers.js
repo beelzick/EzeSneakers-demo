@@ -62,11 +62,10 @@ export default function SwiperSneakers({ sneakers, title }) {
                     }}
                 >
                     {sneakers.map(sneaker => (
-                        <SwiperSlide>
+                        <SwiperSlide key={sneaker._id}>
                             <ProductCard
                                 name={sneaker.name}
                                 id={sneaker._id}
-                                key={sneaker._id}
                                 imgUrl={sneaker.imgUrl}
                                 price={sneaker.price}
                             />

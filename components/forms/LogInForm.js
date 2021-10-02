@@ -16,7 +16,7 @@ export default function LogInForm() {
     const isLoading = useSelector(selectIsLoading)
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
-    const { handleSubmit, control, formState: { errors } } = useForm({
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
 
@@ -50,8 +50,8 @@ export default function LogInForm() {
                     </Typography>
                 </Grid>
                 <form className='w-100 h-100'>
-                    <FormInputText name='email' control={control} label='Email' errors={errors} />
-                    <FormInputText name='password' control={control} label='Password' errors={errors} type='password' />
+                    <FormInputText name='email' label='Email' errors={errors} register={register} />
+                    <FormInputText name='password' label='Password' errors={errors} type='password' register={register} />
 
                     <Box my={1}>
                         <LoadingButton

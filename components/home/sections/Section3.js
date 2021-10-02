@@ -50,6 +50,7 @@ export default function Section3() {
                             objectFit='cover'
                             quality={100}
                             className={styles['sec-3-image']}
+                            alt='Person mending a sneaker on the grass'
                         />
                     </motion.div>
                 </Box>
@@ -57,7 +58,7 @@ export default function Section3() {
             <Grid item xs={12} lg={5} p={2} pb={4} order={{ lg: 2 }} >
                 <Grid container direction='column' justifyContent='center' alignItems='center' sx={{ height: '100%' }} >
                     <ThemeProvider theme={theme}>
-                        <TypographyFade contentText='Check out new Summer Collection' componentName='h2' variant='h2' align='center' my={3} />
+                        <TypographyFade contentText='Check out the new Summer Collection' componentName='h2' variant='h2' align='center' my={3} />
                     </ThemeProvider>
                     <NextLink href='/sneakers/summer' passHref>
                         <ButtonFade buttonText='Summer Collection' size='large' variant='contained' />

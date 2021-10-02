@@ -1,4 +1,3 @@
-import useStyles from '../../../src/navbarMUIstyles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
@@ -46,7 +45,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchField() {
     const [query, setQuery] = useState('')
-    const classes = useStyles();
     const router = useRouter()
 
     const handleChange = (event) => {
@@ -58,7 +56,6 @@ export default function SearchField() {
             router.push(`/search/${query}`)
             setQuery('')
         }
-
     }
 
     return <Search>

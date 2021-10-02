@@ -15,7 +15,7 @@ export default function Favorites() {
         if (!session) {
             router.push('/')
         }
-    }, [])
+    }, [session, router])
 
     if (session) {
         return <SneakerNewPage sneakers={favorites} title='Favorites' />

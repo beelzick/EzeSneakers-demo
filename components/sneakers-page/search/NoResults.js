@@ -25,7 +25,7 @@ export default function NoResults() {
             <Box my={8}>
                 <Box mb={2}>
                     <Typography variant='h5' component='h2'>
-                        If you still can't find your Sneaker we suggest
+                        If you still can&apos;t find your Sneaker we suggest
                     </Typography>
                 </Box>
                 <List>

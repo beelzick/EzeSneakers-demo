@@ -5,10 +5,10 @@ import LinkedIn from '@mui/icons-material/LinkedIn';
 import styles from './navbar.module.css'
 
 export default function SmallNav() {
-    return <div className={styles.smBar}>
+    return <div className={styles['small-nav']}>
         <div>
             <IconButton size='small' color='secondary'>
-                <GitHub fontSize='small' sx={{fontSize: '20px'}} />
+                <GitHub fontSize='small' sx={{ fontSize: '20px' }} />
             </IconButton>
             <IconButton size='small' color='secondary'>
                 <LinkedIn />

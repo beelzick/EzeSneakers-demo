@@ -2,7 +2,6 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Breadcrumbs from '@mui/material/Breadcrumbs'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -18,10 +17,11 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import NextLink from 'next/link'
 import Image from 'next/image'
 import makeStyles from '@mui/styles/makeStyles';
-import { motion, AnimatePresence } from 'framer-motion'
 import Chip from '@mui/material/Chip'
 
+
 const useStyles = makeStyles((theme) => ({
+
     productContent: {
         [theme.breakpoints.up('md')]: {
             paddingLeft: theme.spacing(2)
@@ -72,6 +72,8 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                                 width='540'
                                 height='540'
                                 className={styles.image}
+                                alt={name}
+                                title={name}
                             />
                         </CardActionArea>
                     </NextLink>

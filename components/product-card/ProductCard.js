@@ -14,9 +14,10 @@ import { selectFavoritesIds } from '../../redux/slices/favoritesSlice';
 import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './product-card.module.css'
-
+import { useSnackbar } from 'notistack'
 
 export default function ProductCard({ imgUrl, id, name, price }) {
+    const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const favoritesIds = useSelector(selectFavoritesIds)
     const [checked, setChecked] = useState(false)
@@ -28,7 +29,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                 setChecked(true)
             }
         })
-    }, [favoritesIds])
+    }, [favoritesIds, id])
 
     const handleChange = async (event) => {
         const reqData = {
@@ -37,12 +38,20 @@ export default function ProductCard({ imgUrl, id, name, price }) {
         const { checked } = event.target
         if (checked) {
             const response = await axios.post('/api/user/favorites', reqData)
-            response.data.sucess && (dispatch(fetchFavorites()))
-
-
+            if (response.data.sucess) {
+                dispatch(fetchFavorites())
+                enqueueSnackbar('Added to favorites', {
+                    variant: 'success'
+                })
+            }
         } else {
             const response = await axios.delete('/api/user/favorites', { data: reqData })
-            response.data.sucess && (dispatch(fetchFavorites()))
+            if (response.data.sucess) {
+                dispatch(fetchFavorites())
+                enqueueSnackbar('Removed from favorites', {
+                    variant: 'success'
+                })
+            }
         }
     }
 

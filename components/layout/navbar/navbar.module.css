@@ -1,13 +1,9 @@
-.smBar {
+.small-nav {
     padding: 0 24px;
     display: flex;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.849);
-    max-height: 26px;
-}
-
-.topMargin {
-    height: 32px;
+    height: 26px;
 }
 
 .dialog {

@@ -11,12 +11,25 @@ import { pushErrorMessage, cleanErrorMessage } from '../../redux/slices/register
 import { useRouter } from 'next/router';
 import { loadingStart, loadingStop } from '../../redux/slices/loadingSlice'
 import { selectIsLoading } from '../../redux/slices/loadingSlice';
+import { useState } from 'react';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
 
 export default function Register() {
     const isLoading = useSelector(selectIsLoading)
     const router = useRouter()
     const dispatch = useDispatch()
-    const { handleSubmit, control, formState: { errors } } = useForm({
+
+    const [showPassword, setShowPassword] = useState(false)
+
+    const handleClickShowPassword = () => {
+        setShowPassword(prevValue => !prevValue)
+    }
+
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(registerSchema)
     });
 
@@ -40,12 +53,30 @@ export default function Register() {
 
     return (
         <form className='w-100'>
+            <FormInputText name='fName' label='First Name' errors={errors} register={register} />
+            <FormInputText name='lName' label='Last Name ' errors={errors} register={register} />
+            <FormInputText name='email' label='Email' type='email' errors={errors} register={register} />
+            <Box pb={3}>
+                <TextField
+                    name='password'
+                    error={errors.password && true}
+                    helperText={errors.password?.message}
+                    {...register('password')}
+                    label='Password'
+                    InputProps={{
+                        endAdornment: <InputAdornment position='end'>
+                            <IconButton
+                                onClick={handleClickShowPassword}
+                            >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        </InputAdornment>
+                    }}
+                    type={showPassword ? 'text' : 'password'}
+                    fullWidth
+                />
+            </Box>
 
-            <FormInputText name='fName' control={control} label='First Name' errors={errors} />
-            <FormInputText name='lName' control={control} label='Last Name ' errors={errors} />
-            <FormInputText name='email' control={control} label='Email' errors={errors} />
-            <FormInputText name='cEmail' control={control} label='Confirm Email' errors={errors} />
-            <FormInputText name='password' control={control} label='Password' errors={errors} type='password' />
             <FormInputDate name='birthDate' control={control} label='Birth Date' errors={errors} />
 
             <Box my={4}>
@@ -61,6 +92,6 @@ export default function Register() {
                     register
                 </LoadingButton>
             </Box>
-        </form>
+        </form >
     )
 }

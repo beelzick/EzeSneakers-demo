@@ -68,7 +68,7 @@ export default function CartSummary({ subtotal }) {
                 Free delivery <strong>from 100 $</strong>
             </Typography>
             <Box mt={2.5}>
-                <Button type='button' variant='contained' size='large' color='primary' className={styles.buyButton}>
+                <Button fullWidth type='button' variant='contained' size='large' color='primary'>
                     Buy
                 </Button>
             </Box>

@@ -15,7 +15,7 @@ export default function NavBreadcrumbs() {
         if (status === 'authenticated') {
             dispatch(dialogClose())
         }
-    }, [status])
+    }, [status, dispatch])
 
     if (status === 'loading') {
         return null

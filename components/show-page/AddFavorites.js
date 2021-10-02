@@ -9,8 +9,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { fetchFavorites } from '../../redux/slices/favoritesSlice';
+import { useSnackbar } from 'notistack'
 
 export default function AddFavorites({ id }) {
+    const { enqueueSnackbar } = useSnackbar()
     const { data: session } = useSession()
     const favoritesIds = useSelector(selectFavoritesIds)
     const [checked, setChecked] = useState(false)
@@ -26,18 +28,29 @@ export default function AddFavorites({ id }) {
                 setChecked(true)
             }
         })
-    }, [favoritesIds])
+    }, [favoritesIds, id])
 
 
     const handleAddClick = async () => {
         setChecked(true)
         const response = await axios.post('/api/user/favorites', reqData)
-        response.data.sucess && (dispatch(fetchFavorites()))
+        if (response.data.sucess) {
+            dispatch(fetchFavorites())
+            enqueueSnackbar('Added to favorites', {
+                variant: 'success'
+            })
+        }
     }
+
     const handleRemoveClick = async () => {
         setChecked(false)
         const response = await axios.delete('/api/user/favorites', { data: reqData })
-        response.data.sucess && (dispatch(fetchFavorites()))
+        if (response.data.sucess) {
+            dispatch(fetchFavorites())
+            enqueueSnackbar('Removed from favorites', {
+                variant: 'success'
+            })
+        }
     }
 
     const handleMouseEnter = () => {

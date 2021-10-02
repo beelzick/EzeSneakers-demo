@@ -10,6 +10,7 @@ export default function Section2() {
                 imgUrl='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_2266/v1632773761/ecom-portfolio/home-7.webp'
                 width={1813}
                 height={2266}
+                alt='A pair of restored sneakers'
             />
         </Grid>
     </section>

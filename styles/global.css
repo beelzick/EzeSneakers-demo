@@ -43,9 +43,10 @@
     text-align: inherit;
 }
 
-.main {
-    min-height:  81vh;
+.show-page-img {
+    border-radius: 10px;
 }
+
 
 :root {
     --swiper-theme-color: white !important

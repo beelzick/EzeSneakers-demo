@@ -1,10 +1,7 @@
 import Image from 'next/image'
 import styles from './home.module.css'
 
-export default function ImageContainer({ src }) {
-    // return <img src={src}
-    //     style={{ objectFit: 'cover', height: '100%', width: '100%', borderRadius: '10px', maxHeight: '90vh' }}
-    // />
+export default function ImageContainer({ src, alt }) {
     return <div className={styles['image-mobile-container']}>
         <Image
             src={src}
@@ -14,6 +11,8 @@ export default function ImageContainer({ src }) {
             objectFit='cover'
             quality={100}
             className={styles['image-mobile']}
+            alt={alt}
+            title={alt}
         />
     </div>
 

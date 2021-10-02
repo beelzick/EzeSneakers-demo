@@ -1,13 +1,12 @@
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import BoxSvg from '../svg/BoxSvg'
 
 export default function EmptyCart() {
     return <Grid container direction='column' alignItems='center'>
-        <Box mb={3}>
+        <Grid container justifyContent='center' mb={3} >
             <BoxSvg />
-        </Box>
+        </Grid>
         <Typography variant='h4' component='h2' align='center' mb={1.5} >
             Your shopping cart is empty
         </Typography>

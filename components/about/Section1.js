@@ -23,6 +23,7 @@ export default function Section1() {
                         layout='responsive'
                         objectFit='cover'
                         quality={100}
+                        alt='Lying sneakers on the floor'
                     />
                 </div>
             </Grid>

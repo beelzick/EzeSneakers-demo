@@ -9,9 +9,8 @@ let theme = createTheme()
 theme = responsiveFontSizes(theme)
 
 export default function Section2({ featuredSneakers }) {
-    // 48
     return <section>
-        <Grid container mt={6} sx={{ marginTop: { xs: '48px', lg: '82px' } }}>
+        <Grid container mt={6} sx={{ marginTop: { xs: '48px', lg: '78px' } }}>
             <Grid container direction='column'>
                 <ThemeProvider theme={theme}>
                     <TypographyFade

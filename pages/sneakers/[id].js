@@ -6,7 +6,6 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
-import styles from '../../components/show-page/showPage.module.css'
 import SizesSelect from '../../components/show-page/SizesSelect'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShouldBuyText from '../../components/show-page/ShouldBuyText'
@@ -19,8 +18,11 @@ import { sizeExists, UpdateData } from '../../src/showPageHelpers'
 import ObjectID from 'bson-objectid'
 import StyledRating from '../../components/show-page/StyledRating'
 import AddFavorites from '../../components/show-page/AddFavorites'
+import { useSnackbar } from 'notistack'
+import Image from 'next/image'
 
 export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
+    const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const selectedSize = useSelector(selectSize)
     const sizeError = useSelector(selectSizeError)
@@ -28,7 +30,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
 
     useEffect(() => {
         dispatch(setSize(null))
-    }, [])
+    }, [dispatch])
 
     const item = {
         _id,
@@ -54,12 +56,19 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
 
         if (cartItem && sizeExists(selectedSize, cartItem.selectedSizes)) {
             dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeExists()))
-
+            enqueueSnackbar('Added to cart', {
+                variant: 'success'
+            })
         } else if (cartItem && !sizeExists(selectedSize, cartItem.selectedSizes)) {
             dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeNotExists()))
-
+            enqueueSnackbar('Added to cart', {
+                variant: 'success'
+            })
         } else {
             dispatch(itemAdd(item))
+            enqueueSnackbar('Added to cart', {
+                variant: 'success'
+            })
         }
     }
 
@@ -74,7 +83,14 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                     <Grid container>
                         <Grid item xs={12} md={7} >
                             <Box>
-                                <img src='https://res.cloudinary.com/dfvpybkta/image/upload/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp' className={styles.image}></img>
+                                <Image
+                                    src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1411,q_100/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
+                                    width={1411}
+                                    height={1411}
+                                    alt={name}
+                                    title={name}
+                                    className='show-page-img'
+                                />
                             </Box>
                             <Box component='div' mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>
                                 <ShouldBuyText />

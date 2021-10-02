@@ -1,4 +1,3 @@
-import styles from '../styles/login.module.css'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import ChangePasswordForm from '../components/forms/ChangePasswordForm';
@@ -15,15 +14,14 @@ export default function ChangePassword() {
         if (!session) {
             router.push('/')
         }
-    }, [])
+    }, [session, router])
 
     if (session) {
         return (
             <>
-                <Grid container className={styles.changePassword}>
-                    <Grid item xs={4} />
-                    <Grid item xs={4}>
-                        <Grid container direction='column' justifyContent='center' alignItems='center' className={styles.h - 100} >
+                <Grid container justifyContent='center' alignItems='center' sx={{ minHeight: '70vh' }}>
+                    <Grid item xs={10} sm={7} md={6} lg={4} xl={4}>
+                        <Grid container direction='column' justifyContent='center' alignItems='center' className='h-100' >
                             <Typography variant='h6' component='p'>
                                 EzeSneakers
                             </Typography>
@@ -35,7 +33,6 @@ export default function ChangePassword() {
                             <ChangePasswordForm />
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} />
                 </Grid>
             </>
         )

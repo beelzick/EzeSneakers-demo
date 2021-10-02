@@ -1,4 +1,4 @@
-import styles from './footer.module.css'
+import styles from './layout.module.css'
 
 export default function Footer() {
     return <footer className={styles.foot}>

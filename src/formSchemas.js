@@ -13,19 +13,13 @@ export const registerSchema = yup.object().shape({
         .min(6, 'Password must be at least 6 characters')
         .max(40, 'Password must not exceed 40 characters'),
     email: yup
-        .string('This field must contain only letters')
+        .string('Invalid email')
         .required('This field is required')
         .email('Invalid email'),
-    cEmail: yup
-        .string('This field must contain only letters')
-        .required('This field is required')
-        .email('Invalid email')
-        .oneOf([yup.ref('email'), null], 'Emails don\'t match'),
     birthDate: yup
         .date('Invalid date')
         .default(() => new Date(2000, 0, 1))
         .required('This field is required')
-
 })
 
 export const loginSchema = yup.object().shape({

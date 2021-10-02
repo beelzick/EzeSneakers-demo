@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image'
 import styles from './about.module.css'
 
-export default function ImageGrid({ imgUrl, width, height }) {
+export default function ImageGrid({ imgUrl, width, height, alt }) {
     const ref = useRef()
     const isVisible = useOnScreen(ref)
 
@@ -36,6 +36,7 @@ export default function ImageGrid({ imgUrl, width, height }) {
                     height={height}
                     objectFit='cover'
                     layout='responsive'
+                    alt={alt}
                 />
             </div>
         </Grid>

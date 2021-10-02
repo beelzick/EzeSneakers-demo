@@ -1,4 +1,3 @@
-import styles from './navbar.module.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -24,7 +23,7 @@ import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favori
 import DisabledHeart from './DisabledHeart';
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../src/navbarHelpers';
-import SearchField from '../home-navbar/SearchField'
+import SearchField from './SearchField'
 import Box from '@mui/material/Box'
 import ShoppingCartBtn from './ShoppingCartBtn';
 import FavoritesBtn from './FavoritesBtn';
@@ -46,7 +45,7 @@ export default function Navbar() {
         if (session) {
             dispatch(fetchFavorites())
         }
-    }, [session])
+    }, [session, dispatch])
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -152,9 +151,9 @@ export default function Navbar() {
     );
 
     return (
-        <div className={styles.navAll}>
+        <>
             <SmallNav />
-            <div className='grow'>
+            <div>
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton
@@ -214,6 +213,6 @@ export default function Navbar() {
                 </Drawer>
                 <LoginDialog />
             </div>
-        </div>
+        </>
     )
 }
