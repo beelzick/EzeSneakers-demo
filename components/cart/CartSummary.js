@@ -7,7 +7,8 @@ import { BiPackage } from '@react-icons/all-files/bi/BiPackage'
 import styles from './cart-product.module.css'
 import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 import makeStyles from '@mui/styles/makeStyles';
-
+import { useDispatch } from 'react-redux'
+import { demoDialogOpen } from '../../redux/slices/demoDialogSlice';
 const useStyles = makeStyles((theme) => ({
     summaryContainer: {
         [theme.breakpoints.up('sm')]: {
@@ -20,6 +21,7 @@ const weight400 = { fontWeight: 400 }
 
 export default function CartSummary({ subtotal }) {
     const classes = useStyles()
+    const dispatch = useDispatch()
 
     return <Grid container className={classes.summaryContainer}>
         <Grid item xs={12}>
@@ -68,7 +70,10 @@ export default function CartSummary({ subtotal }) {
                 Free delivery <strong>from 100 $</strong>
             </Typography>
             <Box mt={2.5}>
-                <Button fullWidth type='button' variant='contained' size='large' color='primary'>
+                <Button
+                    fullWidth type='button' variant='contained' size='large' color='primary'
+                    onClick={() => dispatch(demoDialogOpen())}
+                >
                     Buy
                 </Button>
             </Box>
@@ -93,5 +98,5 @@ export default function CartSummary({ subtotal }) {
             sx={{ display: { xs: 'none', sm: 'block' } }}
         >
         </Grid>
-    </Grid >
+    </Grid>
 }

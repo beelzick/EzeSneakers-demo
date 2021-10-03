@@ -59,7 +59,6 @@ export default function DrawerList() {
                         (
                             <Button
                                 variant='contained'
-                                size='small'
                                 sx={{ width: '210px' }}
                                 onClick={() => dispatch(dialogOpen())}
                             >
@@ -69,7 +68,6 @@ export default function DrawerList() {
                         : (
                             <Button
                                 variant='contained'
-                                size='small'
                                 sx={{ width: '210px' }}
                                 onClick={() => signOut()}
                             >
@@ -78,7 +76,7 @@ export default function DrawerList() {
                         )}
                 </Box>
                 {!session && <NextLink passHref href='/register'>
-                    <Button variant='outlined' size='small' sx={{ width: '210px' }}>
+                    <Button variant='outlined' sx={{ width: '210px' }}>
                         Register
                     </Button>
                 </NextLink>}

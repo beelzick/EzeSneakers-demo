@@ -7,7 +7,7 @@ import { totalPrice } from '../src/navbarHelpers'
 import CartSummary from '../components/cart/CartSummary'
 import EmptyCart from '../components/cart/EmptyCart'
 import Head from 'next/head'
-
+import DemoDialog from '../components/cart/DemoDialog'
 export default function Cart() {
     const dispatch = useDispatch()
     const cartItems = useSelector(selectCartItems)
@@ -58,5 +58,6 @@ export default function Cart() {
                 <Grid item xs={0} lg={1} xl={2} />
             </Grid>
         </Grid>
+        <DemoDialog />
     </>
 }

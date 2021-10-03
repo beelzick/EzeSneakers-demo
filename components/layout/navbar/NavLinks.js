@@ -5,7 +5,7 @@ import styles from './navbar.module.css'
 
 export default function NavLink() {
     return (
-        <Box className={styles.navLinks}>
+        <Box className={styles['nav-links']}>
             <NextLink href='/sneakers/men' passHref>
                 <Button size='large' color='inherit'>men</Button>
             </NextLink>

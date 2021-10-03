@@ -28,6 +28,7 @@ import Box from '@mui/material/Box'
 import ShoppingCartBtn from './ShoppingCartBtn';
 import FavoritesBtn from './FavoritesBtn';
 import LoginDialog from './LoginDialog';
+import styles from './navbar.module.css'
 
 export default function Navbar() {
     const dispatch = useDispatch()
@@ -77,7 +78,7 @@ export default function Navbar() {
     const list = () => (
         <div
             className={classes.list}
-            role="presentation"
+            role='presentation'
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
@@ -114,7 +115,7 @@ export default function Navbar() {
         >
             <NextLink href='/favorites' passHref>
                 <MenuItem>
-                    <IconButton color='inherit' aria-label='favorites' size="large">
+                    <IconButton color='inherit' aria-label='favorites' size='large'>
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                             <FavoriteIcon />
                         </Badge>
@@ -125,7 +126,7 @@ export default function Navbar() {
 
             <NextLink href='/cart' passHref>
                 <MenuItem>
-                    <IconButton color='inherit' aria-label='shopping cart' size="large">
+                    <IconButton color='inherit' aria-label='shopping cart' size='large'>
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={totalQty(cartItems)} color='error'>
                             <ShoppingCartIcon />
                         </Badge>
@@ -137,11 +138,11 @@ export default function Navbar() {
             {session && (
                 <MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
-                        aria-label="account of current user"
-                        aria-controls="primary-search-account-menu"
-                        aria-haspopup="true"
-                        color="inherit"
-                        size="large">
+                        aria-label='account of current user'
+                        aria-controls='primary-search-account-menu'
+                        aria-haspopup='true'
+                        color='inherit'
+                        size='large'>
                         <AccountCircle />
                     </IconButton>
                     <p>Account</p>
@@ -154,18 +155,18 @@ export default function Navbar() {
         <>
             <SmallNav />
             <div>
-                <AppBar position="static">
+                <AppBar position='static'>
                     <Toolbar>
                         <IconButton
-                            edge="start"
-                            className={classes.menuButton}
-                            color="inherit"
-                            aria-label="open drawer"
+                            edge='start'
+                            className={styles['menu-button']}
+                            color='inherit'
+                            aria-label='open drawer'
                             onClick={toggleDrawer(true)}
-                            size="large">
+                            size='large'>
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6" noWrap>
+                        <Typography className={classes.title} variant='h6' noWrap>
                             EzeSneakers
                         </Typography>
                         <div style={{ flexGrow: 1.655 }} />
@@ -177,13 +178,13 @@ export default function Navbar() {
                             <ShoppingCartBtn totalQty={totalQty(cartItems)} />
                             {session && (
                                 <IconButton
-                                    edge="end"
-                                    aria-label="account of current user"
+                                    edge='end'
+                                    aria-label='account of current user'
                                     aria-controls={menuId}
-                                    aria-haspopup="true"
+                                    aria-haspopup='true'
                                     onClick={handleProfileMenuOpen}
-                                    color="inherit"
-                                    size="large">
+                                    color='inherit'
+                                    size='large'>
                                     <AccountCircle />
                                 </IconButton>
                             )}
@@ -191,12 +192,12 @@ export default function Navbar() {
                         {session ? (
                             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                                 <IconButton
-                                    aria-label="show more"
+                                    aria-label='show more'
                                     aria-controls='menu-mobile'
-                                    aria-haspopup="true"
+                                    aria-haspopup='true'
                                     onClick={handleMobileMenuOpen}
-                                    color="inherit"
-                                    size="large">
+                                    color='inherit'
+                                    size='large'>
                                     <MoreIcon />
                                 </IconButton>
                             </Box>

@@ -10,18 +10,21 @@
     width: 30%
 }
 
-.menuButton{
-    display:initial
+.menu-button {
+    margin-right: 16px !important;
 }
 
 @media(max-width: 990px) {
-    .navLinks {
+    .small-nav {
+        display: none
+    }
+    .nav-links {
         display: none;
     }
 }
 
-@media(max-width: 600px) {
-    .smBar {
-        display: none
+@media(min-width: 991px) {
+    .menu-button {
+        display: none !important;
     }
 }
