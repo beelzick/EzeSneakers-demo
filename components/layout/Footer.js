@@ -21,65 +21,80 @@ export default function Footer() {
                     direction='row'
                     justifyContent='center'
                 >
-                    <Grid item xs={4} xl={2}>
+                    <Grid item xs={3} xl={1.5}>
                         <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Category
                                 </Typography>
                                 <NextLink href='/sneakers/men' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>men</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>men</Link>
                                 </NextLink>
                                 <NextLink href='/sneakers/women' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>women</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>women</Link>
                                 </NextLink>
                                 <NextLink href='/sneakers/new' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>new </Link>
-                                </NextLink>
-                                <NextLink href='/sneakers/summer' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>summer</Link>
-                                </NextLink>
-                                <NextLink href='/sneakers' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>all</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>new </Link>
                                 </NextLink>
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} xl={2}>
+                    <Grid item xs={3} xl={1.5}>
                         <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }} >
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Main Pages
                                 </Typography>
                                 <NextLink href='/home' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>home</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>home</Link>
                                 </NextLink>
                                 <NextLink href='/about' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>about</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>about</Link>
                                 </NextLink>
                                 <NextLink href='/cart' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>Your Cart</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>Your Cart</Link>
                                 </NextLink>
                                 <NextLink href='/register' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>Register</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>Register</Link>
                                 </NextLink>
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} xl={2}>
+                    <Grid item xs={3} xl={1.5}>
                         <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Brand
                                 </Typography>
                                 <NextLink href='/search/adidas' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>adidas</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>adidas</Link>
                                 </NextLink>
                                 <NextLink href='/search/nike' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>nike</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>nike</Link>
                                 </NextLink>
                                 <NextLink href='/search/reebok' passHref>
-                                    <Link className={styles.link} underline='none' variant='button' mb={0.3}>reebok</Link>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>reebok</Link>
+                                </NextLink>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={3} xl={1.5}>
+                        <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
+                                    season
+                                </Typography>
+                                <NextLink href='/search/adidas' passHref>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>autumn</Link>
+                                </NextLink>
+                                <NextLink href='/search/nike' passHref>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>winter</Link>
+                                </NextLink>
+                                <NextLink href='/search/reebok' passHref>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>spring</Link>
+                                </NextLink>
+                                <NextLink href='/search/reebok' passHref>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>summer</Link>
                                 </NextLink>
                             </Box>
                         </Grid>
@@ -87,7 +102,7 @@ export default function Footer() {
                     <Grid item xs={11} sm={8} md={8} xl={3} sx={{ marginTop: { xs: '30px', xl: 'none' } }}>
                         <Grid container direction='row' spacing={3} sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
                             <Grid item>
-                                <Link className={styles.link} underline='none' sx={{ cursor: 'pointer' }}>
+                                <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                     <Box sx={{ display: 'flex' }} mb={2}>
                                         <FacebookIcon />
                                         <Typography sx={{ display: 'inline-block' }} mt={0.15} ml={0.5} >Facebook</Typography>
@@ -95,7 +110,7 @@ export default function Footer() {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link className={styles.link} underline='none' sx={{ cursor: 'pointer' }}>
+                                <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                     <Box sx={{ display: 'flex' }} mb={2}>
                                         <TwitterIcon />
                                         <Typography sx={{ display: 'inline-block' }} mt={0.15} ml={0.5}>Twitter</Typography>
@@ -104,7 +119,7 @@ export default function Footer() {
                             </Grid>
                             <Grid item>
                                 <NextLink href='https://github.com/beelzick/EzeSneakers-demo' passHref>
-                                    <Link className={styles.link} underline='none' sx={{ cursor: 'pointer' }}>
+                                    <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                         <Box sx={{ display: 'flex' }} mb={2}>
                                             <GitHubIcon />
                                             <Typography sx={{ display: 'inline-block' }} mt={0.15} ml={0.5}>Git Hub</Typography>
@@ -113,7 +128,7 @@ export default function Footer() {
                                 </NextLink>
                             </Grid>
                             <Grid item>
-                                <Link className={styles.link} underline='none' sx={{ cursor: 'pointer' }}>
+                                <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                     <Box sx={{ display: 'flex' }} mb={2}>
                                         <InstagramIcon />
                                         <Typography sx={{ display: 'inline-block' }} mt={0.15} ml={0.5} >Instagram</Typography>
@@ -121,7 +136,7 @@ export default function Footer() {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link className={styles.link} underline='none' sx={{ cursor: 'pointer' }}>
+                                <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                     <Box sx={{ display: 'flex' }} mb={2}>
                                         <LinkedInIcon />
                                         <Typography sx={{ display: 'inline-block' }} mt={0.15} ml={0.5}>
@@ -158,13 +173,13 @@ export default function Footer() {
                     <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }} >
                         <Grid container spacing={4} sx={{ justifyContent: { xs: 'center', md: 'flex-end' } }}>
                             <Grid item>
-                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className={styles.link}>Privacy Policy</Link>
+                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className='link'>Privacy Policy</Link>
                             </Grid>
                             <Grid item>
-                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className={styles.link}>Terms of use</Link>
+                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className='link'>Terms of use</Link>
                             </Grid>
                             <Grid item>
-                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className={styles.link}>Cookie</Link>
+                                <Link variant='caption' underline='none' sx={{ cursor: 'pointer' }} className='link'>Cookie</Link>
                             </Grid>
                         </Grid>
                     </Grid>

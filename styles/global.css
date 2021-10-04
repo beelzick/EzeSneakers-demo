@@ -16,6 +16,14 @@
     margin-top: 32px;
 }
 
+.link {
+    color: 	#7e7e7e !important
+}
+
+.link:hover {
+    color: white !important
+}
+
 .grow {
     flex-grow: 1;
 }

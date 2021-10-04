@@ -7,6 +7,7 @@ import cartSlice from './slices/cartSlice'
 import selectedSizeSlice from './slices/selectedSizeSlice'
 import sizeErrorSlice from './slices/sizeErrorSlice'
 import demoDialogSlice from './slices/demoDialogSlice'
+import selectionMenusSlice from './slices/selectionMenusSlice'
 
 const reducers = combineReducers({
     loading: loadingReducer,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
     selectedSize: selectedSizeSlice,
     cart: cartSlice,
     sizeError: sizeErrorSlice,
-    demoDialog: demoDialogSlice
+    demoDialog: demoDialogSlice,
+    selectionMenus: selectionMenusSlice
 })
 
 export default reducers

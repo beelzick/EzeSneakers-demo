@@ -4,14 +4,6 @@
     flex-direction: column;
 }
 
-.link {
-    color: 	#7e7e7e !important
-}
-
-.link:hover {
-    color: white !important
-}
-
 .main {
     flex: 1;
     min-height: calc(100vh - 90px);

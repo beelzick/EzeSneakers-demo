@@ -29,6 +29,7 @@ import ShoppingCartBtn from './ShoppingCartBtn';
 import FavoritesBtn from './FavoritesBtn';
 import LoginDialog from './LoginDialog';
 import styles from './navbar.module.css'
+import SelectionMenus from './SelectionsMenus';
 
 export default function Navbar() {
     const dispatch = useDispatch()
@@ -213,6 +214,7 @@ export default function Navbar() {
                     {list()}
                 </Drawer>
                 <LoginDialog />
+                <SelectionMenus />
             </div>
         </>
     )
