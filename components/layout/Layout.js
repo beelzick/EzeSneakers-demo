@@ -5,12 +5,11 @@ import styles from './layout.module.css'
 export default function Layout({ children }) {
     return (
         <div className={styles['general-container']}>
-            <Navbar />
-            <main className={styles.main}>
-                {children}
-            </main>
+                <Navbar />
+                <main className={styles.main}>
+                    {children}
+                </main>
             <Footer />
-
         </div>
     )
 }

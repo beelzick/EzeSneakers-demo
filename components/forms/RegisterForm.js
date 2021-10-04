@@ -87,7 +87,7 @@ export default function Register() {
 
             <FormInputDate name='birthDate' control={control} label='Birth Date' errors={errors} />
 
-            <Box my={4}>
+            <Box mt={4}>
                 <LoadingButton
                     onClick={handleSubmit(onSubmit)}
                     fullWidth

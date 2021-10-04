@@ -51,3 +51,6 @@
 :root {
     --swiper-theme-color: white !important
 }
+.css-1wuw8dw-MuiBreadcrumbs-separator {
+    transform: rotate(-21deg);
+}

@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box'
 import { useForm } from 'react-hook-form';
 import FormInputText from './FormInputText';
 import Grid from '@mui/material/Grid';
@@ -12,13 +11,16 @@ import { useState } from 'react'
 import { selectIsLoading } from '../../redux/slices/loadingSlice';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useSnackbar } from 'notistack'
+import NextLink from 'next/link'
+import { dialogClose } from '../../redux/slices/loginDialogSlice'
+import Link from '@mui/material/Link'
 
 export default function LogInForm() {
     const { enqueueSnackbar } = useSnackbar()
     const isLoading = useSelector(selectIsLoading)
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
-    const { register, handleSubmit, control, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
 
@@ -44,7 +46,7 @@ export default function LogInForm() {
 
     return (
         <>
-            <Grid container direction='column' justifyContent='center' alignItems='center' className='w-100'>
+            <Grid container direction='column' justifyContent='center' alignItems='center'>
                 <Typography variant='h4' component='h1'>
                     Log In
                 </Typography>
@@ -56,21 +58,29 @@ export default function LogInForm() {
                 <form className='w-100 h-100'>
                     <FormInputText name='email' label='Email' errors={errors} register={register} />
                     <FormInputText name='password' label='Password' errors={errors} type='password' register={register} />
-
-                    <Box my={1}>
-                        <LoadingButton
-                            onClick={handleSubmit(onSubmit)}
-                            variant='contained'
-                            size='large'
-                            type='button'
-                            fullWidth
-                            color='primary'
-                            loading={isLoading && true}
-                        >
-                            Log in
-                        </LoadingButton>
-                    </Box>
+                    <LoadingButton
+                        onClick={handleSubmit(onSubmit)}
+                        variant='contained'
+                        size='large'
+                        type='button'
+                        fullWidth
+                        color='primary'
+                        loading={isLoading && true}
+                    >
+                        Log in
+                    </LoadingButton>
                 </form>
+                <Typography mt={2}>
+                    Don't have an account yet?&nbsp;
+                    <NextLink
+                        href='/register'
+                        passHref
+                    >
+                        <Link onClick={() => dispatch(dialogClose())}>
+                            Register
+                        </Link>
+                    </NextLink>
+                </Typography>
             </Grid>
 
         </>

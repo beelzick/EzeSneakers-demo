@@ -10,6 +10,7 @@ import Head from 'next/head'
 
 export default function PageNotFound() {
     const { enqueueSnackbar } = useSnackbar()
+
     useEffect(() => {
         enqueueSnackbar('Page Not Found', {
             variant: 'error'
