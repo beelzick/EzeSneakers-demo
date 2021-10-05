@@ -4,8 +4,12 @@ import NextLink from 'next/link'
 import TypographyFade from '../../animated-components/TypographyFade'
 import ButtonFade from '../../animated-components/ButtonFade'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import typographyTheme from '../../../src/typographyTheme'
 
-let theme = createTheme()
+let theme = createTheme({
+    ...typographyTheme
+})
+
 theme = responsiveFontSizes(theme)
 
 export default function Section2({ featuredSneakers }) {

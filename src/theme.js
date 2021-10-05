@@ -1,7 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
+import typographyTheme from './typographyTheme'
 
 const theme = createTheme({
+    ...typographyTheme,
     breakpoints: {
         values: {
             xs: 0,
@@ -56,12 +58,6 @@ const theme = createTheme({
                     "&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner": {
                         backgroundColor: "#2b2b2b",
                     },
-                },
-                h1: {
-                    fontFamily: 'Montserrat, sans-serif !important'
-                },
-                h2: {
-                    fontFamily: 'Montserrat, sans-serif !important'
                 },
             },
         },

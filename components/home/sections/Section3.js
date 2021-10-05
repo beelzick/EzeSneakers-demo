@@ -9,8 +9,12 @@ import useOnScreen from '../../useOnScreen'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image'
 import styles from './sections.module.css'
+import typographyTheme from '../../../src/typographyTheme'
 
-let theme = createTheme()
+let theme = createTheme({
+    ...typographyTheme
+})
+
 theme = responsiveFontSizes(theme)
 
 export default function Section3() {

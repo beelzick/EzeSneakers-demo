@@ -9,6 +9,7 @@ import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineAr
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch } from 'react-redux'
 import { demoDialogOpen } from '../../redux/slices/demoDialogSlice';
+
 const useStyles = makeStyles((theme) => ({
     summaryContainer: {
         [theme.breakpoints.up('sm')]: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const weight400 = { fontWeight: 400 }
+const summaryFont = { fontWeight: 400, fontFamily: 'Roboto, sans-serif' }
 
 export default function CartSummary({ subtotal }) {
     const classes = useStyles()
@@ -25,42 +26,42 @@ export default function CartSummary({ subtotal }) {
 
     return <Grid container className={classes.summaryContainer}>
         <Grid item xs={12}>
-            <Typography variant='h4' component='h2' gutterBottom >
+            <Typography variant='h4' component='h2' gutterBottom>
                 Summary
             </Typography>
             <Grid container >
                 <Grid item xs={6}>
-                    <Typography variant='h6' component='h3' gutterBottom sx={weight400}>
+                    <Typography variant='h6' component='h3' gutterBottom sx={summaryFont}>
                         Subtotal
                     </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography variant='h6' component='h3' gutterBottom align='right' sx={weight400}>
+                    <Typography variant='h6' component='h3' gutterBottom align='right' sx={summaryFont}>
                         {subtotal.toFixed(2)} $
                     </Typography>
                 </Grid>
             </Grid>
             <Grid container>
                 <Grid item xs={6}>
-                    <Typography variant='h6' component='h3' gutterBottom sx={weight400}>
+                    <Typography variant='h6' component='h3' gutterBottom sx={summaryFont}>
                         Shipping
                     </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography variant='h6' component='h3' gutterBottom align='right' sx={weight400}>
+                    <Typography variant='h6' component='h3' gutterBottom align='right' sx={summaryFont}>
                         {subtotal ? (subtotal < 100 ? '10.00 $' : 'Free') : '0.00 $'}
                     </Typography>
                 </Grid>
             </Grid>
-            <Box className={styles.total} sx={weight400}>
+            <Box className={styles.total} sx={summaryFont}>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography variant='h6' component='h3' gutterBottom sx={weight400}>
+                        <Typography variant='h6' component='h3' gutterBottom sx={summaryFont}>
                             Total
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant='h6' component='h3' gutterBottom align='right' sx={weight400}>
+                        <Typography variant='h6' component='h3' gutterBottom align='right' sx={summaryFont}>
                             {subtotal ? (subtotal < 100 ? (subtotal + 10) : subtotal).toFixed(2) : '0.00'} $
                         </Typography>
                     </Grid>

@@ -79,8 +79,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
                 <meta description={`${name} - this product is one of EzeSneakers restored shoes collection. 
                 Buy ${name} and enjoy saving our Planet by using restored shoes.`} />
             </Head>
-            <Grid container className='page-container'>
-                <Grid item xl={2} />
+            <Grid container className='page-container' justifyContent='center'>
                 <Grid item xl={8}>
                     <Grid container>
                         <Grid item xs={12} md={7} >
@@ -100,11 +99,14 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <Box pl={2}>
-                                <Typography variant='h4' component='h1' >
+                                <Typography variant='h3' component='h1'  >
                                     {name}
                                 </Typography>
                                 <Grid container>
-                                    <Grid item xs={6}>
+                                    <Typography variant='h4' component='h2' my={1} sx={{ fontFamily: '\'Roboto\', sans-serif' }} >
+                                        {price} $
+                                    </Typography>
+                                    <Grid item xs={12}>
                                         <Box mb={1}>
                                             <StyledRating precision={0.1} defaultValue={rating} readOnly />
                                         </Box>
@@ -119,13 +121,6 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
                                                     </Box>
                                                 ))}
                                             </Grid>
-                                        </Box>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Box mt={1}>
-                                            <Typography variant='h4' component='h3' align='right'>
-                                                {price} $
-                                            </Typography>
                                         </Box>
                                     </Grid>
                                 </Grid>
@@ -171,7 +166,6 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xl={2} />
             </Grid>
         </>
     )

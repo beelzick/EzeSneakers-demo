@@ -4,8 +4,12 @@ import Section1 from '../components/about/Section1'
 import Section2 from '../components/about/Section2'
 import Section3 from '../components/about/Section3'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import typographyTheme from '../src/typographyTheme'
 
-let theme = createTheme()
+let theme = createTheme({
+    ...typographyTheme
+})
+
 theme = responsiveFontSizes(theme)
 export default function About() {
     return (
