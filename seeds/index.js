@@ -8,7 +8,6 @@ const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useUnifiedTopology: true
 })
 
@@ -20,18 +19,18 @@ db.once('open', () => {
 
 const seedDB = async () => {
     await Product.deleteMany({})
-    for (let i = 0; i < 50; i++) {
-        const randomProduct = await createRandomProduct(fakeNikeNames, 'Nike')
+    for (let i = 0; i < 125; i++) {
+        const randomProduct = createRandomProduct(fakeNikeNames, 'Nike')
         const product = await new Product(randomProduct)
         await product.save()
     }
-    for (let i = 0; i < 50; i++) {
-        const randomProduct = await createRandomProduct(fakeAdidasNames, 'Adidas')
+    for (let i = 0; i < 125; i++) {
+        const randomProduct = createRandomProduct(fakeAdidasNames, 'Adidas')
         const product = await new Product(randomProduct)
         await product.save()
     }
-    for (let i = 0; i < 50; i++) {
-        const randomProduct = await createRandomProduct(fakeReebokNames, 'Reebok')
+    for (let i = 0; i < 125; i++) {
+        const randomProduct = createRandomProduct(fakeReebokNames, 'Reebok')
         const product = await new Product(randomProduct)
         await product.save()
     }

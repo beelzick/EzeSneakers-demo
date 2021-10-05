@@ -21,7 +21,7 @@ import AddFavorites from '../../components/show-page/AddFavorites'
 import { useSnackbar } from 'notistack'
 import Image from 'next/image'
 
-export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, description, sizes, checkAlso, _id }) {
+export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, description, sizes, checkAlso, _id }) {
     const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const selectedSize = useSelector(selectSize)
@@ -36,7 +36,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
         _id,
         name,
         price,
-        tag,
+        tags,
         sex,
         imgUrl,
         sizes,
@@ -113,9 +113,11 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                                                 <Box mr={1}>
                                                     <Chip color='primary' size="small" label={sex} />
                                                 </Box>
-                                                <Box mr={1}>
-                                                    {tag && <Chip color='primary' size='small' label={tag} />}
-                                                </Box>
+                                                {tags.map(tag => (
+                                                    <Box mr={1}>
+                                                        <Chip color='primary' size='small' label={tag} />
+                                                    </Box>
+                                                ))}
                                             </Grid>
                                         </Box>
                                     </Grid>
@@ -168,26 +170,6 @@ export default function SneakerPage({ name, price, imgUrl, sex, tag, rating, des
                             </Box>
                         </Grid>
                     </Grid>
-                    {/* <Box className={styles.checkAlso}>
-                        <Grid container direction='column'>
-                            <Typography variant='h5' component='h3' gutterBottom>
-                                You can check also
-                            </Typography>
-                            <Box mt={1}>
-                                <Carousel>
-                                        <Grid container direction='row' justifyContent='space-between'>
-                                            {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
-                                        </Grid>
-                                        <Grid container direction='row' justifyContent='space-between'>
-                                            {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
-                                        </Grid>
-                                        <Grid container direction='row' justifyContent='space-between'>
-                                            {checkAlso.map(sneaker => <Box key={sneaker._id}><SmallCard /></Box>)}
-                                        </Grid>
-                                    </Carousel>
-                            </Box>
-                        </Grid>
-                    </Box> */}
                 </Grid>
                 <Grid item xl={2} />
             </Grid>
@@ -216,19 +198,21 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const { db } = await connectToDatabase()
     const sneakerData = await db.collection('products').findOne({ _id: ObjectId(params.id) })
+
     const checkAlsoData = await db.collection('products').aggregate([
         { $match: { rating: { $gte: 4.5 } } },
         { $sample: { size: 3 } }
     ]).toArray()
+
     const checkAlso = JSON.parse(JSON.stringify(checkAlsoData))
-    const { name, price, imgUrl, sex, tag, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
+    const { name, price, imgUrl, sex, tags, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
     return {
         props: {
             name,
             price,
             imgUrl,
             sex,
-            tag,
+            tags,
             rating,
             description,
             sizes,

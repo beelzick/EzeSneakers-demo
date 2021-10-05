@@ -6,8 +6,10 @@ import { selectFavorites } from '../redux/slices/favoritesSlice'
 import { useSelector } from 'react-redux'
 import SneakerNewPage from '../components/sneakers-page/SneakersNewPage'
 import Head from 'next/head'
+import { useSnackbar } from 'notistack'
 
 export default function Favorites() {
+    const { enqueueSnackbar } = useSnackbar()
     const favorites = useSelector(selectFavorites)
     const router = useRouter()
     const { data: session } = useSession()
@@ -15,6 +17,9 @@ export default function Favorites() {
     useEffect(() => {
         if (!session) {
             router.push('/')
+            enqueueSnackbar('You have to be logged in to go there', {
+                variant: 'error'
+            })
         }
     }, [session, router])
 

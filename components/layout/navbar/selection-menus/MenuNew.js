@@ -48,6 +48,19 @@ export default function MenuNew() {
                     </Link>
                 </Box>
             </Grid>
+            <Grid container justifyContent='center' item xs={2}>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
+                        for
+                    </Typography>
+                    <Link underline='none' variant='button' className='link'>
+                        men
+                    </Link>
+                    <Link underline='none' variant='button' className='link'>
+                        women
+                    </Link>
+                </Box>
+            </Grid>
         </Grid>
     </Grid>
 }

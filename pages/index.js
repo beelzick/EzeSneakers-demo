@@ -33,19 +33,18 @@ export async function getStaticProps() {
   const { db } = await connectToDatabase()
 
   const featuredSneakersData = await db.collection('products').aggregate([
-    { $match: { addDate: { $gte: new Date(2019, 1) } } },
-    { $sort: { addDate: -1 } },
+    { $match: { tags: 'featured' } },
     { $limit: 15 }
   ]).toArray()
 
   const summerSneakersData = await db.collection('products').aggregate([
-    { $match: { tag: 'summer' } },
-    { $limit: 20 }
+    { $match: { tags: 'summer' } },
+    { $limit: 15 }
   ]).toArray()
 
   const summerSneakers = JSON.parse(JSON.stringify(summerSneakersData))
-
   const featuredSneakers = JSON.parse(JSON.stringify(featuredSneakersData))
+
   return {
     props: {
       featuredSneakers,

@@ -24,12 +24,19 @@ export default async function handler(req, res) {
             const hasMore = sneakersData.length < 20 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
 
-        } else if (apiName === 'summer') {
+        } else if (apiName === 'season') {
             const sneakersData = await db.collection('products').aggregate([
                 {
                     $match: {
                         $and: [
-                            { tag: apiName },
+                            {
+                                $or: [
+                                    { tags: 'winter' },
+                                    { tags: 'summer' },
+                                    { tags: 'autumn' },
+                                    { tags: 'spring' },
+                                ]
+                            },
                             { _id: { $gt: ObjectId(lastId) } }
                         ]
                     }
@@ -40,7 +47,7 @@ export default async function handler(req, res) {
             ]).toArray()
             const hasMore = sneakersData.length < 20 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
-            
+
         } else if (apiName === 'all') {
             const sneakersData = await db.collection('products').aggregate([
                 {

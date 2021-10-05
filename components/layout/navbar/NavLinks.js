@@ -52,7 +52,7 @@ export default function NavLink() {
                     sx={{ cursor: 'pointer' }}
                     onMouseEnter={() => dispatch(setMenuSeason(true))}
                     onMouseLeave={() => dispatch(setMenuSeason(false))}
-                >   <NextLink href='/sneakers/summer' passHref>
+                >   <NextLink href='/sneakers/season' passHref>
                         <Link underline='none' variant='button' color='inherit'>
                             season
                         </Link>
