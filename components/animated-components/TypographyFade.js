@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import useOnScreen from '../useOnScreen'
 
-export default function TypographyFade({ contentText, componentName, text, ...rest }) {
+export default function TypographyFade({ componentName, ...rest }) {
     const ref = useRef()
     const isVisible = useOnScreen(ref)
 
@@ -22,7 +22,6 @@ export default function TypographyFade({ contentText, componentName, text, ...re
         ref={ref}
         {...rest}
     >
-        {contentText}
     </Typography>
 }
 

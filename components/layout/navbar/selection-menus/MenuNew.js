@@ -12,7 +12,7 @@ export default function MenuNew() {
     return <Grid
         container
         justifyContent='center'
-        alingItems='center'
+        alignItems='center'
         p={3}
         className={styles['nav-dialog']}
         onMouseEnter={() => dispatch(setMenuNew(true))}
@@ -51,7 +51,7 @@ export default function MenuNew() {
             <Grid container justifyContent='center' item xs={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
-                        for
+                        Gender
                     </Typography>
                     <Link underline='none' variant='button' className='link'>
                         men

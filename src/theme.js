@@ -38,7 +38,7 @@ const theme = createTheme({
                 body: {
                     scrollbarColor: "#6b6b6b #2b2b2b",
                     "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
-                        backgroundColor: "#2b2b2b",
+                        backgroundColor: "rgba(0, 0, 0, 0.849)",
                     },
                     "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
                         borderRadius: 8,

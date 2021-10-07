@@ -8,14 +8,14 @@ export default function Women({ sneakers }) {
             <title>Women | EzeSneakers</title>
             <meta description='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
         </Head>
-        <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' />
+        <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' genderFiltersInitialState={{ men: false, women: true }} />
     </>
 }
 export async function getStaticProps() {
     const { db } = await connectToDatabase()
 
     const sneakersData = await db.collection('products').aggregate([
-        { $match: { sex: 'woman' } },
+        { $match: { gender: 'woman' } },
         { $limit: 20 }
     ]).toArray()
 

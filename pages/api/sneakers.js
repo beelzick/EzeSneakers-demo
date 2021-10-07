@@ -12,7 +12,7 @@ export default async function handler(req, res) {
                 {
                     $match: {
                         $and: [
-                            { sex: apiName },
+                            { gender: apiName },
                             { _id: { $gt: ObjectId(lastId) } }
                         ]
                     }

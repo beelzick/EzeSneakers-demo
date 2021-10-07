@@ -31,7 +31,7 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
     product.name = generatedName.replace(/\s+/g, ' ').trim()
     product.price = (Math.floor(1 + Math.random() * 10) * 10 + 39) + (fiftyChance() ? 0.59 : 0.99)
     product.imgUrl = 'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_450/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
-    product.sex = `${fiftyChance() ? 'man' : 'woman'}`
+    product.gender = `${fiftyChance() ? 'man' : 'woman'}`
     product.tags = []
 
     if (Math.random() < 0.1) {
@@ -41,14 +41,14 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
         fiftyChance() ? product.tag = 'summer' : product.tag = null
         product.rating = Math.random() * (5 - 3) + 3
     }
-    
+
     //featured, summer, spring, summer, autumn, winter, w-love, outdoor, training
     if (Math.random() < 0.1) {
         product.tags.push('featured')
     }
 
-    if (product.sex === 'woman' && Math.random() < 0.1) {
-        product.tags.push('w-love')
+    if (product.gender === 'woman' && Math.random() < 0.1) {
+        product.tags.push('women love')
     }
 
     if (Math.random() < 0.15) {

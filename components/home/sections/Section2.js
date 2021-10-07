@@ -18,18 +18,20 @@ export default function Section2({ featuredSneakers }) {
             <Grid container direction='column'>
                 <ThemeProvider theme={theme}>
                     <TypographyFade
-                        contentText='EzeSneakers'
                         componentName='h1'
                         variant='h1'
                         align='center'
                         gutterBottom
-                    />
+                    >
+                        EzeSneakers
+                    </TypographyFade>
                     <TypographyFade
-                        contentText='Save our planet by buying restored shoes'
                         componentName='h2'
                         variant='h2'
                         align='center'
-                    />
+                    >
+                        Save our planet by buying restored shoes
+                    </TypographyFade>
                 </ThemeProvider>
                 <Grid my={8} container justifyContent='center' alignItems='center'>
                     <NextLink href='/sneakers' passHref >

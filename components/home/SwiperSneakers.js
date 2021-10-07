@@ -28,9 +28,11 @@ export default function SwiperSneakers({ sneakers, title }) {
             <TypographyFade
                 componentName='h3' variant='h3' align='left'
                 sx={{ fontFamily: 'montserrat, sans-serif', fontWeight: 300 }}
-                gutterBottom contentText={title}
+                gutterBottom
 
-            />
+            >
+                {title}
+            </TypographyFade>
         </ThemeProvider>
         <Box sx={{ maxWidth: '100%' }}>
             <motion.div

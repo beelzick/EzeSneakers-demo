@@ -88,7 +88,7 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                         <Chip color='primary' label={sex} size='small' sx={{ marginRight: '5px' }} />
                         {tag && <Chip color='primary' label={tag} size='small' />}
                     </Box>
-                    <Typography variant='h6' component='h3' gutterBottom sx={{ fontWeight: 400 }}>
+                    <Typography variant='h6' component='h3' gutterBottom sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400 }}>
                         {price} $
                     </Typography>
                     <FormControl className={styles.formControl}>

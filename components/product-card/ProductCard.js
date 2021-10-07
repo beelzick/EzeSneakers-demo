@@ -3,6 +3,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NextLink from 'next/link'
@@ -76,15 +77,20 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                 </CardActionArea>
             </NextLink>
             <CardActions>
-                <NextLink href={`/sneakers/${id}`} passHref>
-                    <Typography variant='subtitle1' component='span' sx={{ cursor: 'pointer' }}>
-                        {name}
-                    </Typography>
-                </NextLink>
-                <div className='grow'></div>
-                <Typography variant='subtitle1' component='span'>
-                    {price} $
-                </Typography>
+                <Grid container>
+                    <Grid item xs={8}>
+                        <NextLink href={`/sneakers/${id}`} passHref>
+                            <Typography variant='subtitle1' component='h2' sx={{ cursor: 'pointer' }}>
+                                {name}
+                            </Typography>
+                        </NextLink>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography variant='subtitle1' component='h5' align='right'>
+                            {price} $
+                        </Typography>
+                    </Grid>
+                </Grid>
             </CardActions>
             {session && <div className={styles.imgIconContainer}>
                 <Checkbox

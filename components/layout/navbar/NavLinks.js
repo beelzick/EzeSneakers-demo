@@ -16,7 +16,7 @@ export default function NavLink() {
                     sx={{ cursor: 'pointer' }}
                     onMouseEnter={() => dispatch(setMenuMen(true))}
                     onMouseLeave={() => dispatch(setMenuMen(false))}
-                >   <NextLink href='/sneakers/men' passHref passHref>
+                >   <NextLink href='/sneakers/men' passHref>
                         <Link underline='none' variant='button' color='inherit'>
                             men
                         </Link>

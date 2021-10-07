@@ -33,7 +33,7 @@ export async function getStaticProps(context) {
                         { autocomplete: { query: q, path: 'description' } },
                         { autocomplete: { query: q, path: 'rating' } },
                         { autocomplete: { query: q, path: 'sex' } },
-                        { autocomplete: { query: q, path: 'tag' } },
+                        { autocomplete: { query: q, path: 'tags' } },
                     ]
                 }
             }

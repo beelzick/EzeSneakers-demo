@@ -21,8 +21,8 @@ export default function Footer() {
                     direction='row'
                     justifyContent='center'
                 >
-                    <Grid item xs={3} xl={1.5}>
-                        <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
+                    <Grid item xs={6} md={3} xl={2}>
+                        <Grid container sx={{ justifyContent: { xs: 'unset', md: 'center', xl: 'unset' } }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Category
@@ -39,8 +39,8 @@ export default function Footer() {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={3} xl={1.5}>
-                        <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }} >
+                    <Grid item xs={6} md={3} xl={2}>
+                        <Grid container sx={{ justifyContent: { xs: 'unset', md: 'center', xl: 'unset' } }} >
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Main Pages
@@ -60,8 +60,8 @@ export default function Footer() {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={3} xl={1.5}>
-                        <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
+                    <Grid item xs={6} md={3} xl={2} sx={{ marginTop: { xs: '20px', md: 'unset' } }}>
+                        <Grid container sx={{ justifyContent: { xs: 'unset', md: 'center', xl: 'unset' } }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Brand
@@ -78,8 +78,8 @@ export default function Footer() {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={3} xl={1.5}>
-                        <Grid container sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
+                    <Grid item xs={6} md={3} xl={2} sx={{ marginTop: { xs: '20px', md: 'unset' } }}>
+                        <Grid container sx={{ justifyContent: { xs: 'unset', md: 'center', xl: 'unset' } }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     season
@@ -99,8 +99,8 @@ export default function Footer() {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={11} sm={8} md={8} xl={3} sx={{ marginTop: { xs: '30px', xl: 'none' } }}>
-                        <Grid container direction='row' spacing={3} sx={{ justifyContent: { xs: 'center', xl: 'unset' } }}>
+                    <Grid item xs={12} md={8} xl={3} sx={{ marginTop: { xs: '30px', xl: 'none' } }}>
+                        <Grid container direction='row' spacing={3} sx={{ justifyContent: { xs: 'unset', md: 'center', xl: 'unset' } }}>
                             <Grid item>
                                 <Link className='link' underline='none' sx={{ cursor: 'pointer' }}>
                                     <Box sx={{ display: 'flex' }} mb={2}>
@@ -158,7 +158,7 @@ export default function Footer() {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid container justifyContent='center' pt={1}>
+                <Grid container justifyContent='center' mt={3}>
                     <Grid item xs={12} md={4} order={{ xs: 2, md: 1 }}
                         sx={{ marginTop: { xs: '10px', sm: 'none' } }}>
                         <Typography

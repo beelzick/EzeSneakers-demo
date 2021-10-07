@@ -11,7 +11,7 @@ export default function MenuMen() {
     return <Grid
         container
         justifyContent='center'
-        alingItems='center'
+        alignItems='center'
         p={3}
         className={styles['nav-dialog']}
         onMouseEnter={() => dispatch(setMenuMen(true))}
@@ -44,9 +44,6 @@ export default function MenuMen() {
                     </Link>
                     <Link underline='none' variant='button' className='link'>
                         new
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        summer
                     </Link>
                     <Link underline='none' variant='button' className='link'>
                         most rated

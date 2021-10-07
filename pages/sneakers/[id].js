@@ -21,7 +21,7 @@ import AddFavorites from '../../components/show-page/AddFavorites'
 import { useSnackbar } from 'notistack'
 import Image from 'next/image'
 
-export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, description, sizes, checkAlso, _id }) {
+export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, checkAlso, _id }) {
     const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const selectedSize = useSelector(selectSize)
@@ -37,7 +37,7 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
         name,
         price,
         tags,
-        sex,
+        gender,
         imgUrl,
         sizes,
         selectedSizes: [
@@ -113,10 +113,14 @@ export default function SneakerPage({ name, price, imgUrl, sex, tags, rating, de
                                         <Box mb={1}>
                                             <Grid container>
                                                 <Box mr={1}>
-                                                    <Chip color='primary' size="small" label={sex} />
+                                                    <Chip
+                                                        color='primary'
+                                                        size='small'
+                                                        label={gender === 'man' ? 'men\'s sneakers' : 'women\'s sneakers'}
+                                                    />
                                                 </Box>
-                                                {tags.map(tag => (
-                                                    <Box mr={1}>
+                                                {tags.map((tag, index) => (
+                                                    <Box mr={1} key={index}>
                                                         <Chip color='primary' size='small' label={tag} />
                                                     </Box>
                                                 ))}
@@ -199,13 +203,13 @@ export async function getStaticProps({ params }) {
     ]).toArray()
 
     const checkAlso = JSON.parse(JSON.stringify(checkAlsoData))
-    const { name, price, imgUrl, sex, tags, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
+    const { name, price, imgUrl, gender, tags, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
     return {
         props: {
             name,
             price,
             imgUrl,
-            sex,
+            gender,
             tags,
             rating,
             description,

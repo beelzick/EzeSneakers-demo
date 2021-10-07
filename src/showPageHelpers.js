@@ -7,7 +7,6 @@ export const sizeExists = (size, sizesArray) => {
 }
 
 export class UpdateData {
-
     constructor(id, sizesArray, selectedSize) {
         this.id = id
         this.sizesArray = sizesArray
@@ -60,5 +59,5 @@ export class UpdateData {
     sizeNotExists() {
         return this.returnedDataNewSize
     }
-
 }
+

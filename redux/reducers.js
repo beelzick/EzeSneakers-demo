@@ -8,6 +8,8 @@ import selectedSizeSlice from './slices/selectedSizeSlice'
 import sizeErrorSlice from './slices/sizeErrorSlice'
 import demoDialogSlice from './slices/demoDialogSlice'
 import selectionMenusSlice from './slices/selectionMenusSlice'
+import genderFiltersSlice from './slices/genderFiltersSlice'
+// import filtersSlice from './slices/filtersSlice'
 
 const reducers = combineReducers({
     loading: loadingReducer,
@@ -18,7 +20,9 @@ const reducers = combineReducers({
     cart: cartSlice,
     sizeError: sizeErrorSlice,
     demoDialog: demoDialogSlice,
-    selectionMenus: selectionMenusSlice
+    selectionMenus: selectionMenusSlice,
+    genderFilters: genderFiltersSlice
+    // filters: filtersSlice,
 })
 
 export default reducers

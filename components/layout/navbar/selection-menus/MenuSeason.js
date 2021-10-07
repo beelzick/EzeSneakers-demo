@@ -11,7 +11,7 @@ export default function MenuSeason() {
     return <Grid
         container
         justifyContent='center'
-        alingItems='center'
+        alignItems='center'
         p={3}
         className={styles['nav-dialog']}
         onMouseEnter={() => dispatch(setMenuSeason(true))}

@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema({
     description: String,
     tags: [String],
     addDate: Date,
-    sex: String,
+    gender: String,
     rating: Number,
     sizes: [
         {

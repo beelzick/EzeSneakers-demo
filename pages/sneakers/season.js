@@ -29,7 +29,6 @@ export async function getStaticProps() {
         { $limit: 20 }
     ]).toArray()
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
-    console.log(sneakers)
     return {
         props: {
             sneakers

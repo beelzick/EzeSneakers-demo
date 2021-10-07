@@ -20,6 +20,7 @@ export default function LogInForm() {
     const isLoading = useSelector(selectIsLoading)
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
@@ -71,7 +72,7 @@ export default function LogInForm() {
                     </LoadingButton>
                 </form>
                 <Typography mt={2}>
-                    Don't have an account yet?&nbsp;
+                    Don&apos;t have an account yet?&nbsp;
                     <NextLink
                         href='/register'
                         passHref

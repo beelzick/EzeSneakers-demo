@@ -3,7 +3,7 @@ import MenuWomen from './selection-menus/MenuWomen'
 import MenuNew from './selection-menus/MenuNew'
 import MenuSeason from './selection-menus/MenuSeason'
 
-import { useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
     selectMenuMen,
     selectMenuNew,
