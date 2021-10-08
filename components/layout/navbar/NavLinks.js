@@ -14,11 +14,11 @@ export default function NavLink() {
                     px={2}
                     className={styles['link-container']}
                     sx={{ cursor: 'pointer' }}
-                    onMouseEnter={() => dispatch(setMenuMen(true))}
-                    onMouseLeave={() => dispatch(setMenuMen(false))}
-                >   <NextLink href='/sneakers/men' passHref>
+                    onMouseEnter={() => dispatch(setMenuWomen(true))}
+                    onMouseLeave={() => dispatch(setMenuWomen(false))}
+                >   <NextLink href='/sneakers/women' passHref>
                         <Link underline='none' variant='button' color='inherit'>
-                            men
+                            women
                         </Link>
                     </NextLink>
                 </Box>
@@ -26,11 +26,11 @@ export default function NavLink() {
                     px={2}
                     className={styles['link-container']}
                     sx={{ cursor: 'pointer' }}
-                    onMouseEnter={() => dispatch(setMenuWomen(true))}
-                    onMouseLeave={() => dispatch(setMenuWomen(false))}
-                >   <NextLink href='/sneakers/women' passHref>
+                    onMouseEnter={() => dispatch(setMenuMen(true))}
+                    onMouseLeave={() => dispatch(setMenuMen(false))}
+                >   <NextLink href='/sneakers/men' passHref>
                         <Link underline='none' variant='button' color='inherit'>
-                            women
+                            men
                         </Link>
                     </NextLink>
                 </Box>

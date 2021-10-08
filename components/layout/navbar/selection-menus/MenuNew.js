@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 import { useDispatch } from 'react-redux'
 import styles from '../navbar.module.css'
 import { setMenuNew } from '../../../../redux/slices/selectionMenusSlice'
-
+import NextLink from 'next/link'
 
 export default function MenuNew() {
     const dispatch = useDispatch()
@@ -53,12 +53,16 @@ export default function MenuNew() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         Gender
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        men
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        women
-                    </Link>
+                    <NextLink href='/sneakers/men/new' passHref>
+                        <Link underline='none' variant='button' className='link'>
+                            men
+                        </Link>
+                    </NextLink>
+                    <NextLink href='/sneakers/women/new' passHref>
+                        <Link underline='none' variant='button' className='link'>
+                            women
+                        </Link>
+                    </NextLink>
                 </Box>
             </Grid>
         </Grid>

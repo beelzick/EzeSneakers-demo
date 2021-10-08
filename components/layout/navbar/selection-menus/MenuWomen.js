@@ -5,6 +5,7 @@ import Link from '@mui/material/Link'
 import { useDispatch } from 'react-redux'
 import styles from '../navbar.module.css'
 import { setMenuWomen } from '../../../../redux/slices/selectionMenusSlice'
+import NextLink from 'next/link'
 
 export default function MenuWomen() {
     const dispatch = useDispatch()
@@ -23,15 +24,13 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        adidas
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        nike
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        reebok
-                    </Link>
+                        {['adidas', 'nike', 'reebok'].map((link, index) => (
+                            <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                                <Link underline='none' variant='button' className='link'>
+                                {link}
+                                </Link>
+                            </NextLink>
+                        ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -39,18 +38,13 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        featured
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        new
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        women love
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        most rated
-                    </Link>
+                    {['featured', 'new', 'most-rated', 'women-love'].map(link => (
+                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'> 
+                                {(link === 'most-rated' || link ==='women-love') ? link.replace(/-/g,' ') : link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -58,18 +52,13 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        spring
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        summer
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        autumn
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        winter
-                    </Link>
+                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
+                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -77,15 +66,13 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        training
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        outdoor
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        street
-                    </Link>
+                    {['training', 'outdoor', 'street'].map(link => (
+                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
         </Grid>

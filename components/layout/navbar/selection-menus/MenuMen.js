@@ -24,21 +24,13 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    <NextLink href='/sneakers/men/adidas' passHref >
-                        <Link underline='none' variant='button' className='link'>
-                            adidas
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/nike' passHref >
-                        <Link underline='none' variant='button' className='link'>
-                            nike
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/reebok' passHref >
-                        <Link underline='none' variant='button' className='link'>
-                            reebok
-                        </Link>
-                    </NextLink>
+                    {['adidas', 'nike', 'reebok'].map(link => (
+                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -46,21 +38,13 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
                     </Typography>
-                    <NextLink href='/sneakers/men/featured' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            featured
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/new' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            new
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/most-rated' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            most rated
-                        </Link>
-                    </NextLink>
+                    {['featured', 'new', 'most-rated'].map(link => (
+                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link ==='most-rated'? link.replace(/-/g,' '): link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -68,26 +52,13 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    <NextLink href='/sneakers/men/spring' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            spring
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/summer' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            summer
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/autumn' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            autumn
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/men/winter' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            winter
-                        </Link>
-                    </NextLink>
+                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
+                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -95,15 +66,13 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        training
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        outdoor
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        street
-                    </Link>
+                    {['training', 'outdoor', 'street'].map(link => (
+                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                        <Link underline='none' variant='button' className='link'>
+                            {link}
+                        </Link>
+                    </NextLink>
+                    ))}
                 </Box>
             </Grid>
         </Grid>

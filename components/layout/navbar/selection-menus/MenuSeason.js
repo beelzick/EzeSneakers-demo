@@ -5,6 +5,7 @@ import Link from '@mui/material/Link'
 import { useDispatch } from 'react-redux'
 import styles from '../navbar.module.css'
 import { setMenuSeason } from '../../../../redux/slices/selectionMenusSlice'
+import NextLink from 'next/link'
 
 export default function MenuSeason() {
     const dispatch = useDispatch()
@@ -21,39 +22,29 @@ export default function MenuSeason() {
             <Grid container justifyContent='center' item xs={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
-                        men
+                        women
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        spring
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        summer
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        autumn
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        winter
-                    </Link>
+                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
+                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
-                        women
+                        men
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        spring
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        summer
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        autumn
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        winter
-                    </Link>
+                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
+                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
         </Grid>

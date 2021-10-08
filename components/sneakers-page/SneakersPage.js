@@ -7,9 +7,8 @@ import { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
 import infLoader from '../loadings/InfiniteScrollLoading'
-import Filters from './filters/Filters'
 
-export default function SneakerPage({ sneakers, title, apiName, genderFiltersInitialState }) {
+export default function SneakerPage({ sneakers, title, apiName }) {
     const [items, setItems] = useState(sneakers)
     const [hasMore, setHasMore] = useState(true)
     const lastId = items[items.length - 1]._id
@@ -33,9 +32,6 @@ export default function SneakerPage({ sneakers, title, apiName, genderFiltersIni
                 </Typography>
             </Box>
             <Grid container flexWrap='nowrap'>
-                <div className={styles['filter-container-deskopt']}>
-                    <Filters genderFiltersInitialState={genderFiltersInitialState} />
-                </div>
                 <InfiniteScroll
                     dataLength={items.length}
                     next={getMoreItems}
@@ -55,7 +51,6 @@ export default function SneakerPage({ sneakers, title, apiName, genderFiltersIni
                     ))}
                 </InfiniteScroll>
             </Grid>
-
         </Grid>
     )
 }

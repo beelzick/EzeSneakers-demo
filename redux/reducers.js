@@ -8,8 +8,6 @@ import selectedSizeSlice from './slices/selectedSizeSlice'
 import sizeErrorSlice from './slices/sizeErrorSlice'
 import demoDialogSlice from './slices/demoDialogSlice'
 import selectionMenusSlice from './slices/selectionMenusSlice'
-import genderFiltersSlice from './slices/genderFiltersSlice'
-import filtersSlice from './slices/filtersSlice'
 import linkGeneratorSlice from './slices/linkGeneratorSlice'
 import accordionSlice from './slices/accordionSlice'
 
@@ -23,8 +21,6 @@ const reducers = combineReducers({
     sizeError: sizeErrorSlice,
     demoDialog: demoDialogSlice,
     selectionMenus: selectionMenusSlice,
-    genderFilters: genderFiltersSlice,
-    filters: filtersSlice,
     linkGenerator: linkGeneratorSlice,
     accordion: accordionSlice,
 })

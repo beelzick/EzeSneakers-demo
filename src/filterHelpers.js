@@ -1,5 +1,4 @@
-
-export const paths = [
+const pathsSkeleton = [
     { params: { filter: 'featured' } },
     { params: { filter: 'new' } },
     { params: { filter: 'most-rated' } },
@@ -10,4 +9,16 @@ export const paths = [
     { params: { filter: 'nike' } },
     { params: { filter: 'adidas' } },
     { params: { filter: 'reebok' } },
+    { params: { filter: 'training' } },
+    { params: { filter: 'outdoor' } },
+    { params: { filter: 'street' } },
+]
+
+export const menPaths = [
+    ...pathsSkeleton
+]
+
+export const womenPaths = [
+    ...pathsSkeleton,
+    { params: { filter: 'women-love' } }
 ]

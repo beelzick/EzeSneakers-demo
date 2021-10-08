@@ -42,7 +42,7 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
         product.rating = Math.random() * (5 - 3) + 3
     }
 
-    //featured, summer, spring, summer, autumn, winter, w-love, outdoor, training
+    //tags: featured, summer, spring, summer, autumn, winter, w-love, outdoor, training, street
     if (Math.random() < 0.1) {
         product.tags.push('featured')
     }
@@ -57,6 +57,10 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
 
     if (Math.random() < 0.1) {
         product.tags.push('outdoor')
+    }
+
+    if (Math.random() < 0.1) {
+        product.tags.push('street')
     }
 
     switch (Math.floor(Math.random() * 4)) {
@@ -96,7 +100,6 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
             randomNumFromInterval(8, 16),
             randomNumFromInterval(0, 59),
             randomNumFromInterval(0, 59)
-
         )
     }
     const sizesList = []

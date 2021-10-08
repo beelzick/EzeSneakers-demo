@@ -1,5 +1,3 @@
-
-
 const typographyTheme = {
     typography: {
         h1: {

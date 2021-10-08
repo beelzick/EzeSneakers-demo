@@ -1,5 +1,3 @@
-
-
 export const MenuProps = {
     PaperProps: {
         style: {
@@ -18,7 +16,6 @@ export class UpdateData {
         this.sizeId = sizeId
         this.matchSize = size => size.id === this.sizeId
     }
-
 
     sizeChange(handledSize) {
         const sizeIndex = this.sizesArray.findIndex(this.matchSize)
