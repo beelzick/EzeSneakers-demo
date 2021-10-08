@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    gender: {
-        men: false,
-        women: false,
-    },
     collection: {
         featured: false,
         new: false,
@@ -20,7 +16,7 @@ const initialState = {
     brand: {
         nike: false,
         adidas: false,
-        reebok: false
+        reebok: false,
     }
 }
 
@@ -28,12 +24,6 @@ export const filtersSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        setGenderFilter: (state, action) => {
-            state.gender = {
-                ...state.gender,
-                ...action.payload
-            }
-        },
         setCollectionFilter: (state, action) => {
             state.collection = {
                 ...state.collection,
@@ -56,9 +46,8 @@ export const filtersSlice = createSlice({
 
 })
 
-export const { setGenderFilter, setCollectionFilter, setSeasonFilter, setBrandFilter } = filtersSlice.actions
+export const { setCollectionFilter, setSeasonFilter, setBrandFilter } = filtersSlice.actions
 
-export const selectAllFilters = state => state.filters
-export const selectGenderFilter = state => state.filters.gender
+export const selectFilters = state => state.filters
 
 export default filtersSlice.reducer

@@ -43,6 +43,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reduxjs-toolkit-persist": "^7.0.7",
+    "short-hash": "^1.0.0",
     "swiper": "^7.0.6",
     "yup": "^0.32.9"
   },

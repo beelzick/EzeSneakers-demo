@@ -12,13 +12,14 @@ export default function Men({ sneakers }) {
     </>
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req, res }) {
     const { db } = await connectToDatabase()
 
     const sneakersData = await db.collection('products').aggregate([
         { $match: { gender: 'man' } },
-        { $limit: 20 }
+        { $limit: 18 }
     ]).toArray()
+
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
     return {

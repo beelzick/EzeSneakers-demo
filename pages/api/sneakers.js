@@ -18,10 +18,10 @@ export default async function handler(req, res) {
                     }
                 },
                 {
-                    $limit: 20
+                    $limit: 18
                 }
             ]).toArray()
-            const hasMore = sneakersData.length < 20 ? false : true
+            const hasMore = sneakersData.length < 18 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
 
         } else if (apiName === 'season') {
@@ -42,10 +42,10 @@ export default async function handler(req, res) {
                     }
                 },
                 {
-                    $limit: 20
+                    $limit: 18
                 }
             ]).toArray()
-            const hasMore = sneakersData.length < 20 ? false : true
+            const hasMore = sneakersData.length < 18 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
 
         } else if (apiName === 'all') {
@@ -54,10 +54,10 @@ export default async function handler(req, res) {
                     $match: { _id: { $gt: ObjectId(lastId) } }
                 },
                 {
-                    $limit: 20
+                    $limit: 18
                 }
             ]).toArray()
-            const hasMore = sneakersData.length < 20 ? false : true
+            const hasMore = sneakersData.length < 18 ? false : true
             res.status(200).json({ data: sneakersData, hasMore })
         }
 

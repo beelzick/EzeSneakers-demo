@@ -175,7 +175,6 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
     )
 }
 
-
 export async function getStaticPaths() {
     const { db } = await connectToDatabase()
     const sneakersData = await db.collection('products').find({}).toArray()
@@ -204,6 +203,7 @@ export async function getStaticProps({ params }) {
 
     const checkAlso = JSON.parse(JSON.stringify(checkAlsoData))
     const { name, price, imgUrl, gender, tags, rating, description, sizes, _id } = JSON.parse(JSON.stringify(sneakerData))
+
     return {
         props: {
             name,

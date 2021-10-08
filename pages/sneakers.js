@@ -20,10 +20,10 @@ export default function Men({ sneakers }) {
     </>
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
     const { db } = await connectToDatabase()
 
-    const sneakersData = await db.collection('products').find({}).limit(20).toArray()
+    const sneakersData = await db.collection('products').find({}).limit(18).toArray()
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
     return {

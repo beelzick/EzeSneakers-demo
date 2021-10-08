@@ -3,16 +3,20 @@ import Typography from '@mui/material/Typography'
 import ProductCard from '../product-card/ProductCard'
 import Box from '@mui/material/Box'
 import styles from './sneakers-page.module.css'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
 import infLoader from '../loadings/InfiniteScrollLoading'
-import Filters from './Filters'
+import Filters from './filters/Filters'
 
 export default function SneakerPage({ sneakers, title, apiName, genderFiltersInitialState }) {
     const [items, setItems] = useState(sneakers)
     const [hasMore, setHasMore] = useState(true)
     const lastId = items[items.length - 1]._id
+
+    useEffect(() => {
+        setItems(sneakers)
+    }, [sneakers])
 
     const getMoreItems = async () => {
         const response = await axios.get(`/api/sneakers?&apiName=${apiName}&lastId=${lastId}`)
