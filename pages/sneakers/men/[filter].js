@@ -3,15 +3,16 @@ import Head from 'next/head'
 import { menPaths } from '../../../src/filterHelpers'
 import { connectToDatabase } from '../../../lib/mongodb'
 
-export default function MenFiltersPage({ name, sneakers }) {
+export default function MenFiltersPage({ name, sneakers, filter }) {
     return <>
         <Head>
             <title>{`${name[0].toUpperCase()}${name.slice(1)} Collection for Men`}</title>
         </Head>
         <SneakerPage
             sneakers={sneakers}
-            //capitalized title
             title={`${name[0].toUpperCase()}${name.slice(1)} Collection for Men`}
+            filterGroup='men'
+            filter={filter}
         />
     </>
 }
@@ -29,63 +30,54 @@ export async function getStaticProps({ params }) {
     let name = filter
     let sneakersData
 
-    if (filter === 'most-rated') {
-        sneakersData = await db.collection('products').aggregate([
-            {
-                $match: {
-                    rating: { $gte: 4.8 },
-                    gender: 'man'
-                }
-            },
-            { $limit: 18 }
-        ]).toArray()
-        name = 'Most Rated'
-    } else if (filter === 'new') {
-        sneakersData = await db.collection('products').aggregate([
-            {
-                $match: {
-                    addDate: { $gte: new Date(2019, 1) },
-                    gender: 'man'
-                }
-            },
-            { $sort: { addDate: -1 } },
-            { $limit: 18 }
-        ]).toArray()
-    } else if (filter === 'adidas' || filter === 'nike' || filter == 'reebok') {
-        sneakersData = await db.collection('products').aggregate([
-            {
-                $search: {
-                    index: 'products',
-                    compound: {
-                        must: [
-                            {
-                                autocomplete: {
-                                    path: 'name',
-                                    query: filter,
-                                },
-                            },
-                            {
-                                text: {
-                                    path: 'gender',
-                                    query: 'man'
-                                }
-                            }
-                        ]
+    switch (filter) {
+        case 'most-rated':
+            sneakersData = await db.collection('products').aggregate([
+                {
+                    $match: {
+                        rating: { $gte: 4.8 },
+                        gender: 'man'
                     }
-                }
-            },
-            { $limit: 18 }
-        ]).toArray()
-    } else {
-        sneakersData = await db.collection('products').aggregate([
-            {
-                $match: {
-                    tags: filter,
-                    gender: 'man'
-                }
-            },
-            { $limit: 18 }
-        ]).toArray()
+                },
+                { $limit: 18 }
+            ]).toArray()
+            name = 'Most Rated'
+            break
+        case 'new':
+            sneakersData = await db.collection('products').aggregate([
+                {
+                    $match: {
+                        addDate: { $gte: new Date(2019, 1) },
+                        gender: 'man'
+                    }
+                },
+                { $sort: { addDate: -1 } },
+                { $limit: 18 }
+            ]).toArray()
+            break
+        case 'adidas':
+        case 'nike':
+        case 'reebok':
+            sneakersData = await db.collection('products').aggregate([
+                {
+                    $match: {
+                        name: { $regex: `${filter[0].toUpperCase()}${filter.slice(1)}` },
+                        gender: 'man',
+                    }
+                },
+                { $limit: 18 }
+            ]).toArray()
+            break
+        default:
+            sneakersData = await db.collection('products').aggregate([
+                {
+                    $match: {
+                        tags: filter,
+                        gender: 'man'
+                    }
+                },
+                { $limit: 18 }
+            ]).toArray()
     }
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
@@ -93,8 +85,8 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             name,
-            sneakers
-
+            sneakers,
+            filter
         }
     }
 }

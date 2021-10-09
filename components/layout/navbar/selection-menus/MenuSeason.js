@@ -24,8 +24,8 @@ export default function MenuSeason() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         women
                     </Typography>
-                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
-                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                    {['spring', 'summer', 'autumn', 'winter'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -38,8 +38,8 @@ export default function MenuSeason() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         men
                     </Typography>
-                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
-                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                    {['spring', 'summer', 'autumn', 'winter'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/men/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>

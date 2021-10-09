@@ -24,15 +24,13 @@ export default function MenuNew() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        adidas
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        nike
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        reebok
-                    </Link>
+                    {['adidas', 'nike', 'reebok'].map(link => (
+                        <NextLink href={`/sneakers/new/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -40,12 +38,13 @@ export default function MenuNew() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    <Link underline='none' variant='button' className='link'>
-                        autumn
-                    </Link>
-                    <Link underline='none' variant='button' className='link'>
-                        winter
-                    </Link>
+                    {['autumn', 'winter'].map(link => (
+                        <NextLink href={`/sneakers/new/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -53,16 +52,13 @@ export default function MenuNew() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         Gender
                     </Typography>
-                    <NextLink href='/sneakers/men/new' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            men
-                        </Link>
-                    </NextLink>
-                    <NextLink href='/sneakers/women/new' passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            women
-                        </Link>
-                    </NextLink>
+                    {['women', 'men'].map(link => (
+                        <NextLink href={`/sneakers/${link}/new`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
         </Grid>

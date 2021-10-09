@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, productId, sizeQty, selectedSize, sizeId }) {
+export default function CartProduct({ imgUrl, name, price, gender, tags, sizes, productId, sizeQty, selectedSize, sizeId }) {
     const dispatch = useDispatch()
     const [sneakerSize, setSneakerSize] = useState(selectedSize)
     const [qty, setQty] = useState(sizeQty)
@@ -85,8 +85,10 @@ export default function CartProduct({ imgUrl, name, price, sex, tag, sizes, prod
                         </Typography>
                     </NextLink>
                     <Box>
-                        <Chip color='primary' label={sex} size='small' sx={{ marginRight: '5px' }} />
-                        {tag && <Chip color='primary' label={tag} size='small' />}
+                        <Chip color='primary' label={gender} size='small' sx={{ marginRight: '5px' }} />
+                        {tags.map(tag => (
+                            <Chip color='primary' label={tag} size='small' sx={{ marginRight: '5px' }} />
+                        ))}
                     </Box>
                     <Typography variant='h6' component='h3' gutterBottom sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400 }}>
                         {price} $

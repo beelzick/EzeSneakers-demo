@@ -24,13 +24,13 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                        {['adidas', 'nike', 'reebok'].map((link, index) => (
-                            <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
-                                <Link underline='none' variant='button' className='link'>
+                    {['adidas', 'nike', 'reebok'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
                                 {link}
-                                </Link>
-                            </NextLink>
-                        ))}
+                            </Link>
+                        </NextLink>
+                    ))}
                 </Box>
             </Grid>
             <Grid container justifyContent='center' item xs={2}>
@@ -38,10 +38,10 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
                     </Typography>
-                    {['featured', 'new', 'most-rated', 'women-love'].map(link => (
-                        <NextLink href={`/sneakers/women/${link}`} passHref>
-                            <Link underline='none' variant='button' className='link'> 
-                                {(link === 'most-rated' || link ==='women-love') ? link.replace(/-/g,' ') : link}
+                    {['featured', 'new', 'most-rated', 'women-love'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {(link === 'most-rated' || link === 'women-love') ? link.replace(/-/g, ' ') : link}
                             </Link>
                         </NextLink>
                     ))}
@@ -52,8 +52,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
-                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                    {['spring', 'summer', 'autumn', 'winter'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -66,8 +66,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for
                     </Typography>
-                    {['training', 'outdoor', 'street'].map(link => (
-                        <NextLink href={`/sneakers/women/${link}`} passHref>
+                    {['training', 'outdoor', 'street'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>

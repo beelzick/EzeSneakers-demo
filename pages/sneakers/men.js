@@ -12,7 +12,7 @@ export default function Men({ sneakers }) {
     </>
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps() {
     const { db } = await connectToDatabase()
 
     const sneakersData = await db.collection('products').aggregate([

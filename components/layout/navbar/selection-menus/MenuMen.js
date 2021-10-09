@@ -24,8 +24,8 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    {['adidas', 'nike', 'reebok'].map(link => (
-                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                    {['adidas', 'nike', 'reebok'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/men/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -38,10 +38,10 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
                     </Typography>
-                    {['featured', 'new', 'most-rated'].map(link => (
-                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                    {['featured', 'new', 'most-rated'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/men/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
-                                {link ==='most-rated'? link.replace(/-/g,' '): link}
+                                {link === 'most-rated' ? link.replace(/-/g, ' ') : link}
                             </Link>
                         </NextLink>
                     ))}
@@ -52,8 +52,8 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
-                        <NextLink href={`/sneakers/men/${link}`} passHref>
+                    {['spring', 'summer', 'autumn', 'winter'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/men/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -66,12 +66,12 @@ export default function MenuMen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for
                     </Typography>
-                    {['training', 'outdoor', 'street'].map(link => (
-                        <NextLink href={`/sneakers/men/${link}`} passHref>
-                        <Link underline='none' variant='button' className='link'>
-                            {link}
-                        </Link>
-                    </NextLink>
+                    {['training', 'outdoor', 'street'].map((link, index) => (
+                        <NextLink key={index} href={`/sneakers/men/${link}`} passHref>
+                            <Link underline='none' variant='button' className='link'>
+                                {link}
+                            </Link>
+                        </NextLink>
                     ))}
                 </Box>
             </Grid>

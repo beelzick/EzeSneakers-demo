@@ -9,7 +9,7 @@ import EmptyCart from '../components/cart/EmptyCart'
 import Head from 'next/head'
 import DemoDialog from '../components/cart/DemoDialog'
 
-export default function Cart({ sneakers }) {
+export default function Cart() {
     const dispatch = useDispatch()
     const cartItems = useSelector(selectCartItems)
     const subtotal = totalPrice(cartItems)
@@ -34,10 +34,11 @@ export default function Cart({ sneakers }) {
                         {cartItems && cartItems.map(item => {
                             return item.selectedSizes.map((itemSize) => {
                                 return (<CartProduct
+                                    tags={item.tags}
                                     price={item.price}
                                     name={item.name}
                                     key={itemSize.id}
-                                    tag={item.tag}
+                                    gender={item.gender}
                                     sex={item.sex}
                                     sizes={item.sizes}
                                     sizeId={itemSize.id}

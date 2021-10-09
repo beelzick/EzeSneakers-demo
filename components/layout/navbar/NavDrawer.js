@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
     list: {
-        width: 250,
+        width: 350,
     },
 });
 

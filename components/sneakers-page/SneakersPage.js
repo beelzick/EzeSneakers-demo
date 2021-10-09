@@ -8,7 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
 import infLoader from '../loadings/InfiniteScrollLoading'
 
-export default function SneakerPage({ sneakers, title, apiName }) {
+export default function SneakerPage({ sneakers, title, apiName, filterGroup, filter }) {
     const [items, setItems] = useState(sneakers)
     const [hasMore, setHasMore] = useState(true)
     const lastId = items[items.length - 1]._id
@@ -18,7 +18,12 @@ export default function SneakerPage({ sneakers, title, apiName }) {
     }, [sneakers])
 
     const getMoreItems = async () => {
-        const response = await axios.get(`/api/sneakers?&apiName=${apiName}&lastId=${lastId}`)
+        let response
+        if (filterGroup) {
+            response = await axios.get(`/api/sneakers/${filterGroup}/${filter}/${lastId}`)
+        } else {
+            response = await axios.get(`/api/sneakers?&apiName=${apiName}&lastId=${lastId}`)
+        }
         const newItems = response.data.data
         setHasMore(response.data.hasMore)
         setItems(prevItems => [...prevItems, ...newItems])

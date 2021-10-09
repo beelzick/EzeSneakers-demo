@@ -1,0 +1,68 @@
+import SneakerPage from '../../../components/sneakers-page/SneakersPage'
+import Head from 'next/head'
+import { connectToDatabase } from '../../../lib/mongodb'
+
+export default function MenFiltersPage({ name, sneakers, filter }) {
+    return <>
+        <Head>
+            <title>{`${name[0].toUpperCase()}${name.slice(1)} New Collection- Restored Sneakers`}</title>
+        </Head>
+        <SneakerPage
+            sneakers={sneakers}
+            title={`${name[0].toUpperCase()}${name.slice(1)} New Collection`}
+            filterGroup='new'
+            filter={filter}
+        />
+    </>
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: [
+            { params: { filter: 'autumn' } },
+            { params: { filter: 'winter' } },
+            { params: { filter: 'nike' } },
+            { params: { filter: 'adidas' } },
+            { params: { filter: 'reebok' } }
+        ],
+        fallback: false,
+    }
+}
+
+export async function getStaticProps({ params }) {
+    const { filter } = params
+    const { db } = await connectToDatabase()
+    let name = filter
+    let sneakersData
+
+    if (filter === 'adidas' || filter === 'nike' || filter == 'reebok') {
+        sneakersData = await db.collection('products').aggregate([
+            {
+                $match: {
+                    name: { $regex: `${filter[0].toUpperCase()}${filter.slice(1)}` },
+                    addDate: { $gte: new Date(2019, 1) }
+                }
+            },
+            { $limit: 18 }
+        ]).toArray()
+    } else {
+        sneakersData = await db.collection('products').aggregate([
+            {
+                $match: {
+                    tags: filter,
+                    addDate: { $gte: new Date(2019, 1) }
+                }
+            },
+            { $limit: 18 }
+        ]).toArray()
+    }
+    const sneakers = JSON.parse(JSON.stringify(sneakersData))
+    console.log(sneakers)
+    return {
+        props: {
+            name,
+            sneakers,
+            filter
+        }
+    }
+}
