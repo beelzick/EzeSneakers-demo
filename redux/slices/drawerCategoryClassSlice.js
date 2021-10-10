@@ -53,7 +53,7 @@ const drawerCategoryClassSlice = createSlice({
             }
         },
         setAllClasses: (state) => {
-            state = initialState
+            return state = initialState
         }
     }
 })

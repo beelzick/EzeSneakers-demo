@@ -9,7 +9,7 @@ import { setWomenClass } from '../../../../../redux/slices/drawerClassSlice';
 export default function WomenBrand() {
     const womenBrandClass = useSelector(selectWomenCategoryClass)
     const dispatch = useDispatch()
-    
+
     const stopPropagation = (e) => {
         e.stopPropagation()
     }

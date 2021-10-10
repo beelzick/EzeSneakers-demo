@@ -14,8 +14,9 @@ import {
     setNewClass
 } from '../../../../redux/slices/drawerClassSlice';
 import { useEffect } from 'react';
-import WomenCategories from './women-categories/WomenCategories';
+import WomenCategories from './categories/WomenCategories';
 import { setAllClasses } from '../../../../redux/slices/drawerCategoryClassSlice';
+import MenCategories from './categories/MenCategories';
 export default function DrawerNav() {
     const dispatch = useDispatch()
     const drawerOpen = useSelector(selectDrawerOpen)
@@ -58,6 +59,7 @@ export default function DrawerNav() {
             <PanelNew />
             <PanelSeason />
             <WomenCategories />
+            <MenCategories />
         </div>
     </Drawer>
 }
