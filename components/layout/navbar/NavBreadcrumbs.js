@@ -58,7 +58,7 @@ export default function NavBreadcrumbs() {
             {!session && (
                 <NextLink href='/register' passHref>
                     <Link color='secondary' underline='hover' sx={{ marginRight: '13px' }}>
-                        Register
+                        Join Us
                     </Link>
                 </NextLink>)}
 

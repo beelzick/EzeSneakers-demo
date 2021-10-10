@@ -8,7 +8,7 @@ export default function Summer({ sneakers }) {
             <title>Summer Collection | EzeSneakers</title>
             <meta description='Professionally restored sneakers ideal for summer. Save our planet by buying restored shoes.' />
         </Head>
-        <SneakerPage sneakers={sneakers} title='Sneakers' apiName='season' />
+        <SneakerPage sneakers={sneakers} title='Autumn Sneakers Collection' apiName='season' />
     </>
 }
 
@@ -16,16 +16,7 @@ export async function getStaticProps() {
     const { db } = await connectToDatabase()
 
     const sneakersData = await db.collection('products').aggregate([
-        {
-            $match: {
-                $or: [
-                    { tags: 'winter' },
-                    { tags: 'summer' },
-                    { tags: 'autumn' },
-                    { tags: 'spring' },
-                ]
-            }
-        },
+        { $match: { tags: 'autumn', } },
         { $limit: 18 }
     ]).toArray()
     const sneakers = JSON.parse(JSON.stringify(sneakersData))

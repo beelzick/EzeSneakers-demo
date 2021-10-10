@@ -1,0 +1,15 @@
+.hide-left {
+    transform: translateX(-300px);
+    transition: transform .25s;
+}
+
+.hide-right {
+    transform: translateX(300px);
+    transition: transform .25s;
+    position: fixed;
+}
+
+.mid {
+    transform: translateX(0);
+    transition: transform .25s;
+}

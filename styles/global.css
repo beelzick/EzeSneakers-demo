@@ -63,11 +63,7 @@
     transform: rotate(-21deg);
 }
 
-
-
-/* .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
-    box-shadow: unset !important;
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    overflow: hidden;
 }
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded {
-    margin-bottom: unset !important;
-} */
+

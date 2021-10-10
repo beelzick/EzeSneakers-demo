@@ -1,7 +1,7 @@
 import AccordionSummary from '@mui/material/AccordionSummary';
 import { styled } from '@mui/material/styles';
 
-const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+const StyledAccordionSummary = styled(AccordionSummary)(() => ({
     '&.MuiAccordionSummary-root.Mui-expanded': {
         minHeight: 'unset'
     },

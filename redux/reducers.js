@@ -10,6 +10,9 @@ import demoDialogSlice from './slices/demoDialogSlice'
 import selectionMenusSlice from './slices/selectionMenusSlice'
 import linkGeneratorSlice from './slices/linkGeneratorSlice'
 import accordionSlice from './slices/accordionSlice'
+import drawerSlice from './slices/drawerSlice'
+import drawerClassSlice from './slices/drawerClassSlice'
+import drawerCategoryClassSlice from './slices/drawerCategoryClassSlice'
 
 const reducers = combineReducers({
     loading: loadingReducer,
@@ -23,6 +26,9 @@ const reducers = combineReducers({
     selectionMenus: selectionMenusSlice,
     linkGenerator: linkGeneratorSlice,
     accordion: accordionSlice,
+    drawer: drawerSlice,
+    drawerClass: drawerClassSlice,
+    drawerCategoryClass: drawerCategoryClassSlice
 })
 
 export default reducers

@@ -98,8 +98,8 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={5}>
-                            <Box pl={2}>
-                                <Typography variant='h3' component='h1'  >
+                            <Box sx={{ paddingLeft: { md: '16px' } }}>
+                                <Typography variant='h3' component='h1'>
                                     {name}
                                 </Typography>
                                 <Grid container>

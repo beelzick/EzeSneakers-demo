@@ -27,24 +27,25 @@ export default async function handler(req, res) {
                 sneakersData = await db.collection('products').aggregate([
                     {
                         $match: {
-                            $and: [
-                                {
-                                    $or: [
-                                        { tags: 'winter' },
-                                        { tags: 'summer' },
-                                        { tags: 'autumn' },
-                                        { tags: 'spring' },
-                                    ]
-                                },
-                                { _id: { $gt: ObjectId(lastId) } }
-                            ]
+                            tags: 'autumn',
+                            _id: { $gt: ObjectId(lastId) }
                         }
                     },
-                    {
-                        $limit: 18
-                    }
+                    { $limit: 18 }
                 ]).toArray()
                 break;
+            case 'new':
+                sneakersData = await db.collection('products').aggregate([
+                    {
+                        $match: {
+                            addDate: { $gte: new Date(2019, 1) },
+                            _id: { $gte: ObjectId(lastId) }
+                        }
+                    },
+                    { $sort: { addDate: -1 } },
+                    { $limit: 18 }
+                ]).toArray()
+                break
             case 'all':
                 sneakersData = await db.collection('products').aggregate([
                     {

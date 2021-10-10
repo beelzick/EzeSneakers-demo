@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
         color: 'white'
     },
     list: {
-        width: 250,
+        width: 300,
+        height: '100%'
     },
 }));
 export default useStyles

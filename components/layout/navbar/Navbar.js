@@ -12,12 +12,10 @@ import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import SmallNav from './SmallNav'
-import Drawer from '@mui/material/Drawer'
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react'
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from '../../../src/navbarMUIstyles';
-import DrawerList from './DrawerList';
 import NavLinks from './NavLinks'
 import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favoritesSlice';
 import DisabledHeart from './DisabledHeart';
@@ -30,6 +28,8 @@ import FavoritesBtn from './FavoritesBtn';
 import LoginDialog from './LoginDialog';
 import styles from './navbar.module.css'
 import SelectionMenus from './SelectionsMenus';
+import { setDrawerState } from '../../../redux/slices/drawerSlice';
+import DrawerNav from './drawer/DrawerNav';
 
 export default function Navbar() {
     const dispatch = useDispatch()
@@ -41,7 +41,12 @@ export default function Navbar() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-    const [drawerState, setDrawerState] = useState(false);
+    const toggleDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        dispatch(setDrawerState(open))
+    };
 
     useEffect(() => {
         if (session) {
@@ -51,13 +56,6 @@ export default function Navbar() {
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setDrawerState(open);
-    };
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -76,16 +74,6 @@ export default function Navbar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const list = () => (
-        <div
-            className={classes.list}
-            role='presentation'
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
-        >
-            <DrawerList />
-        </div>
-    );
 
     const menuId = 'account-menu';
     const renderMenu = (
@@ -210,10 +198,8 @@ export default function Navbar() {
                 </AppBar>
                 {renderMobileMenu}
                 {renderMenu}
-                <Drawer anchor={'left'} open={drawerState} onClose={toggleDrawer(false)}>
-                    {list()}
-                </Drawer>
                 <LoginDialog />
+                <DrawerNav />
                 <SelectionMenus />
             </div>
         </>
