@@ -32,7 +32,6 @@
     "nextjs-progressbar": "0.0.11",
     "notistack": "^2.0.2",
     "react": "17.0.2",
-    "react-cool-dimensions": "^2.0.7",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.16.0",
     "react-infinite-scroll-component": "^6.1.0",
@@ -43,8 +42,8 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reduxjs-toolkit-persist": "^7.0.7",
-    "short-hash": "^1.0.0",
     "swiper": "^7.0.6",
+    "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
