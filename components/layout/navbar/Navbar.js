@@ -29,7 +29,7 @@ import LoginDialog from './LoginDialog';
 import styles from './navbar.module.css'
 import SelectionMenus from './SelectionsMenus';
 import { setDrawerState } from '../../../redux/slices/drawerSlice';
-import DrawerNav from './drawer/DrawerNav';
+import DrawerNav from '../drawer/DrawerNav';
 
 export default function Navbar() {
     const dispatch = useDispatch()

@@ -1,13 +1,24 @@
-import styles from './drawer.module.css'
-import { useDispatch } from 'react-redux'
+import styles from '../drawer.module.css'
+import { useDispatch, useSelector } from 'react-redux'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react';
+import { setDrawerState } from '../../../../redux/slices/drawerSlice';
 
-export default function CategoryPanel({ categoryClass, backTo, setCategoryClass, categoryName, setPanelClass, linkFilters, linkGroup }) {
+export default function CategoryPanel({
+    selectCategoryClass,
+    backTo,
+    setCategoryClass,
+    categoryName,
+    setPanelClass,
+    linkFilters,
+    linkGroup,
+}) {
+    const categoryClass = useSelector(selectCategoryClass)
+
     let linksState = {}
     useEffect(() => {
         linkFilters.map(filter => {
@@ -25,6 +36,7 @@ export default function CategoryPanel({ categoryClass, backTo, setCategoryClass,
                 [filter]: !prevValue[filter]
             }
         })
+        dispatch(setDrawerState(false))
     }
 
     const stopPropagation = (e) => {
@@ -34,6 +46,7 @@ export default function CategoryPanel({ categoryClass, backTo, setCategoryClass,
     const handleAllClick = () => {
         dispatch(setPanelClass('mid'))
         dispatch(setCategoryClass({ [categoryName]: 'right' }))
+
     }
 
     return <Grid
@@ -61,7 +74,15 @@ export default function CategoryPanel({ categoryClass, backTo, setCategoryClass,
                 {backTo}
             </Typography>
         </Grid>
-
+        <Typography
+            align='left'
+            component='span'
+            variant='h5'
+            my={1}
+            sx={{ fontWeight: 500 }}
+        >
+            {categoryName[0].toUpperCase() + categoryName.slice(1)}
+        </Typography>
         {linkFilters.map((filter) =>
         (<NextLink href={`/sneakers/${linkGroup}/${filter}`} passHref>
             <Link

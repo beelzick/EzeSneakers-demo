@@ -1,22 +1,17 @@
 import Drawer from '@mui/material/Drawer'
-import { setDrawerState, selectDrawerOpen } from '../../../../redux/slices/drawerSlice';
+import { setDrawerState, selectDrawerOpen } from '../../../redux/slices/drawerSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import PanelMain from './PanelMain';
-import PanelWomen from './PanelWomen';
-import PanelMen from './PanelMen';
-import PanelNew from './PanelNew';
-import PanelSeason from './PanelSeason';
+import AllPanels from './AllPanels';
 import {
     setMainClass,
     setSeasonClass,
     setMenClass,
     setWomenClass,
     setNewClass
-} from '../../../../redux/slices/drawerClassSlice';
+} from '../../../redux/slices/drawerClassSlice';
 import { useEffect } from 'react';
-import WomenCategories from './categories/WomenCategories';
-import { setAllClasses } from '../../../../redux/slices/drawerCategoryClassSlice';
-import MenCategories from './categories/MenCategories';
+import { setAllClasses } from '../../../redux/slices/drawerCategoryClassSlice';
+import AllCategories from './categories/AllCategories';
 export default function DrawerNav() {
     const dispatch = useDispatch()
     const drawerOpen = useSelector(selectDrawerOpen)
@@ -53,13 +48,8 @@ export default function DrawerNav() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <PanelMain />
-            <PanelWomen />
-            <PanelMen />
-            <PanelNew />
-            <PanelSeason />
-            <WomenCategories />
-            <MenCategories />
+            <AllPanels />
+            <AllCategories />
         </div>
     </Drawer>
 }

@@ -1,10 +1,8 @@
-import CategoryPanel from '../CategoryPanel'
-import { useSelector } from 'react-redux'
-import { selectMenCategoryClass, setMenCategoryClass } from '../../../../../redux/slices/drawerCategoryClassSlice'
-import { setMenClass } from '../../../../../redux/slices/drawerClassSlice'
+import CategoryPanel from './CategoryPanel'
+import { selectMenCategoryClass, setMenCategoryClass } from '../../../../redux/slices/drawerCategoryClassSlice'
+import { setMenClass } from '../../../../redux/slices/drawerClassSlice'
 
 export default function MenCategories() {
-    const menCategoryClass = useSelector(selectMenCategoryClass)
     const brandFilters = ['adidas', 'nike', 'reebok']
     const collectionFilters = ['featured', 'new', 'most-rated']
     const seasonFilters = ['spring', 'summer', 'autumn', 'winter']
@@ -12,7 +10,7 @@ export default function MenCategories() {
 
     return <>
         <CategoryPanel
-            categoryClass={menCategoryClass}
+            selectCategoryClass={selectMenCategoryClass}
             backTo='Men'
             setCategoryClass={setMenCategoryClass}
             categoryName='brand'
@@ -21,7 +19,7 @@ export default function MenCategories() {
             linkGroup='men'
         />
         <CategoryPanel
-            categoryClass={menCategoryClass}
+            selectCategoryClass={selectMenCategoryClass}
             backTo='Men'
             setCategoryClass={setMenCategoryClass}
             categoryName='collection'
@@ -30,7 +28,7 @@ export default function MenCategories() {
             linkGroup='men'
         />
         <CategoryPanel
-            categoryClass={menCategoryClass}
+            selectCategoryClass={selectMenCategoryClass}
             backTo='Men'
             setCategoryClass={setMenCategoryClass}
             categoryName='season'
@@ -39,7 +37,7 @@ export default function MenCategories() {
             linkGroup='men'
         />
         <CategoryPanel
-            categoryClass={menCategoryClass}
+            selectCategoryClass={selectMenCategoryClass}
             backTo='Men'
             setCategoryClass={setMenCategoryClass}
             categoryName='for'

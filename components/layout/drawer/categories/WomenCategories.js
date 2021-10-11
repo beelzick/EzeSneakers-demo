@@ -1,19 +1,16 @@
-import CategoryPanel from '../CategoryPanel'
-import { useSelector } from 'react-redux'
-import { selectWomenCategoryClass, setWomenCategoryClass } from '../../../../../redux/slices/drawerCategoryClassSlice'
-import { setWomenClass } from '../../../../../redux/slices/drawerClassSlice'
+import CategoryPanel from './CategoryPanel'
+import { selectWomenCategoryClass, setWomenCategoryClass } from '../../../../redux/slices/drawerCategoryClassSlice'
+import { setWomenClass } from '../../../../redux/slices/drawerClassSlice'
 
 export default function WomenCategories() {
-    const womenCategoryClass = useSelector(selectWomenCategoryClass)
-
     const brandFilters = ['adidas', 'nike', 'reebok']
     const collectionFilters = ['featured', 'new', 'most-rated', 'women-love']
     const seasonFilters = ['spring', 'summer', 'autumn', 'winter']
     const forFilters = ['training', 'outdoor', 'street']
-    
+
     return <>
         <CategoryPanel
-            categoryClass={womenCategoryClass}
+            selectCategoryClass={selectWomenCategoryClass}
             backTo='Women'
             setCategoryClass={setWomenCategoryClass}
             categoryName='brand'
@@ -22,7 +19,7 @@ export default function WomenCategories() {
             linkGroup='women'
         />
         <CategoryPanel
-            categoryClass={womenCategoryClass}
+            selectCategoryClass={selectWomenCategoryClass}
             backTo='Women'
             setCategoryClass={setWomenCategoryClass}
             categoryName='collection'
@@ -31,7 +28,7 @@ export default function WomenCategories() {
             linkGroup='women'
         />
         <CategoryPanel
-            categoryClass={womenCategoryClass}
+            selectCategoryClass={selectWomenCategoryClass}
             backTo='Season'
             setCategoryClass={setWomenCategoryClass}
             categoryName='season'
@@ -40,7 +37,7 @@ export default function WomenCategories() {
             linkGroup='women'
         />
         <CategoryPanel
-            categoryClass={womenCategoryClass}
+            selectCategoryClass={selectWomenCategoryClass}
             backTo='Women'
             setCategoryClass={setWomenCategoryClass}
             categoryName='for'

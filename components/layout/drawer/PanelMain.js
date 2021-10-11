@@ -9,13 +9,20 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { dialogOpen } from '../../../../redux/slices/loginDialogSlice'
+import { dialogOpen } from '../../../redux/slices/loginDialogSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession, signOut } from 'next-auth/react';
 import { IoIosSnow } from '@react-icons/all-files/io/IoIosSnow'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import styles from './drawer.module.css'
-import { setWomenClass, selectMainClass, setMainClass, setMenClass, setNewClass, setSeasonClass } from '../../../../redux/slices/drawerClassSlice';
+import {
+    setWomenClass,
+    selectMainClass,
+    setMainClass,
+    setMenClass,
+    setNewClass,
+    setSeasonClass
+} from '../../../redux/slices/drawerClassSlice';
 
 export default function PanelMain() {
     const dispatch = useDispatch()
