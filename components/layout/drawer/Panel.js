@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setMainClass } from '../../../redux/slices/drawerClassSlice'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function Panel({ setPanelClass, selectPanelClass, setPanelCategoryClass, categories, title }) {
 
 
@@ -41,13 +41,13 @@ export default function Panel({ setPanelClass, selectPanelClass, setPanelCategor
         p={4}
     >
         <Grid
-            onClick={stopPropagation}
             container
             direction='row'
             alignItems='center'
             onClick={handleAllClick}
             sx={{ cursor: 'pointer' }}
-            mb={3}>
+            mb={3}
+        >
             <KeyboardArrowLeftIcon fontSize='large' />
             <Typography
                 align='left'
@@ -69,6 +69,7 @@ export default function Panel({ setPanelClass, selectPanelClass, setPanelCategor
         </Typography>
         {categories.map(category => (
             <Grid
+                key={uuidv4()}
                 container
                 direction='row'
                 alignItems='center'

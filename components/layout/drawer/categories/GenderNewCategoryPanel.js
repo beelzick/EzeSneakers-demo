@@ -42,7 +42,6 @@ export default function GenderNewCategoryPanel() {
     return <Grid
         onClick={stopPropagation}
         container
-        className={styles['hide-right']}
         className={
             (newCategoryClass.gender === 'right' && styles['hide-right'])
             ||

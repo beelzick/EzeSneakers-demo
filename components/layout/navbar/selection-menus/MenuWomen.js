@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import styles from '../navbar.module.css'
 import { setMenuWomen } from '../../../../redux/slices/selectionMenusSlice'
 import NextLink from 'next/link'
+import { v4 as uuidv4 } from 'uuid';
 
 export default function MenuWomen() {
     const dispatch = useDispatch()
@@ -24,8 +25,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    {['adidas', 'nike', 'reebok'].map((link, index) => (
-                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                    {['adidas', 'nike', 'reebok'].map(link => (
+                        <NextLink key={uuidv4()} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -38,8 +39,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
                     </Typography>
-                    {['featured', 'new', 'most-rated', 'women-love'].map((link, index) => (
-                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                    {['featured', 'new', 'most-rated', 'women-love'].map(link => (
+                        <NextLink key={uuidv4()} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {(link === 'most-rated' || link === 'women-love') ? link.replace(/-/g, ' ') : link}
                             </Link>
@@ -52,8 +53,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
                     </Typography>
-                    {['spring', 'summer', 'autumn', 'winter'].map((link, index) => (
-                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                    {['spring', 'summer', 'autumn', 'winter'].map(link => (
+                        <NextLink key={uuidv4()} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -66,8 +67,8 @@ export default function MenuWomen() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for
                     </Typography>
-                    {['training', 'outdoor', 'street'].map((link, index) => (
-                        <NextLink key={index} href={`/sneakers/women/${link}`} passHref>
+                    {['training', 'outdoor', 'street'].map(link => (
+                        <NextLink key={uuidv4()} href={`/sneakers/women/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>

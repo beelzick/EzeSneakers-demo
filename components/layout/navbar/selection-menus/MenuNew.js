@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import styles from '../navbar.module.css'
 import { setMenuNew } from '../../../../redux/slices/selectionMenusSlice'
 import NextLink from 'next/link'
+import { v4 as uuidv4 } from 'uuid';
 
 export default function MenuNew() {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export default function MenuNew() {
                         brand
                     </Typography>
                     {['adidas', 'nike', 'reebok'].map(link => (
-                        <NextLink href={`/sneakers/new/${link}`} passHref>
+                        <NextLink key={uuidv4()} href={`/sneakers/new/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -39,7 +40,7 @@ export default function MenuNew() {
                         season
                     </Typography>
                     {['autumn', 'winter'].map(link => (
-                        <NextLink href={`/sneakers/new/${link}`} passHref>
+                        <NextLink key={uuidv4()} href={`/sneakers/new/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>
@@ -53,7 +54,7 @@ export default function MenuNew() {
                         Gender
                     </Typography>
                     {['women', 'men'].map(link => (
-                        <NextLink href={`/sneakers/${link}/new`} passHref>
+                        <NextLink key={uuidv4()} href={`/sneakers/${link}/new`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}
                             </Link>

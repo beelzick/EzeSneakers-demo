@@ -18,7 +18,7 @@ import NextLink from 'next/link'
 import Image from 'next/image'
 import makeStyles from '@mui/styles/makeStyles';
 import Chip from '@mui/material/Chip'
-
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -87,7 +87,7 @@ export default function CartProduct({ imgUrl, name, price, gender, tags, sizes, 
                     <Box>
                         <Chip color='primary' label={gender} size='small' sx={{ marginRight: '5px' }} />
                         {tags.map(tag => (
-                            <Chip color='primary' label={tag} size='small' sx={{ marginRight: '5px' }} />
+                            <Chip key={uuidv4()} color='primary' label={tag} size='small' sx={{ marginRight: '5px' }} />
                         ))}
                     </Box>
                     <Typography variant='h6' component='h3' gutterBottom sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400 }}>

@@ -7,6 +7,7 @@ import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react';
 import { setDrawerState } from '../../../../redux/slices/drawerSlice';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CategoryPanel({
     selectCategoryClass,
@@ -24,7 +25,7 @@ export default function CategoryPanel({
         linkFilters.map(filter => {
             linksState[filter] = false
         })
-    }, [linkFilters])
+    }, [linkFilters, linksState])
 
     const [colors, setColor] = useState(linksState)
     const dispatch = useDispatch()
@@ -52,7 +53,6 @@ export default function CategoryPanel({
     return <Grid
         onClick={stopPropagation}
         container
-        className={styles['hide-right']}
         className={
             (categoryClass[categoryName] === 'right' && styles['hide-right'])
             ||
@@ -84,7 +84,7 @@ export default function CategoryPanel({
             {categoryName[0].toUpperCase() + categoryName.slice(1)}
         </Typography>
         {linkFilters.map((filter) =>
-        (<NextLink href={`/sneakers/${linkGroup}/${filter}`} passHref>
+        (<NextLink key={uuidv4()} href={`/sneakers/${linkGroup}/${filter}`} passHref>
             <Link
                 onClick={handleClick(`${filter}`)}
                 sx={{ cursor: 'pointer' }}

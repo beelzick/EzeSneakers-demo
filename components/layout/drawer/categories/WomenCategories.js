@@ -29,7 +29,7 @@ export default function WomenCategories() {
         />
         <CategoryPanel
             selectCategoryClass={selectWomenCategoryClass}
-            backTo='Season'
+            backTo='Women'
             setCategoryClass={setWomenCategoryClass}
             categoryName='season'
             setPanelClass={setWomenClass}
