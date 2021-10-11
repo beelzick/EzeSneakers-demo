@@ -52,6 +52,7 @@
 
 .fade-content {
     animation: fade-content 0.4s ease-out ;
+    justify-content: center;
 }
 
 @media(max-width: 990px) {

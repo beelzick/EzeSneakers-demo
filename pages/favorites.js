@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { selectFavorites } from '../redux/slices/favoritesSlice'
 import { useSelector } from 'react-redux'
-import SneakerNewPage from '../components/sneakers-page/SneakersNewPage'
+import SneakersFavoritesPage from '../components/sneakers-page/SneakersFavoritesPage'
 import Head from 'next/head'
 import { useSnackbar } from 'notistack'
 
@@ -26,8 +26,9 @@ export default function Favorites() {
     return <>
         <Head>
             <title>Favorites | EzeSneakers</title>
+            <meta name='robots' content='noindex' />
         </Head>
-        {session ? <SneakerNewPage sneakers={favorites} title='Favorites' /> : <LoadingPage />}
+        {session ? <SneakersFavoritesPage sneakers={favorites} title='Favorites' /> : <LoadingPage />}
     </>
 
 }

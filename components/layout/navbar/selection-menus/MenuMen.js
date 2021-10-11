@@ -11,15 +11,15 @@ export default function MenuMen() {
     const dispatch = useDispatch()
     return <Grid
         container
-        justifyContent='center'
+        justifyContent='space-evenly'
         alignItems='center'
         p={3}
         className={styles['nav-dialog']}
         onMouseEnter={() => dispatch(setMenuMen(true))}
         onMouseLeave={() => dispatch(setMenuMen(false))}
     >
-        <Grid container item xs={7} justifyContent='center' className={styles['fade-content']}>
-            <Grid container justifyContent='center' item xs={2}>
+        <Grid container item xs={7} className={styles['fade-content']}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
@@ -33,7 +33,7 @@ export default function MenuMen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
@@ -47,7 +47,7 @@ export default function MenuMen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
@@ -61,7 +61,7 @@ export default function MenuMen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for

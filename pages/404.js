@@ -20,6 +20,7 @@ export default function PageNotFound() {
     return <>
         <Head>
             <title>404 Not Found</title>
+            <meta name='robots' content='noindex' />
         </Head>
         <Grid container className='page-container'>
             <Grid item xs={12}>

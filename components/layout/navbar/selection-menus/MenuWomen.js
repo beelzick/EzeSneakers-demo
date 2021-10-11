@@ -18,8 +18,8 @@ export default function MenuWomen() {
         onMouseEnter={() => dispatch(setMenuWomen(true))}
         onMouseLeave={() => dispatch(setMenuWomen(false))}
     >
-        <Grid container item xs={7} justifyContent='center' className={styles['fade-content']}>
-            <Grid container justifyContent='center' item xs={2}>
+        <Grid container item xs={7} className={styles['fade-content']}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }} >
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
@@ -33,7 +33,7 @@ export default function MenuWomen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }} >
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         collection
@@ -47,7 +47,7 @@ export default function MenuWomen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         season
@@ -61,7 +61,7 @@ export default function MenuWomen() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         for

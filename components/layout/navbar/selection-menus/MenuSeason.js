@@ -18,8 +18,8 @@ export default function MenuSeason() {
         onMouseEnter={() => dispatch(setMenuSeason(true))}
         onMouseLeave={() => dispatch(setMenuSeason(false))}
     >
-        <Grid container item xs={7} justifyContent='center' className={styles['fade-content']}>
-            <Grid container justifyContent='center' item xs={2}>
+        <Grid container item xs={7} className={styles['fade-content']}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         women
@@ -33,7 +33,7 @@ export default function MenuSeason() {
                     ))}
                 </Box>
             </Grid>
-            <Grid container justifyContent='center' item xs={2}>
+            <Grid container justifyContent='center' item xs={3} lg={2}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         men

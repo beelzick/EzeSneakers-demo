@@ -6,6 +6,7 @@ export default function QueryPage({ sneakers, q }) {
     return <>
         <Head>
             <title>Search results for {q}</title>
+            <meta name='robots' content='noindex' />
         </Head>
         <SneakersSearchPage sneakers={sneakers} q={q} title={`Results for "${q}"`} />
     </>

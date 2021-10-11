@@ -16,6 +16,8 @@ export default function About() {
         <>
             <Head>
                 <title>About | EzeSneakers</title>
+                <meta description='EzeSneakers offers professionally restored shoes at the lowest prices.
+                    We want to give sneakers a second life, without compromisiing on their quality'/>
             </Head>
 
             <Grid container className='page-container'>

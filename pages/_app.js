@@ -32,9 +32,9 @@ export default function MyApp(props) {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>EzeSneakers</title>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
         <meta description='EzeSneakers offers professionally restored shoes at the lowest prices.
-         Platform wants to give sneakers a second life, without compromisiing on their quality'/>
+         We want to give sneakers a second life, without compromisiing on their quality'/>
       </Head>
       <Provider store={store}>
         <PersistGate loading={<LoadingReduxPersist />} persistor={persistor}>
