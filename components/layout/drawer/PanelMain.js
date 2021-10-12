@@ -3,7 +3,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { FaFemale } from '@react-icons/all-files/fa/FaFemale'
 import { FaMale } from '@react-icons/all-files/fa/FaMale'
-import { MdFiberNew } from '@react-icons/all-files/Md/MdFiberNew'
+import { MdFiberNew } from '@react-icons/all-files/md/MdFiberNew'
 import NextLink from 'next/link'
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';

@@ -33,13 +33,14 @@ export const loginSchema = yup.object().shape({
 })
 
 export const changePasswordSchema = yup.object().shape({
+    oldPassword: yup
+        .string('This field must contain only letters')
+        .required('This field is required')
+        .min(6, 'Password must be at least 6 characters')
+        .max(40, 'Password must not exceed 40 characters'),
     newPassword: yup
         .string('This field must contain only letters')
         .required('This field is required')
         .min(6, 'Password must be at least 6 characters')
         .max(40, 'Password must not exceed 40 characters'),
-    cNewPassword: yup
-        .string('This field must contain only letters')
-        .required('This field is required')
-        .oneOf([yup.ref('newPassword'), null], 'Passwords don\'t match')
 })
