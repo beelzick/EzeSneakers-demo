@@ -26,7 +26,6 @@ export default function Home({ featuredSneakers, summerSneakers }) {
         </Grid>
         <Grid item xs={0} lg={1} />
       </Grid>
-
     </>
   )
 }
