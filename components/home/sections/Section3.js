@@ -47,13 +47,15 @@ export default function Section3() {
                         className={styles['sec-3-image-container']}
                     >
                         <Image
-                            src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1457,q_100/v1633034244/ecom-portfolio/home-13.webp'}
-                            height={1457}
-                            width={1374}
+                            src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1400/v1634055222/ecom-portfolio/home-23.webp'
+                            height={1400}
+                            width={1400}
                             layout='responsive'
                             objectFit='cover'
                             quality={100}
                             className={styles['sec-3-image']}
+                            placeholder='blur'
+                            blurDataURL='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1400/v1634055222/ecom-portfolio/home-23.webp'
                             alt='Person mending a sneaker on the grass'
                         />
                     </motion.div>
@@ -63,11 +65,11 @@ export default function Section3() {
                 <Grid container direction='column' justifyContent='center' alignItems='center' sx={{ height: '100%' }} >
                     <ThemeProvider theme={theme}>
                         <TypographyFade componentName='h2' variant='h2' align='center' my={3}>
-                            Check out the new Summer Collection
+                            Check out the New Autumn Collection
                         </TypographyFade>
                     </ThemeProvider>
-                    <NextLink href='/sneakers/summer' passHref>
-                        <ButtonFade buttonText='Summer Collection' size='large' variant='contained' />
+                    <NextLink href='/sneakers/new/autumn' passHref>
+                        <ButtonFade buttonText='Autumn Collection' size='large' variant='contained' />
                     </NextLink>
                 </Grid>
             </Grid>

@@ -37,6 +37,8 @@ export default function ImageGrid({ imgUrl, width, height, alt }) {
                     objectFit='cover'
                     layout='responsive'
                     alt={alt}
+                    placeholder='blur'
+                    blurDataURL={imgUrl}
                 />
             </div>
         </Grid>

@@ -13,6 +13,8 @@ export default function ImageContainer({ src, alt }) {
             className={styles.image}
             alt={alt}
             title={alt}
+            placeholder='blur'
+            blurDataURL={src}
         />
     </div>
 

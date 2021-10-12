@@ -1,4 +1,5 @@
 User-agent: *
+Allow: /
 Disallow: /favorites
 Disallow: /change-password
 Disallow: /cart

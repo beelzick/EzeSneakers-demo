@@ -14,14 +14,8 @@ export default function SwiperImage() {
     >
         <SwiperSlide>
             <ImageContainer
-                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000,q_100/v1633035797/ecom-portfolio/home-14.webp'
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1633035797/ecom-portfolio/home-14.webp'
                 alt='Hanging trainers on a tree'
-            />
-        </SwiperSlide>
-        <SwiperSlide>
-            <ImageContainer
-                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1631996412/ecom-portfolio/home-1.webp'
-                alt='Sneakers'
             />
         </SwiperSlide>
         <SwiperSlide>
@@ -34,6 +28,12 @@ export default function SwiperImage() {
             <ImageContainer
                 src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1632911351/ecom-portfolio/home-10.webp'
                 alt='Converse Sneakers'
+            />
+        </SwiperSlide>
+        <SwiperSlide>
+            <ImageContainer
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000,w_1500/v1634052388/ecom-portfolio/home-21.webp'
+                alt='Orange Air Max Sneakers'
             />
         </SwiperSlide>
     </Swiper>

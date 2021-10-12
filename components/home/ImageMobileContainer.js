@@ -13,7 +13,8 @@ export default function ImageContainer({ src, alt }) {
             className={styles['image-mobile']}
             alt={alt}
             title={alt}
+            blurDataURL={src}
+            placeholder='blur'
         />
     </div>
-
 }

@@ -15,6 +15,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { IoIosSnow } from '@react-icons/all-files/io/IoIosSnow'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import styles from './drawer.module.css'
+import { setDrawerState } from '../../../redux/slices/drawerSlice';
 import {
     setWomenClass,
     selectMainClass,
@@ -47,6 +48,14 @@ export default function PanelMain() {
         dispatch(setMainClass('left'))
     }
 
+    const handleLogInClick = () => {
+        dispatch(dialogOpen())
+        dispatch(setDrawerState(false))
+    }
+    const handleLogOutClick = () => {
+        signOut()
+        dispatch(setDrawerState(false))
+    }
 
     const stopPropagation = (e) => {
         e.stopPropagation()
@@ -116,7 +125,7 @@ export default function PanelMain() {
                             <Button
                                 variant='contained'
                                 sx={{ width: '270px', fontSize: '16px' }}
-                                onClick={() => dispatch(dialogOpen())}
+                                onClick={handleLogInClick}
                             >
                                 Log In
                             </Button>
@@ -125,14 +134,18 @@ export default function PanelMain() {
                             <Button
                                 variant='contained'
                                 sx={{ width: '270px', fontSize: '16px' }}
-                                onClick={() => signOut()}
+                                onClick={handleLogOutClick}
                             >
                                 Log Out
                             </Button>
                         )}
                 </Box>
                 {!session && <NextLink passHref href='/register'>
-                    <Button variant='outlined' sx={{ width: '270px', fontSize: '16px' }}>
+                    <Button
+                        variant='outlined'
+                        sx={{ width: '270px', fontSize: '16px' }}
+                        onClick={() => dispatch(setDrawerState(false))}
+                    >
                         Join Us
                     </Button>
                 </NextLink>}

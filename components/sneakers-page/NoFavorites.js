@@ -14,7 +14,7 @@ export default function NoFavorites() {
                 Your favorites section is empty
             </Typography>
             <Typography variant='h5' mt={2} align='center'>
-                Click the heart icon on the right corner of a product to add the sneaker to favorites
+                Click the heart icon on the right corner of a product card to add the sneaker to favorites
             </Typography>
         </Grid>
     )

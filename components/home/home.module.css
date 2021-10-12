@@ -1,13 +1,17 @@
 .image-container {
-    max-height: 75vh
+    max-height: 75vh;
+    
 }
 
 .image-container > div {
     position: unset !important;
+
 }
+
 
 .image {
     max-height: 75vh !important;
+    border-radius: 10px !important
 }
 
 
@@ -21,4 +25,5 @@
 
 .image-mobile {
     max-height: 90vh !important;
+    border-radius: 10px !important
 }

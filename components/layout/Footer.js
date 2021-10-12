@@ -75,7 +75,12 @@ export default function Footer() {
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     Main Pages
                                 </Typography>
-                                {['home', 'about', 'cart'].map(link => (
+                                <NextLink href='/' passHref>
+                                    <Link className='link' underline='none' variant='button' mb={0.3}>
+                                        home
+                                    </Link>
+                                </NextLink>
+                                {['about', 'cart'].map(link => (
                                     <NextLink key={uuidv4()} href={`/${link}`} passHref>
                                         <Link className='link' underline='none' variant='button' mb={0.3}>
                                             {link === 'cart' ? 'your cart' : link}
