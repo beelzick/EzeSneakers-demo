@@ -34,7 +34,7 @@ export default function DemoDialog() {
                         This is a showcase project so any features connected with placing an order are not included.
                     </DialogContentText>
                     <DialogContentText>
-                        Thank you for your time
+                        Thank you for your time.
                     </DialogContentText>
                     <Grid container justifyContent='center' alignItems='center' pt={4}>
                         <HappySvg />

@@ -31,14 +31,14 @@ export async function getStaticProps(context) {
                     should: [
                         { autocomplete: { query: q, path: 'name' } },
                         { autocomplete: { query: q, path: 'price' } },
-                        { autocomplete: { query: q, path: 'description' } },
                         { autocomplete: { query: q, path: 'rating' } },
-                        { autocomplete: { query: q, path: 'sex' } },
+                        { autocomplete: { query: q, path: 'gender' } },
                         { autocomplete: { query: q, path: 'tags' } },
                     ]
                 }
-            }
+            },
         },
+        { $limit: 18 }
     ]).toArray()
 
     const sneakers = JSON.parse(JSON.stringify(sneakersData))

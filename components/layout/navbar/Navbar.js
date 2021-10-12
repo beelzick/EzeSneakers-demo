@@ -5,8 +5,8 @@ import NextLink from 'next/link'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
+import Link from '@mui/material/Link';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -155,9 +155,11 @@ export default function Navbar() {
                             size='large'>
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant='h6' noWrap>
-                            EzeSneakers
-                        </Typography>
+                        <NextLink href='/' passHref>
+                            <Link className={classes.title} variant='h6' noWrap color='secondary' underline='none'>
+                                EzeSneakers
+                            </Link>
+                        </NextLink>
                         <div style={{ flexGrow: 1.655 }} />
                         <NavLinks />
                         <div className='grow' />
