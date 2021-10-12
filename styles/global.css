@@ -58,11 +58,11 @@
 :root {
     --swiper-theme-color: white !important
 }
-.css-1wuw8dw-MuiBreadcrumbs-separator {
+.MuiBreadcrumbs-separator {
     transform: rotate(-22deg) !important;
 }
 
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+.MuiDrawer-paper {
     overflow: hidden !important;
 }
 
