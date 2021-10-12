@@ -6,7 +6,7 @@ export default function Women({ sneakers }) {
     return <>
         <Head>
             <title>Women | EzeSneakers</title>
-            <meta description='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
+            <meta name='description' content='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
         </Head>
         <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' genderFiltersInitialState={{ men: false, women: true }} />
     </>

@@ -6,7 +6,7 @@ export default function Summer({ sneakers }) {
     return <>
         <Head>
             <title>Summer Collection | EzeSneakers</title>
-            <meta description='Professionally restored sneakers ideal for summer. Save our planet by buying restored shoes.' />
+            <meta name='description' content='Professionally restored sneakers ideal for summer. Save our planet by buying restored shoes.' />
         </Head>
         <SneakerPage sneakers={sneakers} title='Autumn Sneakers Collection' apiName='season' />
     </>

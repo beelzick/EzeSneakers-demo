@@ -86,7 +86,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                         </NextLink>
                     </Grid>
                     <Grid item xs={4}>
-                        <Typography variant='subtitle1' component='h5' align='right'>
+                        <Typography variant='subtitle1' component='span' align='right'>
                             {price} $
                         </Typography>
                     </Grid>

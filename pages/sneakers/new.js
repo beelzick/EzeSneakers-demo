@@ -6,7 +6,7 @@ export default function New({ sneakers }) {
     return <>
         <Head>
             <title>New Products| EzeSneakers</title>
-            <meta description='Professionally restored sneakers, new products. Save our planet by buying restored shoes.' />
+            <meta name='description' content='Professionally restored sneakers, new products. Save our planet by buying restored shoes.' />
         </Head>
         <SneakersPage
             sneakers={sneakers}

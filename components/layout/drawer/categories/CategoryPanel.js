@@ -25,7 +25,7 @@ export default function CategoryPanel({
         linkFilters.map(filter => {
             linksState[filter] = false
         })
-    }, [linkFilters, linksState])
+    }, [linkFilters])
 
     const [colors, setColor] = useState(linksState)
     const dispatch = useDispatch()

@@ -15,7 +15,7 @@ export default function Register() {
         <>
             <Head>
                 <title>Register | EzeSneakers</title>
-                <meta description='EzeSneakers offers professionally restored shoes at the lowest prices. 
+                <meta name='description' content='EzeSneakers offers professionally restored shoes at the lowest prices. 
                     Become a member to benefit from all the possibilities of the website' />
             </Head>
             <Grid

@@ -14,11 +14,13 @@ import { v4 as uuidv4 } from 'uuid';
 const iconsData = [
     {
         component: FacebookIcon,
-        text: 'Facebook'
+        text: 'Facebook',
+        href: 'https://github.com/beelzick/EzeSneakers-demo'
     },
     {
         component: TwitterIcon,
-        text: 'Twitter'
+        text: 'Twitter',
+        href: 'https://github.com/beelzick/EzeSneakers-demo'
     },
     {
         component: GitHubIcon,
@@ -27,15 +29,18 @@ const iconsData = [
     },
     {
         component: InstagramIcon,
-        text: 'Instagram'
+        text: 'Instagram',
+        href: 'https://github.com/beelzick/EzeSneakers-demo'
     },
     {
         component: LinkedInIcon,
-        text: 'Linkedin'
+        text: 'Linkedin',
+        href: 'https://github.com/beelzick/EzeSneakers-demo'
     },
     {
         component: EmailIcon,
-        text: 'Email'
+        text: 'Email',
+        href: 'https://github.com/beelzick/EzeSneakers-demo'
     },
 ]
 
@@ -152,7 +157,7 @@ export default function Footer() {
                     <Grid item xs={12} lgf={6} order={{ lgf: 2 }}>
                         <Grid container sx={{ justifyContent: { xs: 'center', sm: 'unset', md: 'center', lgf: 'right' } }}>
                             {['Privacy Policy', 'Terms of use', 'Cookie'].map(link => (
-                                <Link key={uuidv4()} variant='caption' underline='none' sx={{ cursor: 'pointer' }} className='link' mr={3}>
+                                <Link href='#' key={uuidv4()} variant='caption' underline='none' sx={{ cursor: 'pointer' }} className='link' mr={3}>
                                     {link}
                                 </Link>
                             ))}
@@ -177,5 +182,5 @@ export default function Footer() {
                 </Grid>
             </Grid>
         </Grid>
-    </footer >
+    </footer>
 }

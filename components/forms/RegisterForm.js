@@ -42,7 +42,6 @@ export default function Register() {
         try {
             dispatch(loadingStart())
             const response = await axios.post('/api/auth/register', data)
-            console.log(data)
             if (response.data.acknowledged) {
                 router.push('/')
                 dispatch(loadingStop())

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /favorites
+Disallow: /change-password
+Disallow: /change-password
+Disallow: /cart
+Disallow: /404

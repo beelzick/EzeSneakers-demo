@@ -6,9 +6,9 @@ export default function Men({ sneakers }) {
     return <>
         <Head>
             <title>Men | EzeSneakers</title>
-            <meta description='Professionally restored sneakers for men. Save our planet by buying restored shoes.' />
+            <meta name='description' content='Professionally restored sneakers for men. Save our planet by buying restored shoes.' />
         </Head>
-        <SneakerPage sneakers={sneakers} title='For Men' apiName='man'/>
+        <SneakerPage sneakers={sneakers} title='For Men' apiName='man' />
     </>
 }
 

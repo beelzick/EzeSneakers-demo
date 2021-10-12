@@ -104,7 +104,7 @@ export default function Navbar() {
         >
             <NextLink href='/favorites' passHref>
                 <MenuItem>
-                    <IconButton color='inherit' aria-label='favorites' size='large'>
+                    <IconButton color='inherit' size='large' aria-label='favorites'>
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
                             <FavoriteIcon />
                         </Badge>

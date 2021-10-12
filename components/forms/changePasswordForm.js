@@ -22,7 +22,6 @@ export default function ChangePasswordForm() {
         dispatch(loadingStart())
         try {
             const response = await axios.patch('/api/auth/change-password', { newPassword: data.newPassword })
-            console.log(response.data)
             dispatch(loadingStop())
             enqueueSnackbar('Password successfully updated', {
                 variant: 'success'

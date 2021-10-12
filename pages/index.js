@@ -12,7 +12,7 @@ export default function Home({ featuredSneakers, summerSneakers }) {
     <>
       <Head>
         <title>Home Page | EzeSneakers</title>
-        <meta description='EzeSneakers offers professionally restored shoes at the lowest prices.
+        <meta name='description' content='EzeSneakers offers professionally restored shoes at the lowest prices.
          We want to give sneakers a second life, without compromisiing on their quality'/>
       </Head>
       <SwiperBanner />
