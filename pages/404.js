@@ -15,7 +15,7 @@ export default function PageNotFound() {
         enqueueSnackbar('Page Not Found', {
             variant: 'error'
         })
-    })
+    }, [])
 
     return <>
         <Head>

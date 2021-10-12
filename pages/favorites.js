@@ -26,6 +26,7 @@ export default function Favorites() {
     return <>
         <Head>
             <title>Favorites | EzeSneakers</title>
+            <meta name='robots' content='noindex' />
         </Head>
         {session ? <SneakersFavoritesPage sneakers={favorites} title='Favorites' /> : <LoadingPage />}
     </>

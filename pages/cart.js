@@ -23,6 +23,7 @@ export default function Cart() {
     return <>
         <Head>
             <title>Your Cart | EzeSneakers</title>
+            <meta name='robots' content='noindex' />
         </Head>
         <Grid container className='page-container' justifyContent='center'>
             <Grid item xs={12} lg={10} xl={8}>

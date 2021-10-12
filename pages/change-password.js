@@ -23,6 +23,7 @@ export default function ChangePassword() {
             <>
                 <Head>
                     <title>Change Password | EzeSneakers</title>
+                    <meta name='robots' content='noindex' />
                 </Head>
                 <Grid container justifyContent='center' alignItems='center' sx={{ minHeight: '70vh' }}>
                     <Grid item xs={10} sm={7} md={6} lg={4} xl={4}>
