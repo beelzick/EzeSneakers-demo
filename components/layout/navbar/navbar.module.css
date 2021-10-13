@@ -47,7 +47,6 @@
     top: 90px;
     background-color: black;
     z-index: 2;
-    /* animation: fade-container 0.4s linear ; */
 }
 
 .fade-content {
@@ -62,10 +61,16 @@
     .nav-links {
         display: none;
     }
+    .search {
+        display: none;
+    }
 }
 
 @media(min-width: 991px) {
     .menu-button {
+        display: none !important;
+    }
+    .mobile-search-icon {
         display: none !important;
     }
 }

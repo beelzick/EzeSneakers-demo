@@ -29,11 +29,11 @@ export async function getStaticProps(context) {
                 index: 'products',
                 compound: {
                     should: [
-                        { autocomplete: { query: q, path: 'name' } },
-                        { autocomplete: { query: q, path: 'price' } },
-                        { autocomplete: { query: q, path: 'rating' } },
-                        { autocomplete: { query: q, path: 'gender' } },
-                        { autocomplete: { query: q, path: 'tags' } },
+                        { autocomplete: { query: q, path: 'name', fuzzy: { maxEdits: 2, } } },
+                        { autocomplete: { query: q, path: 'price', fuzzy: { maxEdits: 2, } } },
+                        { autocomplete: { query: q, path: 'rating', fuzzy: { maxEdits: 2, } } },
+                        { autocomplete: { query: q, path: 'gender', fuzzy: { maxEdits: 2, } } },
+                        { autocomplete: { query: q, path: 'tags', fuzzy: { maxEdits: 2, } } },
                     ]
                 }
             },

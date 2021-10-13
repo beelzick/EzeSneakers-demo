@@ -30,6 +30,8 @@ import styles from './navbar.module.css'
 import SelectionMenus from './SelectionsMenus';
 import { setDrawerState } from '../../../redux/slices/drawerSlice';
 import DrawerNav from '../drawer/DrawerNav';
+import DisabledHeartMobile from './DisabledHeartMobile'
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Navbar() {
     const dispatch = useDispatch()
@@ -102,7 +104,7 @@ export default function Navbar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <NextLink href='/favorites' passHref>
+            {session ? <NextLink href='/favorites' passHref>
                 <MenuItem>
                     <IconButton color='inherit' size='large' aria-label='favorites'>
                         <Badge classes={{ badge: classes.customBadge }} badgeContent={favoritesIds.length} color='error'>
@@ -111,8 +113,9 @@ export default function Navbar() {
                     </IconButton>
                     <p>Favorites</p>
                 </MenuItem>
-            </NextLink>
-
+            </NextLink> : (
+                <DisabledHeartMobile />
+            )}
             <NextLink href='/cart' passHref>
                 <MenuItem>
                     <IconButton color='inherit' aria-label='shopping cart' size='large'>
@@ -123,7 +126,6 @@ export default function Navbar() {
                     <p>Cart</p>
                 </MenuItem>
             </NextLink>
-
             {session && (
                 <MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
@@ -164,7 +166,13 @@ export default function Navbar() {
                         <NavLinks />
                         <div className='grow' />
                         <SearchField />
-                        <div className={classes.sectionDesktop}>
+                        <IconButton>
+                            <SearchIcon
+                                sx={{ fontSize: '27px', color: 'white' }}
+                                className={styles['mobile-search-icon']}
+                            />
+                        </IconButton>
+                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                             {session ? (<FavoritesBtn favQty={favoritesIds.length} />) : <DisabledHeart />}
                             <ShoppingCartBtn totalQty={totalQty(cartItems)} />
                             {session && (
@@ -179,23 +187,18 @@ export default function Navbar() {
                                     <AccountCircle />
                                 </IconButton>
                             )}
-                        </div>
-                        {session ? (
-                            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                                <IconButton
-                                    aria-label='show more'
-                                    aria-controls='menu-mobile'
-                                    aria-haspopup='true'
-                                    onClick={handleMobileMenuOpen}
-                                    color='inherit'
-                                    size='large'>
-                                    <MoreIcon />
-                                </IconButton>
-                            </Box>
-                        ) : (
-                            <Box sx={{ display: { md: 'none' } }}><ShoppingCartBtn totalQty={totalQty(cartItems)} /></Box>
-                        )}
-
+                        </Box>
+                        <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                            <IconButton
+                                aria-label='show more'
+                                aria-controls='menu-mobile'
+                                aria-haspopup='true'
+                                onClick={handleMobileMenuOpen}
+                                color='inherit'
+                                size='large'>
+                                <MoreIcon />
+                            </IconButton>
+                        </Box>
                     </Toolbar>
                 </AppBar>
                 {renderMobileMenu}

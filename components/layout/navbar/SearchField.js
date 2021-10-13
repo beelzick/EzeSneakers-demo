@@ -3,6 +3,7 @@ import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
 import { useRouter } from 'next/router'
 import { styled, alpha } from '@mui/material/styles';
+import styles from './navbar.module.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -38,7 +39,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: '20ch',
+            width: '130px',
         },
     },
 }));
@@ -58,7 +59,7 @@ export default function SearchField() {
         }
     }
 
-    return <Search>
+    return <Search className={styles.search}>
         <SearchIconWrapper>
             <SearchIcon />
         </SearchIconWrapper>

@@ -5,8 +5,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const useStyles = makeStyles({
     button: {
-        "&:disabled": {
-            color: "rgba(255,255,255,0.3)"
+        '&:disabled': {
+            color: 'rgba(255,255,255,0.4)'
         }
     }
 })
