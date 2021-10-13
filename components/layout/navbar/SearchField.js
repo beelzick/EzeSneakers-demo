@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import DialogSearch from './DialogSearch';
+import SearchDialog from './SearchDialog';
 import { selectSearchOpen, setSearchOpen } from '../../../redux/slices/searchDialogSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from '@mui/material/Link'
@@ -118,7 +118,7 @@ export default function SearchField() {
                         xs={12} sm={8} md={7} lg={6} xl={4}
                         container
                         alignItems='flex-start'>
-                        <DialogSearch />
+                        <SearchDialog />
                     </Grid>
                     <Grid
                         item

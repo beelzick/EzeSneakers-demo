@@ -10,7 +10,7 @@ export default function MenFiltersPage({ name, sneakers, filter }) {
         </Head>
         <SneakerPage
             sneakers={sneakers}
-            title={`${name[0].toUpperCase()}${name.slice(1)} New Collection`}
+            title={`New ${name[0].toUpperCase()}${name.slice(1)} Collection`}
             filterGroup='new'
             filter={filter}
         />
