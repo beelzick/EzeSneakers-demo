@@ -73,24 +73,9 @@ export async function getStaticProps({ params }) {
         case 'reebok':
             sneakersData = await db.collection('products').aggregate([
                 {
-                    $search: {
-                        index: 'products',
-                        compound: {
-                            must: [
-                                {
-                                    autocomplete: {
-                                        path: 'name',
-                                        query: filter,
-                                    }
-                                },
-                                {
-                                    text: {
-                                        path: 'gender',
-                                        query: 'woman'
-                                    }
-                                }
-                            ]
-                        }
+                    $match: {
+                        name: { $regex: `${filter[0].toUpperCase()}${filter.slice(1)}` },
+                        gender: 'woman',
                     }
                 },
                 { $limit: 18 }
@@ -102,7 +87,6 @@ export async function getStaticProps({ params }) {
                 { $limit: 18 }
             ]).toArray()
     }
-
     const sneakers = JSON.parse(JSON.stringify(sneakersData))
     return {
         props: {

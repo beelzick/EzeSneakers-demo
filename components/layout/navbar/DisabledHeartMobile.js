@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 export default function DisabledHeartMobile() {
     const classes = useStyles()
     return (
-        <Tooltip disableFocusListener title='Log in to save favorites'>
+        <Tooltip title='Log in to save favorites'>
             <MenuItem>
                 <span>
                     <IconButton disabled className={classes.button} size='large' aria-label='Log in to save favorites' aria-disabled='true'>
@@ -25,7 +25,7 @@ export default function DisabledHeartMobile() {
                     </IconButton>
                 </span>
 
-                <p style={{color: 'rgba(0,0,0,0.5)'}}>Favorites</p>
+                <p style={{ color: 'rgba(0,0,0,0.5)' }}>Favorites</p>
             </MenuItem>
         </Tooltip>
     );

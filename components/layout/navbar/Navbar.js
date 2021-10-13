@@ -32,6 +32,7 @@ import { setDrawerState } from '../../../redux/slices/drawerSlice';
 import DrawerNav from '../drawer/DrawerNav';
 import DisabledHeartMobile from './DisabledHeartMobile'
 import SearchIcon from '@mui/icons-material/Search';
+import { setSearchOpen } from '../../../redux/slices/searchDialogSlice';
 
 export default function Navbar() {
     const dispatch = useDispatch()
@@ -76,6 +77,9 @@ export default function Navbar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const handleSearchIconClick = () => {
+        dispatch(setSearchOpen(true))
+    }
 
     const menuId = 'account-menu';
     const renderMenu = (
@@ -166,7 +170,7 @@ export default function Navbar() {
                         <NavLinks />
                         <div className='grow' />
                         <SearchField />
-                        <IconButton>
+                        <IconButton onClick={handleSearchIconClick}>
                             <SearchIcon
                                 sx={{ fontSize: '27px', color: 'white' }}
                                 className={styles['mobile-search-icon']}

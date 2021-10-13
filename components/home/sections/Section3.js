@@ -30,7 +30,7 @@ export default function Section3() {
     }, [isVisible])
 
     return <section>
-        <Grid container justifyConent='center' alignItems='center'
+        <Grid container alignItems='center'
             sx={{
                 margin: { md: '64px 0' },
                 marginBottom: { xs: '32px' }

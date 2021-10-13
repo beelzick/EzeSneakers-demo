@@ -13,6 +13,7 @@ import accordionSlice from './slices/accordionSlice'
 import drawerSlice from './slices/drawerSlice'
 import drawerClassSlice from './slices/drawerClassSlice'
 import drawerCategoryClassSlice from './slices/drawerCategoryClassSlice'
+import searchDialogSlice from './slices/searchDialogSlice'
 
 const reducers = combineReducers({
     loading: loadingReducer,
@@ -28,7 +29,8 @@ const reducers = combineReducers({
     accordion: accordionSlice,
     drawer: drawerSlice,
     drawerClass: drawerClassSlice,
-    drawerCategoryClass: drawerCategoryClassSlice
+    drawerCategoryClass: drawerCategoryClassSlice,
+    searchDialog: searchDialogSlice
 })
 
 export default reducers
