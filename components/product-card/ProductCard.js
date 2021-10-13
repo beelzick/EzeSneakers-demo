@@ -16,11 +16,13 @@ import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './product-card.module.css'
 import { useSnackbar } from 'notistack'
+import Skeleton from '@mui/material/Skeleton';
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const favoritesIds = useSelector(selectFavoritesIds)
+    const [loaded, setLoaded] = useState(false)
     const [checked, setChecked] = useState(false)
     const { data: session } = useSession()
 
@@ -60,48 +62,63 @@ export default function ProductCard({ imgUrl, id, name, price }) {
         setChecked(prevValue => !prevValue)
     }
 
+    const handleOnLoad = (e) => {
+        e.target.src.indexOf('data:image/gif;base64') < 0 && setLoaded(true)
+    }
+
     const label = { inputProps: { 'aria-label': 'Checkbox Heart' } };
 
     return (
         <Box className={styles.root}>
+            {!loaded &&
+                <Skeleton
+                    variant='rectangular'
+                    sx={{ width: '100%', paddingBottom: '100%', height: '0', borderRadius: '10px' }}
+                />}
             <NextLink href={`/sneakers/${id}`} passHref>
-                <CardActionArea sx={{ borderRadius: '10px' }}>
+                <CardActionArea sx={{ borderRadius: '10px' }} onLoad={handleOnLoad}>
                     <Image
                         src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_839/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
                         alt={name}
                         title={name}
-                        width='600'
-                        height='600'
+                        width='800'
+                        height='800'
                         className={styles.image}
                     />
                 </CardActionArea>
             </NextLink>
-            <CardActions>
-                <Grid container>
-                    <Grid item xs={8}>
-                        <NextLink href={`/sneakers/${id}`} passHref>
-                            <Typography variant='subtitle1' component='h2' sx={{ cursor: 'pointer' }}>
-                                {name}
+            {!loaded ? <Box>
+                <Skeleton variant='text' sx={{ width: '100%', height: '44px' }} />
+            </Box> :
+                <Box p={1}>
+                    <Grid container >
+
+                        <Grid item xs={8}>
+                            <NextLink href={`/sneakers/${id}`} passHref>
+                                <Typography variant='subtitle1' component='h2' sx={{ cursor: 'pointer' }}>
+                                    {name}
+                                </Typography>
+                            </NextLink>
+                        </Grid>
+                        <Grid item xs={4} container>
+                            <Typography variant='subtitle1' component='span' align='right' className='w-100'>
+                                {price} $
                             </Typography>
-                        </NextLink>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Typography variant='subtitle1' component='span' align='right'>
-                            {price} $
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </CardActions>
-            {session && <div className={styles.imgIconContainer}>
-                <Checkbox
-                    {...label}
-                    icon={<FavoriteBorderIcon />}
-                    onChange={handleChange}
-                    checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
-                    onClick={handleClick}
-                    checked={checked}
-                />
-            </div>}
-        </Box>
+                </Box>}
+            {
+                session && <div className={styles.imgIconContainer}>
+                    <Checkbox
+                        {...label}
+                        icon={<FavoriteBorderIcon />}
+                        onChange={handleChange}
+                        checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
+                        onClick={handleClick}
+                        checked={checked}
+                    />
+                </div>
+            }
+        </Box >
     );
 }

@@ -2,16 +2,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSearchOpen, setSearchOpen } from '../../../redux/slices/searchDialogSlice';
+import { selectSearchOpen } from '../../../redux/slices/searchDialogSlice';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.black, 0.8),
+    backgroundColor: '#262626',
     '&:hover': {
-        backgroundColor: alpha(theme.palette.common.black, 0.7),
+        backgroundColor: '#404040',
     },
     width: '100%',
 }));
