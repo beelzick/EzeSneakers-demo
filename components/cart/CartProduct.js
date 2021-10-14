@@ -12,13 +12,14 @@ import styles from './cart-product.module.css'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCartItemById, itemUpdate } from '../../redux/slices/cartSlice'
-import { MenuProps, quantities, UpdateData } from '../../src/cartProductHelpers'
+import { MenuProps, quantities, UpdateData, prepareCartProductImg } from '../../src/cartProductHelpers'
 import OutlinedInput from '@mui/material/OutlinedInput';
 import NextLink from 'next/link'
 import Image from 'next/image'
 import makeStyles from '@mui/styles/makeStyles';
 import Chip from '@mui/material/Chip'
 import { v4 as uuidv4 } from 'uuid';
+import { createBlurDataUrl } from '../../src/imgHelpers'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -68,12 +69,14 @@ export default function CartProduct({ imgUrl, name, price, gender, tags, sizes, 
                     <NextLink href={`/sneakers/${productId}`} passHref>
                         <CardActionArea sx={{ borderRadius: '10px', width: 'fit-content' }}>
                             <Image
-                                src={'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_540/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'}
-                                width='540'
-                                height='540'
+                                src={prepareCartProductImg(imgUrl)}
+                                width={600}
+                                height={600}
                                 className={styles.image}
                                 alt={name}
                                 title={name}
+                                placeholder='blur'
+                                blurDataURL={createBlurDataUrl(imgUrl)}
                             />
                         </CardActionArea>
                     </NextLink>

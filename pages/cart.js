@@ -46,6 +46,7 @@ export default function Cart() {
                                     productId={item._id}
                                     sizeQty={itemSize.qty}
                                     selectedSize={itemSize.size}
+                                    imgUrl={item.imgUrl}
                                 />)
                             })
                         })}

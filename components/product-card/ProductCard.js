@@ -15,6 +15,7 @@ import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './product-card.module.css'
 import { useSnackbar } from 'notistack'
+import { createBlurDataUrl } from '../../src/imgHelpers';
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const { enqueueSnackbar } = useSnackbar()
@@ -22,14 +23,6 @@ export default function ProductCard({ imgUrl, id, name, price }) {
     const favoritesIds = useSelector(selectFavoritesIds)
     const [checked, setChecked] = useState(false)
     const { data: session } = useSession()
-
-    const createBlurDataUrl = (imgUrl) => {
-        if (imgUrl.includes('w_800')) {
-            return imgUrl.replace('h_800,w_800', 'h_100,q_10,w_100')
-        } else {
-            return imgUrl.replace('h_800', 'h_100,q_10')
-        }
-    }
 
     useEffect(() => {
         favoritesIds.map(favId => {
@@ -108,6 +101,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                             variant='subtitle1'
                             component='span'
                             align='right'
+                            pr={1}
                         >
                             {price} $
                         </Typography>
@@ -117,6 +111,8 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                         xs={1}
                         className={styles['checkbox-container']}
                         order={{ md: 3 }}
+                        container
+                        justifyContent='flex-end'
                     >
                         {session && <Checkbox
                             {...label}

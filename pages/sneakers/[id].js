@@ -20,6 +20,8 @@ import StyledRating from '../../components/show-page/StyledRating'
 import AddFavorites from '../../components/show-page/AddFavorites'
 import { useSnackbar } from 'notistack'
 import Image from 'next/image'
+import { prepareImgUrl, createBlurDataUrl } from '../../src/imgHelpers'
+
 
 export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, checkAlso, _id }) {
     const { enqueueSnackbar } = useSnackbar()
@@ -31,6 +33,7 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
     useEffect(() => {
         dispatch(setSize(null))
     }, [dispatch])
+
 
     const item = {
         _id,
@@ -85,12 +88,15 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
                         <Grid item xs={12} md={7} >
                             <Box>
                                 <Image
-                                    src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1411,q_100/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
-                                    width={1411}
-                                    height={1411}
+                                    src={prepareImgUrl(imgUrl)}
+                                    quality={100}
+                                    width={1200}
+                                    height={1200}
                                     alt={name}
                                     title={name}
                                     className='show-page-img'
+                                    placeholder='blur'
+                                    blurDataURL={createBlurDataUrl(imgUrl)}
                                 />
                             </Box>
                             <Box component='div' mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>

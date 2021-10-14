@@ -21,7 +21,7 @@ import { fetchFavorites, selectFavoritesIds } from '../../../redux/slices/favori
 import DisabledHeart from './DisabledHeart';
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../src/navbarHelpers';
-import SearchField from './SearchField'
+import SearchField from './search/SearchField'
 import Box from '@mui/material/Box'
 import ShoppingCartBtn from './ShoppingCartBtn';
 import FavoritesBtn from './FavoritesBtn';
@@ -33,6 +33,8 @@ import DrawerNav from '../drawer/DrawerNav';
 import DisabledHeartMobile from './DisabledHeartMobile'
 import SearchIcon from '@mui/icons-material/Search';
 import { setSearchOpen, selectSearchOpen } from '../../../redux/slices/searchDialogSlice';
+
+
 
 export default function Navbar() {
     const dispatch = useDispatch()

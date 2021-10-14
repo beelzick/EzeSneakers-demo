@@ -2,7 +2,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSearchOpen, setSearchOpen } from '../../../redux/slices/searchDialogSlice';
+import { selectSearchOpen, setSearchOpen } from '../../../../redux/slices/searchDialogSlice';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -38,7 +38,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchDialog() {
+export default function SearchDialogField() {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
     const searchOpen = useSelector(selectSearchOpen)

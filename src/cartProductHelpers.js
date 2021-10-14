@@ -7,6 +7,14 @@ export const MenuProps = {
     },
 };
 
+export const prepareCartProductImg = (imgUrl) => {
+    if (imgUrl.includes('w_800')) {
+        return imgUrl.replace('h_800,w_800', 'h_600,w_600')
+    } else {
+        return imgUrl.replace('h_800', 'h_600')
+    }
+}
+
 export const quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export class UpdateData {
