@@ -75,7 +75,6 @@ export default function Panel({ setPanelClass, selectPanelClass, setPanelCategor
                 alignItems='center'
                 onClick={handleCategoryClick(category)}
                 sx={{ cursor: 'pointer' }}
-                className={styles['disable-user-select']}
             >
                 <Typography variant='h6' component='span'>
                     {category[0].toUpperCase() + category.slice(1)}

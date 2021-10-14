@@ -8,13 +8,13 @@ export default function NoFavorites() {
             <NextImage
                 width={350}
                 height={350}
-                src='https://res.cloudinary.com/dfvpybkta/image/upload/v1633972815/ecom-portfolio/cactus.png'
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/v1633972815/ecom-portfolio/cactus.webp'
             />
             <Typography variant='h4' mt={3} align='center'>
                 Your favorites section is empty
             </Typography>
             <Typography variant='h5' mt={2} align='center'>
-                Click the heart icon on the right corner of a product card to add the sneaker to favorites
+                Click the heart icon on a product card to add a sneaker to favorites
             </Typography>
         </Grid>
     )

@@ -74,43 +74,46 @@ export default function PanelMain() {
                 <ListItemIcon>
                     <FaFemale fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
+                <Typography component='span' variant='h5' >
                     Women
                 </Typography>
                 <div className='grow' />
                 <KeyboardArrowRightIcon fontSize='large' />
             </ListItem>
-            <ListItem sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
+            <ListItem
+                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
                 onClick={handleListItemClick('men')}
             >
                 <ListItemIcon>
                     <FaMale fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5' className={styles['disable-user-select']} >
+                <Typography component='span' variant='h5'  >
                     Men
                 </Typography>
                 <div className='grow' />
                 <KeyboardArrowRightIcon fontSize='large' />
             </ListItem>
-            <ListItem sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
+            <ListItem
+                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
                 onClick={handleListItemClick('new')}
             >
                 <ListItemIcon>
                     <MdFiberNew fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
+                <Typography component='span' variant='h5' >
                     New
                 </Typography>
                 <div className='grow' />
                 <KeyboardArrowRightIcon fontSize='large' />
             </ListItem>
-            <ListItem sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
+            <ListItem
+                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
                 onClick={handleListItemClick('season')}
             >
                 <ListItemIcon>
                     <IoIosSnow fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
+                <Typography component='span' variant='h5' >
                     Season
                 </Typography>
                 <div className='grow' />

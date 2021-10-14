@@ -1,25 +1,18 @@
 .hide-left {
     transform: translateX(-300px);
     transition: transform .25s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hide-right {
     transform: translateX(300px);
     transition: transform .25s;
     position: fixed;
+    -webkit-tap-highlight-color: transparent;
 }
-
-.disable-user-select {
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-     -khtml-user-select: none;
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none;
-}
-
 
 .mid {
     transform: translateX(0);
     transition: transform .25s;
+    -webkit-tap-highlight-color: transparent;
 }
