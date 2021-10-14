@@ -52,9 +52,11 @@ export default function SearchDialog() {
 
     const handlePress = (event) => {
         if (event.key === 'Enter') {
-            dispatch(setSearchOpen(false))
             router.push(`/search/${query}`)
             setQuery('')
+            setTimeout(() => {
+                dispatch(setSearchOpen(false))
+            }, 1)
         }
     }
 
