@@ -14,7 +14,7 @@ export default function ImageContainer({ src, alt }) {
             alt={alt}
             title={alt}
             placeholder='blur'
-            blurDataURL={src}
+            blurDataURL={src.replace('h_1000', 'h_100,q_10')}
         />
     </div>
 

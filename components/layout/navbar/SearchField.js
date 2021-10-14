@@ -53,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
     '& .Mui-disabled': {
-        '-webkit-text-fill-color': '#f7f7f7 !important'
+        WebkitTextFillColor: '#f7f7f7 !important'
     }
 }));
 

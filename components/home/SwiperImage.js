@@ -32,7 +32,7 @@ export default function SwiperImage() {
         </SwiperSlide>
         <SwiperSlide>
             <ImageContainer
-                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000,w_1500/v1634052388/ecom-portfolio/home-21.webp'
+                src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1000/v1634052388/ecom-portfolio/home-21.webp'
                 alt='Orange Air Max Sneakers'
             />
         </SwiperSlide>

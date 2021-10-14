@@ -33,7 +33,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        '-webkit-text-fill-color': '#f7f7f7 !important',
+        WebkitTextFillColor: '#f7f7f7 !important',
         color: 'white'
     },
 }));

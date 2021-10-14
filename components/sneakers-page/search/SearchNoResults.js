@@ -2,8 +2,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
 import { useRouter } from 'next/router'
-import { alpha } from '@mui/material/styles';
-
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
+        backgroundColor: '#262626',
         '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
+            backgroundColor: '#404040',
         },
         maxWidth: 400,
     },

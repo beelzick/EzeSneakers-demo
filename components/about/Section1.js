@@ -24,7 +24,7 @@ export default function Section1() {
                         objectFit='cover'
                         quality={100}
                         alt='Lying sneakers on the floor'
-                        blurDataURL='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1600/v1632230088/ecom-portfolio/home-4.webp'
+                        blurDataURL='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_100,q_10/v1632230088/ecom-portfolio/home-4.webp'
                         placeholder='blur'
                     />
                 </div>

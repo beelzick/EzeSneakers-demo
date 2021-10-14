@@ -7,7 +7,7 @@ export default function Section3() {
         <Grid container sx={{ height: { md: '100vh' } }} alignItems='center'>
             <TextGrid text='Our mission is to reduce the number of shoes thrown away' order={{ md: 2 }} />
             <ImageGrid
-                imgUrl='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1405/v1632774416/ecom-portfolio/home-8.webp'
+                imgUrl='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1400/v1632774416/ecom-portfolio/home-8.webp'
                 height={1405}
                 width={2104}
                 alt='A box of discarded shoes'

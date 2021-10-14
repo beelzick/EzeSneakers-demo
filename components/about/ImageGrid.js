@@ -8,7 +8,6 @@ import styles from './about.module.css'
 export default function ImageGrid({ imgUrl, width, height, alt }) {
     const ref = useRef()
     const isVisible = useOnScreen(ref)
-
     const [visible, setVisible] = useState(isVisible)
 
     useEffect(() => {
@@ -38,7 +37,7 @@ export default function ImageGrid({ imgUrl, width, height, alt }) {
                     layout='responsive'
                     alt={alt}
                     placeholder='blur'
-                    blurDataURL={imgUrl}
+                    blurDataURL={imgUrl.replace('h_1400', 'h_100,q_10')}
                 />
             </div>
         </Grid>

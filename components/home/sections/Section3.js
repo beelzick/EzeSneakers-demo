@@ -55,8 +55,8 @@ export default function Section3() {
                             quality={100}
                             className={styles['sec-3-image']}
                             placeholder='blur'
-                            blurDataURL='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_1400/v1634055222/ecom-portfolio/home-23.webp'
-                            alt='Person mending a sneaker on the grass'
+                            blurDataURL='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_100,q_10/v1634055222/ecom-portfolio/home-23.webp'
+                            alt='Person lying on the street in autumn'
                         />
                     </motion.div>
                 </Box>
