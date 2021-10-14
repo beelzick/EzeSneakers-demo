@@ -15,7 +15,6 @@ import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './product-card.module.css'
 import { useSnackbar } from 'notistack'
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const { enqueueSnackbar } = useSnackbar()
@@ -71,7 +70,7 @@ export default function ProductCard({ imgUrl, id, name, price }) {
     const label = { inputProps: { 'aria-label': 'Checkbox Heart' } };
 
     return (
-        <Box className={styles.root}>
+        <Box>
             <NextLink href={`/sneakers/${id}`} passHref>
                 <CardActionArea sx={{ borderRadius: '10px' }}>
                     <Image
@@ -89,33 +88,49 @@ export default function ProductCard({ imgUrl, id, name, price }) {
             </NextLink>
             <Box p={1}>
                 <Grid container >
-                    <Grid item xs={8}>
+                    <Grid item xs={8} sm={11} md={7}>
                         <NextLink href={`/sneakers/${id}`} passHref>
                             <Typography variant='subtitle1' component='h2' sx={{ cursor: 'pointer' }}>
                                 {name}
                             </Typography>
                         </NextLink>
                     </Grid>
-                    <Grid item xs={4} container>
-                        <div className='grow' />
-                        <Typography variant='subtitle1' component='span' align='right' pr={2} >
+                    <Grid
+                        item
+                        xs={3}
+                        sm={12}
+                        md={4}
+                        container
+                        order={{ sm: 3 }}
+                        sx={{ justifyContent: { xs: 'flex-end', sm: 'unset', md: 'flex-end' } }}
+                    >
+                        <Typography
+                            variant='subtitle1'
+                            component='span'
+                            align='right'
+                        >
                             {price} $
                         </Typography>
-                        <FavoriteIcon sx={{ color: '#ef476f' }} />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={1}
+                        className={styles['checkbox-container']}
+                        order={{ md: 3 }}
+                    >
+                        {session && <Checkbox
+                            {...label}
+                            sx={{ marginTop: '-8px' }}
+                            icon={<FavoriteBorderIcon />}
+                            onChange={handleChange}
+                            checkedIcon={<FavoriteIcon sx={{ color: '#ef476f' }} />}
+                            onClick={handleClick}
+                            checked={checked}
+                        />
+                        }
                     </Grid>
                 </Grid>
             </Box>
-            {session && <div className={styles.imgIconContainer}>
-                <Checkbox
-                    {...label}
-                    icon={<FavoriteTwoToneIcon sx={{ color: '#ef476f' }} />}
-                    onChange={handleChange}
-                    checkedIcon={<FavoriteIcon sx={{ color: '#ef476f' }} />}
-                    onClick={handleClick}
-                    checked={checked}
-                />
-            </div>
-            }
         </Box>
     );
 }
