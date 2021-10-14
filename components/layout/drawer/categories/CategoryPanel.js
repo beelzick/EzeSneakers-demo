@@ -70,7 +70,14 @@ export default function CategoryPanel({
             sx={{ cursor: 'pointer' }}
             mb={3}>
             <KeyboardArrowLeftIcon fontSize='large' />
-            <Typography align='left' component='span' variant='h5' ml={1} sx={{ fontWeight: 500 }}>
+            <Typography
+                align='left'
+                component='span'
+                variant='h5'
+                ml={1}
+                sx={{ fontWeight: 500 }}
+                className={styles['disable-user-select']}
+            >
                 {backTo}
             </Typography>
         </Grid>
@@ -86,6 +93,7 @@ export default function CategoryPanel({
         {linkFilters.map((filter) =>
         (<NextLink key={uuidv4()} href={`/sneakers/${linkGroup}/${filter}`} passHref>
             <Link
+                className={styles['disable-user-select']}
                 onClick={handleClick(`${filter}`)}
                 sx={{ cursor: 'pointer' }}
                 variant='button'

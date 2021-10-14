@@ -6,8 +6,8 @@ import { setMainClass } from '../../../redux/slices/drawerClassSlice'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { v4 as uuidv4 } from 'uuid';
-export default function Panel({ setPanelClass, selectPanelClass, setPanelCategoryClass, categories, title }) {
 
+export default function Panel({ setPanelClass, selectPanelClass, setPanelCategoryClass, categories, title }) {
 
     const panelClass = useSelector(selectPanelClass)
     const dispatch = useDispatch()
@@ -75,6 +75,7 @@ export default function Panel({ setPanelClass, selectPanelClass, setPanelCategor
                 alignItems='center'
                 onClick={handleCategoryClick(category)}
                 sx={{ cursor: 'pointer' }}
+                className={styles['disable-user-select']}
             >
                 <Typography variant='h6' component='span'>
                     {category[0].toUpperCase() + category.slice(1)}

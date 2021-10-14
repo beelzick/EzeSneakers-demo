@@ -68,14 +68,13 @@ export default function PanelMain() {
             className={(mainClass === 'left' && styles['hide-left']) || (mainClass === 'mid' && styles['mid'])}
         >
             <ListItem
-
                 sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
                 onClick={handleListItemClick('women')}
             >
                 <ListItemIcon>
                     <FaFemale fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5'>
+                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
                     Women
                 </Typography>
                 <div className='grow' />
@@ -87,7 +86,7 @@ export default function PanelMain() {
                 <ListItemIcon>
                     <FaMale fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5' >
+                <Typography component='span' variant='h5' className={styles['disable-user-select']} >
                     Men
                 </Typography>
                 <div className='grow' />
@@ -99,7 +98,7 @@ export default function PanelMain() {
                 <ListItemIcon>
                     <MdFiberNew fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5'>
+                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
                     New
                 </Typography>
                 <div className='grow' />
@@ -111,7 +110,7 @@ export default function PanelMain() {
                 <ListItemIcon>
                     <IoIosSnow fontSize='30' color='black' />
                 </ListItemIcon>
-                <Typography component='span' variant='h5'>
+                <Typography component='span' variant='h5' className={styles['disable-user-select']}>
                     Season
                 </Typography>
                 <div className='grow' />
