@@ -101,7 +101,7 @@ export default function Footer() {
                                 <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                                     new
                                 </Typography>
-                                {['adidas', 'nike', 'reebok'].map((link, index) => (
+                                {['adidas', 'nike', 'puma'].map((link, index) => (
                                     <NextLink key={uuidv4()} href={`/sneakers/new/${link}`} passHref >
                                         <Link className='link' underline='none' variant='button' mb={0.3}>
                                             {link}

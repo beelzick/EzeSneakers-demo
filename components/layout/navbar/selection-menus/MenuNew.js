@@ -25,7 +25,7 @@ export default function MenuNew() {
                     <Typography mb={1} variant='button' color='secondary' sx={{ fontFamily: 'montserrat, sans-serif' }}>
                         brand
                     </Typography>
-                    {['adidas', 'nike', 'reebok'].map(link => (
+                    {['adidas', 'nike', 'puma'].map(link => (
                         <NextLink key={uuidv4()} href={`/sneakers/new/${link}`} passHref>
                             <Link underline='none' variant='button' className='link'>
                                 {link}

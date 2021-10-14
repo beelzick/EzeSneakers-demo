@@ -3,7 +3,7 @@ import { selectWomenCategoryClass, setWomenCategoryClass } from '../../../../red
 import { setWomenClass } from '../../../../redux/slices/drawerClassSlice'
 
 export default function WomenCategories() {
-    const brandFilters = ['adidas', 'nike', 'reebok']
+    const brandFilters = ['adidas', 'nike', 'puma']
     const collectionFilters = ['featured', 'new', 'most-rated', 'women-love']
     const seasonFilters = ['spring', 'summer', 'autumn', 'winter']
     const forFilters = ['training', 'outdoor', 'street']

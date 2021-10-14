@@ -30,7 +30,7 @@ module.exports.createRandomProduct = (fakeNamesArray, sneakerBrand) => {
 
     product.name = generatedName.replace(/\s+/g, ' ').trim()
     product.price = (Math.floor(1 + Math.random() * 10) * 10 + 39) + (fiftyChance() ? 0.59 : 0.99)
-    product.imgUrl = 'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_450/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.jpg'
+    product.imgUrl = 'https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_450/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
     product.gender = `${fiftyChance() ? 'man' : 'woman'}`
     product.tags = []
 
@@ -167,7 +167,7 @@ module.exports.fakeAdidasNames = [
     'Duramo'
 ]
 
-module.exports.fakeReebokNames = [
+module.exports.fakePumaNames = [
     'Cross',
     'Pump Fury',
     'Nanoflex',

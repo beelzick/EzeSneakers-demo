@@ -24,7 +24,7 @@ export async function getStaticPaths() {
             { params: { filter: 'winter' } },
             { params: { filter: 'nike' } },
             { params: { filter: 'adidas' } },
-            { params: { filter: 'reebok' } }
+            { params: { filter: 'puma' } }
         ],
         fallback: false,
     }
@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
     let name = filter
     let sneakersData
 
-    if (filter === 'adidas' || filter === 'nike' || filter == 'reebok') {
+    if (filter === 'adidas' || filter === 'nike' || filter == 'puma') {
         sneakersData = await db.collection('products').aggregate([
             {
                 $match: {

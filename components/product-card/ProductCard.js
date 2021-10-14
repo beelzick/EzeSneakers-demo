@@ -15,6 +15,7 @@ import { fetchFavorites } from '../../redux/slices/favoritesSlice';
 import Image from 'next/image'
 import styles from './product-card.module.css'
 import { useSnackbar } from 'notistack'
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
 export default function ProductCard({ imgUrl, id, name, price }) {
     const { enqueueSnackbar } = useSnackbar()
@@ -22,6 +23,14 @@ export default function ProductCard({ imgUrl, id, name, price }) {
     const favoritesIds = useSelector(selectFavoritesIds)
     const [checked, setChecked] = useState(false)
     const { data: session } = useSession()
+
+    const createBlurDataUrl = (imgUrl) => {
+        if (imgUrl.includes('w_800')) {
+            return imgUrl.replace('h_800,w_800', 'h_100,q_10,w_100')
+        } else {
+            return imgUrl.replace('h_800', 'h_100,q_10')
+        }
+    }
 
     useEffect(() => {
         favoritesIds.map(favId => {
@@ -66,12 +75,15 @@ export default function ProductCard({ imgUrl, id, name, price }) {
             <NextLink href={`/sneakers/${id}`} passHref>
                 <CardActionArea sx={{ borderRadius: '10px' }}>
                     <Image
-                        src='https://res.cloudinary.com/dfvpybkta/image/upload/c_scale,h_800/v1629970595/ecom-portfolio/sample-sneaker_tprfhj.webp'
+                        quality={100}
+                        src={imgUrl}
                         alt={name}
                         title={name}
-                        width='800'
-                        height='800'
+                        width={800}
+                        height={800}
                         className={styles.image}
+                        placeholder='blur'
+                        blurDataURL={createBlurDataUrl(imgUrl)}
                     />
                 </CardActionArea>
             </NextLink>
@@ -85,18 +97,20 @@ export default function ProductCard({ imgUrl, id, name, price }) {
                         </NextLink>
                     </Grid>
                     <Grid item xs={4} container>
-                        <Typography variant='subtitle1' component='span' align='right' className='w-100'>
+                        <div className='grow' />
+                        <Typography variant='subtitle1' component='span' align='right' pr={2} >
                             {price} $
                         </Typography>
+                        <FavoriteIcon sx={{ color: '#ef476f' }} />
                     </Grid>
                 </Grid>
             </Box>
             {session && <div className={styles.imgIconContainer}>
                 <Checkbox
                     {...label}
-                    icon={<FavoriteBorderIcon />}
+                    icon={<FavoriteTwoToneIcon sx={{ color: '#ef476f' }} />}
                     onChange={handleChange}
-                    checkedIcon={<FavoriteIcon style={{ color: 'ef476f' }} />}
+                    checkedIcon={<FavoriteIcon sx={{ color: '#ef476f' }} />}
                     onClick={handleClick}
                     checked={checked}
                 />

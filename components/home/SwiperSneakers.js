@@ -14,7 +14,6 @@ theme = responsiveFontSizes(theme)
 export default function SwiperSneakers({ sneakers, title }) {
     const ref = useRef()
     const isVisible = useOnScreen(ref)
-
     const [visible, setVisible] = useState(isVisible)
 
     useEffect(() => {

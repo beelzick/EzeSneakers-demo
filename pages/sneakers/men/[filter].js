@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
             break
         case 'adidas':
         case 'nike':
-        case 'reebok':
+        case 'puma':
             sneakersData = await db.collection('products').aggregate([
                 {
                     $match: {

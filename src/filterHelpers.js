@@ -8,7 +8,7 @@ const pathsSkeleton = [
     { params: { filter: 'winter' } },
     { params: { filter: 'nike' } },
     { params: { filter: 'adidas' } },
-    { params: { filter: 'reebok' } },
+    { params: { filter: 'puma' } },
     { params: { filter: 'training' } },
     { params: { filter: 'outdoor' } },
     { params: { filter: 'street' } },

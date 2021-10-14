@@ -4,7 +4,7 @@ import { setNewClass } from '../../../../redux/slices/drawerClassSlice'
 import GenderNewCategoryPanel from './GenderNewCategoryPanel'
 
 export default function NewCategories() {
-    const brandFilters = ['adidas', 'nike', 'reebok']
+    const brandFilters = ['adidas', 'nike', 'puma']
     const seasonFilters = ['autumn', 'winter']
 
     return <>

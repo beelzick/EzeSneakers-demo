@@ -3,7 +3,7 @@ import { selectMenCategoryClass, setMenCategoryClass } from '../../../../redux/s
 import { setMenClass } from '../../../../redux/slices/drawerClassSlice'
 
 export default function MenCategories() {
-    const brandFilters = ['adidas', 'nike', 'reebok']
+    const brandFilters = ['adidas', 'nike', 'puma']
     const collectionFilters = ['featured', 'new', 'most-rated']
     const seasonFilters = ['spring', 'summer', 'autumn', 'winter']
     const forFilters = ['training', 'outdoor', 'street']

@@ -39,7 +39,7 @@ export default async function handler(req, res) {
                         break
                     case 'adidas':
                     case 'nike':
-                    case 'reebok':
+                    case 'puma':
                         sneakersData = await db.collection('products').aggregate([
                             {
                                 $match: {
@@ -104,7 +104,7 @@ export default async function handler(req, res) {
                         break
                     case 'adidas':
                     case 'nike':
-                    case 'reebok':
+                    case 'puma':
                         sneakersData = await db.collection('products').aggregate([
                             {
                                 $match: {
@@ -133,7 +133,7 @@ export default async function handler(req, res) {
                 switch (filter) {
                     case 'adidas':
                     case 'nike':
-                    case 'reebok':
+                    case 'puma':
                         sneakersData = await db.collection('products').aggregate([
                             {
                                 $match: {

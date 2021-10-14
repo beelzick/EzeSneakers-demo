@@ -1,8 +1,10 @@
 require('dotenv').config()
-
+const nikeUrls = require('./nikeUrls')
+const adidasUrls = require('./adidasUrls')
+const pumaUrls = require('./pumaUrls')
 const mongoose = require('mongoose')
 const Product = require('./Product')
-const { createRandomProduct, fakeAdidasNames, fakeNikeNames, fakeReebokNames } = require('./productGenerator')
+const { createRandomProduct, fakeAdidasNames, fakeNikeNames, fakePumaNames } = require('./productGenerator')
 
 const MONGODB_URI = process.env.MONGODB_URI
 
@@ -19,19 +21,36 @@ db.once('open', () => {
 
 const seedDB = async () => {
     await Product.deleteMany({})
-    for (let i = 0; i < 125; i++) {
+    for (let i = 0; i < 100; i++) {
         const randomProduct = createRandomProduct(fakeNikeNames, 'Nike')
-        const product = await new Product(randomProduct)
+        const product = await new Product(
+            {
+                ...randomProduct,
+                imgUrl: nikeUrls[i]
+            }
+        )
         await product.save()
     }
-    for (let i = 0; i < 125; i++) {
+
+    for (let i = 0; i < 100; i++) {
         const randomProduct = createRandomProduct(fakeAdidasNames, 'Adidas')
-        const product = await new Product(randomProduct)
+        const product = await new Product(
+            {
+                ...randomProduct,
+                imgUrl: adidasUrls[i]
+            }
+        )
         await product.save()
     }
-    for (let i = 0; i < 125; i++) {
-        const randomProduct = createRandomProduct(fakeReebokNames, 'Reebok')
-        const product = await new Product(randomProduct)
+
+    for (let i = 0; i < 100; i++) {
+        const randomProduct = createRandomProduct(fakePumaNames, 'Puma')
+        const product = await new Product(
+            {
+                ...randomProduct,
+                imgUrl: pumaUrls[i]
+            }
+        )
         await product.save()
     }
 }
