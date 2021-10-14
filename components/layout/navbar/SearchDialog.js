@@ -54,9 +54,7 @@ export default function SearchDialog() {
         if (event.key === 'Enter') {
             router.push(`/search/${query}`)
             setQuery('')
-            setTimeout(() => {
-                dispatch(setSearchOpen(false))
-            }, 1)
+            dispatch(setSearchOpen(false))
         }
     }
 
