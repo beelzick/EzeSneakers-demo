@@ -40,9 +40,9 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 export default function SearchDialog() {
     const theme = useTheme();
     const dispatch = useDispatch()
-
     const fullScreen = useMediaQuery(theme.breakpoints.down('mdlg2'));
     const searchOpen = useSelector(selectSearchOpen)
+
     const handleClose = () => {
         dispatch(setSearchOpen(false))
     }
@@ -93,28 +93,20 @@ export default function SearchDialog() {
                         direction='column'
                         item
                         xs={12} sm={8} md={7} lg={6} xl={4}
-                        sx={{ zIndex: 0, }}
+                        sx={{ zIndex: 0 }}
                     >
                         <Typography variant='h5' component='span' gutterBottom sx={{ fontWeight: 500 }} mt={2}>
                             Popular search terms
                         </Typography>
-                        <NextLink href='/search/adidas' passHref>
-                            <StyledLink color='primary' underline='none' variant='button' fontSize='large'>
-                                adidas
-                            </StyledLink>
-                        </NextLink>
-                        <NextLink href='/search/puma%20men' passHref>
-                            <StyledLink color='primary' underline='none' variant='button' fontSize='large'>
-                                puma men
-                            </StyledLink>
-                        </NextLink>
-                        <NextLink href='/search/nike%20air%20max' passHref>
-                            <StyledLink color='primary' underline='none' variant='button' fontSize='large'>
-                                nike air max
-                            </StyledLink>
-                        </NextLink>
+                        {['adidas', 'puma men', 'nike air max'].map((term) => (
+                            <NextLink href={`/search/${term}`} passHref>
+                                <StyledLink color='primary' underline='none' variant='button' fontSize='large' onClick={handleClose}>
+                                    {term}
+                                </StyledLink>
+                            </NextLink>
+                        ))}
                         <NextLink href='/sneakers/women/women-love' passHref>
-                            <StyledLink color='primary' underline='none' variant='button' fontSize='large'>
+                            <StyledLink color='primary' underline='none' variant='button' fontSize='large' onClick={handleClose}>
                                 women love
                             </StyledLink>
                         </NextLink>
