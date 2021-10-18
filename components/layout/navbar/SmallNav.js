@@ -8,16 +8,18 @@ import NextLink from 'next/link'
 export default function SmallNav() {
     return <div className={styles['small-nav']}>
         <div>
-            <NextLink href='https://github.com/beelzick/EzeSneakers-demo' passHref>
+            <NextLink href='https://github.com/beelzick/eze-sneakers' passHref>
                 <IconButton size='small' color='secondary' aria-label='GitHub'>
                     <GitHub fontSize='small' sx={{ fontSize: '20px' }} />
                 </IconButton>
             </NextLink>
-            <IconButton size='small' color='secondary' aria-label='Linkedin'>
-                <LinkedIn />
-            </IconButton>
+            <NextLink href='https://www.linkedin.com/in/kacper-zabielski-329911217/' passHref>
+                <IconButton size='small' color='secondary' aria-label='Linkedin'>
+                    <LinkedIn />
+                </IconButton>
+            </NextLink>
         </div>
-        <div className='grow'></div>
+        <div className='grow' />
         <NavBreadcrumbs />
     </div>
 }

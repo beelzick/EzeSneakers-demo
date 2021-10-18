@@ -15,32 +15,32 @@ const iconsData = [
     {
         component: FacebookIcon,
         text: 'Facebook',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: 'https://www.facebook.com/kacper.zabielski'
     },
     {
         component: TwitterIcon,
         text: 'Twitter',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: '#'
     },
     {
         component: GitHubIcon,
         text: 'Git Hub',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: 'https://github.com/beelzick/eze-sneakers'
     },
     {
         component: InstagramIcon,
         text: 'Instagram',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: '#'
     },
     {
         component: LinkedInIcon,
         text: 'Linkedin',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: 'https://www.linkedin.com/in/kacper-zabielski-329911217/'
     },
     {
         component: EmailIcon,
         text: 'Email',
-        href: 'https://github.com/beelzick/EzeSneakers-demo'
+        href: '#'
     },
 ]
 
