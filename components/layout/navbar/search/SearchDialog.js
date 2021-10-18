@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 import CloseIcon from '@mui/icons-material/Close';
+import { v4 as uuidv4 } from 'uuid';
 
 const StyledLink = styled(Link)(() => ({
     '&.MuiTypography-root.MuiLink-root': {
@@ -99,7 +100,7 @@ export default function SearchDialog() {
                             Popular search terms
                         </Typography>
                         {['adidas', 'puma men', 'nike air max'].map((term) => (
-                            <NextLink href={`/search/${term}`} passHref>
+                            <NextLink href={`/search/${term}`} passHref key={uuidv4()}>
                                 <StyledLink color='primary' underline='none' variant='button' fontSize='large' onClick={handleClose}>
                                     {term}
                                 </StyledLink>

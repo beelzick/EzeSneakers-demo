@@ -24,6 +24,26 @@ import {
     setNewClass,
     setSeasonClass
 } from '../../../redux/slices/drawerClassSlice';
+import { v4 as uuidv4 } from 'uuid';
+
+const listItems = [
+    {
+        name: 'women',
+        Icon: FaFemale
+    },
+    {
+        name: 'men',
+        Icon: FaMale
+    },
+    {
+        name: 'new',
+        Icon: MdFiberNew
+    },
+    {
+        name: 'season',
+        Icon: IoIosSnow
+    },
+]
 
 export default function PanelMain() {
     const dispatch = useDispatch()
@@ -67,58 +87,22 @@ export default function PanelMain() {
             sx={{ display: 'flex', flexDirection: 'column', minWidth: '300px', position: 'absolute', height: '100%' }}
             className={(mainClass === 'left' && styles['hide-left']) || (mainClass === 'mid' && styles['mid'])}
         >
-            <ListItem
-                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
-                onClick={handleListItemClick('women')}
-            >
-                <ListItemIcon>
-                    <FaFemale fontSize='30' color='black' />
-                </ListItemIcon>
-                <Typography component='span' variant='h5' >
-                    Women
-                </Typography>
-                <div className='grow' />
-                <KeyboardArrowRightIcon fontSize='large' />
-            </ListItem>
-            <ListItem
-                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
-                onClick={handleListItemClick('men')}
-            >
-                <ListItemIcon>
-                    <FaMale fontSize='30' color='black' />
-                </ListItemIcon>
-                <Typography component='span' variant='h5'  >
-                    Men
-                </Typography>
-                <div className='grow' />
-                <KeyboardArrowRightIcon fontSize='large' />
-            </ListItem>
-            <ListItem
-                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
-                onClick={handleListItemClick('new')}
-            >
-                <ListItemIcon>
-                    <MdFiberNew fontSize='30' color='black' />
-                </ListItemIcon>
-                <Typography component='span' variant='h5' >
-                    New
-                </Typography>
-                <div className='grow' />
-                <KeyboardArrowRightIcon fontSize='large' />
-            </ListItem>
-            <ListItem
-                sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
-                onClick={handleListItemClick('season')}
-            >
-                <ListItemIcon>
-                    <IoIosSnow fontSize='30' color='black' />
-                </ListItemIcon>
-                <Typography component='span' variant='h5' >
-                    Season
-                </Typography>
-                <div className='grow' />
-                <KeyboardArrowRightIcon fontSize='large' />
-            </ListItem>
+            {listItems.map(item => (
+                <ListItem
+                    sx={{ display: 'flex', flexDirection: 'row', cursor: 'pointer' }}
+                    onClick={handleListItemClick(item.name)}
+                    key={uuidv4()}
+                >
+                    <ListItemIcon>
+                        <item.Icon fontSize='30' color='black' />
+                    </ListItemIcon>
+                    <Typography component='span' variant='h5' >
+                        {item.name[0].toUpperCase()}{item.name.slice(1)}
+                    </Typography>
+                    <div className='grow' />
+                    <KeyboardArrowRightIcon fontSize='large' />
+                </ListItem>
+            ))}
             <div className='grow' />
             <Grid container direction='column' alignItems='center' mb={2}>
                 <Box my={2}>
