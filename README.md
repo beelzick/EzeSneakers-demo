@@ -1,7 +1,7 @@
-#EzeSneakers- an e-commerce website showcase project
+# EzeSneakers- an e-commerce website showcase project
 E-commerce shop built on top of React, Next.js, Redux, MUI 5 and MongoDB
 
-##General info
+## General info
 
 EzeSnekers is a website that offers restored shoes. This app is inspired by the design such as Nike, Addidas or Reebok
 
@@ -16,7 +16,7 @@ This application has the following features:
 * infinite scroll
 * authentication & authorization
 
-##Serup
+## Setup
 To run this project install it locally using npm:
 
 ```
