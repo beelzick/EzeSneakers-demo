@@ -1,4 +1,4 @@
-# EzeSneakers- an e-commerce website showcase project
+# EzeSneakers
 E-commerce website built on top of React, Next.js, Redux, MUI 5 and MongoDB
 
 ## General info
