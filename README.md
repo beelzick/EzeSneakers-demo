@@ -1,5 +1,5 @@
 # EzeSneakers- an e-commerce website showcase project
-E-commerce shop built on top of React, Next.js, Redux, MUI 5 and MongoDB
+E-commerce website built on top of React, Next.js, Redux, MUI 5 and MongoDB
 
 ## General info
 
@@ -24,5 +24,5 @@ $ npm install
 $ npm run dev
 ```
 
-You can also check this project in live version here:
+You can also check this project in the live version here:
 https://eze-sneakers.vercel.app/
