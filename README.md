@@ -1,5 +1,4 @@
-# EzeSneakers
-E-commerce website built on top of React, Next.js, Redux, MUI 5 and MongoDB
+# [EzeSneakers][link]
 
 ## General info
 
@@ -16,13 +15,21 @@ This application has the following features:
 * infinite scroll
 * authentication & authorization
 
-## Setup
-To run this project install it locally using npm:
+## Technology Stack
 
-```
-$ npm install
-$ npm run dev
-```
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/css-3.svg" alt="CSS3" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTML5" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/redux.svg" alt="Redux" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg" alt="MongoDB" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="Node.js" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/git-icon.svg" alt="Git" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/npm.svg" alt="npm" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/material-ui.svg" alt="Material UI" width="26px" height="26px">
+<img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/nextjs-icon.svg" alt="Nextjs" width="26px" height="26px">
 
-You can also check this project in the live version here:
-https://eze-sneakers.vercel.app/
+Check it out - [Link](link)
+
+
+[link][https://eze-sneakers.vercel.app/]
