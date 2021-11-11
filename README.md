@@ -2,7 +2,7 @@
 
 ## General info
 
-EzeSnekers is a website that offers restored shoes. This app is inspired by the design such as Nike, Addidas or Reebok
+EzeSneakers is a website that offers restored shoes. This app is inspired by the design such as Nike, Addidas or Reebok.
 
 This application has the following features:
 * shopping cart
