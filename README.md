@@ -1,4 +1,4 @@
-# [EzeSneakers][link] :shoe:
+# [EzeSneakers][link]
 
 ## General info
 
@@ -29,9 +29,7 @@ This application has the following features:
 <img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/material-ui.svg" alt="Material UI" width="26px" height="26px">
 <img align="left" src="https://github.com/get-icon/geticon/raw/master/icons/nextjs-icon.svg" alt="Nextjs" width="26px" height="26px">
 
-<br />
-
-Website - [Link][link]
+## Website - [Link][link]
 
 
 [link]: https://eze-sneakers.vercel.app/
