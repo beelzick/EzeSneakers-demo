@@ -11,7 +11,7 @@ import {
 } from '../../redux/slices/drawerClassSlice';
 import { useEffect } from 'react';
 import { setAllClasses } from '../../redux/slices/drawerCategoryClassSlice';
-import AllCategories from './categories/AllCategories';
+import AllCategories from './Categories/AllCategories';
 export default function DrawerNav() {
     const dispatch = useDispatch()
     const drawerOpen = useSelector(selectDrawerOpen)
