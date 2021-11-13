@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid'
-import SearchSvg from '../../svg/SearchSvg'
+import SearchSvg from '../../Svg/SearchSvg'
 
 export default function SadSearchIcon() {
     return (
