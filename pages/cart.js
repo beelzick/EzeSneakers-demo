@@ -4,10 +4,10 @@ import CartProduct from '../src/components/Cart/CartProduct'
 import { selectCartItems, itemRemove } from '../src/redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { totalPrice } from '../src/helpers/navbarHelpers'
-import CartSummary from '../src/components/cart/CartSummary'
-import EmptyCart from '../src/components/cart/EmptyCart'
+import CartSummary from '../src/components/Cart/CartSummary'
+import EmptyCart from '../src/components/Cart/EmptyCart'
 import Head from 'next/head'
-import DemoDialog from '../src/components/cart/DemoDialog'
+import DemoDialog from '../src/components/Cart/DemoDialog'
 
 export default function Cart() {
     const dispatch = useDispatch()
