@@ -6,24 +6,24 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
-import SizesSelect from '../../components/show-page/SizesSelect'
+import SizesSelect from '../../src/components/ShowPage/SizesSelect/SizesSelect'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShouldBuyText from '../../components/show-page/ShouldBuyText'
-import { itemAdd, itemUpdate, selectCartItemById } from '../../redux/slices/cartSlice'
+import ShouldBuyText from '../../src/components/ShowPage/ShouldBuyText'
+import { itemAdd, itemUpdate, selectCartItemById } from '../../src/redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectSize, setSize } from '../../redux/slices/selectedSizeSlice'
+import { selectSize, setSize } from '../../src/redux/slices/selectedSizeSlice'
 import { useEffect } from 'react'
-import { selectSizeError, setSizeError } from '../../redux/slices/sizeErrorSlice'
-import { sizeExists, UpdateData } from '../../src/showPageHelpers'
+import { selectSizeError, setSizeError } from '../../src/redux/slices/sizeErrorSlice'
+import { sizeExists, UpdateData } from '../../src/helpers/showPageHelpers'
 import ObjectID from 'bson-objectid'
-import StyledRating from '../../components/show-page/StyledRating'
-import AddFavorites from '../../components/show-page/AddFavorites'
+import StyledRating from '../../src/components/ShowPage/StyledRating'
+import AddFavorites from '../../src/components/ShowPage/AddFavorites'
 import { useSnackbar } from 'notistack'
 import Image from 'next/image'
-import { prepareImgUrl, createBlurDataUrl } from '../../src/imgHelpers'
+import { prepareImgUrl, createBlurDataUrl } from '../../src/helpers/imgHelpers'
 
 
-export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, checkAlso, _id }) {
+export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, _id }) {
     const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch()
     const selectedSize = useSelector(selectSize)

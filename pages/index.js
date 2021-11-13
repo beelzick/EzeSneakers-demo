@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Grid from '@mui/material/Grid'
-import SwiperBanner from '../components/home/SwiperBanner'
+import SwiperBanner from '../src/components/Home/Swipers/SwiperBanner'
 import { connectToDatabase } from '../lib/mongodb'
-import Section1 from '../components/home/sections/Section1'
-import Section2 from '../components/home/sections/Section2'
-import Section3 from '../components/home/sections/Section3'
-import Section4 from '../components/home/sections/Section4'
+import Section1 from '../src/components/Home/Sections/Section1'
+import Section2 from '../src/components/Home/Sections/Section2'
+import Section3 from '../src/components/Home/Sections/Section3'
+import Section4 from '../src/components/Home/Sections/Section4'
 
 export default function Home({ featuredSneakers, summerSneakers }) {
   return (

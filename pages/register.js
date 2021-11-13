@@ -1,11 +1,11 @@
-import RegisterForm from '../components/forms/RegisterForm';
+import RegisterForm from '../src/components/Forms/RegisterForm';
 import { Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
-import { selectErrorMessage } from '../redux/slices/registerErrorSlice';
+import { selectErrorMessage } from '../src/redux/slices/registerErrorSlice';
 import Head from 'next/head'
 import Link from '@mui/material/Link'
 import { useDispatch } from 'react-redux';
-import { dialogOpen } from '../redux/slices/loginDialogSlice';
+import { dialogOpen } from '../src/redux/slices/loginDialogSlice';
 
 export default function Register() {
     const dispatch = useDispatch()

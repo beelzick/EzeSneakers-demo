@@ -1,0 +1,18 @@
+.hideLeft {
+    transform: translateX(-300px);
+    transition: transform .25s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hideRight {
+    transform: translateX(300px);
+    transition: transform .25s;
+    position: fixed;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mid {
+    transform: translateX(0);
+    transition: transform .25s;
+    -webkit-tap-highlight-color: transparent;
+}

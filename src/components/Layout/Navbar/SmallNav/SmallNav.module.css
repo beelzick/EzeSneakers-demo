@@ -1,0 +1,13 @@
+.container {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.849);
+    height: 26px;
+}
+
+@media(max-width: 990px) {
+    .container {
+        display: none
+    }
+}

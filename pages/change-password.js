@@ -1,10 +1,10 @@
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import ChangePasswordForm from '../components/forms/ChangePasswordForm';
+import ChangePasswordForm from '../src/components/Forms/ChangePasswordForm';
 import { useSession, getSession } from "next-auth/react"
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import LoadingPage from '../components/loadings/LoadingPage';
+import LoadingPage from '../src/components/Loadings/LoadingPage';
 import Box from '@mui/material/Box'
 import Head from 'next/head'
 

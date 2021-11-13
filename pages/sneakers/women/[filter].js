@@ -1,10 +1,11 @@
-import SneakerPage from '../../../components/sneakers-page/SneakersPage'
+import SneakerPage from '../../../src/components/SneakersPage/SneakersPage'
 import Head from 'next/head'
-import { womenPaths } from '../../../src/filterHelpers'
+import { womenPaths } from '../../../src/helpers/filterHelpers'
 import { connectToDatabase } from '../../../lib/mongodb'
 
 export default function MenFiltersPage({ name, sneakers, filter }) {
-    return <>
+    return (
+    <>
         <Head>
             <title>{`${name[0].toUpperCase()}${name.slice(1)} Collection - Women Restored Sneakers`}</title>
             <meta name='description' content={`Professionally restored sneakers from ${name[0].toUpperCase()}${name.slice(1)} Collection. Save our planet by buying restored shoes.`} />
@@ -16,6 +17,7 @@ export default function MenFiltersPage({ name, sneakers, filter }) {
             filter={filter}
         />
     </>
+    )
 }
 
 export async function getStaticPaths() {

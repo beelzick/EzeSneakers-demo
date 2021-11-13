@@ -1,0 +1,24 @@
+.navLinks {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.linkContainer {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 2px solid transparent;
+    padding: 0 16px;
+    cursor: pointer;
+}
+.linkContainer:hover {
+    border-bottom: 2px solid white;
+}
+
+@media(max-width: 990px) {
+    .navLinks {
+        display: none;
+    }
+}

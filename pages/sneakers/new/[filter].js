@@ -1,20 +1,22 @@
-import SneakerPage from '../../../components/sneakers-page/SneakersPage'
+import SneakerPage from '../../../src/components/SneakersPage/SneakersPage'
 import Head from 'next/head'
 import { connectToDatabase } from '../../../lib/mongodb'
 
 export default function MenFiltersPage({ name, sneakers, filter }) {
-    return <>
-        <Head>
-            <title>{`${name[0].toUpperCase()}${name.slice(1)} New Collection- Restored Sneakers`}</title>
-            <meta name='description' content={`Professionally restored sneakers from New ${name[0].toUpperCase()}${name.slice(1)} Collection. Save our planet by buying restored shoes.`} />
-        </Head>
-        <SneakerPage
-            sneakers={sneakers}
-            title={`New ${name[0].toUpperCase()}${name.slice(1)} Collection`}
-            filterGroup='new'
-            filter={filter}
-        />
-    </>
+    return (
+        <>
+            <Head>
+                <title>{`${name[0].toUpperCase()}${name.slice(1)} New Collection- Restored Sneakers`}</title>
+                <meta name='description' content={`Professionally restored sneakers from New ${name[0].toUpperCase()}${name.slice(1)} Collection. Save our planet by buying restored shoes.`} />
+            </Head>
+            <SneakerPage
+                sneakers={sneakers}
+                title={`New ${name[0].toUpperCase()}${name.slice(1)} Collection`}
+                filterGroup='new'
+                filter={filter}
+            />
+        </>
+    )
 }
 
 export async function getStaticPaths() {

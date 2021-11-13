@@ -1,0 +1,21 @@
+.sec1ImageContainer > div {
+    height: 80vh;
+    border-radius: 10px;
+}
+
+@media(max-width: 900px) {
+    .sec1ImageContainer > div {
+        height: 70vh;
+    }
+}
+
+.imageContainer > div {
+    height: 80vh;
+    border-radius: 10px;
+}
+
+@media(max-width: 900px) {
+    .imageContainer > div {
+        height: 70vh;
+    }
+}

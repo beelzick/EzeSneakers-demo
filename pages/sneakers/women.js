@@ -1,16 +1,19 @@
 import { connectToDatabase } from '../../lib/mongodb'
-import SneakerPage from '../../components/sneakers-page/SneakersPage'
+import SneakerPage from '../../src/components/SneakersPage/SneakersPage'
 import Head from 'next/head'
 
 export default function Women({ sneakers }) {
-    return <>
-        <Head>
-            <title>Women | EzeSneakers</title>
-            <meta name='description' content='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
-        </Head>
-        <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' genderFiltersInitialState={{ men: false, women: true }} />
-    </>
+    return (
+        <>
+            <Head>
+                <title>Women | EzeSneakers</title>
+                <meta name='description' content='Professionally restored sneakers for women. Save our planet by buying restored shoes.' />
+            </Head>
+            <SneakerPage sneakers={sneakers} title='For Women' apiName='woman' genderFiltersInitialState={{ men: false, women: true }} />
+        </>
+    )
 }
+
 export async function getStaticProps() {
     const { db } = await connectToDatabase()
 

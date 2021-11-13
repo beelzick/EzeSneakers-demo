@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -42,12 +44,21 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reduxjs-toolkit-persist": "^7.0.7",
+    "sharp": "^0.29.2",
     "swiper": "^7.0.6",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.1",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.3.1",
+    "cypress": "^8.7.0",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "eslint-config-next": "11.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
+    "react-test-renderer": "^17.0.2"
   }
 }

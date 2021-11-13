@@ -1,10 +1,10 @@
 import Grid from '@mui/material/Grid'
 import Head from 'next/head'
-import Section1 from '../components/about/Section1'
-import Section2 from '../components/about/Section2'
-import Section3 from '../components/about/Section3'
+import Section1 from '../src/components/About/Section1'
+import Section2 from '../src/components/About/Section2'
+import Section3 from '../src/components/About/Section3'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
-import typographyTheme from '../src/typographyTheme'
+import typographyTheme from '../src/helpers/typographyTheme'
 
 let theme = createTheme({
     ...typographyTheme
