@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import CartProduct from '../src/components/cart/CartProduct'
+import CartProduct from '../src/components/Cart/CartProduct'
 import { selectCartItems, itemRemove } from '../src/redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { totalPrice } from '../src/helpers/navbarHelpers'
