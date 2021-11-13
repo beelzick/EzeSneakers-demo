@@ -4,14 +4,14 @@ import Head from 'next/head';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from '../src/helpers/theme';
 import CssBaseline from '@mui/material/CssBaseline';
-import Layout from '../src/components/layout/Layout'
+import Layout from '../src/components/Layout/Layout'
 import '../src/styles/global.css'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
 import { store } from '../src/redux/store'
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
-import LoadingReduxPersist from '../src/components/loadings/LoadingReduxPersist'
+import LoadingReduxPersist from '../src/components/Loadings/LoadingReduxPersist'
 import NextNprogress from 'nextjs-progressbar';
 import createEmotionCache from '../src/helpers/createEmotionCache';
 import { CacheProvider } from '@emotion/react';
