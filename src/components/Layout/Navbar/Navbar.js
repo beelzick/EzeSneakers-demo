@@ -20,7 +20,7 @@ import DisabledHeart from './DisabledHeart/DisabledHeart';
 import DisabledHeartMobile from './DisabledHeart/DisabledHeartMobile'
 import { selectCartItems } from '../../../redux/slices/cartSlice';
 import { totalQty } from '../../../helpers/navbarHelpers';
-import SearchField from './search/SearchField'
+import SearchField from './Search/SearchField'
 import Box from '@mui/material/Box'
 import ShoppingCartBtn from './ShoppingCartBtn';
 import FavoritesBtn from './FavoritesBtn';

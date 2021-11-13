@@ -11,6 +11,10 @@ import {
 const women = '/sneakers/women/'
 const men = '/sneakers/men/'
 
+export const processLinkContent = (link) => {
+    return link.replace('-', ' ').split('/')[0]
+}
+
 const navbarMenus = [
     {
         selectMenuFunction: selectMenuWomen,

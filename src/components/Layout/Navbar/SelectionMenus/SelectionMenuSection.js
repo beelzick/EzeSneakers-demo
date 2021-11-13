@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 import { v4 as uuidv4 } from 'uuid';
+import { processLinkContent } from '../../../../helpers/navbarMenus'
 
 export default function SelectionMenuSection({ title, links, linkStart }) {
     return (
@@ -15,7 +16,7 @@ export default function SelectionMenuSection({ title, links, linkStart }) {
                 {links.map(link => (
                     <NextLink key={uuidv4()} href={`${linkStart}${link}`} passHref>
                         <Link underline='none' variant='button' className='link'>
-                            {link}
+                            {processLinkContent(link)}
                         </Link>
                     </NextLink>
                 ))}

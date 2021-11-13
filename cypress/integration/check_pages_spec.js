@@ -11,7 +11,7 @@ const pages = [
     '/',
     '/favorites',
     '/cart',
-    'about',
+    '/about',
     '/sneakers/new',
     '/sneakers/men', //men
     '/sneakers/men/featured',
