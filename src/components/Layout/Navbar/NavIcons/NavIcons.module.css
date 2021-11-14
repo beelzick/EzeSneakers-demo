@@ -1,16 +1,9 @@
-.dialog {
-    width: 30%
-}
-
 .menuButton{
     margin-right: 16px !important;
 }
 
 @media(min-width: 991px) {
     .menuButton {
-        display: none !important;
-    }
-    .mobileSearchIcon {
         display: none !important;
     }
 }

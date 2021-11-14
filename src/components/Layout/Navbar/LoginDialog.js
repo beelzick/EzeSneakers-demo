@@ -1,4 +1,3 @@
-import styles from './Navbar.module.css'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import LogInForm from '../../Forms/LogInForm'
@@ -16,7 +15,6 @@ export default function LoginDialog() {
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <div className={styles.dialog}>
             <Dialog
                 fullScreen={fullScreen}
                 open={open}
@@ -36,6 +34,5 @@ export default function LoginDialog() {
                     </DialogActions>
                 )}
             </Dialog>
-        </div>
     )
 }

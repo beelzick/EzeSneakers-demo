@@ -16,7 +16,7 @@ export default function DisabledHeart() {
     return (
         <Tooltip disableFocusListener title='Log in to save favorites'>
             <span>
-                <IconButton disabled className={classes.button} size='large' aria-label='Log in to save favorites' aria-disabled='true'>
+                <IconButton data-testid='favorites-icon-button' disabled={true} className={classes.button} size='large' aria-label='Log in to save favorites' aria-disabled='true'>
                     <FavoriteIcon />
                 </IconButton>
             </span>

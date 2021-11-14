@@ -1,11 +1,10 @@
-import styles from './Navbar.module.css'
 import NextLink from 'next/link'
 import { Link, Breadcrumbs } from '@mui/material'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
-import { dialogOpen, dialogClose } from '../../../redux/slices/loginDialogSlice'
+import { dialogOpen, dialogClose } from '../../../../redux/slices/loginDialogSlice'
 import { useDispatch } from 'react-redux';
-import { loadingStart, loadingStop } from '../../../redux/slices/loadingSlice'
+import { loadingStart, loadingStop } from '../../../../redux/slices/loadingSlice'
 import { useSnackbar } from 'notistack'
 
 export default function NavBreadcrumbs() {
@@ -35,7 +34,6 @@ export default function NavBreadcrumbs() {
     return (
         <Breadcrumbs
             color='secondary'
-            className={styles.links}
             sx={{ fontSize: '12px' }}
         >
             <NextLink href='/about' passHref>

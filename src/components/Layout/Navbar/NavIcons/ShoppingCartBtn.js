@@ -2,7 +2,7 @@ import NextLink from 'next/link'
 import IconButton from '@mui/material/IconButton'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge'
-import useStyles from '../../../helpers/navbarMUIstyles';
+import useStyles from '../../../../helpers/navbarMUIstyles';
 
 
 export default function ShoppingCartBtn({ totalQty }) {

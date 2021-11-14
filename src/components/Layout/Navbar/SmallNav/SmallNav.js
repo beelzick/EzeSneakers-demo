@@ -1,5 +1,5 @@
 import IconButton from '@mui/material/IconButton'
-import NavBreadcrumbs from '../NavBreadcrumbs';
+import NavBreadcrumbs from './NavBreadcrumbs';
 import GitHub from '@mui/icons-material/GitHub'
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import styles from './SmallNav.module.css'
