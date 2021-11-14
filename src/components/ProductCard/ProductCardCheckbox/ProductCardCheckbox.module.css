@@ -1,0 +1,11 @@
+@media(min-width: 601px) {
+    .checkboxContainer {
+        margin-left: -8px !important;
+    }
+}
+
+@media(min-width: 800px) {
+    .checkboxContainer {
+        margin-left: unset !important;
+    }
+}
