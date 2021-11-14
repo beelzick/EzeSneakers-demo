@@ -21,6 +21,7 @@ import AddFavorites from '../../src/components/ShowPage/AddFavorites'
 import { useSnackbar } from 'notistack'
 import Image from 'next/image'
 import { prepareImgUrl, createBlurDataUrl } from '../../src/helpers/imgHelpers'
+import SizeError from '../../src/components/ShowPage/SizesSelect/SizeError'
 
 
 export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, _id }) {
@@ -83,97 +84,86 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
                 Buy ${name} and enjoy saving our Planet by using restored shoes.`} />
             </Head>
             <Grid container className='page-container' justifyContent='center'>
-                <Grid item xl={8}>
-                    <Grid container>
-                        <Grid item xs={12} md={7} >
-                            <Box>
-                                <Image
-                                    src={prepareImgUrl(imgUrl)}
-                                    quality={100}
-                                    width={1200}
-                                    height={1200}
-                                    alt={name}
-                                    title={name}
-                                    className='show-page-img'
-                                    placeholder='blur'
-                                    blurDataURL={createBlurDataUrl(imgUrl)}
-                                />
+                <Grid container item xl={8}>
+                    <Grid item xs={12} md={7}>
+                        <Image
+                            src={prepareImgUrl(imgUrl)}
+                            quality={100}
+                            width={1200}
+                            height={1200}
+                            alt={name}
+                            title={name}
+                            className='show-page-img'
+                            placeholder='blur'
+                            blurDataURL={createBlurDataUrl(imgUrl)}
+                        />
+                        <Box mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>
+                            <ShouldBuyText />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} md={5}>
+                        <Box sx={{ paddingLeft: { md: '16px' } }}>
+                            <Typography variant='h3' component='h1'>
+                                {name}
+                            </Typography>
+                            <Grid container>
+                                <Typography variant='h4' component='h2' my={1} sx={{ fontFamily: '\'Roboto\', sans-serif' }} >
+                                    {price} $
+                                </Typography>
+                                <Grid item xs={12}>
+                                    <Box mb={1}>
+                                        <StyledRating precision={0.1} defaultValue={rating} readOnly />
+                                    </Box>
+                                    <Box mb={1}>
+                                        <Grid container>
+                                            <Box mr={1}>
+                                                <Chip
+                                                    color='primary'
+                                                    size='small'
+                                                    label={gender === 'man' ? 'men\'s sneakers' : 'women\'s sneakers'}
+                                                />
+                                            </Box>
+                                            {tags.map((tag, index) => (
+                                                <Box mr={1} key={index}>
+                                                    <Chip color='primary' size='small' label={tag} />
+                                                </Box>
+                                            ))}
+                                        </Grid>
+                                    </Box>
+                                </Grid>
+                            </Grid>
+                            <Typography color={sizeError ? 'error' : 'primary'}>
+                                Choose size
+                            </Typography>
+                            <SizesSelect sizes={sizes} />
+                            <SizeError error={sizeError} />
+                            <Grid container direction='column'>
+                                <Button
+                                    type='button'
+                                    variant='contained'
+                                    size='large'
+                                    color='primary'
+                                    className='w-100'
+                                    endIcon={<ShoppingCartIcon />}
+                                    onClick={handleAddCart}
+                                    sx={{ margin: '16px 0px' }}
+                                >
+                                    Add to Cart
+                                </Button>
+                                <AddFavorites id={_id} />
+                            </Grid>
+                            <Typography variant='h5' component='h2' gutterBottom>
+                                Description
+                            </Typography>
+                            <Box mb={1}>
+                                <Typography variant='body1'>
+                                    {description}.
+                                </Typography>
                             </Box>
-                            <Box component='div' mb={1.5} sx={{ display: { xs: 'none', md: 'block' } }}>
+                            <Box mb={1} sx={{ display: { xs: 'block', md: 'none' } }}>
                                 <ShouldBuyText />
                             </Box>
-                        </Grid>
-                        <Grid item xs={12} md={5}>
-                            <Box sx={{ paddingLeft: { md: '16px' } }}>
-                                <Typography variant='h3' component='h1'>
-                                    {name}
-                                </Typography>
-                                <Grid container>
-                                    <Typography variant='h4' component='h2' my={1} sx={{ fontFamily: '\'Roboto\', sans-serif' }} >
-                                        {price} $
-                                    </Typography>
-                                    <Grid item xs={12}>
-                                        <Box mb={1}>
-                                            <StyledRating precision={0.1} defaultValue={rating} readOnly />
-                                        </Box>
-                                        <Box mb={1}>
-                                            <Grid container>
-                                                <Box mr={1}>
-                                                    <Chip
-                                                        color='primary'
-                                                        size='small'
-                                                        label={gender === 'man' ? 'men\'s sneakers' : 'women\'s sneakers'}
-                                                    />
-                                                </Box>
-                                                {tags.map((tag, index) => (
-                                                    <Box mr={1} key={index}>
-                                                        <Chip color='primary' size='small' label={tag} />
-                                                    </Box>
-                                                ))}
-                                            </Grid>
-                                        </Box>
-                                    </Grid>
-                                </Grid>
-                                <Typography color={sizeError ? 'error' : 'primary'}>
-                                    Choose size
-                                </Typography>
-                                <SizesSelect sizes={sizes} />
-                                <Box my={1}>
-                                    {sizeError && (
-                                        <Typography color='error'>
-                                            Choose size
-                                        </Typography>
-                                    )}
-                                </Box>
-                                <Grid container direction='column'>
-                                    <Box my={2}>
-                                        <Button
-                                            type='button'
-                                            variant='contained'
-                                            size='large'
-                                            color='primary'
-                                            className='w-100'
-                                            endIcon={<ShoppingCartIcon />}
-                                            onClick={handleAddCart}
-                                        >
-                                            Add to Cart
-                                        </Button>
-                                    </Box>
-                                    <AddFavorites id={_id} />
-                                </Grid>
-                                <Typography variant='h5' component='h2' gutterBottom>
-                                    Description
-                                </Typography>
-                                <Box mb={1}>
-                                    <Typography variant='body1'>
-                                        {description}.
-                                    </Typography>
-                                </Box>
-                                <Box component='div' mb={1} sx={{ display: { xs: 'block', md: 'none' } }}>
-                                    <ShouldBuyText />
-                                </Box>
-                            </Box>
-                        </Grid>
+                        </Box>
                     </Grid>
                 </Grid>
             </Grid>

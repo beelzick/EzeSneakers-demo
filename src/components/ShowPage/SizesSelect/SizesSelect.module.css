@@ -3,6 +3,9 @@
   width: 100%;
   padding-right: 2px;
 }
+.errorContainer {
+  margin: 8px 0;
+}
 
 .radioToolbar input[type='radio'] {
   opacity: 0;
