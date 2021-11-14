@@ -34,8 +34,8 @@ export default function Cart() {
                     <Grid container>
                         <Grid item xs={12} sm={7} md={8} lg={9}>
                             {cartItems && cartItems.map(item => {
-                                return item.selectedSizes.map((itemSize) => {
-                                    return (<CartProduct
+                                return item.selectedSizes.map((itemSize) => (
+                                    <CartProduct
                                         tags={item.tags}
                                         price={item.price}
                                         name={item.name}
@@ -49,7 +49,7 @@ export default function Cart() {
                                         selectedSize={itemSize.size}
                                         imgUrl={item.imgUrl}
                                     />)
-                                })
+                                )
                             })}
                             {!cartItems[0] && <EmptyCart />}
                         </Grid>

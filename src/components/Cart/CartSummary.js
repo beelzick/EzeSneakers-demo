@@ -1,14 +1,12 @@
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import { ImHome } from '@react-icons/all-files/im/ImHome'
 import { BiPackage } from '@react-icons/all-files/bi/BiPackage'
 import styles from './CartProduct.module.css'
 import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 import makeStyles from '@mui/styles/makeStyles';
-import { useDispatch } from 'react-redux'
-import { demoDialogOpen } from '../../redux/slices/demoDialogSlice';
+import BuyButton from './BuyButton'
 
 const useStyles = makeStyles((theme) => ({
     summaryContainer: {
@@ -22,7 +20,6 @@ const summaryFont = { fontWeight: 400, fontFamily: 'Roboto, sans-serif' }
 
 export default function CartSummary({ subtotal }) {
     const classes = useStyles()
-    const dispatch = useDispatch()
 
     return (
         <Grid container className={classes.summaryContainer}>
@@ -71,14 +68,7 @@ export default function CartSummary({ subtotal }) {
                 <Typography variant='caption' component='span' mt={0.5}>
                     Free delivery <strong>from 100 $</strong>
                 </Typography>
-                <Box mt={2.5}>
-                    <Button
-                        fullWidth type='button' variant='contained' size='large' color='primary'
-                        onClick={() => dispatch(demoDialogOpen())}
-                    >
-                        Buy
-                    </Button>
-                </Box>
+                <BuyButton subtotal={subtotal} />
                 <Box
                     sx={{
                         display: { xs: 'none', sm: 'flex' },

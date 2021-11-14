@@ -3,85 +3,30 @@ import { ObjectId } from 'mongodb'
 import Head from 'next/head'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Chip from '@mui/material/Chip'
 import SizesSelect from '../../src/components/ShowPage/SizesSelect/SizesSelect'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShouldBuyText from '../../src/components/ShowPage/ShouldBuyText'
-import { itemAdd, itemUpdate, selectCartItemById } from '../../src/redux/slices/cartSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectSize, setSize } from '../../src/redux/slices/selectedSizeSlice'
-import { useEffect } from 'react'
-import { selectSizeError, setSizeError } from '../../src/redux/slices/sizeErrorSlice'
-import { sizeExists, UpdateData } from '../../src/helpers/showPageHelpers'
-import ObjectID from 'bson-objectid'
+import { useSelector } from 'react-redux'
+import { selectSizeError } from '../../src/redux/slices/sizeErrorSlice'
 import StyledRating from '../../src/components/ShowPage/StyledRating'
 import AddFavorites from '../../src/components/ShowPage/AddFavorites'
-import { useSnackbar } from 'notistack'
 import Image from 'next/image'
 import { prepareImgUrl, createBlurDataUrl } from '../../src/helpers/imgHelpers'
 import SizeError from '../../src/components/ShowPage/SizesSelect/SizeError'
-
+import Tags from '../../src/components/ShowPage/Tags'
+import AddToCartButton from '../../src/components/ShowPage/AddToCartButton'
 
 export default function SneakerPage({ name, price, imgUrl, gender, tags, rating, description, sizes, _id }) {
-    const { enqueueSnackbar } = useSnackbar()
-    const dispatch = useDispatch()
-    const selectedSize = useSelector(selectSize)
     const sizeError = useSelector(selectSizeError)
-    const cartItem = useSelector(state => selectCartItemById(state, _id))
-
-    useEffect(() => {
-        dispatch(setSize(null))
-    }, [dispatch])
-
-
-    const item = {
-        _id,
-        name,
-        price,
-        tags,
-        gender,
-        imgUrl,
-        sizes,
-        selectedSizes: [
-            {
-                id: ObjectID().toHexString(),
-                size: selectedSize,
-                qty: 1,
-            }
-        ]
-    }
-
-    const handleAddCart = () => {
-        if (!selectedSize) {
-            return dispatch(setSizeError(true))
-        }
-
-        if (cartItem && sizeExists(selectedSize, cartItem.selectedSizes)) {
-            dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeExists()))
-            enqueueSnackbar('Added to cart', {
-                variant: 'success'
-            })
-        } else if (cartItem && !sizeExists(selectedSize, cartItem.selectedSizes)) {
-            dispatch(itemUpdate(new UpdateData(_id, cartItem.selectedSizes, selectedSize).sizeNotExists()))
-            enqueueSnackbar('Added to cart', {
-                variant: 'success'
-            })
-        } else {
-            dispatch(itemAdd(item))
-            enqueueSnackbar('Added to cart', {
-                variant: 'success'
-            })
-        }
-    }
-
     return (
         <>
             <Head>
                 <title>{`${name} | EzeSneakers`}</title>
-                <meta name='description' content={`${name} - this product is one of EzeSneakers restored shoes collection. 
-                Buy ${name} and enjoy saving our Planet by using restored shoes.`} />
+                <meta
+                    name='description'
+                    content={`${name} - this product is one of EzeSneakers restored shoes collection. 
+                    Buy ${name} and enjoy saving our Planet by using restored shoes.`}
+                />
             </Head>
             <Grid container className='page-container' justifyContent='center'>
                 <Grid container item xl={8}>
@@ -114,22 +59,7 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
                                     <Box mb={1}>
                                         <StyledRating precision={0.1} defaultValue={rating} readOnly />
                                     </Box>
-                                    <Box mb={1}>
-                                        <Grid container>
-                                            <Box mr={1}>
-                                                <Chip
-                                                    color='primary'
-                                                    size='small'
-                                                    label={gender === 'man' ? 'men\'s sneakers' : 'women\'s sneakers'}
-                                                />
-                                            </Box>
-                                            {tags.map((tag, index) => (
-                                                <Box mr={1} key={index}>
-                                                    <Chip color='primary' size='small' label={tag} />
-                                                </Box>
-                                            ))}
-                                        </Grid>
-                                    </Box>
+                                    <Tags tags={tags} gender={gender} />
                                 </Grid>
                             </Grid>
                             <Typography color={sizeError ? 'error' : 'primary'}>
@@ -137,29 +67,23 @@ export default function SneakerPage({ name, price, imgUrl, gender, tags, rating,
                             </Typography>
                             <SizesSelect sizes={sizes} />
                             <SizeError error={sizeError} />
-                            <Grid container direction='column'>
-                                <Button
-                                    type='button'
-                                    variant='contained'
-                                    size='large'
-                                    color='primary'
-                                    className='w-100'
-                                    endIcon={<ShoppingCartIcon />}
-                                    onClick={handleAddCart}
-                                    sx={{ margin: '16px 0px' }}
-                                >
-                                    Add to Cart
-                                </Button>
-                                <AddFavorites id={_id} />
-                            </Grid>
+                            <AddToCartButton
+                                name={name}
+                                price={price}
+                                gender={gender}
+                                imgUrl={imgUrl}
+                                tags={tags}
+                                _id={_id}
+                                sizes={sizes}
+
+                            />
+                            <AddFavorites id={_id} />
                             <Typography variant='h5' component='h2' gutterBottom>
                                 Description
                             </Typography>
-                            <Box mb={1}>
-                                <Typography variant='body1'>
-                                    {description}.
-                                </Typography>
-                            </Box>
+                            <Typography variant='body1' mb={1}>
+                                {description}.
+                            </Typography>
                             <Box mb={1} sx={{ display: { xs: 'block', md: 'none' } }}>
                                 <ShouldBuyText />
                             </Box>

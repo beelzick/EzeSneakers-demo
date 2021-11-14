@@ -1,25 +1,10 @@
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import styles from './Search.module.css'
 import SearchDialog from './SearchDialog';
 import { setSearchOpen } from '../../../../redux/slices/searchDialogSlice';
 import { useDispatch } from 'react-redux';
-
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
-}));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -29,7 +14,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-}));
+}))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     crusor: 'pointer',
@@ -56,17 +41,19 @@ export default function SearchField() {
         dispatch(setSearchOpen(true))
     }
 
-    return <>
-        <Search className={styles.search} onClick={handleOpenClick}>
-            <SearchIconWrapper>
-                <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-                disabled
-                placeholder='Search…'
-                inputProps={{ 'aria-label': 'search' }}
-            />
-        </Search>
-        <SearchDialog />
-    </>
+    return (
+        <>
+            <div className={styles.search} onClick={handleOpenClick} data-testid='search-input'>
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    disabled
+                    placeholder='Search…'
+                    inputProps={{ 'aria-label': 'search' }}
+                />
+            </div>
+            <SearchDialog />
+        </>
+    )
 }
