@@ -1,9 +1,9 @@
 import { render, screen } from '../lib/test-utils'
-import SearchField from '../src/components/Layout/Navbar/Search/SearchField'
+import Search from '../src/components/Layout/Navbar/Search/Search'
 import userEvent from '@testing-library/user-event'
 
 test('if user can open then close search dialog', async () => {
-    render(<SearchField />)
+    render(<Search />)
     userEvent.click(screen.getByTestId('search-input'))
     const searchDialog = screen.getByRole('dialog')
     expect(searchDialog).toBeVisible()

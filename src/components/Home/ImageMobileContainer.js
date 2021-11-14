@@ -3,7 +3,7 @@ import styles from './Home.module.css'
 
 export default function ImageContainer({ src, alt }) {
     return (
-        <div className={styles['image-mobile-container']}>
+        <div className={styles.imageMobileContainer}>
             <Image
                 src={src}
                 height={1000}
@@ -11,7 +11,7 @@ export default function ImageContainer({ src, alt }) {
                 layout='responsive'
                 objectFit='cover'
                 quality={100}
-                className={styles['image-mobile']}
+                className={styles.imageMobile}
                 alt={alt}
                 title={alt}
                 placeholder='blur'

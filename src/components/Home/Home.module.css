@@ -1,9 +1,9 @@
-.image-container {
+.imageContainer {
     max-height: 75vh;
     
 }
 
-.image-container > div {
+.imageContainer > div {
     position: unset !important;
 
 }
@@ -15,15 +15,15 @@
 }
 
 
-.image-mobile-container {
+.imageMobileContainer {
     max-height: 90vh
 }
 
-.image-mobile-container > div {
+.imageMobileContainer  > div {
     position: unset !important;
 }
 
-.image-mobile {
+.imageMobile {
     max-height: 90vh !important;
     border-radius: 10px !important
 }

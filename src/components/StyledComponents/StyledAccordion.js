@@ -1,7 +1,7 @@
 import Accordion from '@mui/material/Accordion';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
-const StyledAccordion = styled(Accordion)(({ theme }) => ({
+const StyledAccordion = styled(Accordion)(() => ({
     '&.MuiAccordion-root': {
         boxShadow: 'unset',
         margin: 'unset',

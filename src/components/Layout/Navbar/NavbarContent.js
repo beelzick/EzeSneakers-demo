@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import Link from '@mui/material/Link';
 import NavLinks from './NavLinks/NavLinks'
-import SearchField from './Search/SearchField'
+import Search from './Search/Search'
 import MoreIconButton from './RightSideMenu/Mobile/MoreIconButton';
 import SearchIconButton from './RightSideMenu/SearchIconButton';
 import NavIcons from './NavIcons/NavIcons';
@@ -21,7 +21,7 @@ export default function NavbarContent({ status }) {
             <div style={{ flexGrow: 1.655 }} />
             <NavLinks />
             <div className='grow' />
-            <SearchField />
+            <Search />
             <SearchIconButton />
             <NavIcons status={status} />
             <MoreIconButton />
