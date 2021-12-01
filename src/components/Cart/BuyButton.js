@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
+import { demoDialogOpen } from '../../redux/slices/demoDialogSlice'
 
 export default function BuyButton({ subtotal }) {
     const dispatch = useDispatch()
