@@ -1,8 +1,6 @@
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 
 export const footerLinksFilter = (link) => {
@@ -20,32 +18,22 @@ export const iconsData = [
     {
         component: FacebookIcon,
         text: 'Facebook',
-        href: 'https://www.facebook.com/kacper.zabielski'
+        href: '#facebook'
     },
     {
         component: TwitterIcon,
         text: 'Twitter',
-        href: '#'
-    },
-    {
-        component: GitHubIcon,
-        text: 'Git Hub',
-        href: 'https://github.com/beelzick/eze-sneakers'
+        href: '#twitter'
     },
     {
         component: InstagramIcon,
         text: 'Instagram',
-        href: '#'
-    },
-    {
-        component: LinkedInIcon,
-        text: 'Linkedin',
-        href: 'https://www.linkedin.com/in/kacper-zabielski-329911217/'
+        href: '#instagram'
     },
     {
         component: EmailIcon,
         text: 'Email',
-        href: '#'
+        href: '#email'
     },
 ]
 

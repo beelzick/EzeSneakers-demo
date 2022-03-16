@@ -1,18 +1,18 @@
 import IconButton from '@mui/material/IconButton'
 import NavBreadcrumbs from './NavBreadcrumbs';
-import GitHub from '@mui/icons-material/GitHub'
-import LinkedIn from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import styles from './SmallNav.module.css'
 
 export default function SmallNav() {
     return (
         <div className={styles.container}>
             <div>
-                <IconButton size='small' color='secondary' aria-label='GitHub' href='https://github.com/beelzick/eze-sneakers'>
-                    <GitHub fontSize='small' />
+                <IconButton size='small' color='secondary' aria-label='GitHub' href='#facebok'>
+                    <FacebookIcon />
                 </IconButton>
-                <IconButton size='small' color='secondary' aria-label='Linkedin' href='https://www.linkedin.com/in/kacper-zabielski-329911217/'>
-                    <LinkedIn />
+                <IconButton size='small' color='secondary' aria-label='Linkedin' href='#instagram'>
+                    <InstagramIcon />
                 </IconButton>
             </div>
             <div className='grow' />
