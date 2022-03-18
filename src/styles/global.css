@@ -66,3 +66,21 @@
     overflow: hidden !important;
 }
 
+.navbar-slide-enter {
+    transform: translate3d(0, -70px, 0);
+  }
+
+.navbar-slide-enter-active {
+    transform: translate3d(0, 0, 0);
+    transition: 300ms;
+}
+  
+.navbar-slide-exit {
+    transform: translate3d(0, 0, 0);
+}
+  
+.navbar-slide-exit-active {
+    transform: translate3d(0, -70px, 0);
+    transition: 300ms;
+}
+  

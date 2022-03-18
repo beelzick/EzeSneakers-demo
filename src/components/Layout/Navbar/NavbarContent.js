@@ -7,11 +7,13 @@ import SearchIconButton from './RightSideMenu/SearchIconButton';
 import NavIcons from './NavIcons/NavIcons';
 import MenuIconButton from './NavIcons/MenuIconButton';
 import useStyles from '../../../helpers/navbarMUIstyles';
+import styles from './NavbarContainer/NavbarContainer.module.css';
 
-export default function NavbarContent({ status }) {
+export default function NavbarContent({status}) {
     const classes = useStyles();
+
     return (
-        <>
+        <div className={styles.toolbar} >
             <MenuIconButton />
             <NextLink href='/' passHref>
                 <Link className={classes.title} variant='h6' noWrap color='secondary' underline='none'>
@@ -23,8 +25,8 @@ export default function NavbarContent({ status }) {
             <div className='grow' />
             <Search />
             <SearchIconButton />
-            <NavIcons status={status} />
+            <NavIcons status={status} fixed />
             <MoreIconButton />
-        </>
+        </div>
     )
 }
